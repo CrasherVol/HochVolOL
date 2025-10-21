@@ -1,0 +1,19 @@
+# Node modules (nicht hochladen)
+node_modules/
+
+# Build output
+dist/
+
+# Lokale Logs, temporäre Dateien
+*.log
+npm-debug.log*
+
+# VSCode Ordner
+.vscode/
+
+# Betriebssystem-Dateien
+.DS_Store
+Thumbs.db
+
+# Env files (falls du später welche nutzt)
+.env
