@@ -13,7 +13,7 @@ import {
 import { TEXTS, DATUM, PAAR } from "../data/constants";
 import { googleCalUrl } from "../data/calendar";
 
-/* --- Kleine Flaggen-Icons (inline SVG) --- */
+/* --- Kleine Flaggen (inline SVG) --- */
 function Flag({ code }) {
   if (code === "de") {
     return (
@@ -126,7 +126,7 @@ function Header({ lang, setLang }) {
         </div>
       </div>
 
-      {/* Inline Styles (du kannst alles in global.css verschieben) */}
+      {/* Inline-Styling der Topbar (kannst du in CSS auslagern) */}
       <style>{`
         :root { --accent:#7b2e2e; --accent-2:#b85c5c; }
 
@@ -222,7 +222,16 @@ function Header({ lang, setLang }) {
 function Footer() {
   const year = new Date(DATUM.iso).getFullYear();
   return (
-    <footer className="footer" style={{ maxWidth:1100, margin:"0 auto", padding:"2rem 1rem", textAlign:"center", color:"#64748b" }}>
+    <footer
+      className="footer"
+      style={{
+        maxWidth: 1100,
+        margin: "0 auto",
+        padding: "2rem 1rem",
+        textAlign: "center",
+        color: "#64748b",
+      }}
+    >
       © {year} Hochzeit {PAAR.braeutigam} & {PAAR.braut} · Chateau Methis Kalaki
     </footer>
   );
@@ -231,9 +240,28 @@ function Footer() {
 /* --- Layout-Wrapper --- */
 export default function Layout({ children, lang, setLang }) {
   return (
-    <div className="layout-root" style={{ minHeight: "100vh", background: "#fff", color: "#111827" }}>
+    <div
+      className="layout-root"
+      style={{
+        minHeight: "100vh",
+        background: "transparent", // wichtig fürs Winter-Overlay
+        position: "relative",
+        zIndex: 1,                  // über Schnee/Hintergrund
+      }}
+    >
       <Header lang={lang} setLang={setLang} />
-      <main className="main" style={{ maxWidth: 1100, margin: "0 auto", padding: "1.25rem" }}>
+      <main
+        className="main"
+        style={{
+          maxWidth: 1100,
+          margin: "0 auto",
+          padding: "1.25rem",
+          background: "rgba(255,255,255,0.72)", // Frost-Panel
+          backdropFilter: "blur(6px)",
+          borderRadius: "14px",
+          boxShadow: "0 8px 30px rgba(0,0,0,0.08)",
+        }}
+      >
         {children}
       </main>
       <Footer />

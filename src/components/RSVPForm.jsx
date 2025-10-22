@@ -1,19 +1,19 @@
 import React, { useState } from "react";
 import { TEXTS } from "../data/constants.js";
+import { CheckCircle2, AlertCircle } from "lucide-react";
 
 export default function RSVPForm({ lang = "de" }) {
   const t = TEXTS[lang] || TEXTS.de;
   const [status, setStatus] = useState("idle");
   const [agree, setAgree] = useState(false);
 
-  // TODO: Trage hier deinen echten Formspree-Link ein
-  const actionUrl = "https://formspree.io/f/xxxxxxxx";
+  const actionUrl = "https://formspree.io/f/xxxxxxxx"; // Deinen echten Link hier eintragen
 
   return (
     <form
       action={actionUrl}
       method="POST"
-      className="card"
+      className="rsvp-form"
       onSubmit={(e) => {
         if (!agree) {
           e.preventDefault();
@@ -21,95 +21,78 @@ export default function RSVPForm({ lang = "de" }) {
           return;
         }
         setStatus("sending");
-        // Optisches Feedback – bei Formspree übernimmt danach die Seite
         setTimeout(() => setStatus("success"), 1200);
       }}
     >
-      <h3
-        className="headline"
-        style={{ fontSize: "1.125rem", marginBottom: ".5rem", color: "var(--accent)" }}
-      >
+      {/* Überschrift */}
+      <h3 className="form-headline">
         {t.rsvpTitle} – 28.02.2026
       </h3>
 
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit,minmax(220px,1fr))",
-          gap: ".75rem",
-        }}
-      >
-        <label style={{ display: "flex", flexDirection: "column", gap: ".25rem" }}>
-          <span style={{ fontSize: ".875rem", color: "#64748b" }}>{t.name}*</span>
-          <input name="name" required className="input" placeholder={t.namePlaceholder} />
+      {/* Eingaben */}
+      <div className="form-grid">
+        <label>
+          <span>{t.name}*</span>
+          <input name="name" required placeholder={t.namePlaceholder} />
         </label>
 
-        <label style={{ display: "flex", flexDirection: "column", gap: ".25rem" }}>
-          <span style={{ fontSize: ".875rem", color: "#64748b" }}>{t.email}*</span>
-          <input name="email" type="email" required className="input" placeholder={t.emailPlaceholder} />
+        <label>
+          <span>{t.email}*</span>
+          <input name="email" type="email" required placeholder={t.emailPlaceholder} />
         </label>
-      </div>
 
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit,minmax(220px,1fr))",
-          gap: ".75rem",
-          marginTop: ".75rem",
-        }}
-      >
-        <fieldset style={{ display: "flex", flexDirection: "column", gap: ".25rem" }}>
-          <span style={{ fontSize: ".875rem", color: "#64748b" }}>{t.yesnoQ}*</span>
-          <label style={{ display: "inline-flex", alignItems: "center", gap: ".5rem" }}>
-            <input type="radio" name="teilnahme" value={t.yes} required /> {t.yes}
-          </label>
-          <label style={{ display: "inline-flex", alignItems: "center", gap: ".5rem" }}>
-            <input type="radio" name="teilnahme" value={t.no} /> {t.no}
-          </label>
+        <fieldset>
+          <span>{t.yesnoQ}*</span>
+          <div className="radio-group">
+            <label>
+              <input type="radio" name="teilnahme" value={t.yes} required /> {t.yes}
+            </label>
+            <label>
+              <input type="radio" name="teilnahme" value={t.no} /> {t.no}
+            </label>
+          </div>
         </fieldset>
 
-        <label style={{ display: "flex", flexDirection: "column", gap: ".25rem" }}>
-          <span style={{ fontSize: ".875rem", color: "#64748b" }}>{t.people}*</span>
-          <input name="anzahl" type="number" min={1} required className="input" defaultValue={1} />
+        <label>
+          <span>{t.people}*</span>
+          <input name="anzahl" type="number" min={1} required defaultValue={1} />
         </label>
 
-        <label style={{ display: "flex", flexDirection: "column", gap: ".25rem" }}>
-          <span style={{ fontSize: ".875rem", color: "#64748b" }}>{t.diet}</span>
-          <input name="essen" className="input" placeholder={t.dietPlaceholder} />
+        <label>
+          <span>{t.diet}</span>
+          <input name="essen" placeholder={t.dietPlaceholder} />
         </label>
       </div>
 
-      <div style={{ marginTop: ".75rem" }}>
-        <label
-          style={{ display: "inline-flex", alignItems: "center", gap: ".5rem", fontSize: ".875rem" }}
-        >
-          <input type="checkbox" checked={agree} onChange={(e) => setAgree(e.target.checked)} />{" "}
+      {/* Datenschutz */}
+      <div className="form-privacy">
+        <label>
+          <input type="checkbox" checked={agree} onChange={(e) => setAgree(e.target.checked)} />
           {t.privacy}
         </label>
-        <p style={{ fontSize: ".75rem", color: "#64748b", marginTop: ".25rem" }}>{t.privacyNote}</p>
+        <p>{t.privacyNote}</p>
       </div>
 
-      <div style={{ marginTop: "1rem", display: "flex", alignItems: "center", gap: ".75rem" }}>
-        <button type="submit" className="btn-primary" disabled={status === "sending"}>
+      {/* Submit-Bereich */}
+      <div className="form-submit">
+        <button type="submit" disabled={status === "sending"}>
           {status === "sending" ? t.sending : t.send}
         </button>
-        <span style={{ fontSize: ".875rem", color: "#64748b" }}>
-          {t.orEmail} <a className="underline" href="mailto:love@example.com">love@example.com</a>
+        <span>
+          {t.orEmail} <a href="mailto:love@example.com">love@example.com</a>
         </span>
       </div>
 
+      {/* Erfolgsmeldung */}
       {status === "success" && (
-        <div
-          style={{
-            marginTop: ".75rem",
-            padding: ".5rem .75rem",
-            borderRadius: ".75rem",
-            background: "#f0fdf4",
-            border: "1px solid #bbf7d0",
-            color: "#15803d",
-          }}
-        >
-          {t.rsvpSuccess}
+        <div className="form-success">
+          <CheckCircle2 className="icon" /> {t.rsvpSuccess}
+        </div>
+      )}
+
+      {status === "error" && (
+        <div className="form-error">
+          <AlertCircle className="icon" /> {t.errorMessage || "Fehler beim Senden. Bitte später erneut versuchen."}
         </div>
       )}
     </form>

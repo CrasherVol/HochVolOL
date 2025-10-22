@@ -221,7 +221,7 @@ export const TEXTS = {
     locationTitle: "Die Location",
     locationSub: "Chateau Methis Kalaki – Wein, Aussicht & Feier",
     rsvpTitle: "Zusagen & Absagen (RSVP)",
-    rsvpSub: "Bitte gebt uns bis 31. Januar 2026 Bescheid",
+    rsvpSub: "Bitte gebt uns bis 24. November 2025 Bescheid",
     contact: "Kontakt",
     addToCal: "Zum Kalender",
     planTrip: "Anreise planen",
@@ -280,6 +280,47 @@ export const TEXTS = {
       sighnaghi: "Sighnaghi",
       alaverdi: "Kloster Alaverdi",
       telavi: "Telavi",
+      // Homepage (Start)
+heroLogoAlt: "Olga & Volker – Hochzeitslogo",
+heroEyebrow: "Proße Party in Tachetien in Georgien !!!",
+heroTitle: "Wir heiraten!",
+name1: "Olga",
+name2: "Volker",
+heroSub:
+  "Willkommen – hier findet ihr alles zu Anreise, Location, Ablauf und am wichtigsten - Die Anmeldung. Wir freuen uns riesig, wenn möglichst viele von euch mit uns feiern!",
+
+cta1: "1. RSVP ausfüllen",
+cta2: "2. Flug buchen",
+cta3: "3. Ort merken",
+
+quickRegion: "Kachetien (Telavi/Sighnaghi)",
+quickFood: "Georgische Küche & Wein",
+quickCeremony: "Freie Trauung & Dinner",
+
+sectionCelebration: "Die Feier",
+sectionCelebrationSub: "Alles Wichtige auf einen Blick – Ort, Zeitplan, Kontakt & Highlights.",
+
+cardVenueTitle: "Ort & Ablauf",
+venueLead: "Trauung & Dinner im",
+venueName: "Chateau Methis Kalaki",
+venueTail: "Dresscode: elegant, winterfest. Musik & Tanz bis in die Nacht.",
+mapsOpen: "Adresse in Google Maps öffnen",
+
+hlWine: "Qvevri-Weinverkostung",
+hlMusic: "Musik & Tanz",
+hlWinter: "Winterliche Stimmung",
+
+cardTimelineTitle: "Zeitplan",
+tl14: "Freie Trauung",
+tl1530: "Sektempfang & Weinverkostung",
+tl18: "Dinner",
+tlEveningTime: "abends",
+tlEve: "Musik, Tanz & Überraschungen",
+
+cardContactTitle: "Kontakt",
+contactLead: "Fragen zu Anreise, Unterkunft oder Allergien?",
+contactEmailLabel: "love@example.com",
+
     },
   },
 
@@ -307,7 +348,7 @@ export const TEXTS = {
     locationTitle: "The Location",
     locationSub: "Chateau Methis Kalaki – wine, views & celebration",
     rsvpTitle: "RSVP – Confirm or Decline",
-    rsvpSub: "Please reply by January 31, 2026",
+    rsvpSub: "Please reply by November 24, 2025",
     contact: "Contact",
     addToCal: "Add to Calendar",
     planTrip: "Plan Your Trip",
@@ -357,16 +398,57 @@ export const TEXTS = {
     packlistIntro: "February is wintry (Tbilisi ~5 °C, Telavi ~0–8 °C). Mountain areas may have snow — here’s a handy list:",
     bookEarlyNote: "🔔 Please book early — accommodation tends to fill up around the wedding date.",
     place: {
-      kakhetiVineyards: "Kakheti Vineyards",
-      tbilisi: "Tbilisi Old Town",
-      sulfurBaths: "Abanotubani Sulfur Baths",
-      narikala: "Narikala Fortress",
-      bridgeOfPeace: "Bridge of Peace",
-      sighnaghi: "Sighnaghi",
-      alaverdi: "Alaverdi Monastery",
-      telavi: "Telavi",
-    },
+    kakhetiVineyards: "Kakheti Vineyards",
+    tbilisi: "Tbilisi Old Town",
+    sulfurBaths: "Abanotubani Sulfur Baths",
+    narikala: "Narikala Fortress",
+    bridgeOfPeace: "Bridge of Peace",
+    sighnaghi: "Sighnaghi",
+    alaverdi: "Alaverdi Monastery",
+    telavi: "Telavi",
   },
+
+  // Homepage (Start)  <-- WICHTIG: jetzt außerhalb von place!
+  heroLogoAlt: "Olga & Volker — wedding logo",
+  heroEyebrow: "Big party in Kakheti, Georgia!!!",
+  heroTitle: "We're getting married!",
+  name1: "Olga",
+  name2: "Volker",
+  heroSub:
+    "Welcome—here you'll find everything about travel, venue, timeline, and most importantly—the RSVP. We can’t wait to celebrate with as many of you as possible!",
+
+  cta1: "1. Fill out RSVP",
+  cta2: "2. Book flights",
+  cta3: "3. Save the venue",
+
+  quickRegion: "Kakheti (Telavi/Sighnaghi)",
+  quickFood: "Georgian food & wine",
+  quickCeremony: "Non-religious ceremony & dinner",
+
+  sectionCelebration: "The Celebration",
+  sectionCelebrationSub: "All the essentials—location, timeline, contact & highlights.",
+
+  cardVenueTitle: "Venue & Plan",
+  venueLead: "Ceremony & dinner at",
+  venueName: "Chateau Methis Kalaki",
+  venueTail: "Dress code: elegant, winter-ready. Music & dancing into the night.",
+  mapsOpen: "Open address in Google Maps",
+
+  hlWine: "Qvevri wine tasting",
+  hlMusic: "Music & dancing",
+  hlWinter: "Cozy winter vibes",
+
+  cardTimelineTitle: "Timeline",
+  tl14: "Ceremony",
+  tl1530: "Reception & wine tasting",
+  tl18: "Dinner",
+  tlEveningTime: "evening",
+  tlEve: "Music, dancing & surprises",
+
+  cardContactTitle: "Contact",
+  contactLead: "Questions about travel, accommodation or allergies?",
+  contactEmailLabel: "love@example.com",
+},
 
   ru: {
     nav: {
@@ -392,7 +474,7 @@ export const TEXTS = {
     locationTitle: "Место проведения",
     locationSub: "Chateau Methis Kalaki — вино, вид и праздник",
     rsvpTitle: "Подтверждение участия (RSVP)",
-    rsvpSub: "Пожалуйста, дайте ответ до 31 января 2026 года",
+    rsvpSub: "Пожалуйста, дайте нам знать до 24 ноября 2025 года.",
     contact: "Контакт",
     addToCal: "Добавить в календарь",
     planTrip: "Спланировать поездку",
@@ -442,17 +524,59 @@ export const TEXTS = {
     packlistIntro: "В феврале зима (Тбилиси ~5 °C, Телави ~0–8 °C). В горах возможен снег — этот список поможет собрать вещи:",
     bookEarlyNote: "🔔 Пожалуйста, бронируйте заранее — в даты свадьбы жильё быстро разбирают.",
     place: {
-      kakhetiVineyards: "Виноградники Кахетии",
-      tbilisi: "Старый город Тбилиси",
-      sulfurBaths: "Серные бани Абанотубани",
-      narikala: "Крепость Нарикала",
-      bridgeOfPeace: "Мост Мира",
-      sighnaghi: "Сигнахи",
-      alaverdi: "Монастырь Алаверди",
-      telavi: "Телави",
-    },
+    kakhetiVineyards: "Виноградники Кахетии",
+    tbilisi: "Старый город Тбилиси",
+    sulfurBaths: "Серные бани Абанотубани",
+    narikala: "Крепость Нарикала",
+    bridgeOfPeace: "Мост Мира",
+    sighnaghi: "Сигнахи",
+    alaverdi: "Монастырь Алаверди",
+    telavi: "Телави",
   },
-};
+
+  // Homepage (Start)  <-- WICHTIG: jetzt außerhalb von place!
+  heroLogoAlt: "Логотип свадьбы Ольги и Фолькера",
+  heroEyebrow: "Большая вечеринка в Кахетии, Грузия!!!",
+  heroTitle: "Мы женимся!",
+  name1: "Ольга",
+  name2: "Фолькер",
+  heroSub:
+    "Добро пожаловать — здесь вы найдёте всё про дорогу, место, программу и самое важное — регистрацию (RSVP). Мы безумно рады, если как можно больше из вас отпразднует с нами!",
+
+  cta1: "1. Заполнить RSVP",
+  cta2: "2. Купить билеты",
+  cta3: "3. Сохранить адрес",
+
+  quickRegion: "Кахетия (Телави/Сигнахи)",
+  quickFood: "Грузинская кухня и вино",
+  quickCeremony: "Выездная церемония и ужин",
+
+  sectionCelebration: "Праздник",
+  sectionCelebrationSub: "Всё важное: место, расписание, контакты и главное.",
+
+  cardVenueTitle: "Место и программа",
+  venueLead: "Церемония и ужин в",
+  venueName: "Chateau Methis Kalaki",
+  venueTail: "Дресс-код: элегантно, по-зимнему. Музыка и танцы до ночи.",
+  mapsOpen: "Открыть адрес в Google Maps",
+
+  hlWine: "Дегустация вина из квеври",
+  hlMusic: "Музыка и танцы",
+  hlWinter: "Зимнее настроение",
+
+  cardTimelineTitle: "Расписание",
+  tl14: "Церемония",
+  tl1530: "Фуршет и дегустация вина",
+  tl18: "Ужин",
+  tlEveningTime: "вечером",
+  tlEve: "Музыка, танцы и сюрпризы",
+
+  cardContactTitle: "Контакты",
+  contactLead: "Вопросы по дороге, проживанию или аллергиям?",
+  contactEmailLabel: "love@example.com",
+},
+}
+
 
 // ======================================================
 // Google-Kalender-Link automatisch generieren
