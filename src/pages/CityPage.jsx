@@ -1,3 +1,4 @@
+// src/pages/CityPage.jsx
 import React from "react";
 import Layout from "../components/Layout.jsx";
 import Section from "../components/Section.jsx";
@@ -10,7 +11,7 @@ import { TEXTS, FACTS, ORT, IMAGES, LINKS } from "../data/constants.js";
 import {
   Globe2, Users, MapPin, Clock, Wallet, Plug,
   Mountain, ShieldCheck, Phone, CalendarDays,
-  CreditCard, Camera, Plane
+  CreditCard, Plane
 } from "lucide-react";
 
 const iconFor = (key) => {
@@ -54,8 +55,8 @@ export default function CityPage({ lang, setLang }) {
           style={{
             display: "grid",
             gridTemplateColumns: "repeat(auto-fit,minmax(250px,1fr))",
-            gap: "1.5rem",
-            marginBottom: "2rem",
+            gap: "1.25rem",
+            marginBottom: "1.25rem", // Abstand nach dem Grid
           }}
         >
           {ORT.mustSees.map((m, i) => {
@@ -90,60 +91,64 @@ export default function CityPage({ lang, setLang }) {
         </div>
 
         {/* Zahlen & Fakten */}
- <Card title={t.factsTitle || "Georgien in Zahlen & Fakten"} className="hover-react">
-  <div className="stats-compact-grid">
-    {FACTS.map((f, i) => (
-      <div
-        key={f.key}
-        className="stat-mini"
-        style={{ animationDelay: `${i * 0.12}s` }}
-      >
-        <div className="icon">{iconFor(f.key)}</div>
-        <div className="info">
-          <div className="value">{f.value}</div>
-          <div className="label">{f.label?.[lang] || f.label?.de}</div>
-        </div>
-      </div>
-    ))}
-  </div>
-</Card>
-
+        <Card
+          title={t.factsTitle || "Georgien in Zahlen & Fakten"}
+          className="hover-react"
+          style={{ marginBottom: "1.25rem" }} // Abstand unter der Card
+        >
+          <div className="stats-compact-grid">
+            {FACTS.map((f, i) => (
+              <div
+                key={f.key}
+                className="stat-mini"
+                style={{ animationDelay: `${i * 0.12}s` }}
+              >
+                <div className="icon">{iconFor(f.key)}</div>
+                <div className="info">
+                  <div className="value">{f.value}</div>
+                  <div className="label">{f.label?.[lang] || f.label?.de}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </Card>
 
         {/* ✨ Weitere Ausflugsziele */}
         <Card
           title={lang === "de" ? "Weitere Ausflugsziele" : "More destinations"}
           className="hover-react"
+          style={{ marginBottom: "1.25rem" }} // Abstand unter der Card
         >
           <div
             style={{
               display: "grid",
               gridTemplateColumns: "repeat(auto-fit,minmax(250px,1fr))",
-              gap: "1rem",
+              gap: "1.25rem", // Abstand zwischen Kacheln
             }}
           >
             {[
               {
                 name: "Akhalkalaki & Vardzia",
                 desc:
-                  "Eine eindrucksvolle Felsenstadt im Süden Georgiens – spektakuläre Höhlenklöster, 2,5 Std. Fahrt von Telavi.",
+                  "Eindrucksvolle Felsenstadt im Süden Georgiens – spektakuläre Höhlenklöster, ca. 2,5 Std. Fahrt von Telavi.",
                 link: "https://goo.gl/maps/h98t4vG2ZwzAXQFK9",
               },
               {
                 name: "David Gareja Kloster",
                 desc:
-                  "Ein mystisches Wüstenkloster an der aserbaidschanischen Grenze – beeindruckende Felsmalereien.",
+                  "Mystisches Wüstenkloster an der Aserbaidschan-Grenze – beeindruckende Felsmalereien.",
                 link: "https://goo.gl/maps/kcG2gY4tKGMY1R1x7",
               },
               {
                 name: "Kazbegi (Stepantsminda)",
                 desc:
-                  "Eines der beliebtesten Ausflugsziele des Landes mit Blick auf den majestätischen Berg Kazbek.",
+                  "Beliebtes Ziel im Großen Kaukasus mit Blick auf den Berg Kasbek.",
                 link: "https://goo.gl/maps/ZKQXKzqkB8iYpYF87",
               },
               {
                 name: "Kvareli & Ilia-See",
                 desc:
-                  "Romantischer See mit Weinmuseum und Spa-Hotels – perfekt für einen Tagesausflug aus Telavi.",
+                  "Romantischer See mit Weinmuseum und Spa-Hotels – ideal für einen Tagesausflug aus Telavi.",
                 link: "https://goo.gl/maps/pczH3BtN6DJL24W47",
               },
             ].map((x, i) => (
@@ -162,7 +167,7 @@ export default function CityPage({ lang, setLang }) {
               >
                 <div
                   style={{
-                    fontWeight: "600",
+                    fontWeight: 600,
                     color: "var(--accent)",
                     marginBottom: ".35rem",
                   }}
