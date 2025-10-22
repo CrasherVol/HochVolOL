@@ -344,7 +344,7 @@ export const TEXTS = {
       telavi: "Telavi",
       // Homepage (Start)
 heroLogoAlt: "Olga & Volker – Hochzeitslogo",
-heroEyebrow: "Proße Party in Tachetien in Georgien !!!",
+heroEyebrow: "Große Party in Tachetien in Georgien !!!",
 heroTitle: "Wir heiraten!",
 name1: "Olga",
 name2: "Volker",

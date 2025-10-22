@@ -33,7 +33,7 @@ export default function HomePage({ lang, setLang }) {
         </div>
 
         <p className="eyebrow pill-dark">
-          {tt("heroEyebrow", "Proße Party in Tachetien in Georgien !!!")}
+          {tt("heroEyebrow", "Große Party in Tachetien in Georgien !!!")}
         </p>
 
         <h1 className="home-hero-title">
