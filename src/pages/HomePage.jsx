@@ -1,280 +1,198 @@
 // src/pages/HomePage.jsx
 import React from "react";
-import { Link } from "react-router-dom";
-
 import Layout from "../components/Layout.jsx";
-import Section from "../components/Section.jsx";
 import Card from "../components/Card.jsx";
-import Gallery from "../components/Gallery.jsx";
-
-import {
-  TEXTS,
-  IMAGES,
-  LINKS,
-  ORT,
-  PAAR,
-  DATUM,
-  googleCalUrl,
-  getProgramm, // <- nutzt die sprachspezifischen Zeiten/Titel
-} from "../data/constants.js";
-
+import { TEXTS, DATUM, LINKS } from "../data/constants.js";
 import {
   CalendarHeart,
   MapPin,
-  Info,
   Camera,
-  HeartHandshake,
-  Utensils,
+  Users,
+  Clock,
+  GlassWater,
+  Mail,
+  Sparkles,
+  Wine,
+  Music4,
 } from "lucide-react";
 
 export default function HomePage({ lang, setLang }) {
   const t = TEXTS[lang] || TEXTS.de;
+  const tt = (key, fallback) => (t && t[key] !== undefined ? t[key] : fallback);
 
   return (
     <Layout lang={lang} setLang={setLang}>
-      {/* ===== HERO ===== */}
-      <section className="section">
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit,minmax(300px,1fr))",
-            gap: "1.5rem",
-            alignItems: "center",
-          }}
-        >
-          {/* Left: Text */}
-          <div>
-            <p
-              className="body"
-              style={{
-                textTransform: "uppercase",
-                letterSpacing: ".1em",
-                fontSize: ".75rem",
-                color: "#475569",
-              }}
-            >
-              {t.heroIntro}
-            </p>
+      {/* ---------- HERO (einzige Stelle mit CTA-Buttons) ---------- */}
+      <section className="home-hero">
+        <div className="hero-logo-wrap">
+          <img
+            src="/vo-logo.png"
+            alt={tt("heroLogoAlt", "Olga & Volker – Hochzeitslogo")}
+            className="hero-logo-img pulse"
+          />
+        </div>
 
-            <h1
-              className="headline"
-              style={{
-                fontSize: "clamp(2rem,4vw,3.5rem)",
-                fontWeight: 800,
-                marginTop: ".25rem",
-                color: "var(--accent)",
-              }}
-            >
-              {PAAR.braeutigam} & {PAAR.braut}
-            </h1>
+        <p className="eyebrow pill-dark">
+          {tt("heroEyebrow", "Proße Party in Tachetien in Georgien !!!")}
+        </p>
 
-            <div
-              style={{
-                marginTop: ".75rem",
-                display: "inline-flex",
-                alignItems: "center",
-                gap: ".5rem",
-                padding: ".4rem .8rem",
-                border: "1px solid #f1d5d5",
-                background:
-                  "linear-gradient(90deg, rgba(184,92,92,.12), rgba(255,255,255,.6))",
-                borderRadius: "9999px",
-                boxShadow: "0 2px 10px rgba(184,92,92,.12)",
-              }}
-            >
-              <CalendarHeart className="w-4 h-4" />
-              <span
-                className="body"
-                style={{ fontWeight: 600, letterSpacing: ".02em" }}
-              >
-                {t.dateLabel}: {DATUM.text}
-              </span>
-            </div>
+        <h1 className="home-hero-title">
+          {tt("heroTitle", "Wir heiraten!")}
+        </h1>
 
-            <p
-              className="body"
-              style={{ marginTop: ".75rem", fontSize: "1.05rem", color: "#334155" }}
-            >
-              {t.heroThanks}
-            </p>
+        <div className="names-line highlight-names">
+          <span className="name">{tt("name1", "Olga")}</span>
+          <span className="and">&amp;</span>
+          <span className="name">{tt("name2", "Volker")}</span>
+        </div>
 
-            <div
-              style={{
-                marginTop: "1rem",
-                display: "flex",
-                flexWrap: "wrap",
-                gap: ".5rem",
-              }}
-            >
-              <Link to="/rsvp" className="btn-primary">
-                {t.rsvpBtn}
-              </Link>
-              <Link to="/fluege" className="btn-secondary">
-                {t.planTrip}
-              </Link>
-              <a
-                href={googleCalUrl}
-                className="btn-secondary"
-                target="_blank"
-                rel="noreferrer"
-              >
-                {t.addToCal}
-              </a>
-            </div>
+        <div className="date-pill">
+          <CalendarHeart size={18} />
+          <span>{DATUM.text}</span>
+        </div>
 
-            <div style={{ marginTop: ".75rem", display: "flex", gap: ".5rem" }}>
-              <span className="tag">
-                <HeartHandshake className="w-3 h-3" />
-                {t.hospitality}
-              </span>
-              <span className="tag">
-                <Utensils className="w-3 h-3" />
-                {t.wine}
-              </span>
-            </div>
+        <p className="home-hero-sub pill-dark">
+          {tt(
+            "heroSub",
+            "Willkommen – hier findet ihr alles zu Anreise, Location, Ablauf und am wichtigsten - Die Anmeldung.\nWir freuen uns riesig, wenn möglichst viele von euch mit uns feiern!"
+          )}
+        </p>
+
+        {/* ✅ 3-Schritte-Buttons – gleicher Stil wie alte CTAs */}
+        <div className="home-hero-cta">
+          <a href="/rsvp" className="cta-primary">
+            <span>{tt("cta1", "1.\u00A0 RSVP ausfüllen")}</span>
+          </a>
+          <a href="/fluege" className="cta-ghost">
+            <span>{tt("cta2", "2.\u00A0 Flug buchen")}</span>
+          </a>
+          <a href="/location" className="cta-ghost">
+            <span>{tt("cta3", "3.\u00A0 Ort merken")}</span>
+          </a>
+        </div>
+
+        {/* Quick facts */}
+        <div className="home-quick">
+          <a
+            className="quick"
+            href={LINKS?.maps?.telavi || "#"}
+            target="_blank"
+            rel="noreferrer"
+          >
+            <MapPin size={14} />
+            <span>{tt("quickRegion", "Kachetien (Telavi/Sighnaghi)")}</span>
+          </a>
+          <div className="quick">
+            <GlassWater size={14} />
+            <span>{tt("quickFood", "Georgische Küche & Wein")}</span>
           </div>
-
-          {/* Right: pulsierendes Logo */}
-          <div className="hero-card">
-            <div className="logo-wrap">
-              <img
-                src="/vo-logo.png"
-                alt="Volker & Olga – Hochzeitslogo"
-                className="logo-img"
-              />
-              <div className="shine" />
-            </div>
+          <div className="quick">
+            <Clock size={14} />
+            <span>{tt("quickCeremony", "Freie Trauung & Dinner")}</span>
           </div>
         </div>
       </section>
 
-      {/* ===== DIE FEIER ===== */}
-      <Section
-        title={t.sectionFeier}
-        subtitle={t.feierSub}
-        icon={<Info className="w-5 h-5" />}
-      >
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit,minmax(240px,1fr))",
-            gap: "1rem",
-          }}
-        >
-          {/* Ort */}
-          <Card title={t.placeTitle}>
-            <p style={{ display: "flex", gap: ".5rem", alignItems: "flex-start" }}>
-              <MapPin className="w-4 h-4" /> {ORT.name}
-              <br />
-              {ORT.adresse}
-            </p>
-            <a
-              className="underline"
-              style={{ display: "inline-block", marginTop: ".5rem" }}
-              href={ORT.googleMapsUrl}
-              target="_blank"
-              rel="noreferrer"
-            >
-              {t.mapOpen}
-            </a>
-          </Card>
+      {/* ---------- DIE FEIER (ohne doppelte CTAs) ---------- */}
+      <section className="section-card">
+        <div className="feier-head">
+          <h2 className="feier-title">
+            <Sparkles size={18} /> {tt("sectionCelebration", "Die Feier")}
+          </h2>
+          <p className="feier-sub">
+            {tt(
+              "sectionCelebrationSub",
+              "Alles Wichtige auf einen Blick – Ort, Zeitplan, Kontakt & Highlights."
+            )}
+          </p>
+        </div>
 
-          {/* Zeitplan (schickes Layout) */}
-          <Card title={t.scheduleShort}>
-            <div
-              style={{
-                display: "grid",
-                gap: ".75rem",
-                padding: ".25rem 0",
-              }}
-            >
-              {getProgramm(lang)
-                .slice(0, 3)
-                .map((p, i) => (
-                  <div
-                    key={i}
-                    style={{
-                      display: "grid",
-                      gridTemplateColumns: "4.5rem 1fr",
-                      alignItems: "center",
-                      background: "linear-gradient(90deg, #fff, #f9fafb)",
-                      border: "1px solid #f1f5f9",
-                      borderRadius: "10px",
-                      padding: ".6rem .9rem",
-                      boxShadow: "0 2px 8px rgba(0,0,0,0.03)",
-                      transition: "transform .25s ease, box-shadow .25s ease",
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.transform = "translateY(-3px)";
-                      e.currentTarget.style.boxShadow =
-                        "0 4px 12px rgba(0,0,0,0.08)";
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.transform = "translateY(0)";
-                      e.currentTarget.style.boxShadow =
-                        "0 2px 8px rgba(0,0,0,0.03)";
-                    }}
-                  >
-                    <div
-                      style={{
-                        fontWeight: 700,
-                        fontSize: "1.05rem",
-                        color: "var(--accent)",
-                        textAlign: "center",
-                      }}
-                    >
-                      {p.time}
-                    </div>
-                    <div style={{ fontWeight: 500, color: "#334155" }}>{p.title}</div>
-                  </div>
-                ))}
+        <div className="feier-grid">
+          {/* Ort & Ablauf */}
+          <Card
+            title={tt("cardVenueTitle", "Ort & Ablauf")}
+            className="hover-react feier-card"
+          >
+            <p className="feier-text">
+              {tt("venueLead", "Trauung & Dinner im")}{" "}
+              <strong>
+                {tt("venueName", "Chateau Methis Kalaki")}
+              </strong>
+              .<br />
+              {tt(
+                "venueTail",
+                "Dresscode: elegant, winterfest. Musik & Tanz bis in die Nacht."
+              )}
+            </p>
+
+            {/* nur ein dezenter Maps-Link, keine weiteren Buttons */}
+            <p style={{ marginTop: ".35rem" }}>
+              <a
+                className="underline"
+                href={LINKS?.maps?.chateau || LINKS?.maps?.telavi}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <MapPin size={14} style={{ verticalAlign: "-2px" }} />{" "}
+                {tt("mapsOpen", "Adresse in Google Maps öffnen")}
+              </a>
+            </p>
+
+            <div className="feier-highlights">
+              <div className="highlight">
+                <Wine size={16} /> {tt("hlWine", "Qvevri-Weinverkostung")}
+              </div>
+              <div className="highlight">
+                <Music4 size={16} /> {tt("hlMusic", "Musik & Tanz")}
+              </div>
+              <div className="highlight">
+                <Sparkles size={16} /> {tt("hlWinter", "Winterliche Stimmung")}
+              </div>
             </div>
           </Card>
 
-          {/* Kontakt */}
-          <Card title={t.contact}>
-            <p style={{ display: "flex", gap: ".5rem", alignItems: "center" }}>
+          {/* Zeitplan */}
+          <Card
+            title={tt("cardTimelineTitle", "Zeitplan")}
+            className="hover-react feier-card"
+          >
+            <ul className="mini-timeline">
+              <li>
+                <span>14:00</span> {tt("tl14", "Freie Trauung")}
+              </li>
+              <li>
+                <span>15:30</span>{" "}
+                {tt("tl1530", "Sektempfang & Weinverkostung")}
+              </li>
+              <li>
+                <span>18:00</span> {tt("tl18", "Dinner")}
+              </li>
+              <li>
+                <span>{tt("tlEveningTime", "abends")}</span>{" "}
+                {tt("tlEve", "Musik, Tanz & Überraschungen")}
+              </li>
+            </ul>
+          </Card>
+
+          {/* Kontakt (nur Info, keine CTA-Dopplungen) */}
+          <Card
+            title={tt("cardContactTitle", "Kontakt")}
+            className="hover-react feier-card"
+          >
+            <p className="feier-text">
+              {tt(
+                "contactLead",
+                "Fragen zu Anreise, Unterkunft oder Allergien?"
+              )}
+              <br />
+              <Mail size={16} style={{ verticalAlign: "-2px" }} />{" "}
               <a className="underline" href="mailto:love@example.com">
-                love@example.com
+                {tt("contactEmailLabel", "love@example.com")}
               </a>
             </p>
           </Card>
         </div>
-      </Section>
-
-      {/* ===== STIMMUNG (Galerie) ===== */}
-      <Section
-        title={t.stimmung}
-        subtitle={t.stimmungSub}
-        icon={<Camera className="w-5 h-5" />}
-      >
-        <Gallery
-          images={[
-            IMAGES.vineyard,
-            IMAGES.tbilisiAerial,
-            IMAGES.sulfurBaths,
-            IMAGES.narikala,
-            IMAGES.bridgeOfPeace,
-            IMAGES.sighnaghi,
-          ]}
-          captions={[
-            t.place.kakhetiVineyards,
-            t.place.tbilisi,
-            t.place.sulfurBaths,
-            t.place.narikala,
-            t.place.bridgeOfPeace,
-            t.place.sighnaghi,
-          ]}
-          links={[
-            LINKS.maps.telavi,
-            LINKS.maps.tbilisiOldTown,
-            LINKS.maps.sulfurBaths,
-            LINKS.maps.narikala,
-            LINKS.maps.bridgeOfPeace,
-            LINKS.maps.sighnaghi,
-          ]}
-        />
-      </Section>
+      </section>
     </Layout>
   );
 }

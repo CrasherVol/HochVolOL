@@ -12,6 +12,7 @@ import {
   Mail,
   Info,
   Clock,
+  Sparkles,
 } from "lucide-react";
 
 export default function RSVPPage({ lang, setLang }) {
@@ -19,16 +20,16 @@ export default function RSVPPage({ lang, setLang }) {
 
   return (
     <Layout lang={lang} setLang={setLang}>
-      {/* Hero-Kopf mit Deadline-Pill und Mini-Benefits */}
+      {/* 🎀 Hero-Kopf mit Akzent-Pills */}
       <Section
         title={t.rsvpTitle}
         subtitle={t.rsvpSub}
         icon={<Users className="w-5 h-5" />}
       >
-        {/* Deadline + Eventdatum */}
+        {/* ===== HERO INFO ===== */}
         <div className="rsvp-hero">
           <div className="rsvp-pills">
-            <div className="pill">
+            <div className="pill highlight">
               <Clock className="icon" aria-hidden="true" />
               <span>{t.rsvpSub}</span>
             </div>
@@ -42,7 +43,13 @@ export default function RSVPPage({ lang, setLang }) {
             <div className="benefit">
               <PartyPopper className="icon" />
               <div>
-                <strong>{lang === "en" ? "Celebrate together" : lang === "ru" ? "Празднуем вместе" : "Zusammen feiern"}</strong>
+                <strong>
+                  {lang === "en"
+                    ? "Celebrate together"
+                    : lang === "ru"
+                    ? "Празднуем вместе"
+                    : "Zusammen feiern"}
+                </strong>
                 <div className="sub">
                   {lang === "en"
                     ? "Your RSVP helps us plan seats, food & shuttles"
@@ -69,10 +76,10 @@ export default function RSVPPage({ lang, setLang }) {
           </div>
         </div>
 
-        {/* Zweispaltiges Layout: links Formular, rechts Infos/FAQ/Datenschutz */}
+        {/* ===== HAUPT-LAYOUT ===== */}
         <div className="rsvp-grid">
-          <Card title={t.rsvpTitle + " – " + DATUM.text}>
-            {/* Kleines Onboarding-Intro */}
+          {/* 💌 Formular-Bereich */}
+          <Card title={t.rsvpTitle + " – " + DATUM.text} className="hover-react">
             <div className="form-intro">
               <Info className="icon" />
               <p>
@@ -84,19 +91,17 @@ export default function RSVPPage({ lang, setLang }) {
               </p>
             </div>
 
-            {/* Dein vorhandenes Formular (unverändert) */}
             <RSVPForm lang={lang} />
 
-            {/* Vertrauenshinweis im Formular-Card-Footer */}
             <div className="form-footnote">
               <ShieldCheck className="icon" />
               <span>{t.privacyNote}</span>
             </div>
           </Card>
 
+          {/* 📘 Seitenbereich (FAQ & Datenschutz) */}
           <div className="rsvp-side">
-            {/* Mini-FAQ als Details/Accordion – null JS, nur HTML */}
-            <Card title={lang === "en" ? "FAQ" : lang === "ru" ? "FAQ" : "FAQ"}>
+            <Card title={lang === "en" ? "FAQ" : lang === "ru" ? "FAQ" : "FAQ"} className="hover-react">
               <details className="faq" open>
                 <summary>
                   {lang === "en"
@@ -107,10 +112,10 @@ export default function RSVPPage({ lang, setLang }) {
                 </summary>
                 <div className="faq-body">
                   {lang === "en"
-                    ? "Yes, just send us an email and we’ll update it."
+                    ? "If before yes then no and if before no then yes."
                     : lang === "ru"
-                    ? "Да, просто напишите нам по email — мы обновим данные."
-                    : "Ja, schreibt uns einfach per E-Mail – wir passen es an."}
+                    ? "Если до да, то нет, а если до нет, то да."
+                    : "Wenn voher ja dann nein und wenn vorher nein dann ja."}
                 </div>
               </details>
 
@@ -124,33 +129,32 @@ export default function RSVPPage({ lang, setLang }) {
                 </summary>
                 <div className="faq-body">
                   {lang === "en"
-                    ? "please let us know in the form so we can get cages"
+                    ? "Please indicate in the form so that we can get cages"
                     : lang === "ru"
-                    ? "Пожалуйста, укажите это в форме, чтобы мы могли получить клетки"
-                    : "bitte im Formular angeben, damit wir Käfige besorgen können"}
+                    ? "Пожалуйста, укажите в форме, чтобы мы могли получить клетки."
+                    : "bitte im Formular angeben, damit wir Käfige besorgen können."}
                 </div>
               </details>
 
               <details className="faq">
                 <summary>
                   {lang === "en"
-                    ? "The time is running..."
+                    ? "The clock is ticking."
                     : lang === "ru"
-                    ? "Время идет..."
-                    : "Dee Uhr tickt..."}
+                    ? "Часы тикают.?"
+                    : "Die Uhr tickt."}
                 </summary>
                 <div className="faq-body">
                   {lang === "en"
-                    ? "One last greeting"
+                    ? "One last greeting..."
                     : lang === "ru"
-                    ? "Последнее приветствие"
-                    : "Ein letzter Gruß"}
+                    ? "Последнее приветствие..."
+                    : "Ein letzter Gruß..."}
                 </div>
               </details>
             </Card>
 
-            {/* Datenschutz separat – wirkt seriöser und erhöht Vertrauen */}
-            <Card title={t.privacyTitle}>
+            <Card title={t.privacyTitle} className="hover-react">
               <p className="privacy">{t.privacyBody}</p>
             </Card>
           </div>

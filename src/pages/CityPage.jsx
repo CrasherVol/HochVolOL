@@ -1,4 +1,3 @@
-// src/pages/CityPage.jsx
 import React from "react";
 import Layout from "../components/Layout.jsx";
 import Section from "../components/Section.jsx";
@@ -10,10 +9,10 @@ import { TEXTS, FACTS, ORT, IMAGES, LINKS } from "../data/constants.js";
 
 import {
   Globe2, Users, MapPin, Clock, Wallet, Plug,
-  Mountain, ShieldCheck, Phone, CalendarDays, CreditCard, Camera
+  Mountain, ShieldCheck, Phone, CalendarDays,
+  CreditCard, Camera, Plane
 } from "lucide-react";
 
-// Icon-Auswahl je FACTS.key
 const iconFor = (key) => {
   const size = 18;
   const map = {
@@ -28,15 +27,13 @@ const iconFor = (key) => {
     peak: <Mountain size={size} />,
     unesco: <ShieldCheck size={size} />,
     weatherFeb: <CalendarDays size={size} />,
-
-    // Zusatzinfos
     visa: <ShieldCheck size={size} />,
     drive: <Globe2 size={size} />,
     emergency: <Phone size={size} />,
     tips: <CreditCard size={size} />,
     sim: <Phone size={size} />,
     best: <CalendarDays size={size} />,
-    flight: <Clock size={size} />,
+    flight: <Plane size={size} />,
     pay: <Wallet size={size} />,
   };
   return map[key] || <Globe2 size={size} />;
@@ -56,8 +53,9 @@ export default function CityPage({ lang, setLang }) {
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit,minmax(220px,1fr))",
-            gap: "1rem",
+            gridTemplateColumns: "repeat(auto-fit,minmax(250px,1fr))",
+            gap: "1.5rem",
+            marginBottom: "2rem",
           }}
         >
           {ORT.mustSees.map((m, i) => {
@@ -67,7 +65,7 @@ export default function CityPage({ lang, setLang }) {
                 : m.desc?.[lang] || m.desc?.de || "Kurzbeschreibung folgt.";
 
             return (
-              <Card key={i} title={m.title}>
+              <Card key={i} title={m.title} className="hover-react">
                 <p
                   style={{
                     marginBottom: ".5rem",
@@ -83,7 +81,7 @@ export default function CityPage({ lang, setLang }) {
                     target="_blank"
                     rel="noreferrer"
                   >
-                    {TEXTS[lang].mapOpen}
+                    {t.mapOpen}
                   </a>
                 </p>
               </Card>
@@ -92,21 +90,103 @@ export default function CityPage({ lang, setLang }) {
         </div>
 
         {/* Zahlen & Fakten */}
-        <Card title={t.factsTitle || "Zahlen & Fakten"} className="card-facts">
-          <div className="stats-grid">
-            {FACTS.map((f) => (
-              <Stat
-                key={f.key}
-                value={f.value}
-                label={f.label?.[lang] || f.label?.de}
-                icon={iconFor(f.key)}   // ← wichtig: Icon hier erzeugen
-              />
+ <Card title={t.factsTitle || "Georgien in Zahlen & Fakten"} className="hover-react">
+  <div className="stats-compact-grid">
+    {FACTS.map((f, i) => (
+      <div
+        key={f.key}
+        className="stat-mini"
+        style={{ animationDelay: `${i * 0.12}s` }}
+      >
+        <div className="icon">{iconFor(f.key)}</div>
+        <div className="info">
+          <div className="value">{f.value}</div>
+          <div className="label">{f.label?.[lang] || f.label?.de}</div>
+        </div>
+      </div>
+    ))}
+  </div>
+</Card>
+
+
+        {/* ✨ Weitere Ausflugsziele */}
+        <Card
+          title={lang === "de" ? "Weitere Ausflugsziele" : "More destinations"}
+          className="hover-react"
+        >
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit,minmax(250px,1fr))",
+              gap: "1rem",
+            }}
+          >
+            {[
+              {
+                name: "Akhalkalaki & Vardzia",
+                desc:
+                  "Eine eindrucksvolle Felsenstadt im Süden Georgiens – spektakuläre Höhlenklöster, 2,5 Std. Fahrt von Telavi.",
+                link: "https://goo.gl/maps/h98t4vG2ZwzAXQFK9",
+              },
+              {
+                name: "David Gareja Kloster",
+                desc:
+                  "Ein mystisches Wüstenkloster an der aserbaidschanischen Grenze – beeindruckende Felsmalereien.",
+                link: "https://goo.gl/maps/kcG2gY4tKGMY1R1x7",
+              },
+              {
+                name: "Kazbegi (Stepantsminda)",
+                desc:
+                  "Eines der beliebtesten Ausflugsziele des Landes mit Blick auf den majestätischen Berg Kazbek.",
+                link: "https://goo.gl/maps/ZKQXKzqkB8iYpYF87",
+              },
+              {
+                name: "Kvareli & Ilia-See",
+                desc:
+                  "Romantischer See mit Weinmuseum und Spa-Hotels – perfekt für einen Tagesausflug aus Telavi.",
+                link: "https://goo.gl/maps/pczH3BtN6DJL24W47",
+              },
+            ].map((x, i) => (
+              <div
+                key={i}
+                style={{
+                  background: "rgba(255,255,255,0.6)",
+                  borderRadius: "1rem",
+                  padding: "1rem",
+                  border: "1px solid rgba(255,255,255,0.4)",
+                  backdropFilter: "blur(6px)",
+                  boxShadow: "0 3px 10px rgba(0,0,0,0.05)",
+                  transition: "all .3s ease",
+                }}
+                className="hover-react"
+              >
+                <div
+                  style={{
+                    fontWeight: "600",
+                    color: "var(--accent)",
+                    marginBottom: ".35rem",
+                  }}
+                >
+                  {x.name}
+                </div>
+                <p style={{ color: "#374151", fontSize: ".9rem", marginBottom: ".35rem" }}>
+                  {x.desc}
+                </p>
+                <a
+                  href={x.link}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="btn-chip"
+                >
+                  Auf Karte öffnen
+                </a>
+              </div>
             ))}
           </div>
         </Card>
 
         {/* Galerie */}
-        <Card title={t.impressions || "Impressionen"}>
+        <Card title={t.impressions || "Impressionen"} className="hover-react">
           <Gallery
             images={[
               IMAGES.sighnaghi,
