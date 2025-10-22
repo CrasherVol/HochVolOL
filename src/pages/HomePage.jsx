@@ -40,11 +40,13 @@ export default function HomePage({ lang, setLang }) {
           {tt("heroTitle", "Wir heiraten!")}
         </h1>
 
-        <div className="names-line highlight-names">
-          <span className="name">{tt("name1", "Olga")}</span>
-          <span className="and">&amp;</span>
-          <span className="name">{tt("name2", "Volker")}</span>
-        </div>
+<div className="names-line highlight-names">
+  <span className="name">Olga</span>
+  <span className="and">&amp;</span>
+  <span className="name">Volker</span>
+</div>
+
+
 
         <div className="date-pill">
           <CalendarHeart size={18} />

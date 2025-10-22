@@ -1858,7 +1858,29 @@ body:not(.no-effects) .cta-ghost:hover {
   font-weight: 600;
   letter-spacing: 0.01em;
 }
-/* === ✨ Namen im Hero: kräftiger Gold-Effekt ohne Hintergrund === */
+/* === ✨ Namen im Hero: Rot Ton wie Bild ohne Hintergrund === */
+/* 1) Alles zurück auf Rot-Text ohne Gradient */
+.highlight-names,
+.highlight-names .name,
+.highlight-names .and {
+  color: #6a0f12 !important;                 /* Weinrot */
+  background: none !important;               /* alten Verlauf killen */
+  -webkit-background-clip: initial !important;
+  -webkit-text-fill-color: currentColor !important;
+  text-shadow: none !important;              /* alte goldene Schatten entfernen */
+}
+
+/* 2) Den gewünschten Schatten gezielt auf die Spans legen */
+.highlight-names .name,
+.highlight-names .and {
+  text-shadow:
+    0 0 4px rgba(106, 15, 18, 0.35),
+    0 0 8px rgba(120, 20, 20, 0.25),
+    0 1px 6px rgba(255, 220, 220, 0.15) !important;
+}
+
+
+/* Container darf rot bleiben – passt */
 .highlight-names {
   display: inline-flex;
   justify-content: center;
@@ -1866,37 +1888,22 @@ body:not(.no-effects) .cta-ghost:hover {
   gap: 1rem;
   font-family: "Playfair Display", serif;
   font-size: clamp(2.2rem, 4.5vw, 3.5rem);
-  font-weight: 900; /* stärkerer Schriftschnitt */
+  font-weight: 900;
   letter-spacing: 0.025em;
   text-align: center;
-  color: #e9c67a; /* satteres Gold */
-  text-shadow:
-    0 0 8px rgba(255, 235, 180, 0.75),
-    0 0 22px rgba(184, 92, 92, 0.25),
-    0 0 35px rgba(255, 230, 150, 0.25);
+  color: #6a0f12 !important; /* Weinrot */
+  text-shadow: none; /* optional: Schatten entfernen, damit’s nicht goldig wirkt */
 }
 
-.highlight-names .name {
-  background: linear-gradient(
-    180deg,
-    #fff4cf 0%,
-    #f5d77b 40%,
-    #e0b85b 100%
-  );
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  text-shadow:
-    0 0 10px rgba(255, 235, 180, 0.6),
-    0 0 25px rgba(184, 92, 92, 0.3);
-}
-
+/* & kann gern auch rot bleiben */
 .highlight-names .and {
   font-size: clamp(1.5rem, 3vw, 2.6rem);
-  color: #fce9b0;
+  color: inherit !important; /* nimmt #6a0f12 */
   opacity: 0.95;
   margin: 0 .5rem;
-  text-shadow: 0 0 8px rgba(255, 230, 180, 0.5);
+  text-shadow: none;
 }
+
 
 .pulse {
   animation: logoPulse 2.4s ease-in-out infinite;
@@ -1927,3 +1934,78 @@ body:not(.no-effects) .cta-ghost:hover {
 @media (prefers-reduced-motion: reduce) {
   .pulse { animation: none; }
 }
+.highlight-names {
+  color: #6a0f12; /* Logo-Rot */
+}
+.cta-primary,
+.cta-ghost {
+  display: inline-block;
+  padding: .55rem .9rem;
+  border-radius: .6rem;
+  text-decoration: none;
+  font-weight: 600;
+  border: 1px solid rgba(0,0,0,.1);
+}
+
+.cta-primary {
+  background: #6a0f12;  /* dein Weinrot */
+  color: #fff;
+  border-color: #6a0f12;
+}
+
+.cta-ghost {
+  background: #fff;
+  color: #6a0f12;
+  border-color: #6a0f12;
+}
+
+.cta-primary:hover { filter: brightness(.95); }
+.cta-ghost:hover   { background: #fdf2f3; }
+
+.mb-5 { margin-bottom: 1.25rem; }
+.gap-5 { gap: 1.25rem; }
+
+/* stapelt direkte Kinder untereinander mit Abstand */
+
+.vstack-5 { display: flex; flex-direction: column; gap: 1.25rem; }
+/* optional für dichte Bereiche */
+.gap-5    { gap: 1.25rem; }
+
+/* ==============================================
+   Stil für Transfer-Hinweis in Flight-Section
+   ============================================== */
+.transfer-hint {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 0.75rem;
+  padding: 0.6rem 0.8rem;
+
+  backdrop-filter: blur(4px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+
+  font-size: 0.9rem;
+  color: #374151;
+  font-style: italic;
+  line-height: 1.35;
+}
+
+/* Dark Mode – optional */
+.dark .transfer-hint {
+  background: rgba(0, 0, 0, 0.4);
+  color: #f3f4f6;
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Kleine Geräte */
+@media (max-width: 640px) {
+  .transfer-hint {
+    font-size: 0.85rem;
+    padding: 0.5rem 0.65rem;
+  }
+}
+
