@@ -8,6 +8,7 @@ import CityPage from "./pages/CityPage.jsx";
 import LocationPage from "./pages/LocationPage.jsx";
 import GalleryPage from "./pages/GalleryPage.jsx";
 import RSVPPage from "./pages/RSVPPage.jsx";
+import AdminPage from "./pages/AdminPage.jsx";
 
 export default function App() {
   const [lang, setLang] = useState(() => localStorage.getItem("lang") || "de");
@@ -23,6 +24,7 @@ export default function App() {
       <Route path="/location" element={<LocationPage lang={lang} setLang={setLang} />} />
       <Route path="/galerie"  element={<GalleryPage  lang={lang} setLang={setLang} />} />
       <Route path="/rsvp"     element={<RSVPPage     lang={lang} setLang={setLang} />} />
+      <Route path="/admin" element={<AdminPage />} />
       {/* Fallback: unbekannte URLs zurück auf Start */}
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>

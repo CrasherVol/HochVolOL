@@ -1,0 +1,75 @@
+==========================
+ GIT & VERCEL SPICKZETTEL
+==========================
+
+📍 Projekt: Hochzeit Volker & Olga
+📦 Repo: https://github.com/CrasherVol/HochVolOL
+☁️ Live-Deploy: Vercel (automatisch über GitHub)
+
+──────────────────────────
+🧪 PREVIEW DEPLOYMENT (zum Testen)
+──────────────────────────
+# (macht eine Vorschau auf Vercel)
+git checkout feat/update-homepage
+git add .
+git commit -m "Update Inhalte / Übersetzungen"
+git push origin feat/update-homepage
+
+→ Öffne GitHub → Pull Request → „View Deployment“
+→ Vorschau-Link prüfen (z. B. preview-xyz.vercel.app)
+
+
+──────────────────────────
+🚀 LIVE DEPLOY (direkt online)
+──────────────────────────
+# (veröffentlicht Änderungen auf der echten Seite)
+git checkout main
+git fetch origin
+git pull --rebase origin main
+git merge feat/update-homepage -m "Merge Feature in main"
+git push origin main
+
+→ Nach 1–2 Minuten ist die Seite live auf Vercel.
+
+
+──────────────────────────
+🔁 NEUE ÄNDERUNGEN (später)
+──────────────────────────
+# Wenn du wieder was anpassen willst:
+git checkout feat/update-homepage
+git add .
+git commit -m "Neue Änderungen"
+git push origin feat/update-homepage
+
+# Nach erfolgreicher Vorschau:
+git checkout main
+git pull --rebase origin main
+git merge feat/update-homepage -m "Übernahme neuer Änderungen"
+git push origin main
+
+
+──────────────────────────
+🧹 FEHLERBEHEBUNG / RESCUE
+──────────────────────────
+# Wenn Push abgelehnt wird (non-fast-forward):
+git fetch origin
+git pull --rebase origin main
+git push origin main
+
+# Wenn Vercel-Build hängt:
+→ Gehe auf vercel.com → Projekt öffnen → „Redeploy“ klicken.
+
+
+──────────────────────────
+✅ CHECKS
+──────────────────────────
+# Welcher Branch bin ich gerade?
+git branch
+
+# Was wurde geändert?
+git status
+
+# Letzte Commits anzeigen:
+git log --oneline -n 5
+
+==========================

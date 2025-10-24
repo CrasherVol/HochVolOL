@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Layout from "../components/Layout.jsx";
 import Section from "../components/Section.jsx";
 import Card from "../components/Card.jsx";
@@ -17,6 +17,58 @@ import {
 
 export default function RSVPPage({ lang, setLang }) {
   const t = TEXTS[lang] || TEXTS.de;
+
+  // --- Neu: Zähler-States & Request-Status ---
+  const [stats, setStats] = useState({ yes: 0, no: 0, total: 0 });
+  const [sending, setSending] = useState(false);
+  const [ok, setOk] = useState(null);
+
+  // --- Neu: Stats laden ---
+  const loadStats = async () => {
+    try {
+      const r = await fetch("/api/rsvp-stats");
+      const data = await r.json();
+      if (r.ok) setStats(data);
+    } catch {
+      // still silent – Seite funktioniert auch ohne Stats
+    }
+  };
+  useEffect(() => {
+    loadStats();
+  }, []);
+
+  // --- Neu: Handler, den wir an dein Formular übergeben ---
+  // Erwartet ein Objekt wie: { attend: true/false, name, email, people, diet, message, ... }
+  const handleSubmitRSVP = async (payload) => {
+    setSending(true);
+    setOk(null);
+    try {
+      // Mindestens 'attend' (boolean) sollte drin sein:
+      const body = {
+        attend: Boolean(payload?.attend),
+        email: payload?.email || "",
+        // Optional: wir schicken alles mit – die API kann das speichern (siehe Anweisung unten)
+        ...payload,
+      };
+
+      const r = await fetch("/api/rsvp", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body),
+      });
+
+      if (r.ok) {
+        setOk(true);
+        await loadStats(); // Zähler aktualisieren
+      } else {
+        setOk(false);
+      }
+    } catch (err) {
+      setOk(false);
+    } finally {
+      setSending(false);
+    }
+  };
 
   return (
     <Layout lang={lang} setLang={setLang}>
@@ -91,11 +143,53 @@ export default function RSVPPage({ lang, setLang }) {
               </p>
             </div>
 
-            <RSVPForm lang={lang} />
+            {/* WICHTIG: Wir geben dem Formular den Submit-Handler mit */}
+            <RSVPForm lang={lang} onSubmitRSVP={handleSubmitRSVP} sending={sending} />
+
+            {/* Status / Feedback */}
+            {ok === true && (
+              <div className="pill-dark" style={{ marginTop: ".65rem" }}>
+                {t.rsvpSuccess}
+              </div>
+            )}
+            {ok === false && (
+              <div
+                className="pill-dark"
+                style={{
+                  marginTop: ".65rem",
+                  background: "#fee2e2",
+                  color: "#7f1d1d",
+                }}
+              >
+                {lang === "en"
+                  ? "Oops, something went wrong. Please try again."
+                  : lang === "ru"
+                  ? "Упс, что-то пошло не так. Попробуйте ещё раз."
+                  : "Uups, da ging etwas schief. Bitte nochmal versuchen."}
+              </div>
+            )}
 
             <div className="form-footnote">
               <ShieldCheck className="icon" />
               <span>{t.privacyNote}</span>
+            </div>
+
+            {/* --- Neu: Mini-Stats direkt unter dem Formular --- */}
+            <div className="stats-compact-grid" style={{ marginTop: "1rem" }}>
+              <div className="stat-mini">
+                <div className="value">{stats.yes}</div>
+                <div className="label">{t.yes || "Ja"}</div>
+              </div>
+              <div className="stat-mini">
+                <div className="value">{stats.no}</div>
+                <div className="label">{t.no || "Nein"}</div>
+              </div>
+              <div className="stat-mini">
+                <div className="value">{stats.total}</div>
+                <div className="label">
+                  {lang === "en" ? "Total" : lang === "ru" ? "Итого" : "Gesamt"}
+                </div>
+              </div>
             </div>
           </Card>
 
@@ -112,10 +206,10 @@ export default function RSVPPage({ lang, setLang }) {
                 </summary>
                 <div className="faq-body">
                   {lang === "en"
-                    ? "If before yes then no and if before no then yes."
+                    ? "Yes. Send the form again with your updated choice — we adjust the counters automatically."
                     : lang === "ru"
-                    ? "Если до да, то нет, а если до нет, то да."
-                    : "Wenn voher ja dann nein und wenn vorher nein dann ja."}
+                    ? "Да. Отправьте форму ещё раз с новым выбором — счётчики обновятся автоматически."
+                    : "Ja. Schickt das Formular einfach erneut mit eurer geänderten Auswahl — die Zähler passen sich automatisch an."}
                 </div>
               </details>
 
@@ -129,10 +223,10 @@ export default function RSVPPage({ lang, setLang }) {
                 </summary>
                 <div className="faq-body">
                   {lang === "en"
-                    ? "Please indicate in the form so that we can get cages"
+                    ? "Yes. Please indicate it in the form so we can plan seats and dinner."
                     : lang === "ru"
-                    ? "Пожалуйста, укажите в форме, чтобы мы могли получить клетки."
-                    : "bitte im Formular angeben, damit wir Käfige besorgen können."}
+                    ? "Да. Пожалуйста, укажите это в форме, чтобы мы смогли спланировать места и ужин."
+                    : "Ja. Bitte im Formular angeben, damit wir Plätze und Dinner planen können."}
                 </div>
               </details>
 
@@ -141,15 +235,15 @@ export default function RSVPPage({ lang, setLang }) {
                   {lang === "en"
                     ? "The clock is ticking."
                     : lang === "ru"
-                    ? "Часы тикают.?"
+                    ? "Часы тикают."
                     : "Die Uhr tickt."}
                 </summary>
                 <div className="faq-body">
                   {lang === "en"
-                    ? "One last greeting..."
+                    ? "A small reminder: please reply by the date shown above."
                     : lang === "ru"
-                    ? "Последнее приветствие..."
-                    : "Ein letzter Gruß..."}
+                    ? "Небольшое напоминание: пожалуйста, ответьте до даты, указанной выше."
+                    : "Kleine Erinnerung: Bitte gebt bis zum oben genannten Datum Bescheid."}
                 </div>
               </details>
             </Card>
