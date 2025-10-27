@@ -8,35 +8,23 @@ import {
   TEXTS,
   LINKS,
   ANREISE,
-  IMAGES,
-  PACKLISTE_I18N, // ⬅️ neu
+  PACKLISTE_I18N,
 } from "../data/constants.js";
-
 
 import {
   Plane,
   Clock,
   Bus,
-  Search,
   PlaneTakeoff,
-  Wifi,
-  Coffee,
-  Wine,
-  Utensils,
-  Sun,
-  BedDouble,
-  CarFront,
-  Waves,
 } from "lucide-react";
 
 export default function FlightsPage({ lang, setLang }) {
   const t = TEXTS[lang] || TEXTS.de;
   const [departure, setDeparture] = useState("DUS");
 
-  // ✈️ Dynamische Flugsuch-Links
+  // ✈️ Dynamische Flugsuch-Links (nur Skyscanner)
   const flightUrls = (code) => ({
     skyscanner: `https://www.skyscanner.de/transport/flights/${code}/tbs/`,
-    google: `https://www.google.com/flights?hl=de#flt=${code}.TBS.2025-02-27*return.TBS.${code}.2025-03-02`,
   });
 
   return (
@@ -69,7 +57,7 @@ export default function FlightsPage({ lang, setLang }) {
                 }}
               >
                 <li>
-                  <strong>{t.placeTitle}:</strong> {ANREISE.naechsterFlughafen} (
+                  <strong>{t.placeTitle}:</strong> Tbilisi International Airport (TBS) (
                   <a
                     className="underline"
                     href={LINKS.maps.tbilisiAirport}
@@ -81,17 +69,15 @@ export default function FlightsPage({ lang, setLang }) {
                   )
                 </li>
                 <li>
-                  <strong>{t.altLabel}:</strong> {ANREISE.alternative.join(", ")}
+                  <strong>{t.altLabel}:</strong> Kutaisi (KUT), Batumi (BUS)
                 </li>
                 <li>
-                  <strong>{t.trainLabel}:</strong> {ANREISE.bahnhof}
+                  <strong>{t.trainLabel}:</strong> Tbilisi Central / Didube Bus Station
                 </li>
-             <li className="transfer-hint" style={{ listStyle: "none", marginTop: "0.75rem" }}>
-  <Plane className="w-4 h-4 text-accent" />
-  <span>{ANREISE.transferHinweis?.[lang] || ANREISE.transferHinweis.de}</span>
-</li>
-
-
+                <li className="transfer-hint" style={{ listStyle: "none", marginTop: "0.75rem" }}>
+                  <Plane className="w-4 h-4 text-accent" />
+                  <span>{ANREISE.transferHinweis?.[lang] || ANREISE.transferHinweis.de}</span>
+                </li>
               </ul>
 
               <div className="badges">
@@ -105,11 +91,11 @@ export default function FlightsPage({ lang, setLang }) {
                 </div>
                 <div className="badge">
                   <Bus className="icon" />
-                  <span>Bahn: Tbilisi Central</span>
+                  <span>Didube Bus Station</span>
                 </div>
                 <div className="badge">
                   <Clock className="icon" />
-                  <span>~90&nbsp;Min. Transfer</span>
+                  <span>~2.5–3&nbsp;Std. nach Gudauri</span>
                 </div>
               </div>
 
@@ -137,9 +123,10 @@ export default function FlightsPage({ lang, setLang }) {
                   <option value="BER">Berlin (BER)</option>
                   <option value="FRA">Frankfurt (FRA)</option>
                   <option value="MUC">München (MUC)</option>
+                  <option value="SVO">Moskau (SVO)</option>
                 </select>
 
-                {/* Links */}
+                {/* Nur Skyscanner-Link */}
                 <div
                   style={{
                     display: "flex",
@@ -156,162 +143,138 @@ export default function FlightsPage({ lang, setLang }) {
                   >
                     <PlaneTakeoff size={16} /> Skyscanner
                   </a>
-                  <a
-                    href={flightUrls(departure).google}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="link-special"
-                  >
-                    <Search size={16} /> Google Flights
-                  </a>
                 </div>
               </div>
             </Card>
 
-            {/* 🏨 Unterkunft */}
-            <Card title={t.accommodationTitle} className="hover-react">
-              <div
-                style={{
-                  overflow: "hidden",
-                  borderRadius: "0.75rem",
-                  marginBottom: "0.75rem",
-                  border: "1px solid rgba(255,255,255,0.5)",
-                }}
-              >
-                <img
-                  src={
-                    IMAGES?.hotelHeroLocal ||
-                    IMAGES?.hotelOfficial1 ||
-                    "/vo-logo.png"
-                  }
-                  alt="Chateau Mephis Kalaki – Hotel, Terrasse & Weinberge"
-                  style={{ width: "100%", height: "auto", display: "block" }}
-                  loading="lazy"
-                />
-              </div>
+            {/* 🧭 Anreise- & Winter-Tipps (TBS → Gudauri / Hotel Monta) */}
+            <Card
+              title={t.travelTipsTitle || "🧭 Anreise- & Winter-Tipps (TBS → Gudauri / Hotel Monta)"}
+              className="hover-react"
+            >
+              <ul style={{ marginLeft: "1rem", listStyle: "disc", display: "grid", gap: ".5rem" }}>
+                <li>
+                  <strong>Einreise:</strong> Deutsche Staatsbürger:innen visumsfrei (bis zu 1 Jahr). 
+                  Reisepass erforderlich (Personalausweis reicht nicht).
+                </li>
+                <li>
+                  <strong>Beste Route:</strong> Tbilisi (TBS) → Gudauri via Georgian Military Highway 
+                  über den <em>Jvari-Pass</em>. Fahrzeit <strong>~2.5–3 Std.</strong> (im Winter Puffer einplanen).
+                </li>
+                <li>
+                  <strong>Straßenlage:</strong> Im Winter kann der Pass kurzzeitig schließen / Kettenpflicht. 
+                  Prüft am Reisetag Straßenmeldungen & Wetter und plant früh loszufahren.
+                </li>
+                <li>
+                  <strong>Transfers:</strong> Privatfahrer/Taxi (komfortabel), 
+                  Minibus ab <em>Didube Bus Station</em> (günstig), 
+                  oder vorab Transfer buchen (lokale Fahrerplattformen).
+                </li>
+                <li>
+                  <strong>Ski-Gepäck:</strong> Viele Airlines verlangen Anmeldung/Extra-Tarif für Ski & Stöcke. 
+                  Vorab bei eurer Airline checken.
+                </li>
+                <li>
+                  <strong>Höhe & Klima:</strong> Gudauri ~2.200 m; trockene Luft, 
+                  im Feb. winterlich. Warme Layer, Mütze/Handschuhe, Sonnenschutz (starke UV) einpacken.
+                </li>
+                <li>
+                  <strong>Bezahlung:</strong> Währung <em>GEL</em>. Kartenzahlung oft möglich; 
+                  für Bergorte etwas Bargeld mitnehmen. ATM am Flughafen TBS.
+                </li>
+                <li>
+                  <strong>Mobilfunk/Internet:</strong> Lokale SIM (z.B. Magti/Geocell) am Flughafen; 
+                  eSIM-Optionen verfügbar. Unterkunft/Resort haben i.d.R. WLAN.
+                </li>
+                <li>
+                  <strong>Apps vorab:</strong> Maps offline speichern, Übersetzer, 
+                  ggf. Ride-Hailing in Tbilisi (für Stadtfahrten).
+                </li>
+                <li>
+                  <strong>Versicherung:</strong> Reise-/Ski-Versicherung inkl. Pistendienst/Heli-Bergung sinnvoll.
+                </li>
+              </ul>
+            </Card>
+          </div>
 
-              <p style={{ color: "#374151", marginBottom: ".75rem" }}>
-                {t.accommodationIntro ||
-                  "Boutique-Weingut mit eleganten Zimmern, Restaurant, Terrasse und Blick auf die Weinberge."}
+          {/* --- RECHTE SEITE: TRANSFERS + PACKLISTE --- */}
+          <div style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
+            <Card
+              title={t.transfersTitle || "Transfers & Wege"}
+              className="hover-react"
+            >
+              <p style={{ marginBottom: "1rem", color: "#374151" }}>
+                {t.transfersIntro || (
+                  <>
+                    Der Weg vom <strong>Tbilisi International Airport (TBS)</strong> zum{" "}
+                    <strong>Hotel Monta (Gudauri)</strong> dauert je nach Wetter{" "}
+                    <strong>ca. 2.5–3 Stunden</strong> über die Georgian Military Highway (Jvari-Pass).
+                    Hier sind die besten Optionen:
+                  </>
+                )}
               </p>
 
               <div
                 style={{
                   display: "grid",
-                  gridTemplateColumns: "repeat(auto-fit,minmax(140px,1fr))",
-                  gap: ".75rem",
-                  marginBottom: "1rem",
+                  gridTemplateColumns: "repeat(auto-fit,minmax(260px,1fr))",
+                  gap: "1.25rem",
                 }}
               >
-                <Feature icon={<BedDouble size={18} />} label={t.hotelFeatures?.rooms || "Komfortable Zimmer"} />
-                <Feature icon={<Wine size={18} />} label={t.hotelFeatures?.winery || "Weingut & Verkostung"} />
-                <Feature icon={<Utensils size={18} />} label={t.hotelFeatures?.restaurant || "Restaurant & Terrasse"} />
-                <Feature icon={<Waves size={18} />} label={t.hotelFeatures?.pool || "Außenpool (Sommer)"} />
-                <Feature icon={<Wifi size={18} />} label={t.hotelFeatures?.wifi || "WLAN inklusive"} />
-                <Feature icon={<CarFront size={18} />} label={t.hotelFeatures?.parking || "Parkplätze am Haus"} />
-                <Feature icon={<Coffee size={18} />} label={t.hotelFeatures?.breakfast || "Frühstück & Bar"} />
-                <Feature icon={<Sun size={18} />} label={t.hotelFeatures?.view || "Weitblick über Kachetien"} />
-              </div>
+                {/* 🚕 Taxi / Fahrer */}
+                <TransferCard
+                  title={t.transferOptions?.taxiTitle || "🚕 Taxi / Fahrer"}
+                  text={t.transferOptions?.taxiText || "Komfortable Privattransfers oder lokale Taxis direkt am Flughafen / vorab buchbar."}
+                  note={t.transferOptions?.taxiPrice || "Preis je Strecke meist ~200–350 GEL (≈ 70–120 €), abhängig von Saison, Uhrzeit und Wetter."}
+                />
 
-              <a
-                href={
-                  (LINKS?.booking && LINKS.booking.methis) ||
-                  "https://www.booking.com/hotel/ge/chateau-mephis-kalaki.html"
-                }
-                target="_blank"
-                rel="noreferrer"
-                className="btn-chip"
-              >
-                {t.bookingCta || "→ Auf Booking.com ansehen"}
-              </a>
+                {/* 🚗 Mietwagen */}
+                <TransferCard
+                  title={t.transferOptions?.rentTitle || "🚗 Mietwagen"}
+                  text={t.transferOptions?.rentText || "Ideal für flexible Erkundungen – direkt am Flughafen verfügbar:"}
+                  links={[
+                    ["Europcar Georgia", "https://www.europcar.ge/"],
+                    ["CityRent", "https://www.cityrent.ge/"],
+                    ["AutoEurope", "https://www.autoeurope.eu/"],
+                  ]}
+                  note={t.transferOptions?.rentNote || "Empfohlen: Winterreifen/4×4; Fahrzeit ca. 2.5–3 h via E117/Georgian Military Highway (Jvari-Pass)."}
+                />
+
+                {/* 🚌 Öffentliche Busse (Marshrutka) */}
+                <TransferCard
+                  title={t.transferOptions?.busTitle || "🚌 Öffentliche Busse (Marshrutka)"}
+                  text={t.transferOptions?.busText || "Abfahrt von der Didube Bus Station (Tbilisi) Richtung Gudauri/Stepantsminda."}
+                  mapUrl="https://maps.app.goo.gl/qbW8j9o1h2eDJyEw7"
+                  note={t.transferOptions?.busMap || "Didube Bus Station auf Google Maps öffnen"}
+                />
+              </div>
             </Card>
 
-            {/* 🎒 Packliste */}
+            {/* 🎒 Packliste (rechts platziert) */}
             <Card
               title={t.packlistTitle || "🎒 Packliste (Februar in Georgien)"}
               className="hover-react"
             >
               <p style={{ color: "#64748b", marginBottom: ".5rem" }}>
                 {t.packlistIntro ||
-                  "Im Februar ist es winterlich (Tbilisi ~5 °C, Telavi ~0–8 °C)."}
+                  "Im Februar ist es winterlich (Tbilisi ~5 °C; Gudauri deutlich kälter, oft unter 0 °C)."}
               </p>
-             <ul
-  style={{
-    columns: 2,
-    columnGap: "1.5rem",
-    paddingLeft: "1rem",
-    listStyle: '"🍇 "',
-  }}
->
-  {(PACKLISTE_I18N[lang] || PACKLISTE_I18N.de).map((item, i) => (
-    <li key={i} style={{ breakInside: "avoid", marginBottom: ".35rem" }}>
-      {item}
-    </li>
-  ))}
+              <ul
+                style={{
+                  columns: 2,
+                  columnGap: "1.5rem",
+                  paddingLeft: "1rem",
+                  listStyle: '"🍇 "',
+                }}
+              >
+                {(PACKLISTE_I18N[lang] || PACKLISTE_I18N.de).map((item, i) => (
+                  <li key={i} style={{ breakInside: "avoid", marginBottom: ".35rem" }}>
+                    {item}
+                  </li>
+                ))}
               </ul>
             </Card>
           </div>
-
-          {/* --- RECHTE SEITE: TRANSFERS --- */}
-          <Card
-            title={t.transfersTitle || "Transfers & Wege"}
-            className="hover-react"
-          >
-            <p style={{ marginBottom: "1rem", color: "#374151" }}>
-              {t.transfersIntro || (
-                <>
-                  Der Weg vom <strong>Tbilisi International Airport (TBS)</strong> zum{" "}
-                  <strong>Chateau Methis Kalaki</strong> in{" "}
-                  <em>Upper Chocheti, Kachetien</em> dauert etwa{" "}
-                  <strong>90 Minuten</strong>. Hier sind die besten Optionen:
-                </>
-              )}
-            </p>
-
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(auto-fit,minmax(260px,1fr))",
-                gap: "1.25rem",
-              }}
-            >
-              <TransferCard
-                title={t.transferOptions?.shuttleTitle || "🚐 Shuttle-Service"}
-                text={t.transferOptions?.shuttleText || "Sammeltransfer am Hochzeitstag – bitte vorher anmelden."}
-                contact="+995 598 11 22 33"
-                note={t.transferOptions?.shuttleNote || "Shuttle-Koordination (WhatsApp verfügbar)"}
-              />
-
-              <TransferCard
-                title={t.transferOptions?.taxiTitle || "🚕 Taxi / Fahrer"}
-                text={t.transferOptions?.taxiText || "Komfortable Privattransfers oder lokale Taxis direkt am Flughafen."}
-                items={[
-                  { name: "GoTrip Georgia", phone: "+995 574 10 10 10" },
-                  { name: "Georgian Bus (Tbilisi → Telavi)", phone: "+995 322 05 20 52" },
-                  { name: "Telavi Taxi Service", phone: "+995 593 44 11 88" },
-                ]}
-                note={t.transferOptions?.taxiPrice || "Preis ca. 120–150 GEL (≈ 40–50 €) pro Strecke."}
-              />
-
-              <TransferCard
-                title={t.transferOptions?.rentTitle || "🚗 Mietwagen"}
-                text={t.transferOptions?.rentText || "Ideal für flexible Erkundungen – direkt am Flughafen verfügbar:"}
-                links={[
-                  ["Europcar Georgia", "https://www.europcar.ge/"],
-                  ["CityRent", "https://www.cityrent.ge/"],
-                  ["AutoEurope", "https://www.autoeurope.eu/"],
-                ]}
-                note={t.transferOptions?.rentNote || "Fahrzeit: ca. 1 h 30 min über Kakheti Hwy (S5)."}
-              />
-
-              <TransferCard
-                title={t.transferOptions?.busTitle || "🚌 Öffentliche Busse"}
-                text={t.transferOptions?.busText || "Abfahrt von Ortachala oder Samgori Bus Station in Tbilisi."}
-                mapUrl="https://goo.gl/maps/Wf6Vr4n5jRKmTwcF6"
-                note={t.transferOptions?.busMap || "Busstation auf Google Maps öffnen"}
-              />
-            </div>
-          </Card>
         </div>
       </Section>
     </Layout>
@@ -319,15 +282,6 @@ export default function FlightsPage({ lang, setLang }) {
 }
 
 /* --- Hilfskomponenten --- */
-function Feature({ icon, label }) {
-  return (
-    <div style={{ display: "flex", alignItems: "center", gap: ".5rem", color: "#374151" }}>
-      {icon}
-      <span style={{ fontSize: ".9rem" }}>{label}</span>
-    </div>
-  );
-}
-
 function TransferCard({ title, text, contact, note, items, links, mapUrl }) {
   return (
     <div

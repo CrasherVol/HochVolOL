@@ -9,6 +9,7 @@ import LocationPage from "./pages/LocationPage.jsx";
 import GalleryPage from "./pages/GalleryPage.jsx";
 import RSVPPage from "./pages/RSVPPage.jsx";
 import AdminPage from "./pages/AdminPage.jsx";
+import WinterPage from "./pages/WinterPage.jsx";
 
 export default function App() {
   const [lang, setLang] = useState(() => localStorage.getItem("lang") || "de");
@@ -27,6 +28,7 @@ export default function App() {
       <Route path="/admin" element={<AdminPage />} />
       {/* Fallback: unbekannte URLs zurück auf Start */}
       <Route path="*" element={<Navigate to="/" replace />} />
+        <Route path="/winter" element={<WinterPage lang={lang} setLang={setLang} />} />
     </Routes>
   );
 }

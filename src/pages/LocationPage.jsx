@@ -23,6 +23,20 @@ import {
 export default function LocationPage({ lang, setLang }) {
   const t = TEXTS[lang] || TEXTS.de;
 
+  // Bild oben in der Unterkunftskarte:
+  // nimmt das 1. Galerie-Bild, sonst das lokale Fallback aus /public
+  const heroImage =
+    (Array.isArray(LOCATION_DETAILS?.galerie) && LOCATION_DETAILS.galerie[0]) ||
+    "/Hotel-Monte-Gudauri.jpg";
+
+  // Galerie-Captions passend zu Gudauri/Monte (mit Fallbacks, falls keine Übersetzungen existieren)
+  const galleryCaptions = [
+    t?.galleryCaptions?.monte1 || "Hotel Monte Gudauri",
+    t?.galleryCaptions?.monte2 || "Blick über Gudauri",
+    t?.galleryCaptions?.monte3 || "Shino-Skilift & Pisten",
+    t?.galleryCaptions?.monte4 || "Kaukasus-Panorama",
+  ];
+
   return (
     <Layout lang={lang} setLang={setLang}>
       <Section
@@ -36,6 +50,21 @@ export default function LocationPage({ lang, setLang }) {
           className="hover-react"
           style={{ marginBottom: "1.25rem" }}
         >
+          {/* Bild oben in der Karte */}
+          {heroImage && (
+            <img
+              src={heroImage}
+              alt={LOCATION_DETAILS?.name || "Hotel Monte Gudauri"}
+              style={{
+                width: "100%",
+                height: "auto",
+                borderRadius: ".75rem",
+                marginBottom: ".75rem",
+                display: "block",
+              }}
+            />
+          )}
+
           {/* Adresse */}
           <p style={{ marginBottom: ".5rem" }}>
             <MapPin
@@ -49,7 +78,10 @@ export default function LocationPage({ lang, setLang }) {
           <div style={{ display: "flex", gap: ".6rem", flexWrap: "wrap", marginBottom: ".75rem" }}>
             <a
               className="cta-primary"
-              href={LOCATION_DETAILS.website || "https://www.facebook.com/profile.php?id=100089988360226"}
+              href={
+                LOCATION_DETAILS.website ||
+                "https://www.facebook.com/profile.php?id=100089988360226"
+              }
               target="_blank"
               rel="noreferrer"
             >
@@ -65,7 +97,7 @@ export default function LocationPage({ lang, setLang }) {
             </a>
             <a
               className="cta-ghost"
-              href={LINKS?.maps?.methisKalaki}
+              href={LOCATION_DETAILS.mapsUrl || "https://www.google.com/maps/search/?api=1&query=Monte+Hotel+Gudauri"}
               target="_blank"
               rel="noreferrer"
             >
@@ -76,10 +108,10 @@ export default function LocationPage({ lang, setLang }) {
           {/* Kurzbeschreibung */}
           <p style={{ marginBottom: ".75rem" }}>
             {LOCATION_DETAILS.kurzbeschreibung ||
-              "Boutique-Weingut mit eleganten Zimmern, Restaurant, Terrasse mit Blick auf die Weinberge und gemütlichen Innenbereichen für Winterabende."}
+              "Gemütliches Hotel im Skigebiet Gudauri – mit Restaurant, Bar, Sauna, Jacuzzi und weitem Bergblick über den Kaukasus."}
           </p>
 
-          {/* Hinweise (dein vorhandenes Feld weiter nutzen) */}
+          {/* Hinweise (bestehendes Feld weiter nutzen) */}
           {Array.isArray(LOCATION_DETAILS.hinweise) && LOCATION_DETAILS.hinweise.length > 0 && (
             <ul style={{ marginLeft: "1rem", listStyle: "disc", marginBottom: "0.75rem" }}>
               {LOCATION_DETAILS.hinweise.map((h, i) => (
@@ -101,15 +133,13 @@ export default function LocationPage({ lang, setLang }) {
           {/* Ausstattung */}
           <Card title={t.tipsTitle || "Ausstattung"} className="hover-react">
             <div className="amenities" style={{ display: "grid", gap: ".5rem" }}>
-              <Amenity icon={<BedDouble size={16} />} label="Elegante Zimmer & Suiten" />
-              <Amenity icon={<Wifi size={16} />} label="WLAN" />
-              <Amenity icon={<ParkingCircle size={16} />} label="Parken am Haus" />
-              <Amenity icon={<Wine size={16} />} label="Weingut · Qvevri-Verkostung" />
-              <Amenity icon={<Utensils size={16} />} label="Restaurant" />
-              <Amenity icon={<Bath size={16} />} label="Sauna/Spa-Bereich (je nach Saison)" />
-              <Amenity icon={<Sun size={16} />} label="Sonnen-Terrasse" />
-              <Amenity icon={<Snowflake size={16} />} label="Gemütliche Innenbereiche im Winter" />
-              <Amenity icon={<Trees size={16} />} label="Weinberge & Natur" />
+              <Amenity icon={<BedDouble size={16} />} label="Komfortable Zimmer (teils mit Balkon/Ausblick)" />
+              <Amenity icon={<Wifi size={16} />} label="WLAN inklusive" />
+              <Amenity icon={<ParkingCircle size={16} />} label="Kostenlose Parkplätze" />
+              <Amenity icon={<Utensils size={16} />} label="Restaurant & Bar im Haus" />
+              <Amenity icon={<Bath size={16} />} label="Sauna & Jacuzzi (inklusive)" />
+              <Amenity icon={<Sun size={16} />} label="Shuttle zum Shino-Skilift" />
+              <Amenity icon={<Snowflake size={16} />} label="Ski-Lagerung / Wintersportlage" />
             </div>
           </Card>
 
@@ -126,8 +156,8 @@ export default function LocationPage({ lang, setLang }) {
           {/* Spa & Wellness */}
           <Card title="Spa & Wellness" className="hover-react">
             <ul style={{ marginLeft: "1rem", listStyle: "disc" }}>
-              <li>Sauna oder Dampfbad (saisonal/auf Anfrage)</li>
-              <li>Ruheraum – perfekt für den Winter</li>
+              <li>Sauna & Jacuzzi (für Gäste inklusive)</li>
+              <li>Ruheraum – perfekt für Wintertage</li>
               <li>Massagen nach Verfügbarkeit</li>
             </ul>
           </Card>
@@ -135,10 +165,10 @@ export default function LocationPage({ lang, setLang }) {
           {/* Restaurant & Terrasse */}
           <Card title="Restaurant & Terrasse" className="hover-react">
             <ul style={{ marginLeft: "1rem", listStyle: "disc" }}>
-              <li>Georgische Küche, lokale Produkte</li>
-              <li>Qvevri-Weine aus eigener Herstellung</li>
-              <li>Überdachte Terrasse mit Weitblick</li>
-              <li>Gemütliche Weinstube für den Abend</li>
+              <li>Georgische & internationale Küche</li>
+              <li>Bar/Lounge für den Abend</li>
+              <li>Frühstücksbuffet verfügbar</li>
+              <li>Überdachte Terrasse mit Bergblick</li>
             </ul>
           </Card>
         </div>
@@ -176,12 +206,7 @@ export default function LocationPage({ lang, setLang }) {
         <Card title={t.gallery} className="hover-react">
           <Gallery
             images={LOCATION_DETAILS.galerie}
-            captions={[
-              t.place.kakhetiVineyards,
-              t.place.alaverdi,
-              t.place.sighnaghi,
-              t.place.telavi,
-            ]}
+            captions={galleryCaptions}
           />
         </Card>
       </Section>

@@ -4,8 +4,9 @@ import { CheckCircle2 } from "lucide-react";
 
 export default function RSVPForm({ lang = "de" }) {
   const t = TEXTS[lang] || TEXTS.de;
-  const [status, setStatus] = useState("idle");
+  const [status, setStatus] = useState("idle"); // idle | sending | success
   const [agree, setAgree] = useState(false);
+  const [error, setError] = useState("");       // Inline-Fehlermeldung
 
   return (
     <form
@@ -13,28 +14,59 @@ export default function RSVPForm({ lang = "de" }) {
         e.preventDefault();
 
         if (!agree) {
-          alert(t.privacy);
+          setError(t.privacy);
           return;
         }
-
+        setError("");
         setStatus("sending");
 
-        const formData = new FormData(e.target);
-        const data = Object.fromEntries(formData.entries());
+        const fd = new FormData(e.target);
+        const raw = Object.fromEntries(fd.entries());
+
+        const yesWords = [t.yes?.toLowerCase(), "ja", "yes", "да"].filter(Boolean);
+        const attend = yesWords.includes(String(raw.teilnahme || "").trim().toLowerCase());
+
+        const payload = {
+          attend,
+          name: raw.name || "",
+          email: raw.email || "",
+          people: raw.anzahl || "",
+          diet: raw.essen || "",
+          message: raw.nachricht || "",
+        };
 
         try {
           const res = await fetch("/api/rsvp", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(data),
+            body: JSON.stringify(payload),
           });
 
-          if (!res.ok) throw new Error("RSVP failed");
+          if (!res.ok) {
+            // <-- DEBUG: zeige Status & Antworttext
+            const text = await res.text();
+            console.error("RSVP /api/rsvp failed:", res.status, text);
+            setError(
+              lang === "en"
+                ? `Submit failed (${res.status}).`
+                : lang === "ru"
+                ? `Отправка не удалась (${res.status}).`
+                : `Absenden fehlgeschlagen (${res.status}).`
+            );
+            setStatus("idle");
+            return;
+          }
 
           setStatus("success");
         } catch (err) {
-          console.error("RSVP error:", err);
-          alert("Etwas ist schiefgelaufen 😞");
+          console.error("RSVP fetch error:", err);
+          setError(
+            lang === "en"
+              ? "Something went wrong. Please try again."
+              : lang === "ru"
+              ? "Что-то пошло не так. Попробуйте ещё раз."
+              : "Etwas ist schiefgelaufen. Bitte versuch’s noch einmal."
+          );
           setStatus("idle");
         }
       }}
@@ -42,7 +74,6 @@ export default function RSVPForm({ lang = "de" }) {
     >
       <h3 className="form-headline">{t.rsvpTitle} – 28.02.2026</h3>
 
-      {/* Eingaben */}
       <div className="form-grid">
         <label>
           <span>{t.name}*</span>
@@ -77,22 +108,30 @@ export default function RSVPForm({ lang = "de" }) {
         </label>
       </div>
 
-      {/* Datenschutz */}
       <div className="form-privacy">
         <label>
           <input
             type="checkbox"
             checked={agree}
-            onChange={(e) => setAgree(e.target.checked)}
+            onChange={(e) => {
+              setAgree(e.target.checked);
+              if (e.target.checked) setError("");
+            }}
           />
           {t.privacy}
         </label>
+
+        {error && (
+          <p style={{ color: "#b91c1c", marginTop: ".35rem" }} role="alert" aria-live="polite">
+            {error}
+          </p>
+        )}
+
         <p>{t.privacyNote}</p>
       </div>
 
-      {/* Submit */}
       <div className="form-submit">
-        <button type="submit" disabled={status === "sending"}>
+        <button type="submit" disabled={status === "sending" || !agree}>
           {status === "sending" ? t.sending : t.send}
         </button>
         <span>
@@ -100,7 +139,6 @@ export default function RSVPForm({ lang = "de" }) {
         </span>
       </div>
 
-      {/* Erfolgsmeldung */}
       {status === "success" && (
         <div className="form-success">
           <CheckCircle2 className="icon" /> {t.rsvpSuccess}

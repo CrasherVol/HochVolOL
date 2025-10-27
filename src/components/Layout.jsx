@@ -9,9 +9,11 @@ import {
   Users,
   Home as HomeIcon,
   Building2,
+  Snowflake,
 } from "lucide-react";
 import { TEXTS, DATUM, PAAR } from "../data/constants";
 import { googleCalUrl } from "../data/calendar";
+import WeatherWidget from "./WeatherWidget.jsx"; // ✅ HINZUGEFÜGT
 
 /* --- Kleine Flaggen (inline SVG) --- */
 function Flag({ code }) {
@@ -78,17 +80,18 @@ function LangSwitcher({ lang, setLang }) {
   );
 }
 
-/* --- Header mit Navigation + Kalender + Flaggen rechts --- */
+/* --- Header mit Navigation + Kalender + Flaggen + Wetter rechts --- */
 function Header({ lang, setLang }) {
   const t = TEXTS[lang] || TEXTS.de;
 
   const nav = [
-    { to: "/",         label: t.nav.start,    icon: <HomeIcon size={16} /> },
-    { to: "/fluege",   label: t.nav.flights,  icon: <Plane size={16} /> },
-    { to: "/ort",      label: t.nav.region,   icon: <Globe2 size={16} /> },
+    { to: "/", label: t.nav.start, icon: <HomeIcon size={16} /> },
+    { to: "/fluege", label: t.nav.flights, icon: <Plane size={16} /> },
     { to: "/location", label: t.nav.location, icon: <Building2 size={16} /> },
-    { to: "/galerie",  label: t.nav.gallery,  icon: <Camera size={16} /> },
-    { to: "/rsvp",     label: t.nav.rsvp,     icon: <Users size={16} /> },
+    { to: "/ort", label: t.nav.region, icon: <Globe2 size={16} /> },
+    { to: "/winter", label: t.nav.winter, icon: <Snowflake size={16} /> },
+    { to: "/galerie", label: t.nav.gallery, icon: <Camera size={16} /> },
+    { to: "/rsvp", label: t.nav.rsvp, icon: <Users size={16} /> },
   ];
 
   return (
@@ -116,104 +119,17 @@ function Header({ lang, setLang }) {
             ))}
           </nav>
 
-          <div className="top-utils">
+          <div className="top-utils" style={{ display: "flex", alignItems: "center", gap: ".6rem" }}>
             <a href={googleCalUrl} target="_blank" rel="noreferrer" className="btn-ghost">
               <CalendarHeart size={16} />
               <span>{t.nav.calendar}</span>
             </a>
+
+
             <LangSwitcher lang={lang} setLang={setLang} />
           </div>
         </div>
       </div>
-
-      {/* Inline-Styling der Topbar (kannst du in CSS auslagern) */}
-      <style>{`
-        :root { --accent:#7b2e2e; --accent-2:#b85c5c; }
-
-        .topbar {
-          position: sticky; top: 0; z-index: 50;
-          backdrop-filter: blur(10px);
-          background: rgba(255,255,255,.85);
-          border-bottom: 1px solid #f1f5f9;
-          box-shadow: 0 4px 18px rgba(184,92,92,.08);
-        }
-        .topbar-inner {
-          max-width: 1100px; margin: 0 auto;
-          padding: 0.55rem 1rem;
-          display: flex; align-items: center; justify-content: space-between; gap: .75rem;
-        }
-
-        /* Brand */
-        .brand { display: flex; align-items: center; gap: .6rem; text-decoration: none; }
-        .brand-logo {
-          width: 44px; height: 44px; object-fit: contain; border-radius: 10px;
-          box-shadow: 0 0 18px rgba(184,92,92,.25);
-        }
-        .brand-name {
-          font-family: "Playfair Display", serif;
-          font-weight: 800; color: var(--accent); font-size: 1.15rem;
-        }
-
-        .topbar-right { display: flex; align-items: center; gap: .75rem; flex: 1; justify-content: flex-end; }
-
-        /* Nav */
-        .topnav {
-          display: flex; align-items: center; gap: .25rem;
-          overflow-x: auto; padding: .15rem; scrollbar-width: none;
-        }
-        .topnav::-webkit-scrollbar { display: none; }
-
-        .nav-link {
-          position: relative;
-          display: inline-flex; align-items: center; gap: .45rem;
-          padding: .45rem .75rem; border-radius: 9999px;
-          font-size: .92rem; text-decoration: none;
-          color: #334155; border: 1px solid transparent;
-          transition: background .2s ease, color .2s ease, border-color .2s ease;
-          background: rgba(255,255,255,.7);
-        }
-        .nav-link .nav-ico { display: inline-grid; place-items: center; }
-
-        .nav-link:hover {
-          background: #fff;
-          border-color: #f1f5f9;
-          color: var(--accent);
-        }
-
-        .nav-link .underline {
-          position: absolute; left: 12px; right: 12px; bottom: 6px;
-          height: 2px; border-radius: 2px;
-          background: linear-gradient(90deg, var(--accent), var(--accent-2));
-          transform: scaleX(0); transform-origin: center;
-          transition: transform .25s ease;
-        }
-        .nav-link:hover .underline { transform: scaleX(1); }
-        .nav-link.active {
-          background: #fff; border-color: #f1f5f9; color: var(--accent);
-        }
-        .nav-link.active .underline { transform: scaleX(1); }
-
-        /* Utilities rechts */
-        .top-utils { display: flex; align-items: center; gap: .5rem; }
-
-        .btn-ghost {
-          display: inline-flex; align-items: center; gap: .4rem;
-          padding: .45rem .7rem; border-radius: .75rem;
-          border: 1px solid #f1f5f9; background:#fff; color:#334155;
-          text-decoration: none; transition: all .2s ease;
-        }
-        .btn-ghost:hover { color: var(--accent); border-color: #eaeef3; }
-
-        /* Flags */
-        .lang-wrap { display:flex; gap:.35rem; }
-        .flag { width: 26px; height: 18px; border-radius: 4px; border: 1px solid #e5e7eb; box-shadow: 0 1px 3px rgba(0,0,0,.06); }
-        .flag-btn { padding: 6px; border-radius: .6rem; border:1px solid #e5e7eb; background:#fff; display:flex; align-items:center; cursor:pointer; }
-        .flag-btn.active { outline: 2px solid var(--accent); }
-
-        @media (max-width: 640px) {
-          .brand-name { display: none; }
-        }
-      `}</style>
     </header>
   );
 }
@@ -244,9 +160,9 @@ export default function Layout({ children, lang, setLang }) {
       className="layout-root"
       style={{
         minHeight: "100vh",
-        background: "transparent", // wichtig fürs Winter-Overlay
+        background: "transparent",
         position: "relative",
-        zIndex: 1,                  // über Schnee/Hintergrund
+        zIndex: 1,
       }}
     >
       <Header lang={lang} setLang={setLang} />
@@ -256,7 +172,7 @@ export default function Layout({ children, lang, setLang }) {
           maxWidth: 1100,
           margin: "0 auto",
           padding: "1.25rem",
-          background: "rgba(255,255,255,0.72)", // Frost-Panel
+          background: "rgba(255,255,255,0.72)",
           backdropFilter: "blur(6px)",
           borderRadius: "14px",
           boxShadow: "0 8px 30px rgba(0,0,0,0.08)",

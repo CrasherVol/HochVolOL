@@ -1,150 +1,202 @@
 // src/data/constants.js
+
+// ======================================================
+// Grunddaten
+// ======================================================
 export const PAAR = { braut: "Olga", braeutigam: "Volker" };
-export const DATUM = { text: "Samstag, 28. Februar 2026", iso: "2026-02-28T14:00:00+04:00" };
-
-
-export const IMAGES = {
-  heroBg: "/gallery/Georgien_Landschaft.jpg",
-  heroCouple: "https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=1400&q=80",
-  tbilisiAerial: "/gallery/Tiflis_Altstadt2.jpg",
-  sulfurBaths: "/gallery/Schwefelbäder _Abanotubani.jpg",
-  narikala: "/gallery/Narikala_Festung.jpg",
-  bridgeOfPeace: "/gallery/Bridge_of-Peace-Georgien.jpg",
-  sighnaghi: "/gallery/georgia-Sighnaghi.jpg",
-  alaverdi: "/gallery/Kloster_Alaverdi.jpg",
-  telavi: "/gallery/Telavi_Georgien_Bild.jpg",
-  vineyard: "https://cdn.pixabay.com/photo/2020/02/02/15/07/wine-4813260_1280.jpg",
- hotelHeroLocal: "/Hotel-Chateau-Mephis-Kalaki.jpg", // dein lokales Bild im /public/
-  hotelOfficial1: "https://places.georgia.travel/_next/image?q=75&url=https%3A%2F%2Fapi-places.georgia.travel%2Fstorage%2Fimages%2F970x620%2F1%2812%29.webp&w=1920",
-  hotelOfficial2: "https://places.georgia.travel/_next/image?q=75&url=https%3A%2F%2Fapi-places.georgia.travel%2Fstorage%2Fimages%2F970x620%2F5%281%29.webp&w=1920",
-  hotelOfficial3: "https://places.georgia.travel/_next/image?q=75&url=https%3A%2F%2Fapi-places.georgia.travel%2Fstorage%2Fimages%2F970x620%2F3%289%29.webp&w=1920",
+export const DATUM = {
+  text: "Samstag, 28. Februar 2026",
+  iso: "2026-02-28T14:00:00+04:00",
 };
 
+// ======================================================
+// Medien / Bilder (alle extern via Unsplash Source API)
+// ======================================================
+export const IMAGES = {
+  // Hero / Header – Gudauri
+  heroBg: "/Hotel-Monte-Gudauri.jpg",    //Hotel-Monte-Gudauri
+  heroCouple: "https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=1400&q=80",
+
+  // Gudauri / Kaukasus
+  gudauriSlope: "https://picsum.photos/id/1015/1200/800",   // Skipiste/Ersatz
+  gudauriView:  "https://picsum.photos/id/1021/1200/800",   // Bergblick/Ersatz
+  crossPass:    "https://picsum.photos/id/1043/1200/800",   // Passstraße/Ersatz
+  kazbegi:      "https://picsum.photos/id/1039/1200/800",   // Berggipfel/Ersatz
+
+  // Tbilisi (für Region-Seite etc.)
+  tbilisiAerial: "https://picsum.photos/id/1041/1200/800",
+  sulfurBaths:   "https://picsum.photos/id/1050/1200/800",
+  narikala:      "https://picsum.photos/id/1025/1200/800",
+  bridgeOfPeace: "https://picsum.photos/id/1005/1200/800",
+
+  // (optional) frühere Kakheti-Platzhalter
+  sighnaghi: "https://picsum.photos/id/1042/1200/800",
+  alaverdi:  "https://picsum.photos/id/1068/1200/800",
+  telavi:    "https://picsum.photos/id/1067/1200/800",
+  vineyard:  "https://picsum.photos/id/1080/1200/800",
+
+  // --- Winter/Gudauri ---
+winter: {
+  hero: "https://images.unsplash.com/photo-1549880338-65ddcdfd017b?auto=format&fit=crop&w=1600&q=80", // Schneepanorama
+  gudauriPiste: "https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&w=1600&q=80",
+  paragliding: "https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1600&q=80",
+  gergetiWinter: "https://images.unsplash.com/photo-1601643157091-ce8a1c9b8c38?auto=format&fit=crop&w=1600&q=80",
+  militaryRoad: "https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=1600&q=80",
+  monteExterior: "https://cf.bstatic.com/xdata/images/hotel/max1280x900/416686240.jpg?k=7d4c3a8e2e4c4b0a8c4d4d8f2f84d6b1a4b7c7d5a0a9e9c0b0&auto=format&fit=crop&w=1600&q=80",
+  sunsetRidge: "https://images.unsplash.com/photo-1518684079-3c830dcef090?auto=format&fit=crop&w=1600&q=80",
+  apres: "https://images.unsplash.com/photo-1543352634-8730a9b4e8c9?auto=format&fit=crop&w=1600&q=80",
+},
+
+};
+
+
+// ======================================================
+// Links (Maps, Buchung, Flüge, …)
+// ======================================================
 export const LINKS = {
   maps: {
-    tbilisiOldTown:  "https://www.google.com/maps/search/?api=1&query=Tbilisi%20Old%20Town",
-    sulfurBaths:     "https://www.google.com/maps/search/?api=1&query=Abanotubani%20Sulfur%20Baths",
-    narikala:        "https://www.google.com/maps/search/?api=1&query=Narikala%20Fortress",
-    bridgeOfPeace:   "https://www.google.com/maps/search/?api=1&query=Bridge%20of%20Peace%20Tbilisi",
-    sighnaghi:       "https://www.google.com/maps/search/?api=1&query=Sighnaghi",
-    alaverdi:        "https://www.google.com/maps/search/?api=1&query=Alaverdi%20Monastery",
-    telavi:          "https://www.google.com/maps/search/?api=1&query=Telavi",
-    kakhetiVines:    "https://www.google.com/maps/search/?api=1&query=Kakheti%20vineyards",
-    methisKalaki:    "https://www.google.com/maps/search/?api=1&query=Chateau%20Methis%20Kalaki",
-    tbilisiAirport:  "https://www.google.com/maps/search/?api=1&query=Tbilisi%20International%20Airport",
-    didubeStation:   "https://www.google.com/maps/search/?api=1&query=Didube%20Bus%20Station%20Tbilisi",
-    ortachalaStation:"https://www.google.com/maps/search/?api=1&query=Ortachala%20Bus%20Station%20Tbilisi",
-    telaviBus:       "https://www.google.com/maps/search/?api=1&query=Telavi%20Bus%20Station"
+    tbilisiAirport:
+      "https://www.google.com/maps/search/?api=1&query=Tbilisi%20International%20Airport",
+    gudauri: "https://www.google.com/maps/search/?api=1&query=Gudauri",
+    monteGudauri:
+      "https://www.google.com/maps/search/?api=1&query=Monte%20Hotel%20Gudauri",
+    didubeStation:
+      "https://www.google.com/maps/search/?api=1&query=Didube%20Bus%20Station%20Tbilisi",
+    crossPass:
+      "https://www.google.com/maps/search/?api=1&query=Jvari%20Pass%20(Cross%20Pass)",
   },
   flights: [
-    { name: "Skyscanner",     url: "https://www.skyscanner.de/" },
-    { name: "Google Flights", url: "https://www.google.com/travel/flights" }
+    { name: "Skyscanner", url: "https://www.skyscanner.de/" },
+    { name: "Google Flights", url: "https://www.google.com/travel/flights" },
   ],
   taxiApps: [
-    { name: "Bolt",     url: "https://bolt.eu" },
-    { name: "Yandex Go", url: "https://taxi.yandex.com" }
-],
+    { name: "Bolt", url: "https://bolt.eu" },
+    { name: "Yandex Go", url: "https://taxi.yandex.com" },
+  ],
   booking: {
-    methis: "https://www.booking.com/hotel/ge/chateau-mephis-kalaki.html", // direkter Booking-Link
-  },
-  phone: {
-    methisMain: "+995 371 22 03 00",   // von Georgia Travel
-    methisMobile: "+995 599 64 80 08", // von Georgia Travel
-  },
+    // Beibehaltener Key "methis", damit bestehender Code nicht bricht:
+    methis: "https://www.booking.com/hotel/ge/monte.de.html?aid=304142&label=gen173nr-10EgZzZWFyY2goggI46AdIM1gEaDuIAQGYATO4ARfIAQzYAQPoAQH4AQGIAgGoAgG4Apzl_McGwAIB0gIkZDA5MDdjNzUtZTA5OS00ZGI0LWIwOTEtOTJiZmMyM2JjOTli2AIB4AIB&sid=e2ba0613dd6dba067c7f9e8c4aedfb36&dest_id=1289540&dest_type=hotel&dist=0&group_adults=2&group_children=0&hapos=1&hpos=1&no_rooms=1&req_adults=2&req_children=0&room1=A%2CA&sb_price_type=total&sr_order=popularity&srepoch=1761555110&srpvid=79a13e4ea47c00f4&type=total&ucfs=1&",
+},
+  phone: {},
+
+kazbegi: "https://www.google.com/maps/search/?api=1&query=Gergeti%20Trinity%20Church",
 };
 
-// ------------------------------------------------------
-// Fakten
-// ------------------------------------------------------
+// ======================================================
+// Fakten (für Region-Seite)
+// ======================================================
 export const FACTS = [
   { key: "population", icon: "👥", value: "≈ 3,7 Mio.", label: { de: "Einwohner", en: "Population", ru: "Население" } },
-  { key: "area",       icon: "🗺️", value: "≈ 69.700 km²", label: { de: "Fläche", en: "Area", ru: "Площадь" } },
-  { key: "capital",    icon: "🏛️", value: "Tiflis (Tbilisi)", label: { de: "Hauptstadt", en: "Capital", ru: "Столица" } },
-  { key: "timezone",   icon: "🕒", value: "UTC+4", label: { de: "Zeitzone", en: "Time zone", ru: "Часовой пояс" } },
-  { key: "currency",   icon: "💶", value: "GEL (Lari)", label: { de: "Währung", en: "Currency", ru: "Валюта" } },
-  { key: "language",   icon: "🗣️", value: "Georgisch", label: { de: "Amtssprache", en: "Official language", ru: "Офиц. язык" } },
-  { key: "dial",       icon: "☎️", value: "+995", label: { de: "Vorwahl", en: "Dial code", ru: "Тел. код" } },
-  { key: "power",      icon: "🔌", value: "220 V · Typ C/F", label: { de: "Strom", en: "Power", ru: "Электросеть" } },
-  { key: "peak",       icon: "⛰️", value: "Schchara 5.193 m", label: { de: "Höchster Gipfel", en: "Highest peak", ru: "Высшая точка" } },
-  { key: "unesco",     icon: "🏺", value: "Qvevri-Weintradition", label: { de: "UNESCO", en: "UNESCO", ru: "ЮНЕСКО" } },
+  { key: "area", icon: "🗺️", value: "≈ 69.700 km²", label: { de: "Fläche", en: "Area", ru: "Площадь" } },
+  { key: "capital", icon: "🏛️", value: "Tiflis (Tbilisi)", label: { de: "Hauptstadt", en: "Capital", ru: "Столица" } },
+  { key: "timezone", icon: "🕒", value: "UTC+4", label: { de: "Zeitzone", en: "Time zone", ru: "Часовой пояс" } },
+  { key: "currency", icon: "💶", value: "GEL (Lari)", label: { de: "Währung", en: "Currency", ru: "Валюта" } },
+  { key: "language", icon: "🗣️", value: "Georgisch", label: { de: "Amtssprache", en: "Official language", ru: "Офиц. язык" } },
+  { key: "dial", icon: "☎️", value: "+995", label: { de: "Vorwahl", en: "Dial code", ru: "Тел. код" } },
+  { key: "power", icon: "🔌", value: "220 V · Typ C/F", label: { de: "Strom", en: "Power", ru: "Электросеть" } },
+  { key: "peak", icon: "⛰️", value: "Schchara 5.193 m", label: { de: "Höchster Gipfel", en: "Highest peak", ru: "Высшая точка" } },
+  { key: "unesco", icon: "🏺", value: "Qvevri-Weintradition", label: { de: "UNESCO", en: "UNESCO", ru: "ЮНЕСКО" } },
   { key: "weatherFeb", icon: "🌡️", value: "Tiflis ≈ 5 / −1 °C", label: { de: "Ø Feb (Tag/Nacht)", en: "Avg Feb (day/night)", ru: "Сред. февр. (д/н)" } },
-
-  // ➕ Zusatzinfos
-  { key: "visa",       icon: "🛂", value: "Oft visumfrei; prüfen", label: { de: "Einreise/Visum", en: "Entry/Visa", ru: "Виза" } },
-  { key: "drive",      icon: "🚗", value: "Rechtsverkehr", label: { de: "Verkehr", en: "Driving", ru: "Движение" } },
-  { key: "emergency",  icon: "🚑", value: "112", label: { de: "Notruf", en: "Emergency", ru: "Экстренный" } },
-  { key: "tips",       icon: "💁", value: "≈ 10 % üblich", label: { de: "Trinkgeld", en: "Tipping", ru: "Чаевые" } },
-  { key: "sim",        icon: "📶", value: "Prepaid ~5–15 GEL", label: { de: "SIM (Magti/Beeline)", en: "SIM (Magti/Beeline)", ru: "SIM (Magti/Beeline)" } },
-  { key: "best",       icon: "📅", value: "Mai–Jun • Sep–Okt", label: { de: "Beste Reisezeit", en: "Best months", ru: "Лучшее время" } },
-  { key: "flight",     icon: "✈️", value: "DE–TBS ≈ 4–5 h (direkt)", label: { de: "Flugdauer", en: "Flight time", ru: "Перелёт" } },
-  { key: "pay",        icon: "💳", value: "Karte meist ok; Bargeld praktisch", label: { de: "Zahlen", en: "Payments", ru: "Оплата" } },
+  { key: "visa", icon: "🛂", value: "Oft visumfrei; prüfen", label: { de: "Einreise/Visum", en: "Entry/Visa", ru: "Виза" } },
+  { key: "drive", icon: "🚗", value: "Rechtsverkehr", label: { de: "Verkehr", en: "Driving", ru: "Движение" } },
+  { key: "emergency", icon: "🚑", value: "112", label: { de: "Notruf", en: "Emergency", ru: "Экстренный" } },
+  { key: "tips", icon: "💁", value: "≈ 10 % üblich", label: { de: "Trinkgeld", en: "Tipping", ru: "Чаевые" } },
+  { key: "sim", icon: "📶", value: "Prepaid ~5–15 GEL", label: { de: "SIM (Magti/Beeline)", en: "SIM (Magti/Beeline)", ru: "SIM (Magti/Beeline)" } },
+  { key: "best", icon: "📅", value: "Mai–Jun • Sep–Okt", label: { de: "Beste Reisezeit", en: "Best months", ru: "Лучшее время" } },
+  { key: "flight", icon: "✈️", value: "DE–TBS ≈ 4–5 h (direkt)", label: { de: "Flugdauer", en: "Flight time", ru: "Перелёт" } },
+  { key: "pay", icon: "💳", value: "Karte meist ok; Bargeld praktisch", label: { de: "Zahlen", en: "Payments", ru: "Оплата" } },
 ];
 
+// ======================================================
+// Ort / Venue (Gudauri / Monte)
+// ======================================================
 export const ORT = {
-  name: "Chateau Methis Kalaki, Georgien",
-  adresse: "Methis Kalaki, Region Kachetien, Georgien",
-  googleMapsUrl: LINKS.maps.methisKalaki,
+  name: "Monte Gudauri, Georgien",
+  adresse: "Monte Hotel, Gudauri, Georgische Heerstraße (E117)",
+  googleMapsUrl: LINKS.maps.monteGudauri,
   stadtKurzinfo:
-    "Das Chateau Methis Kalaki liegt in der Weinregion Kachetien – sanfte Hügel, Weinberge, georgische Gastfreundschaft.",
+    "Gudauri liegt hoch im Großen Kaukasus – Skiort mit weiten Bergblicken, frischer Luft und gemütlichen Hotels.",
   mustSees: [
     {
-      title: "Weinverkostung im Methis Kalaki",
-      url: LINKS.maps.methisKalaki,
-      desc: { de: "Probiert lokale Weine direkt im Weingut – mit Blick über die Hügel Kachetiens." }
+      title: "Gudauri Panorama",
+      url: LINKS.maps.gudauri,
+      desc: {
+        de: "Weitblick über die Bergkämme – besonders schön zum Sonnenuntergang.",
+        en: "Wide views across the mountain ridges – stunning at sunset.",
+        ru: "Панорама горных хребтов — особенно красиво на закате.",
+      },
     },
     {
-      title: "Spaziergang durch die Weinberge",
-      url: LINKS.maps.kakhetiVines,
-      desc: { de: "Gemütlicher Spaziergang zwischen sonnenverwöhnten Reben rund um das Chateau." }
+      title: "Jvari / Cross Pass",
+      url: LINKS.maps.crossPass,
+      desc: {
+        de: "Spektakuläre Passstraße entlang der Georgischen Heerstraße.",
+        en: "Spectacular mountain pass along the Georgian Military Highway.",
+        ru: "Зрелищный перевал на Военно-Грузинской дороге.",
+      },
     },
     {
-      title: "Telavi Altstadt",
-      url: LINKS.maps.telavi,
-      desc: { de: "Charmante Hauptstadt Kachetiens mit Märkten und historischer Architektur." }
-    }
+      title: "Kazbegi / Stepantsminda",
+      url: LINKS.maps.gudauri,
+      desc: {
+        de: "Tagesausflug zur Gergeti-Kirche mit Blick auf den Kasbek (≈45–60 Min.).",
+        en: "Day trip to Gergeti Trinity Church with views of Mount Kazbek (≈45–60 min).",
+        ru: "Поездка к церкви Гергети с видом на Казбек (≈45–60 мин).",
+      },
+    },
   ],
 };
 
+// ======================================================
+// Unterkunft / Hotel Monte Gudauri
+// ======================================================
 export const LOCATION_DETAILS = {
-  name: "Chateau Methis Kalaki",
-  adresse: "Methis Kalaki Estate, Kachetien, Georgien",
-  website: "https://methis.ge/",               // ← NEU (falls noch nicht gesetzt)
-  bookingUrl: "https://www.booking.com/hotel/ge/chateau-mephis-kalaki.de.html?aid=356980&label=gog235jc-10CAsoUkIVY2hhdGVhdS1tZXBoaXMta2FsYWtpSAdYA2g7iAEBmAEzuAEXyAEM2AED6AEB-AEBiAIBqAIBuALajePHBsACAdICJGQxYzdkYWE0LTFiNjYtNGY3Yi04M2FhLWNmOTdjYjY2M2QwNdgCAeACAQ&sid=e2ba0613dd6dba067c7f9e8c4aedfb36&dest_id=-2325862&dest_type=city&dist=0&group_adults=2&group_children=0&hapos=1&hpos=1&no_rooms=1&req_adults=2&req_children=0&room1=A%2CA&sb_price_type=total&sr_order=popularity&srepoch=1761134306&srpvid=2a26542d5dcd02eb&type=total&ucfs=1&",      // ← NEU (setze hier die echte Hotel-URL)
+  name: "Hotel Monte Gudauri",
+  adresse: "Upper Gudauri, Near Post, Gudauri 4702, Georgia",
+  website: "https://www.montegudauri.com/",
+  bookingUrl: "https://www.booking.com/hotel/ge/monte.html",
   kurzbeschreibung:
-    "Elegantes Weingut-Hotel mit Restaurant, Terrasse und Blick auf die Weinberge. Perfekt für eine gemütliche Winterhochzeit — drinnen warm, draußen eindrucksvolle Natur.",
+    "Gemütliches Hotel im Skigebiet Gudauri – mit Restaurant, Bar, Sauna, Jacuzzi und weitem Bergblick über den Kaukasus.",
   hinweise: [
-    "Trauung & Feier direkt im Chateau (Garten & Weinterrasse).",
-    "Dresscode: elegant, gerne in warmen Tönen – abends kann es frisch werden.",
-    "Shuttles ab Tbilisi International Airport (TBS).",
+    "Kostenloser Shuttle zum Shino-Skilift laut Hotel.",
+    "Frühstücksbuffet täglich im Restaurant verfügbar.",
+    "Sauna & Jacuzzi stehen Gästen kostenfrei zur Verfügung.",
   ],
-  galerie: [IMAGES.vineyard, IMAGES.alaverdi, IMAGES.sighnaghi, IMAGES.telavi],
-  website: "https://www.mephiskalaki.ge/",
-  bookingUrl: LINKS.booking.methis,
-  galerie: [IMAGES.hotelOfficial1, IMAGES.hotelOfficial2, IMAGES.hotelOfficial3, IMAGES.hotelHeroLocal],
+  galerie: [
+    "/Hotel-Monte-Gudauri.jpg", // dein neues Hauptbild (aus public/)
+    "https://www.montegudauri.com/wp-content/uploads/2023/01/monte-view.jpg",
+    "https://www.montegudauri.com/wp-content/uploads/2023/01/ski-slopes-gudauri.jpg",
+    "https://www.montegudauri.com/wp-content/uploads/2023/01/mount-kazbegi.jpg",
+  ],
+  mapsUrl: "https://www.google.com/maps/search/?api=1&query=Monte+Hotel+Gudauri+Upper+Gudauri+Near+Post",
 };
 
+
+// ======================================================
+// Anreise / Transfers
+// ======================================================
 export const ANREISE = {
   naechsterFlughafen: "Tbilisi International Airport (TBS)",
   alternative: ["Kutaisi (KUT)"],
-  bahnhof: "Tbilisi Central Station",
+  bahnhof: "Tbilisi Didube (Bus/Marshrutka-Knoten)",
 
-  // Klar & konkret:
-transferHinweis: {
-     de: "Vom Flughafen Tiflis ca. 90 Min. bis zum Chateau (je nach Verkehr). Sammeltransfers je nach Anzahl der Freunde im Flieger.",
-    en: "From Tbilisi Airport, about 90 minutes to the chateau (depending on traffic). Group transfers are possible depending on how many friends arrive together.",
-    ru: "От аэропорта Тбилиси примерно 90 минут до шато (в зависимости от трафика). Возможны групповые трансферы, если прилетает несколько гостей вместе.",
+  // String für bestehenden Code:
+  transferHinweis:
+    "Vom Flughafen Tiflis ca. 2–2,5 Std. bis Gudauri (je nach Verkehr & Wetter) über die Georgische Heerstraße (E117). Sammeltransfers je nach Ankünften.",
+
+  // Zusätzlich (falls du später sprachspezifisch rendern willst):
+  transferHinweisI18N: {
+    de: "Vom Flughafen Tiflis ca. 2–2,5 Std. bis Gudauri (je nach Verkehr & Wetter) über die Georgische Heerstraße (E117). Sammeltransfers je nach Ankünften.",
+    en: "From Tbilisi Airport it's about 2–2.5 h to Gudauri via the Georgian Military Highway (E117), depending on traffic & weather. Group transfers possible depending on arrivals.",
+    ru: "От аэропорта Тбилиси ~2–2,5 ч до Гудаури по Военно-Грузинской дороге (E117), в зависимости от погоды и трафика. Возможны групповые трансферы по прибытиям.",
   },
-
-
-
 
   flugSucheLinks: LINKS.flights,
 
-  // Kurze, nützliche Tipps mit echten Werten
   tipps: [
     "TBS → Innenstadt per Bolt/Yandex: ca. 25–35 GEL – vermeidet teure Airport-Taxis.",
+    "Winter: Straße nach Gudauri kann bei starkem Schneefall kurzfristig gesperrt sein – plant Puffer ein.",
     "SIM vor Ort: Magti/Silknet – Touristen-SIM ab ~10–30 GEL; Ausweis mitnehmen.",
-    "Visum: Deutsche Staatsbürger i. d. R. bis zu 365 Tage visumfrei (Reisepass).",
   ],
 
   transfers: {
@@ -153,54 +205,46 @@ transferHinweis: {
       phone: "+995 5XX XXX XXX",
       note: "Sammeltransfer am Hochzeitstag – Uhrzeiten & Treffpunkte folgen per E-Mail.",
     },
-
     taxis: [
-      { name: "Lokales Taxi 1 (Platzhalter)", phone: "+995 5XX XXX XXX" },
-      { name: "Lokales Taxi 2 (Platzhalter)", phone: "+995 5XX XXX XXX" },
+      { name: "Lokaler Fahrer 1 (Platzhalter)", phone: "+995 5XX XXX XXX" },
+      { name: "Lokaler Fahrer 2 (Platzhalter)", phone: "+995 5XX XXX XXX" },
     ],
-
-    // Öffis mit echten Tbilisi→Telavi-Infos
     bus: [
       {
-        route: "Tbilisi → Telavi (Marshrutka/Bus)",
-        from: "Ortachala oder Samgori",
-        stations: [
-          { label: "Ortachala Bus Station", url: LINKS.maps.ortachalaStation },
-          { label: "Samgori Bus Station", url: LINKS.maps.ortachalaStation.replace("Ortachala", "Samgori") },
-        ],
-        to: { label: "Telavi Bus Station", url: LINKS.maps.telaviBus },
-        note:
-          "Abfahrten tagsüber häufig: Ortachala alle ~45 Min. (08:15–17:00), Samgori alle ~40 Min. (09:30–16:45). Fahrzeit 2–3 Std., ca. 12–15 GEL (bar).",
+        route: "Tbilisi → Gudauri (Marshrutka/Bus)",
+        from: "Didube Bus Station",
+        stations: [{ label: "Didube Bus Station", url: LINKS.maps.didubeStation }],
+        to: { label: "Gudauri", url: LINKS.maps.gudauri },
+        note: "Tagsüber regelmäßig; Fahrzeit 2–3 Std., Preis ~20–30 GEL (bar).",
       },
     ],
   },
 
-  // Bonus: Alternative via Kutaisi – hilfreich, wenn Gäste dort landen
   kutaisiHinweis:
-    "KUT → Tbilisi per Shuttle/Train ~4–4,5 Std.; Taxi/Transfer ~3–3,5 Std. (Preis je nach Anbieter).",
+    "KUT → Tbilisi per Shuttle/Bus ~4–4,5 Std.; weiter nach Gudauri wie oben.",
 };
 
-
+// ======================================================
+// Unterkunft-Empfehlungen (Flüge/Anreise)
+// ======================================================
 export const UNTERKUNFT = [
   {
-    name: "Chateau Methis Kalaki Hotel",
+    name: "Monte Gudauri",
     details:
-      "Boutique-Zimmer direkt am Weingut – kurze Wege zur Feier; Außenbereiche & Weinterrasse ideal für einen entspannten Abend.",
-    url: "https://methis.ge/",
+      "Zimmer direkt an der Feier-Location – kurzer Weg, Restaurant & Bar, Bergblick.",
+    url: LINKS.booking.methis,
   },
   {
-    name: "Telavi Inn Boutique Hotel",
+    name: "Alternative in Gudauri",
     details:
-      "~20 Min. entfernt; Pool, Spa & Restaurant – gute Option für größere Gruppen.",
-    url: "https://www.telaviinn.ge/",
+      "Weitere Hotels & Apartments im Ort – z. B. Upper Gudauri (nahe Pisten).",
+    url: "https://www.booking.com/city/ge/gudauri.de.html",
   },
 ];
 
-
-// ------------------------------------------------------
-// NEU: Packliste (Februar in Georgien)
-// ------------------------------------------------------
-// Mehrsprachige Packliste
+// ======================================================
+// Mehrsprachige Packliste (Februar)
+// ======================================================
 export const PACKLISTE_I18N = {
   de: [
     "Warmer Mantel/Daunenjacke",
@@ -256,32 +300,36 @@ export const PACKLISTE_I18N = {
 };
 
 // ======================================================
-// Mehrsprachige Texte (i18n)
+// I18n Texte (DE/EN/RU)
 // ======================================================
 export const TEXTS = {
+  // ---------- Deutsch ----------
   de: {
     nav: {
       start: "Start",
       flights: "Flüge/Anreise",
       region: "Infos zur Region",
       location: "Location",
+       winter: "Winter in Georgien",   // 👈 NEU
       rsvp: "RSVP",
       calendar: "Kalender",
       gallery: "Galerie",
     },
-    heroIntro: "Wir heiraten in Kachetien, Georgien",
+    heroIntro: "Wir heiraten in Gudauri, Georgien",
     heroThanks: "Wir freuen uns riesig, wenn möglichst viele von euch mit uns feiern!",
     dateLabel: "Hochzeitsdatum",
     sectionFeier: "Die Feier",
     feierSub: "Wichtige Eckdaten",
     stimmung: "Stimmung aus Georgien",
-    stimmungSub: "Weinberge, Altstädte & Ausblicke – unsere Inspiration",
+    stimmungSub: "Berge, Altstädte & Ausblicke – unsere Inspiration",
+
     flightsTitle: "Flüge & Anreise",
     flightsSub: "Ziel: Tbilisi (TBS) – Hochzeit am 28.02.2026",
     transfersTitle: "Transfers & Wege",
     regionTitle: "Region & Ausflüge",
     locationTitle: "Die Location",
-    locationSub: "Chateau Methis Kalaki – Wein, Aussicht & Feier",
+    locationSub: "Monte Gudauri – Berge, Panorama & Feier",
+
     rsvpTitle: "Zusagen & Absagen (RSVP)",
     rsvpSub: "Bitte gebt uns bis 24. November 2025 Bescheid",
     contact: "Kontakt",
@@ -291,6 +339,7 @@ export const TEXTS = {
     hospitality: "Georgische Gastfreundschaft",
     wine: "Wein & Supra",
     mapOpen: "In Google Maps öffnen",
+
     placeTitle: "Ort",
     scheduleShort: "Zeitplan kurz",
     flightPlanning: "Flugplanung",
@@ -309,6 +358,8 @@ export const TEXTS = {
     dayFlow: "Ablauf am Tag",
     gallery: "Galerie",
     impressions: "Impressionen",
+
+    // Formular
     send: "Antwort absenden",
     sending: "Sende…",
     yesnoQ: "Nehmt ihr teil?",
@@ -328,451 +379,394 @@ export const TEXTS = {
     privacyBody:
       "Wir behandeln eure Angaben vertraulich und nutzen sie ausschließlich zur Planung. Nach dem Event werden die Daten gelöscht.",
     rsvpSuccess: "Danke! Eure Antwort wurde übermittelt. 💌",
+
     factsTitle: "Georgien in Zahlen & Fakten",
-    // --- NEU: Packliste-Strings
     packlistTitle: "🎒 Packliste (Februar in Georgien)",
-    packlistIntro: "Im Februar ist es winterlich (Tbilisi ~5 °C, Telavi ~0–8 °C). In höheren Lagen teils Schnee – diese Liste hilft beim Packen:",
-    bookEarlyNote: "🔔 Bitte frühzeitig buchen – rund um den Hochzeitstermin sind Unterkünfte gefragt.",
+    packlistIntro:
+      "Im Februar ist es winterlich (Tbilisi ~5 °C). In höheren Lagen teils Schnee – diese Liste hilft beim Packen:",
+    bookEarlyNote:
+      "🔔 Bitte frühzeitig buchen – rund um den Hochzeitstermin sind Unterkünfte gefragt.",
+
     place: {
-      kakhetiVineyards: "Kachetien Weinberge",
+      kakhetiVineyards: "Kaukasus",
       tbilisi: "Tiflis Altstadt",
       sulfurBaths: "Schwefelbäder Abanotubani",
       narikala: "Narikala Festung",
       bridgeOfPeace: "Bridge of Peace",
       sighnaghi: "Sighnaghi",
-      alaverdi: "Kloster Alaverdi",
+      alaverdi: "Alaverdi",
       telavi: "Telavi",
-      // Homepage (Start)
-heroLogoAlt: "Olga & Volker – Hochzeitslogo",
-heroEyebrow: "Große Party in Shida Kartli in Georgien !!!",
-heroTitle: "Wir heiraten!",
-name1: "Olga",
-name2: "Volker",
-heroSub:
-  "Willkommen – hier findet ihr alles zu Anreise, Location, Ablauf und am wichtigsten - Die Anmeldung. Wir freuen uns riesig, wenn möglichst viele von euch mit uns feiern!",
+    },
 
-cta1: "1. RSVP ausfüllen",
-cta2: "2. Flug buchen",
-cta3: "3. Ort merken",
+    // Startseite – Karten / Texte
+    sectionCelebration: "Die Feier",
+    sectionCelebrationSub: "Alles Wichtige auf einen Blick – Ort, Zeitplan, Kontakt & Highlights.",
+    cardVenueTitle: "Ort & Ablauf",
+    venueLead: "Trauung & Dinner im",
+    venueName: "Monte Gudauri",
+    venueTail: "Dresscode: elegant, winterfest. Musik & Tanz bis in die Nacht.",
+    mapsOpen: "Adresse in Google Maps öffnen",
+    hlWine: "Gemütliche Bar & Lounge",
+    hlMusic: "Musik & Tanz",
+    hlWinter: "Winterliche Bergstimmung",
 
-quickRegion: "Kachetien (Telavi/Sighnaghi)",
-quickFood: "Georgische Küche & Wein",
-quickCeremony: "Freie Trauung & Dinner",
+    cardTimelineTitle: "Zeitplan",
+    tl14: "Freie Trauung",
+    tl1530: "Sektempfang",
+    tl18: "Dinner",
+    tlEveningTime: "abends",
+    tlEve: "Musik, Tanz & Überraschungen",
 
-sectionCelebration: "Die Feier",
-sectionCelebrationSub: "Alles Wichtige auf einen Blick – Ort, Zeitplan, Kontakt & Highlights.",
+    cardContactTitle: "Kontakt",
+    contactLead: "Fragen zu Anreise, Unterkunft oder Allergien?",
+    contactEmailLabel: "love@example.com",
 
-cardVenueTitle: "Ort & Ablauf",
-venueLead: "Trauung & Dinner im",
-venueName: "Chateau Methis Kalaki",
-venueTail: "Dresscode: elegant, winterfest. Musik & Tanz bis in die Nacht.",
-mapsOpen: "Adresse in Google Maps öffnen",
+    accommodationIntro:
+      "Monte Gudauri ist ein gemütliches Hotel im Skigebiet – mit Restaurant, Bar und weitem Bergblick.",
+    bookingCta: "→ Auf Booking.com ansehen",
+    hotelFeatures: {
+      rooms: "Komfortable Zimmer",
+      winery: "Lounge & Bar",
+      restaurant: "Restaurant & Terrasse",
+      pool: "Wellness/Pool (je nach Hotel)",
+      wifi: "WLAN inklusive",
+      parking: "Parkplätze am Haus",
+      breakfast: "Frühstück & Bar",
+      view: "Panorama über den Kaukasus",
+    },
+    openMap: "Auf Karte öffnen",
 
-hlWine: "Qvevri-Weinverkostung",
-hlMusic: "Musik & Tanz",
-hlWinter: "Winterliche Stimmung",
-
-cardTimelineTitle: "Zeitplan",
-tl14: "Freie Trauung",
-tl1530: "Sektempfang & Weinverkostung",
-tl18: "Dinner",
-tlEveningTime: "abends",
-tlEve: "Musik, Tanz & Überraschungen",
-
-cardContactTitle: "Kontakt",
-contactLead: "Fragen zu Anreise, Unterkunft oder Allergien?",
-contactEmailLabel: "love@example.com",
-
-accommodationIntro: "Das Chateau Methis Kalaki ist ein Boutique-Weingut in Kachetien – mit eleganten Zimmern, Restaurant, Terrasse, Wellness-Optionen und Blick über die Weinberge.",
-bookingCta: "→ Auf Booking.com ansehen",
-hotelFeatures: {
-  rooms: "Komfortable Zimmer",
-  winery: "Weingut & Verkostung",
-  restaurant: "Restaurant & Terrasse",
-  pool: "Außenpool (Sommer)",
-  wifi: "WLAN inklusive",
-  parking: "Parkplätze am Haus",
-  breakfast: "Frühstück & Bar",
-  view: "Weitblick über Kachetien",
-},
-openMap: "Auf Karte öffnen",
-
-transfersIntro:
-  "Der Weg vom Tbilisi International Airport (TBS) zum Chateau Methis Kalaki in Upper Chocheti, Kachetien dauert etwa 90 Minuten. Hier sind die besten Möglichkeiten:",
-transferOptions: {
-  shuttleTitle: "🚐 Shuttle-Service",
-  shuttleText: "Sammeltransfer am Hochzeitstag – bitte vorher anmelden.",
-  shuttleNote: "Shuttle-Koordination (WhatsApp verfügbar)",
-  taxiTitle: "🚕 Taxi / Fahrer",
-  taxiText: "Komfortable Privattransfers oder lokale Taxis direkt am Flughafen.",
-  taxiPrice: "Preis ca. 120–150 GEL (≈ 40–50 €) pro Strecke.",
-  rentTitle: "🚗 Mietwagen",
-  rentText:
-    "Ideal, wenn ihr flexibel reisen möchtet. Mietwagen sind direkt am Flughafen Tbilisi verfügbar.",
-  rentNote: "Fahrzeit: ca. 1 h 30 min über Kakheti Hwy (S5) – gute Straße.",
-  busTitle: "🚌 Öffentliche Busse",
-  busText:
-    "Abfahrt von Ortachala oder Samgori Bus Station in Tbilisi. Fahrzeit 2–3 Stunden, Preis ca. 15 GEL (bar).",
-  busMap: "Busstation auf Google Maps öffnen",
-},
-
-
+    transfersIntro:
+      "Die Fahrt vom Tbilisi International Airport (TBS) nach Gudauri/Monte dauert ca. 2–2,5 Std. (je nach Verkehr & Wetter) über die Georgische Heerstraße (E117). Hier sind die besten Optionen:",
+    transferOptions: {
+      shuttleTitle: "🚐 Shuttle-Service",
+      shuttleText: "Sammeltransfer am Hochzeitstag – bitte vorher anmelden.",
+      shuttleNote: "Shuttle-Koordination (WhatsApp verfügbar)",
+      taxiTitle: "🚕 Taxi / Fahrer",
+      taxiText: "Komfortable Privattransfers oder lokale Taxis direkt am Flughafen.",
+      taxiPrice: "Preis ca. 200–300 GEL pro Strecke (je nach Saison/Wetter).",
+      rentTitle: "🚗 Mietwagen",
+      rentText:
+        "Ideal, wenn ihr flexibel reisen möchtet. Mietwagen sind direkt am Flughafen Tbilisi verfügbar.",
+      rentNote:
+        "Fahrzeit: ca. 2–2,5 h über die E117 – im Winter ggf. Schneekettenpflicht.",
+      busTitle: "🚌 Öffentliche Busse",
+      busText:
+        "Abfahrt von Didube Bus Station in Tbilisi. Fahrzeit 2–3 Stunden, Preis ~20–30 GEL (bar).",
+      busMap: "Busstation auf Google Maps öffnen",
     },
   },
 
-// ========= EN (English) =========
-en: {
-  nav: {
-    start: "Home",
-    flights: "Flights & Arrival",
-    region: "About the Region",
-    location: "Venue",
-    rsvp: "RSVP",
-    calendar: "Calendar",
+  // ---------- English ----------
+  en: {
+    nav: {
+      start: "Home",
+      flights: "Flights & Arrival",
+      region: "About the Region",
+      location: "Venue",
+        winter: "Winter in Georgia",  // 👈 NEW
+      rsvp: "RSVP",
+      calendar: "Calendar",
+      gallery: "Gallery",
+    },
+    heroIntro: "We’re getting married in Gudauri, Georgia",
+    heroThanks: "We’d be so happy if many of you could join us to celebrate!",
+    dateLabel: "Wedding Date",
+    sectionFeier: "The Celebration",
+    feierSub: "Key Details",
+    stimmung: "Impressions of Georgia",
+    stimmungSub: "Mountains, old towns & breathtaking views – our inspiration",
+
+    flightsTitle: "Flights & Arrival",
+    flightsSub: "Destination: Tbilisi (TBS) – Wedding on 28 Feb 2026",
+    transfersTitle: "Transfers & Directions",
+    regionTitle: "Region & Highlights",
+    locationTitle: "The Location",
+    locationSub: "Monte Gudauri – mountain views & celebration",
+
+    rsvpTitle: "RSVP – Confirm or Decline",
+    rsvpSub: "Please reply by November 24, 2025",
+    contact: "Contact",
+    addToCal: "Add to Calendar",
+    planTrip: "Plan Your Trip",
+    rsvpBtn: "RSVP Now",
+    hospitality: "Georgian Hospitality",
+    wine: "Wine & Supra",
+    mapOpen: "Open in Google Maps",
+
+    placeTitle: "Venue",
+    scheduleShort: "Schedule (short)",
+    flightPlanning: "Flight Planning",
+    tipsTitle: "Tips & Notes",
+    accommodationTitle: "Accommodation (Selection)",
+    website: "Website",
+    mapLabel: "Map",
+    shuttle: "Shuttle",
+    taxi: "Taxi",
+    bus: "Bus / Marshrutka",
+    fromLabel: "From",
+    arrivalLabel: "Arrival",
+    altLabel: "Alternative",
+    trainLabel: "Train Station",
+    transferLabel: "Transfer",
+    dayFlow: "Day Schedule",
     gallery: "Gallery",
+    impressions: "Impressions",
+
+    // Form
+    send: "Send Response",
+    sending: "Sending…",
+    yesnoQ: "Will you attend?",
+    yes: "Yes",
+    no: "No",
+    people: "Number of Guests",
+    diet: "children",
+    name: "Name",
+    email: "Email",
+    namePlaceholder: "First and last name",
+    emailPlaceholder: "name@mail.com",
+    dietPlaceholder: "no, only party is best ;-)",
+    orEmail: "or via email to",
+    privacy: "I agree that my data may be used for wedding organization purposes.",
+    privacyNote: "For planning only – all data will be deleted afterwards.",
+    privacyTitle: "Privacy Policy",
+    privacyBody:
+      "We treat your data confidentially and use it solely for organizing the wedding. After the event, all information will be deleted.",
+    rsvpSuccess: "Thank you! Your response has been received. 💌",
+
+    factsTitle: "Georgia in Numbers",
+    packlistTitle: "🎒 Packing List (February in Georgia)",
+    packlistIntro:
+      "February is wintry (Tbilisi ~5 °C). Mountain areas may have snow — here’s a handy list:",
+    bookEarlyNote:
+      "🔔 Please book early — accommodation tends to fill up around the wedding date.",
+
+    place: {
+      kakhetiVineyards: "Caucasus",
+      tbilisi: "Tbilisi Old Town",
+      sulfurBaths: "Abanotubani Sulfur Baths",
+      narikala: "Narikala Fortress",
+      bridgeOfPeace: "Bridge of Peace",
+      sighnaghi: "Sighnaghi",
+      alaverdi: "Alaverdi",
+      telavi: "Telavi",
+    },
+
+    sectionCelebration: "The Celebration",
+    sectionCelebrationSub:
+      "All the essentials—location, timeline, contact & highlights.",
+    cardVenueTitle: "Venue & Plan",
+    venueLead: "Ceremony & dinner at",
+    venueName: "Monte Gudauri",
+    venueTail: "Dress code: elegant, winter-ready. Music & dancing into the night.",
+    mapsOpen: "Open address in Google Maps",
+    hlWine: "Cozy bar & lounge",
+    hlMusic: "Music & dancing",
+    hlWinter: "Cozy winter vibes",
+
+    cardTimelineTitle: "Timeline",
+    tl14: "Ceremony",
+    tl1530: "Reception",
+    tl18: "Dinner",
+    tlEveningTime: "evening",
+    tlEve: "Music, dancing & surprises",
+
+    cardContactTitle: "Contact",
+    contactLead: "Questions about travel, accommodation or allergies?",
+    contactEmailLabel: "love@example.com",
+
+    accommodationIntro:
+      "Monte Gudauri is a cozy mountain hotel with a restaurant, bar and sweeping views.",
+    bookingCta: "→ View on Booking.com",
+    hotelFeatures: {
+      rooms: "Comfortable rooms",
+      winery: "Lounge & bar",
+      restaurant: "Restaurant & terrace",
+      pool: "Wellness/pool (if available)",
+      wifi: "Free Wi-Fi",
+      parking: "On-site parking",
+      breakfast: "Breakfast & bar",
+      view: "Wide mountain views",
+    },
+    openMap: "Open on map",
+
+    transfersIntro:
+      "The trip from Tbilisi International Airport (TBS) to Gudauri/Monte takes about 2–2.5 h (traffic & weather) via the Georgian Military Highway (E117). Here are the best options:",
+    transferOptions: {
+      shuttleTitle: "🚐 Shuttle Service",
+      shuttleText: "Group transfer on the wedding day — please register in advance.",
+      shuttleNote: "Shuttle coordination (WhatsApp available)",
+      taxiTitle: "🚕 Taxi / Private Driver",
+      taxiText: "Comfortable private transfers or local taxis available at the airport.",
+      taxiPrice: "Approx. 200–300 GEL per trip (season/weather).",
+      rentTitle: "🚗 Car Rental",
+      rentText:
+        "Perfect if you prefer flexibility. Rental cars available directly at Tbilisi Airport.",
+      rentNote:
+        "Travel time: about 2–2.5 h via E117 — in winter chains may be required.",
+      busTitle: "🚌 Public Buses",
+      busText:
+        "Depart from Didube Bus Station in Tbilisi. Travel time 2–3 hours, fare ~20–30 GEL (cash).",
+      busMap: "Open bus station on Google Maps",
+    },
   },
 
-  // Hero / Home
-  heroIntro: "We’re getting married in Kakheti, Georgia",
-  heroThanks: "We’d be so happy if many of you could join us to celebrate!",
-  dateLabel: "Wedding Date",
-  heroLogoAlt: "Olga & Volker — wedding logo",
-  heroEyebrow: "Big party in Shida Kartli in Georgia!!!",
-  heroTitle: "We're getting married!",
-  name1: "Olga",
-  name2: "Volker",
-  heroSub:
-    "Welcome—here you'll find everything about travel, venue, timeline, and most importantly—the RSVP. We can’t wait to celebrate with as many of you as possible!",
+  // ---------- Russisch ----------
+  ru: {
+    nav: {
+      start: "Главная",
+      flights: "Рейсы и прибытие",
+      region: "О регионе",
+      location: "Локация",
+       winter: "Зима в Грузии",  // 👈 НОВОЕ
+      rsvp: "RSVP",
+      calendar: "Календарь",
+      gallery: "Галерея",
+    },
+    heroIntro: "Мы женимся в Гудаури, Грузия",
+    heroThanks: "Мы будем счастливы, если вы сможете отпраздновать с нами этот день!",
+    dateLabel: "Дата свадьбы",
+    sectionFeier: "Празднование",
+    feierSub: "Основная информация",
+    stimmung: "Атмосфера Грузии",
+    stimmungSub: "Горы, старые города и виды — наше вдохновение",
 
-  // CTA buttons
-  cta1: "1. Fill out RSVP",
-  cta2: "2. Book flights",
-  cta3: "3. Save the venue",
+    flightsTitle: "Рейсы и прибытие",
+    flightsSub: "Пункт назначения: Тбилиси (TBS) — свадьба 28.02.2026",
+    transfersTitle: "Трансферы и маршруты",
+    regionTitle: "О регионе и достопримечательности",
+    locationTitle: "Место проведения",
+    locationSub: "Monte Gudauri — горные виды и праздник",
 
-  // Quick facts
-  quickRegion: "Kakheti (Telavi/Sighnaghi)",
-  quickFood: "Georgian food & wine",
-  quickCeremony: "Non-religious ceremony & dinner",
+    rsvpTitle: "Подтверждение участия (RSVP)",
+    rsvpSub: "Пожалуйста, дайте нам знать до 24 ноября 2025 года.",
+    contact: "Контакт",
+    addToCal: "Добавить в календарь",
+    planTrip: "Спланировать поездку",
+    rsvpBtn: "Подтвердить или отказаться",
+    hospitality: "Грузинское гостеприимство",
+    wine: "Вино и Супра",
+    mapOpen: "Открыть в Google Картах",
 
-  // Sections / pages
-  sectionFeier: "The Celebration",
-  feierSub: "Key Details",
-  stimmung: "Impressions of Georgia",
-  stimmungSub: "Vineyards, old towns & breathtaking views – our inspiration",
-  flightsTitle: "Flights & Arrival",
-  flightsSub: "Destination: Tbilisi (TBS) – Wedding on 28 Feb 2026",
-  transfersTitle: "Transfers & Directions",
-  regionTitle: "Region & Highlights",
-  locationTitle: "The Location",
-  locationSub: "Chateau Methis Kalaki – wine, views & celebration",
-  rsvpTitle: "RSVP – Confirm or Decline",
-  rsvpSub: "Please reply by November 24, 2025",
-  contact: "Contact",
-  addToCal: "Add to Calendar",
-  planTrip: "Plan Your Trip",
-  rsvpBtn: "RSVP Now",
-  hospitality: "Georgian Hospitality",
-  wine: "Wine & Supra",
-  mapOpen: "Open in Google Maps",
-
-  // Venue / Flow / Form
-  placeTitle: "Venue",
-  scheduleShort: "Schedule (short)",
-  flightPlanning: "Flight Planning",
-  tipsTitle: "Tips & Notes",
-  accommodationTitle: "Accommodation (Selection)",
-  website: "Website",
-  mapLabel: "Map",
-  shuttle: "Shuttle",
-  taxi: "Taxi",
-  bus: "Bus / Marshrutka",
-  fromLabel: "From",
-  arrivalLabel: "Arrival",
-  altLabel: "Alternative",
-  trainLabel: "Train Station",
-  transferLabel: "Transfer",
-  dayFlow: "Day Schedule",
-  gallery: "Gallery",
-  impressions: "Impressions",
-
-  // Form strings
-  send: "Send Response",
-  sending: "Sending…",
-  yesnoQ: "Will you attend?",
-  yes: "Yes",
-  no: "No",
-  people: "Number of Guests",
-  diet: "children",
-  name: "Name",
-  email: "Email",
-  namePlaceholder: "First and last name",
-  emailPlaceholder: "name@mail.com",
-  dietPlaceholder: "no, only party is best ;-)",
-  orEmail: "or via email to",
-  privacy: "I agree that my data may be used for wedding organization purposes.",
-  privacyNote: "For planning only – all data will be deleted afterwards.",
-  privacyTitle: "Privacy Policy",
-  privacyBody:
-    "We treat your data confidentially and use it solely for organizing the wedding. After the event, all information will be deleted.",
-  rsvpSuccess: "Thank you! Your response has been received. 💌",
-  factsTitle: "Georgia in Numbers",
-
-  // Packing list
-  packlistTitle: "🎒 Packing List (February in Georgia)",
-  packlistIntro:
-    "February is wintry (Tbilisi ~5 °C, Telavi ~0–8 °C). Mountain areas may have snow — here’s a handy list:",
-  bookEarlyNote:
-    "🔔 Please book early — accommodation tends to fill up around the wedding date.",
-
-  // Places captions
-  place: {
-    kakhetiVineyards: "Kakheti Vineyards",
-    tbilisi: "Tbilisi Old Town",
-    sulfurBaths: "Abanotubani Sulfur Baths",
-    narikala: "Narikala Fortress",
-    bridgeOfPeace: "Bridge of Peace",
-    sighnaghi: "Sighnaghi",
-    alaverdi: "Alaverdi Monastery",
-    telavi: "Telavi",
-  },
-
-  // Home cards
-  sectionCelebration: "The Celebration",
-  sectionCelebrationSub:
-    "All the essentials—location, timeline, contact & highlights.",
-  cardVenueTitle: "Venue & Plan",
-  venueLead: "Ceremony & dinner at",
-  venueName: "Chateau Methis Kalaki",
-  venueTail:
-    "Dress code: elegant, winter-ready. Music & dancing into the night.",
-  mapsOpen: "Open address in Google Maps",
-  hlWine: "Qvevri wine tasting",
-  hlMusic: "Music & dancing",
-  hlWinter: "Cozy winter vibes",
-  cardTimelineTitle: "Timeline",
-  tl14: "Ceremony",
-  tl1530: "Reception & wine tasting",
-  tl18: "Dinner",
-  tlEveningTime: "evening",
-  tlEve: "Music, dancing & surprises",
-  cardContactTitle: "Contact",
-  contactLead: "Questions about travel, accommodation or allergies?",
-  contactEmailLabel: "love@example.com",
-
-  // Accommodation (Flights page)
-  accommodationIntro:
-    "Chateau Methis Kalaki is a boutique winery-hotel in Kakheti with elegant rooms, a restaurant and terrace, wellness options and sweeping vineyard views.",
-  bookingCta: "→ View on Booking.com",
-  hotelFeatures: {
-    rooms: "Comfortable rooms",
-    winery: "Winery & tasting",
-    restaurant: "Restaurant & terrace",
-    pool: "Outdoor pool (summer)",
-    wifi: "Free Wi-Fi",
-    parking: "On-site parking",
-    breakfast: "Breakfast & bar",
-    view: "Wide views over Kakheti",
-  },
-  openMap: "Open on map",
-
-  // Transfers (Flights page)
-  transfersIntro:
-    "The trip from Tbilisi International Airport (TBS) to Chateau Methis Kalaki in Upper Chocheti, Kakheti takes about 90 minutes. Here are the best transfer options:",
-  transferOptions: {
-    shuttleTitle: "🚐 Shuttle Service",
-    shuttleText: "Group transfer on the wedding day — please register in advance.",
-    shuttleNote: "Shuttle coordination (WhatsApp available)",
-    taxiTitle: "🚕 Taxi / Private Driver",
-    taxiText: "Comfortable private transfers or local taxis available at the airport.",
-    taxiPrice: "Approx. 120–150 GEL (~€40–50) per trip.",
-    rentTitle: "🚗 Car Rental",
-    rentText:
-      "Perfect if you prefer flexibility. Rental cars available directly at Tbilisi Airport.",
-    rentNote: "Travel time: about 1 h 30 min via Kakheti Hwy (S5) — paved, scenic road.",
-    busTitle: "🚌 Public Buses",
-    busText:
-      "Depart from Ortachala or Samgori bus stations in Tbilisi. Travel time 2–3 hours, fare about 15 GEL (cash).",
-    busMap: "Open bus station on Google Maps",
-   },
-}, // <<< WICHTIG: EN-Block schließen und MIT KOMMA beenden!
-
-// ========= RU (Русский) =========
-ru: {
-  nav: {
-    start: "Главная",
-    flights: "Рейсы и прибытие",
-    region: "О регионе",
-    location: "Локация",
-    rsvp: "RSVP",
-    calendar: "Календарь",
+    placeTitle: "Место",
+    scheduleShort: "Краткое расписание",
+    flightPlanning: "Планирование рейсов",
+    tipsTitle: "Советы и информация",
+    accommodationTitle: "Проживание (рекомендации)",
+    website: "Веб-сайт",
+    mapLabel: "Карта",
+    shuttle: "Шаттл",
+    taxi: "Такси",
+    bus: "Автобус / маршрутка",
+    fromLabel: "Откуда",
+    arrivalLabel: "Прибытие",
+    altLabel: "Альтернатива",
+    trainLabel: "Ж/д вокзал",
+    transferLabel: "Трансфер",
+    dayFlow: "Ход дня",
     gallery: "Галерея",
+    impressions: "Впечатления",
+
+    // Формы
+    send: "Отправить ответ",
+    sending: "Отправка…",
+    yesnoQ: "Вы участвуете?",
+    yes: "Да",
+    no: "Нет",
+    people: "Количество человек",
+    diet: "Дети",
+    name: "Имя",
+    email: "Эл. почта",
+    namePlaceholder: "Имя и фамилия",
+    emailPlaceholder: "name@mail.ru",
+    dietPlaceholder: "нет, только вечеринка лучше всего ;-)",
+    orEmail: "или по адресу",
+    privacy: "Я согласен(а) на обработку данных для организации свадьбы.",
+    privacyNote: "Только для планирования — после мероприятия данные будут удалены.",
+    privacyTitle: "Конфиденциальность",
+    privacyBody:
+      "Мы обращаемся с вашими данными конфиденциально и используем их только для планирования свадьбы. После мероприятия данные будут удалены.",
+    rsvpSuccess: "Спасибо! Ваш ответ отправлен 💌",
+
+    factsTitle: "Грузия в цифрах",
+    packlistTitle: "🎒 Список вещей (февраль в Грузии)",
+    packlistIntro:
+      "В феврале зима (Тбилиси ~5 °C). В горах возможен снег — этот список поможет собрать вещи:",
+    bookEarlyNote:
+      "🔔 Пожалуйста, бронируйте заранее — в даты свадьбы жильё быстро разбирают.",
+
+    place: {
+      kakhetiVineyards: "Кавказ",
+      tbilisi: "Старый город Тбилиси",
+      sulfurBaths: "Серные бани Абанотубани",
+      narikala: "Крепость Нарикала",
+      bridgeOfPeace: "Мост Мира",
+      sighnaghi: "Сигнахи",
+      alaverdi: "Алаверди",
+      telavi: "Телави",
+    },
+
+    sectionCelebration: "Праздник",
+    sectionCelebrationSub: "Всё важное: место, расписание, контакты и главное.",
+    cardVenueTitle: "Место и программа",
+    venueLead: "Церемония и ужин в",
+    venueName: "Monte Gudauri",
+    venueTail: "Дресс-код: элегантно и тепло. Музыка и танцы до ночи.",
+    mapsOpen: "Открыть адрес в Google Maps",
+    hlWine: "Уютный бар и лаунж",
+    hlMusic: "Музыка и танцы",
+    hlWinter: "Зимняя атмосфера в горах",
+
+    cardTimelineTitle: "Расписание",
+    tl14: "Церемония",
+    tl1530: "Фуршет",
+    tl18: "Ужин",
+    tlEveningTime: "вечером",
+    tlEve: "Музыка, танцы и сюрпризы",
+
+    cardContactTitle: "Контакты",
+    contactLead: "Вопросы по дороге, проживанию или аллергиям?",
+    contactEmailLabel: "love@example.com",
+
+    accommodationIntro:
+      "Monte Gudauri — уютный горный отель с рестораном, баром и панорамными видами.",
+    bookingCta: "→ Открыть на Booking.com",
+    hotelFeatures: {
+      rooms: "Уютные номера",
+      winery: "Лаунж и бар",
+      restaurant: "Ресторан и терраса",
+      pool: "Велнес/бассейн (если доступен)",
+      wifi: "Бесплатный Wi-Fi",
+      parking: "Парковка на территории",
+      breakfast: "Завтрак и бар",
+      view: "Панорамы Кавказа",
+    },
+    openMap: "Открыть на карте",
+
+    transfersIntro:
+      "Поездка из аэропорта Тбилиси (TBS) до Гудаури/Monte занимает около 2–2,5 ч (зависит от погоды и трафика) по Военно-Грузинской дороге (E117). Вот лучшие варианты:",
+    transferOptions: {
+      shuttleTitle: "🚐 Трансфер-шаттл",
+      shuttleText: "Групповой трансфер в день свадьбы — требуется предварительная запись.",
+      shuttleNote: "Координация шаттла (WhatsApp)",
+      taxiTitle: "🚕 Такси / частный водитель",
+      taxiText: "Комфортные частные трансферы или местные такси прямо в аэропорту.",
+      taxiPrice: "Около 200–300 GEL за поездку (в зависимости от сезона/погоды).",
+      rentTitle: "🚗 Аренда автомобиля",
+      rentText:
+        "Удобно для самостоятельных поездок. Аренда доступна прямо в аэропорту Тбилиси.",
+      rentNote:
+        "В пути ~2–2,5 ч по E117 — зимой могут потребоваться цепи.",
+      busTitle: "🚌 Общественные автобусы",
+      busText:
+        "Отправление с автостанции Дидубе (Тбилиси). В пути 2–3 часа, стоимость ~20–30 GEL (наличные).",
+      busMap: "Открыть автовокзал в Google Картах",
+    },
   },
-
-  // Hero / Startseite
-  heroIntro: "Мы женимся в Кахетии, Грузия",
-  heroThanks: "Мы будем счастливы, если вы сможете отпраздновать с нами этот день!",
-  dateLabel: "Дата свадьбы",
-  heroLogoAlt: "Логотип свадьбы Ольги и Фолькера",
-  heroEyebrow: "Большая вечеринка в Шида Картли в Грузии!!!",
-  heroTitle: "Мы женимся!",
-  name1: "Ольга",
-  name2: "Фолькер",
-  heroSub:
-    "Добро пожаловать — здесь вы найдёте всё про дорогу, место, программу и самое важное — регистрацию (RSVP). Мы безумно рады, если как можно больше из вас отпразднует с нами!",
-
-  // CTA-Buttons (Hero)
-  cta1: "1. Заполнить RSVP",
-  cta2: "2. Купить билеты",
-  cta3: "3. Сохранить адрес",
-
-  // Quick facts
-  quickRegion: "Кахетия (Телави/Сигнахи)",
-  quickFood: "Грузинская кухня и вино",
-  quickCeremony: "Выездная церемония и ужин",
-
-  // Sektionen / Seiten
-  sectionFeier: "Празднование",
-  feierSub: "Основная информация",
-  stimmung: "Атмосфера Грузии",
-  stimmungSub: "Виноградники, старые города и захватывающие виды — наше вдохновение",
-  flightsTitle: "Рейсы и прибытие",
-  flightsSub: "Пункт назначения: Тбилиси (TBS) — свадьба 28.02.2026",
-  transfersTitle: "Трансферы и маршруты",
-  regionTitle: "О регионе и достопримечательности",
-  locationTitle: "Место проведения",
-  locationSub: "Chateau Methis Kalaki — вино, вид и праздник",
-  rsvpTitle: "Подтверждение участия (RSVP)",
-  rsvpSub: "Пожалуйста, дайте нам знать до 24 ноября 2025 года.",
-  contact: "Контакт",
-  addToCal: "Добавить в календарь",
-  planTrip: "Спланировать поездку",
-  rsvpBtn: "Подтвердить или отказаться",
-  hospitality: "Грузинское гостеприимство",
-  wine: "Вино и Супра",
-  mapOpen: "Открыть в Google Картах",
-
-  // Venue / Ablauf / Form
-  placeTitle: "Место",
-  scheduleShort: "Краткое расписание",
-  flightPlanning: "Планирование рейсов",
-  tipsTitle: "Советы и информация",
-  accommodationTitle: "Проживание (рекомендации)",
-  website: "Веб-сайт",
-  mapLabel: "Карта",
-  shuttle: "Шаттл",
-  taxi: "Такси",
-  bus: "Автобус / маршрутка",
-  fromLabel: "Откуда",
-  arrivalLabel: "Прибытие",
-  altLabel: "Альтернатива",
-  trainLabel: "Ж/д вокзал",
-  transferLabel: "Трансфер",
-  dayFlow: "Ход дня",
-  gallery: "Галерея",
-  impressions: "Впечатления",
-
-  // Formular
-  send: "Отправить ответ",
-  sending: "Отправка…",
-  yesnoQ: "Вы участвуете?",
-  yes: "Да",
-  no: "Нет",
-  people: "Количество человек",
-  diet: "Дети",
-  name: "Имя",
-  email: "Эл. почта",
-  namePlaceholder: "Имя и фамилия",
-  emailPlaceholder: "name@mail.ru",
-  dietPlaceholder: "нет, только вечеринка лучше всего ;-)",
-  orEmail: "или по адресу",
-  privacy: "Я согласен(а) на обработку данных для организации свадьбы.",
-  privacyNote: "Только для планирования — после мероприятия данные будут удалены.",
-  privacyTitle: "Конфиденциальность",
-  privacyBody:
-    "Мы обращаемся с вашими данными конфиденциально и используем их только для планирования свадьбы. После мероприятия данные будут удалены.",
-  rsvpSuccess: "Спасибо! Ваш ответ отправлен 💌",
-
-  // Fakten / Packliste
-  factsTitle: "Грузия в цифрах",
-  packlistTitle: "🎒 Список вещей (февраль в Грузии)",
-  packlistIntro:
-    "В феврале зима (Тбилиси ~5 °C, Телави ~0–8 °C). В горах возможен снег — этот список поможет собрать вещи:",
-  bookEarlyNote:
-    "🔔 Пожалуйста, бронируйте заранее — в даты свадьбы жильё быстро разбирают.",
-
-  // Orte (Bildunterschriften etc.)
-  place: {
-    kakhetiVineyards: "Виноградники Кахетии",
-    tbilisi: "Старый город Тбилиси",
-    sulfurBaths: "Серные бани Абанотубани",
-    narikala: "Крепость Нарикала",
-    bridgeOfPeace: "Мост Мира",
-    sighnaghi: "Сигнахи",
-    alaverdi: "Монастырь Алаверди",
-    telavi: "Телави",
-  },
-
-  // Startseite – Karten / Texte
-  sectionCelebration: "Праздник",
-  sectionCelebrationSub: "Всё важное: место, расписание, контакты и главное.",
-  cardVenueTitle: "Место и программа",
-  venueLead: "Церемония и ужин в",
-  venueName: "Chateau Methis Kalaki",
-  venueTail: "Дресс-код: элегантно, по-зимнему. Музыка и танцы до ночи.",
-  mapsOpen: "Открыть адрес в Google Maps",
-  hlWine: "Дегустация вина из квеври",
-  hlMusic: "Музыка и танцы",
-  hlWinter: "Зимнее настроение",
-  cardTimelineTitle: "Расписание",
-  tl14: "Церемония",
-  tl1530: "Фуршет и дегустация вина",
-  tl18: "Ужин",
-  tlEveningTime: "вечером",
-  tlEve: "Музыка, танцы и сюрпризы",
-  cardContactTitle: "Контакты",
-  contactLead: "Вопросы по дороге, проживанию или аллергиям?",
-  contactEmailLabel: "love@example.com",
-
-  // Unterkunft (auf Flüge/Anreise)
-  accommodationIntro:
-    "Chateau Methis Kalaki — бутик-отель-винодельня в Кахетии: элегантные номера, ресторан с террасой, варианты SPA/Wellness и виды на виноградники.",
-  bookingCta: "→ Открыть на Booking.com",
-  hotelFeatures: {
-    rooms: "Уютные номера",
-    winery: "Винодельня и дегустации",
-    restaurant: "Ресторан и терраса",
-    pool: "Открытый бассейн (летом)",
-    wifi: "Бесплатный Wi-Fi",
-    parking: "Парковка на территории",
-    breakfast: "Завтрак и бар",
-    view: "Панорамы Кахетии",
-  },
-  openMap: "Открыть на карте",
-
-  // Transfers (auf Flüge/Anreise)
-  transfersIntro:
-    "Поездка из международного аэропорта Тбилиси (TBS) до Chateau Methis Kalaki в Верхнем Чочети (Кахетия) занимает около 90 минут. Вот лучшие варианты трансфера:",
-  transferOptions: {
-    shuttleTitle: "🚐 Трансфер-шаттл",
-    shuttleText: "Групповой трансфер в день свадьбы — требуется предварительная запись.",
-    shuttleNote: "Координация шаттла (доступен WhatsApp)",
-    taxiTitle: "🚕 Такси / частный водитель",
-    taxiText: "Удобные частные трансферы или местные такси прямо в аэропорту.",
-    taxiPrice: "Стоимость около 120–150 GEL (~40–50 €) в одну сторону.",
-    rentTitle: "🚗 Аренда автомобиля",
-    rentText:
-      "Подходит, если вы хотите путешествовать самостоятельно. Аренда доступна прямо в аэропорту Тбилиси.",
-    rentNote: "В пути около 1 ч 30 мин по трассе Kakheti Hwy (S5) — отличная дорога.",
-    busTitle: "🚌 Общественные автобусы",
-    busText:
-      "Отправление со станций Ортачала или Самгори в Тбилиси. В пути 2–3 часа, стоимость около 15 GEL (наличные).",
-    busMap: "Открыть автобусную станцию в Google Картах",
-  },
-   },
 };
 
 // ======================================================
-// Google-Kalender-Link automatisch generieren
+// Google-Kalender-Link
 // ======================================================
 const startUtc = new Date(DATUM.iso)
   .toISOString()
@@ -790,17 +784,19 @@ export const googleCalUrl = `https://calendar.google.com/calendar/render?action=
   ORT.name
 )}&details=${encodeURIComponent("Wir freuen uns auf euch!")}`;
 
-// --- Mehrsprachiger Tagesablauf + Helper ---
+// ======================================================
+// Tagesablauf + Helper
+// ======================================================
 export const PROGRAMM = [
   {
     time: "14:00",
     title: { de: "Freie Trauung", en: "Wedding ceremony", ru: "Церемония" },
-    place: { de: "Garten des Chateaus", en: "Chateau garden", ru: "Сад шато" },
+    place: { de: "Panorama-Bereich", en: "Panorama area", ru: "Панорамная зона" },
   },
   {
     time: "15:30",
-    title: { de: "Sektempfang & Weinverkostung", en: "Reception & wine tasting", ru: "Фуршет и дегустация вина" },
-    place: { de: "Weinterrasse", en: "Wine terrace", ru: "Винная терраса" },
+    title: { de: "Sektempfang", en: "Reception", ru: "Фуршет" },
+    place: { de: "Hotel-Lounge", en: "Hotel lounge", ru: "Лаунж отеля" },
   },
   {
     time: "18:00",
@@ -810,7 +806,7 @@ export const PROGRAMM = [
   {
     time: "20:30",
     title: { de: "Eröffnungstanz & Party", en: "First dance & party", ru: "Первый танец и вечеринка" },
-    place: { de: "Innenhof", en: "Courtyard", ru: "Внутренний двор" },
+    place: { de: "Saal", en: "Hall", ru: "Зал" },
   },
   {
     time: "23:00",
@@ -819,7 +815,6 @@ export const PROGRAMM = [
   },
 ];
 
-// Liefert den Ablauf in der gewünschten Sprache (Fallback: DE)
 export const getProgramm = (lang = "de") =>
   PROGRAMM.map((p) => ({
     time: p.time,
