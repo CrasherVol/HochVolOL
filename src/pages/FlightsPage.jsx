@@ -48,6 +48,7 @@ export default function FlightsPage({ lang, setLang }) {
             
             {/* ✈️ Flugplanung */}
             <Card title={t.flightPlanning} className="hover-react">
+              
               <ul
                 style={{
                   marginLeft: "1rem",
@@ -76,7 +77,8 @@ export default function FlightsPage({ lang, setLang }) {
                 </li>
                 <li className="transfer-hint" style={{ listStyle: "none", marginTop: "0.75rem" }}>
                   <Plane className="w-4 h-4 text-accent" />
-                  <span>{ANREISE.transferHinweis?.[lang] || ANREISE.transferHinweis.de}</span>
+               <span>{ANREISE.transferHinweisI18N?.[lang] || ANREISE.transferHinweis}</span>
+
                 </li>
               </ul>
 
