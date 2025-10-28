@@ -467,7 +467,7 @@ export const TEXTS = {
         winter: "Winter in Georgia",  // 👈 NEW
       rsvp: "RSVP",
       calendar: "Calendar",
-      gallery: "Gallery",
+      gallery: "Eating · Drinking · Celebrating",
     },
     heroIntro: "We’re getting married in Gudauri, Georgia",
     heroThanks: "We’d be so happy if many of you could join us to celebrate!",
@@ -620,7 +620,7 @@ export const TEXTS = {
       location: "Локация",
        winter: "Зима в Грузии",  // 👈 НОВОЕ
       rsvp: "RSVP",
-      calendar: "Календарь",
+      calendar: "Еда · Напитки · Праздники",
       gallery: "Галерея",
     },
     heroIntro: "Мы женимся в Гудаури, Грузия",

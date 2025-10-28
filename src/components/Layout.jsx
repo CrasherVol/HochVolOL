@@ -5,11 +5,11 @@ import {
   CalendarHeart,
   Plane,
   Globe2,
-  Martini,
   Users,
   Home as HomeIcon,
   Building2,
   Snowflake,
+  Martini, // 🍸 neues Icon für Essen · Trinken · Feiern
 } from "lucide-react";
 import { TEXTS, DATUM, PAAR } from "../data/constants";
 import { googleCalUrl } from "../data/calendar";
@@ -84,14 +84,22 @@ function LangSwitcher({ lang, setLang }) {
 function Header({ lang, setLang }) {
   const t = TEXTS[lang] || TEXTS.de;
 
+  // Sprachabhängiger Label-Text für die neue Seite
+  const eatDrinkPartyLabel =
+    (lang === "en" && "Eat · Drink · Party") ||
+    (lang === "ru" && "Еда · Напитки · Вечеринка") ||
+    "Essen · Trinken · Feiern";
+
   const nav = [
     { to: "/", label: t.nav.start, icon: <HomeIcon size={16} /> },
     { to: "/fluege", label: t.nav.flights, icon: <Plane size={16} /> },
     { to: "/location", label: t.nav.location, icon: <Building2 size={16} /> },
     { to: "/ort", label: t.nav.region, icon: <Globe2 size={16} /> },
     { to: "/winter", label: t.nav.winter, icon: <Snowflake size={16} /> },
-    // 🔄 Ersetzt: Galerie → Essen · Trinken · Feiern
-    { to: "/essen-trinken-feiern", label: t.nav.gallery, icon: <Martini size={16} /> },
+
+    // ⬇️ Neuer Menüpunkt statt "Galerie"
+    { to: "/essen-trinken-feiern", label: eatDrinkPartyLabel, icon: <Martini size={16} /> },
+
     { to: "/rsvp", label: t.nav.rsvp, icon: <Users size={16} /> },
   ];
 
@@ -148,7 +156,7 @@ function Footer() {
         color: "#64748b",
       }}
     >
-      © {year} Hochzeit {PAAR.braeutigam} & {PAAR.braut} · Monte Gudauri
+      © {year} Hochzeit {PAAR.braeutigam} & {PAAR.braut} · Chateau Methis Kalaki
     </footer>
   );
 }
