@@ -169,10 +169,7 @@ export default function WinterPage({ lang, setLang }) {
   const w = W[lang] || W.de;         // lokale i18n-Texte
   const acts = ACTIVITIES[lang] || ACTIVITIES.de; // 💡 lokalisiert!
 
-  <div style={{textAlign:"right", marginTop:"1rem", opacity:.6, fontSize:".8rem"}}>
-  WinterPage v2025-10-28-a
-</div>
-
+  
   return (
     <Layout lang={lang} setLang={setLang}>
       <Section
