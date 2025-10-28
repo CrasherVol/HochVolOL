@@ -186,9 +186,9 @@ export const ANREISE = {
 
   // Zusätzlich (falls du später sprachspezifisch rendern willst):
   transferHinweisI18N: {
-    de: "Vom Flughafen Tiflis ca. 2–2,5 Std. bis Gudauri (je nach Verkehr & Wetter) über die Georgische Heerstraße (E117). Sammeltransfers je nach Ankünften.",
-    en: "From Tbilisi Airport it's about 2–2.5 h to Gudauri via the Georgian Military Highway (E117), depending on traffic & weather. Group transfers possible depending on arrivals.",
-    ru: "От аэропорта Тбилиси ~2–2,5 ч до Гудаури по Военно-Грузинской дороге (E117), в зависимости от погоды и трафика. Возможны групповые трансферы по прибытиям.",
+    de: "Vom Flughafen Tiflis ca. 2–2,5 Std. bis Gudauri (je nach Verkehr & Wetter) über die Georgische Heerstraße (E117).",
+    en: "From Tbilisi Airport it's about 2–2.5 h to Gudauri via the Georgian Military Highway (E117), depending on traffic & weather.",
+    ru: "От аэропорта Тбилиси ~2–2,5 ч до Гудаури по Военно-Грузинской дороге (E117), в зависимости от погоды и трафика.",
   },
 
   flugSucheLinks: LINKS.flights,
@@ -313,7 +313,7 @@ export const TEXTS = {
        winter: "Winter in Georgien",   // 👈 NEU
       rsvp: "RSVP",
       calendar: "Kalender",
-      gallery: "Galerie",
+     gallery: "Essen · Trinken · Feiern",
     },
     heroIntro: "Wir heiraten in Gudauri, Georgien",
     heroThanks: "Wir freuen uns riesig, wenn möglichst viele von euch mit uns feiern!",

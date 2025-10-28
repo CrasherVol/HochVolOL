@@ -248,14 +248,14 @@ const activities = [
     img: "/winter/snowmobile.jpg",
     text: "Geführte Touren über verschneite Hochebenen. Dauer 30–120 min, ab 60 € p. P.",
     type: "Action & Natur",
-    link: "https://www.gudaurisnowmobile.com/",
+    link: "https://www.skyatlantida.com/winter-wonderland/",
   },
   {
     title: "Freeride & Heli-Ski",
     img: "/winter/heli_ski.jpg",
     text: "Mit dem Helikopter zu unberührten Hängen – erfahrene Guides inklusive.",
     type: "Adrenalin",
-    link: "https://heliski.travel/heli-skiing-in-gudauri",
+    link: "https://www.heliski.travel",
   },
   {
     title: "Spa & Thermalquellen",

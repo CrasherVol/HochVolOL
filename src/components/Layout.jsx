@@ -5,7 +5,7 @@ import {
   CalendarHeart,
   Plane,
   Globe2,
-  Camera,
+  Martini,
   Users,
   Home as HomeIcon,
   Building2,
@@ -13,7 +13,7 @@ import {
 } from "lucide-react";
 import { TEXTS, DATUM, PAAR } from "../data/constants";
 import { googleCalUrl } from "../data/calendar";
-import WeatherWidget from "./WeatherWidget.jsx"; // ✅ HINZUGEFÜGT
+import WeatherWidget from "./WeatherWidget.jsx";
 
 /* --- Kleine Flaggen (inline SVG) --- */
 function Flag({ code }) {
@@ -90,7 +90,8 @@ function Header({ lang, setLang }) {
     { to: "/location", label: t.nav.location, icon: <Building2 size={16} /> },
     { to: "/ort", label: t.nav.region, icon: <Globe2 size={16} /> },
     { to: "/winter", label: t.nav.winter, icon: <Snowflake size={16} /> },
-    { to: "/galerie", label: t.nav.gallery, icon: <Camera size={16} /> },
+    // 🔄 Ersetzt: Galerie → Essen · Trinken · Feiern
+    { to: "/essen-trinken-feiern", label: t.nav.gallery, icon: <Martini size={16} /> },
     { to: "/rsvp", label: t.nav.rsvp, icon: <Users size={16} /> },
   ];
 
@@ -125,7 +126,6 @@ function Header({ lang, setLang }) {
               <span>{t.nav.calendar}</span>
             </a>
 
-
             <LangSwitcher lang={lang} setLang={setLang} />
           </div>
         </div>
@@ -148,7 +148,7 @@ function Footer() {
         color: "#64748b",
       }}
     >
-      © {year} Hochzeit {PAAR.braeutigam} & {PAAR.braut} · Chateau Methis Kalaki
+      © {year} Hochzeit {PAAR.braeutigam} & {PAAR.braut} · Monte Gudauri
     </footer>
   );
 }
