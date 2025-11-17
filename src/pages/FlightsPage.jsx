@@ -56,107 +56,112 @@ export default function FlightsPage({ lang, setLang }) {
           {/* --- LINKE SEITE --- */}
           <div style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
             
-            {/* ✈️ Flugplanung */}
-            <Card title={t.flightPlanning} className="hover-react">
-              
-              <ul
-                style={{
-                  marginLeft: "1rem",
-                  listStyle: "disc",
-                  display: "grid",
-                  gap: ".5rem",
-                }}
-              >
-                <li>
-                  <strong>{t.placeTitle}:</strong> Tbilisi International Airport (TBS) (
-                  <a
-                    className="underline"
-                    href={LINKS.maps.tbilisiAirport}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    {t.mapLabel}
-                  </a>
-                  )
-                </li>
-                <li>
-                  <strong>{t.altLabel}:</strong> Kutaisi (KUT), Batumi (BUS)
-                </li>
-                <li>
-                  <strong>{t.trainLabel}:</strong> Tbilisi Central / Didube Bus Station
-                </li>
-                <li className="transfer-hint" style={{ listStyle: "none", marginTop: "0.75rem" }}>
-                  <Plane className="w-4 h-4 text-accent" />
-                  <span>{ANREISE.transferHinweisI18N?.[lang] || ANREISE.transferHinweis}</span>
-                </li>
-              </ul>
+{/* ✈️ Flugplanung */}
+<Card title={t.flightPlanning} className="hover-react">
+  
+  <ul
+    style={{
+      marginLeft: "1rem",
+      listStyle: "disc",
+      display: "grid",
+      gap: ".5rem",
+    }}
+  >
+    <li>
+      <strong>{t.placeTitle}:</strong> Tbilisi International Airport (TBS) (
+      <a
+        className="underline"
+        href={LINKS.maps.tbilisiAirport}
+        target="_blank"
+        rel="noreferrer"
+      >
+        {t.mapLabel}
+      </a>
+      )
+    </li>
 
-              <div className="badges">
-                <div className="badge">
-                  <Plane className="icon" />
-                  <span>Tbilisi (TBS)</span>
-                </div>
-                <div className="badge">
-                  <Plane className="icon" />
-                  <span>Kutaisi (KUT)</span>
-                </div>
-                <div className="badge">
-                  <Bus className="icon" />
-                  <span>Didube Bus Station</span>
-                </div>
-                <div className="badge">
-                  <Clock className="icon" />
-                  <span>~2.5–3&nbsp;Std. nach Gudauri</span>
-                </div>
-              </div>
+    {/* ALTERNATIVE FLUGHÄFEN → ENTFERNT */}
+    
+    <li>
+      <strong>{t.trainLabel}:</strong> Tbilisi Central / Didube Bus Station
+    </li>
 
-              {/* Abflughafen */}
-              <div style={{ marginTop: "1rem" }}>
-                <label
-                  style={{ fontSize: ".9rem", color: "#475569", display: "block" }}
-                >
-                  {lang === "de"
-                    ? "Abflughafen wählen:"
-                    : "Select departure airport:"}
-                </label>
-                <select
-                  value={departure}
-                  onChange={(e) => setDeparture(e.target.value)}
-                  className="input"
-                  style={{
-                    marginTop: ".25rem",
-                    width: "100%",
-                    maxWidth: "260px",
-                  }}
-                >
-                  <option value="DUS">Düsseldorf (DUS)</option>
-                  <option value="CGN">Köln/Bonn (CGN)</option>
-                  <option value="BER">Berlin (BER)</option>
-                  <option value="FRA">Frankfurt (FRA)</option>
-                  <option value="MUC">München (MUC)</option>
-                  <option value="SVO">Moskau (SVO)</option>
-                </select>
+    <li
+      className="transfer-hint"
+      style={{ listStyle: "none", marginTop: "0.75rem" }}
+    >
+      <Plane className="w-4 h-4 text-accent" />
+      <span>{ANREISE.transferHinweisI18N?.[lang] || ANREISE.transferHinweis}</span>
+    </li>
+  </ul>
 
-                {/* Nur Skyscanner-Link */}
-                <div
-                  style={{
-                    display: "flex",
-                    gap: ".5rem",
-                    flexWrap: "wrap",
-                    marginTop: ".5rem",
-                  }}
-                >
-                  <a
-                    href={flightUrls(departure).skyscanner}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="link-special"
-                  >
-                    <PlaneTakeoff size={16} /> Skyscanner
-                  </a>
-                </div>
-              </div>
-            </Card>
+  <div className="badges">
+    <div className="badge">
+      <Plane className="icon" />
+      <span>Tbilisi (TBS)</span>
+    </div>
+
+    {/* BADGE „Kutaisi (KUT)“ → ENTFERNT */}
+
+    <div className="badge">
+      <Bus className="icon" />
+      <span>Didube Bus Station</span>
+    </div>
+
+    <div className="badge">
+      <Clock className="icon" />
+      <span>~2.5–3&nbsp;Std. nach Gudauri</span>
+    </div>
+  </div>
+
+  {/* Abflughafen */}
+  <div style={{ marginTop: "1rem" }}>
+    <label
+      style={{ fontSize: ".9rem", color: "#475569", display: "block" }}
+    >
+      {lang === "de"
+        ? "Abflughafen wählen:"
+        : "Select departure airport:"}
+    </label>
+
+    <select
+      value={departure}
+      onChange={(e) => setDeparture(e.target.value)}
+      className="input"
+      style={{
+        marginTop: ".25rem",
+        width: "100%",
+        maxWidth: "260px",
+      }}
+    >
+      <option value="DUS">Düsseldorf (DUS)</option>
+      <option value="CGN">Köln/Bonn (CGN)</option>
+      <option value="BER">Berlin (BER)</option>
+      <option value="FRA">Frankfurt (FRA)</option>
+      <option value="MUC">München (MUC)</option>
+      <option value="SVO">Moskau (SVO)</option>
+    </select>
+
+    <div
+      style={{
+        display: "flex",
+        gap: ".5rem",
+        flexWrap: "wrap",
+        marginTop: ".5rem",
+      }}
+    >
+      <a
+        href={flightUrls(departure).skyscanner}
+        target="_blank"
+        rel="noreferrer"
+        className="link-special"
+      >
+        <PlaneTakeoff size={16} /> Skyscanner
+      </a>
+    </div>
+  </div>
+</Card>
+
 
             {/* 🧭 Anreise- & Winter-Tipps (TBS → Gudauri / Hotel Monta) */}
             <Card

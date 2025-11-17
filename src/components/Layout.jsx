@@ -156,7 +156,7 @@ function Footer() {
         color: "#64748b",
       }}
     >
-      © {year} Hochzeit {PAAR.braeutigam} & {PAAR.braut} · Chateau Methis Kalaki
+      © {year} Hochzeit {PAAR.braeutigam} & {PAAR.braut} · Alpina Hotel Gudauri
     </footer>
   );
 }

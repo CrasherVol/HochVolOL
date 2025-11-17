@@ -47,6 +47,10 @@ export default function HomePage({ lang, setLang }) {
   // Zeitplan aus PROGRAMM / getProgramm(lang)
   const timeline = getProgramm(lang);
 
+  // Fester Google-Maps-Link zum Alpina Hotel Gudauri
+  const ALPINA_MAP_URL =
+    "https://www.google.com/maps/search/?api=1&query=Alpina+Hotel+Gudauri";
+
   return (
     <Layout lang={lang} setLang={setLang}>
       {/* ---------- HERO (einzige Stelle mit CTA-Buttons) ---------- */}
@@ -75,7 +79,8 @@ export default function HomePage({ lang, setLang }) {
 
         <div className="date-pill">
           <CalendarHeart size={18} />
-          <span>{DATUM.text}</span>
+    <span>{DATUM.textI18N?.[lang] || DATUM.textI18N.de}</span>
+
         </div>
 
         {/* ---------- COUNTDOWN unter dem Datum ---------- */}
@@ -145,12 +150,14 @@ export default function HomePage({ lang, setLang }) {
         <div className="home-quick">
           <a
             className="quick"
-            href={LINKS?.maps?.telavi || "#"}
+            href={ALPINA_MAP_URL}
             target="_blank"
             rel="noreferrer"
           >
             <MapPin size={14} />
-            <span>{tt("quickRegion", "Kachetien (Telavi/Sighnaghi)")}</span>
+            <span>
+              {tt("quickRegion", "Gudauri · Alpina Hotel Georgia")}
+            </span>
           </a>
           <div className="quick">
             <GlassWater size={14} />
@@ -185,7 +192,10 @@ export default function HomePage({ lang, setLang }) {
           >
             <p className="feier-text">
               {tt("venueLead", "Trauung im")}{" "}
-              <strong>{tt("venueName", "Chateau Methis Kalaki")}</strong>.
+              <strong>
+                {tt("venueName", "Alpina Hotel Georgia")}
+              </strong>
+              .
               <br />
               {tt(
                 "venueTail",
@@ -193,11 +203,11 @@ export default function HomePage({ lang, setLang }) {
               )}
             </p>
 
-            {/* nur ein dezenter Maps-Link, keine weiteren Buttons */}
+            {/* Maps-Link → direkt Alpina Hotel Gudauri */}
             <p style={{ marginTop: ".35rem" }}>
               <a
                 className="underline"
-                href={LINKS?.maps?.chateau || LINKS?.maps?.telavi}
+                href={ALPINA_MAP_URL}
                 target="_blank"
                 rel="noreferrer"
               >
@@ -233,7 +243,7 @@ export default function HomePage({ lang, setLang }) {
             </ul>
           </Card>
 
-          {/* Kontakt (nur Info, keine CTA-Dopplungen) */}
+          {/* Kontakt */}
           <Card
             title={tt("cardContactTitle", "Kontakt")}
             className="hover-react feier-card"

@@ -5,9 +5,14 @@
 // ======================================================
 export const PAAR = { braut: "Olga", braeutigam: "Volker" };
 export const DATUM = {
-  text: "Samstag, 28. Februar 2026",
   iso: "2026-02-28T14:00:00+04:00",
+  textI18N: {
+    de: "Samstag, 28. Februar 2026",
+    en: "Saturday, 28 February 2026",
+    ru: "Суббота, 28 февраля 2026",
+  },
 };
+
 
 // ======================================================
 // Medien / Bilder (alle extern via Unsplash Source API)
@@ -464,7 +469,7 @@ export const TEXTS = {
     cta2: "2. Flug buchen",
     cta3: "3. Ort merken",
 
-    quickRegion: "Kachetien (Telavi/Sighnaghi)",
+    quickRegion: "Gudauri - გუდაური (Mzcheta-Mtianeti)",
     quickFood: "Georgische Küche & Wein",
     quickCeremony: "Freie Trauung",
 
@@ -652,7 +657,7 @@ export const TEXTS = {
     cta2: "2. Book flight",
     cta3: "3. Save the location",
 
-    quickRegion: "Kakheti (Telavi/Sighnaghi)",
+    quickRegion: "Gudauri - გუდაური (Mzcheta-Mtianeti)",
     quickFood: "Georgian cuisine & wine",
     quickCeremony: "Free ceremony & dinner",
 
@@ -838,7 +843,7 @@ export const TEXTS = {
     cta2: "2. Забронировать билет",
     cta3: "3. Запомнить место",
 
-    quickRegion: "Кахетия (Телави/Сигнахи)",
+    quickRegion: "Гудаури — გუდაური (Мцхета-Мтианети)",
     quickFood: "Грузинская кухня и вино",
     quickCeremony: "Церемония и ужин",
 
