@@ -2008,4 +2008,73 @@ body:not(.no-effects) .cta-ghost:hover {
     padding: 0.5rem 0.65rem;
   }
 }
+.countdown-wrap {
+  margin-top: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  position: relative;
+  z-index: 2; /* damit es über dem Hintergrundbild liegt */
+}
 
+.countdown-label {
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #e2e8f0;
+  text-shadow: 0 1px 3px rgba(15, 23, 42, 0.7);
+}
+
+.countdown-boxes {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.countdown-box {
+  min-width: 80px;
+  padding: 0.5rem 0.9rem;
+  border-radius: 0.9rem;
+  background: rgba(15, 23, 42, 0.78);       /* dunkler, halbtransparent */
+  border: 1px solid rgba(148, 163, 184, 0.6);
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.35);
+  text-align: center;
+  color: #f9fafb;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  transition: transform 0.15s ease, box-shadow 0.15s ease,
+    background 0.15s ease;
+}
+
+.countdown-box:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.45);
+  background: rgba(15, 23, 42, 0.9);
+}
+
+.countdown-number {
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: 0.03em;
+}
+
+.countdown-unit {
+  margin-top: 0.1rem;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: #cbd5f5;
+}
+
+.countdown-finished {
+  margin-top: 0.5rem;
+  padding: 0.4rem 0.9rem;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  background: rgba(15, 23, 42, 0.8);
+  color: #f9fafb;
+  box-shadow: 0 10px 28px rgba(15, 23, 42, 0.4);
+}

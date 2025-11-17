@@ -14,41 +14,48 @@ export const DATUM = {
 // ======================================================
 export const IMAGES = {
   // Hero / Header – Gudauri
-  heroBg: "/Hotel-Monte-Gudauri.jpg",    //Hotel-Monte-Gudauri
-  heroCouple: "https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=1400&q=80",
+  heroBg: "/Hotel-Alpina-Gudauri.jpg", // früher: Hotel-Monte-Gudauri
+  heroCouple:
+    "https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=1400&q=80",
 
   // Gudauri / Kaukasus
-  gudauriSlope: "https://picsum.photos/id/1015/1200/800",   // Skipiste/Ersatz
-  gudauriView:  "https://picsum.photos/id/1021/1200/800",   // Bergblick/Ersatz
-  crossPass:    "https://picsum.photos/id/1043/1200/800",   // Passstraße/Ersatz
-  kazbegi:      "https://picsum.photos/id/1039/1200/800",   // Berggipfel/Ersatz
+  gudauriSlope: "https://picsum.photos/id/1015/1200/800", // Skipiste/Ersatz
+  gudauriView: "https://picsum.photos/id/1021/1200/800", // Bergblick/Ersatz
+  crossPass: "https://picsum.photos/id/1043/1200/800", // Passstraße/Ersatz
+  kazbegi: "https://picsum.photos/id/1039/1200/800", // Berggipfel/Ersatz
 
   // Tbilisi (für Region-Seite etc.)
   tbilisiAerial: "https://picsum.photos/id/1041/1200/800",
-  sulfurBaths:   "https://picsum.photos/id/1050/1200/800",
-  narikala:      "https://picsum.photos/id/1025/1200/800",
+  sulfurBaths: "https://picsum.photos/id/1050/1200/800",
+  narikala: "https://picsum.photos/id/1025/1200/800",
   bridgeOfPeace: "https://picsum.photos/id/1005/1200/800",
 
   // (optional) frühere Kakheti-Platzhalter
   sighnaghi: "https://picsum.photos/id/1042/1200/800",
-  alaverdi:  "https://picsum.photos/id/1068/1200/800",
-  telavi:    "https://picsum.photos/id/1067/1200/800",
-  vineyard:  "https://picsum.photos/id/1080/1200/800",
+  alaverdi: "https://picsum.photos/id/1068/1200/800",
+  telavi: "https://picsum.photos/id/1067/1200/800",
+  vineyard: "https://picsum.photos/id/1080/1200/800",
 
   // --- Winter/Gudauri ---
-winter: {
-  hero: "https://images.unsplash.com/photo-1549880338-65ddcdfd017b?auto=format&fit=crop&w=1600&q=80", // Schneepanorama
-  gudauriPiste: "https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&w=1600&q=80",
-  paragliding: "https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1600&q=80",
-  gergetiWinter: "https://images.unsplash.com/photo-1601643157091-ce8a1c9b8c38?auto=format&fit=crop&w=1600&q=80",
-  militaryRoad: "https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=1600&q=80",
-  monteExterior: "https://cf.bstatic.com/xdata/images/hotel/max1280x900/416686240.jpg?k=7d4c3a8e2e4c4b0a8c4d4d8f2f84d6b1a4b7c7d5a0a9e9c0b0&auto=format&fit=crop&w=1600&q=80",
-  sunsetRidge: "https://images.unsplash.com/photo-1518684079-3c830dcef090?auto=format&fit=crop&w=1600&q=80",
-  apres: "https://images.unsplash.com/photo-1543352634-8730a9b4e8c9?auto=format&fit=crop&w=1600&q=80",
-},
-
+  winter: {
+    hero: "https://images.unsplash.com/photo-1549880338-65ddcdfd017b?auto=format&fit=crop&w=1600&q=80", // Schneepanorama
+    gudauriPiste:
+      "https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&w=1600&q=80",
+    paragliding:
+      "https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1600&q=80",
+    gergetiWinter:
+      "https://images.unsplash.com/photo-1601643157091-ce8a1c9b8c38?auto=format&fit=crop&w=1600&q=80",
+    militaryRoad:
+      "https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=1600&q=80",
+    // Key-Name bleibt "monteExterior", Bild zeigt jetzt Alpina
+    monteExterior:
+      "https://hotelalpina.ge/wp-content/uploads/2024/01/hotel-alpina-gudauri-1.jpg",
+    sunsetRidge:
+      "https://images.unsplash.com/photo-1518684079-3c830dcef090?auto=format&fit=crop&w=1600&q=80",
+    apres:
+      "https://images.unsplash.com/photo-1543352634-8730a9b4e8c9?auto=format&fit=crop&w=1600&q=80",
+  },
 };
-
 
 // ======================================================
 // Links (Maps, Buchung, Flüge, …)
@@ -58,8 +65,9 @@ export const LINKS = {
     tbilisiAirport:
       "https://www.google.com/maps/search/?api=1&query=Tbilisi%20International%20Airport",
     gudauri: "https://www.google.com/maps/search/?api=1&query=Gudauri",
+    // Key-Name bleibt monteGudauri, URL zeigt jetzt Alpina Hotel
     monteGudauri:
-      "https://www.google.com/maps/search/?api=1&query=Monte%20Hotel%20Gudauri",
+      "https://www.google.com/maps/search/?api=1&query=Alpina%20Hotel%20Gudauri",
     didubeStation:
       "https://www.google.com/maps/search/?api=1&query=Didube%20Bus%20Station%20Tbilisi",
     crossPass:
@@ -75,45 +83,165 @@ export const LINKS = {
   ],
   booking: {
     // Beibehaltener Key "methis", damit bestehender Code nicht bricht:
-    methis: "https://www.booking.com/hotel/ge/monte.de.html?aid=304142&label=gen173nr-10EgZzZWFyY2goggI46AdIM1gEaDuIAQGYATO4ARfIAQzYAQPoAQH4AQGIAgGoAgG4Apzl_McGwAIB0gIkZDA5MDdjNzUtZTA5OS00ZGI0LWIwOTEtOTJiZmMyM2JjOTli2AIB4AIB&sid=e2ba0613dd6dba067c7f9e8c4aedfb36&dest_id=1289540&dest_type=hotel&dist=0&group_adults=2&group_children=0&hapos=1&hpos=1&no_rooms=1&req_adults=2&req_children=0&room1=A%2CA&sb_price_type=total&sr_order=popularity&srepoch=1761555110&srpvid=79a13e4ea47c00f4&type=total&ucfs=1&",
-},
+    methis: "https://www.booking.com/hotel/ge/alpina.de.html",
+  },
   phone: {},
 
-kazbegi: "https://www.google.com/maps/search/?api=1&query=Gergeti%20Trinity%20Church",
+  kazbegi:
+    "https://www.google.com/maps/search/?api=1&query=Gergeti%20Trinity%20Church",
 };
 
 // ======================================================
 // Fakten (für Region-Seite)
 // ======================================================
 export const FACTS = [
-  { key: "population", icon: "👥", value: "≈ 3,7 Mio.", label: { de: "Einwohner", en: "Population", ru: "Население" } },
-  { key: "area", icon: "🗺️", value: "≈ 69.700 km²", label: { de: "Fläche", en: "Area", ru: "Площадь" } },
-  { key: "capital", icon: "🏛️", value: "Tiflis (Tbilisi)", label: { de: "Hauptstadt", en: "Capital", ru: "Столица" } },
-  { key: "timezone", icon: "🕒", value: "UTC+4", label: { de: "Zeitzone", en: "Time zone", ru: "Часовой пояс" } },
-  { key: "currency", icon: "💶", value: "GEL (Lari)", label: { de: "Währung", en: "Currency", ru: "Валюта" } },
-  { key: "language", icon: "🗣️", value: "Georgisch", label: { de: "Amtssprache", en: "Official language", ru: "Офиц. язык" } },
-  { key: "dial", icon: "☎️", value: "+995", label: { de: "Vorwahl", en: "Dial code", ru: "Тел. код" } },
-  { key: "power", icon: "🔌", value: "220 V · Typ C/F", label: { de: "Strom", en: "Power", ru: "Электросеть" } },
-  { key: "peak", icon: "⛰️", value: "Schchara 5.193 m", label: { de: "Höchster Gipfel", en: "Highest peak", ru: "Высшая точка" } },
-  { key: "unesco", icon: "🏺", value: "Qvevri-Weintradition", label: { de: "UNESCO", en: "UNESCO", ru: "ЮНЕСКО" } },
-  { key: "weatherFeb", icon: "🌡️", value: "Tiflis ≈ 5 / −1 °C", label: { de: "Ø Feb (Tag/Nacht)", en: "Avg Feb (day/night)", ru: "Сред. февр. (д/н)" } },
-  { key: "visa", icon: "🛂", value: "Oft visumfrei; prüfen", label: { de: "Einreise/Visum", en: "Entry/Visa", ru: "Виза" } },
-  { key: "drive", icon: "🚗", value: "Rechtsverkehr", label: { de: "Verkehr", en: "Driving", ru: "Движение" } },
-  { key: "emergency", icon: "🚑", value: "112", label: { de: "Notruf", en: "Emergency", ru: "Экстренный" } },
-  { key: "tips", icon: "💁", value: "≈ 10 % üblich", label: { de: "Trinkgeld", en: "Tipping", ru: "Чаевые" } },
-  { key: "sim", icon: "📶", value: "Prepaid ~5–15 GEL", label: { de: "SIM (Magti/Beeline)", en: "SIM (Magti/Beeline)", ru: "SIM (Magti/Beeline)" } },
-  { key: "best", icon: "📅", value: "Mai–Jun • Sep–Okt", label: { de: "Beste Reisezeit", en: "Best months", ru: "Лучшее время" } },
-  { key: "flight", icon: "✈️", value: "DE–TBS ≈ 4–5 h (direkt)", label: { de: "Flugdauer", en: "Flight time", ru: "Перелёт" } },
-  { key: "pay", icon: "💳", value: "Karte meist ok; Bargeld praktisch", label: { de: "Zahlen", en: "Payments", ru: "Оплата" } },
+  {
+    key: "population",
+    icon: "👥",
+    value: "≈ 3,7 Mio.",
+    label: { de: "Einwohner", en: "Population", ru: "Население" },
+  },
+  {
+    key: "area",
+    icon: "🗺️",
+    value: "≈ 69.700 km²",
+    label: { de: "Fläche", en: "Area", ru: "Площадь" },
+  },
+  {
+    key: "capital",
+    icon: "🏛️",
+    value: "Tiflis (Tbilisi)",
+    label: { de: "Hauptstadt", en: "Capital", ru: "Столица" },
+  },
+  {
+    key: "timezone",
+    icon: "🕒",
+    value: "UTC+4",
+    label: { de: "Zeitzone", en: "Time zone", ru: "Часовой пояс" },
+  },
+  {
+    key: "currency",
+    icon: "💶",
+    value: "GEL (Lari)",
+    label: { de: "Währung", en: "Currency", ru: "Валюта" },
+  },
+  {
+    key: "language",
+    icon: "🗣️",
+    value: "Georgisch",
+    label: { de: "Amtssprache", en: "Official language", ru: "Офиц. язык" },
+  },
+  {
+    key: "dial",
+    icon: "☎️",
+    value: "+995",
+    label: { de: "Vorwahl", en: "Dial code", ru: "Тел. код" },
+  },
+  {
+    key: "power",
+    icon: "🔌",
+    value: "220 V · Typ C/F",
+    label: { de: "Strom", en: "Power", ru: "Электросеть" },
+  },
+  {
+    key: "peak",
+    icon: "⛰️",
+    value: "Schchara 5.193 m",
+    label: {
+      de: "Höchster Gipfel",
+      en: "Highest peak",
+      ru: "Высшая точка",
+    },
+  },
+  {
+    key: "unesco",
+    icon: "🏺",
+    value: "Qvevri-Weintradition",
+    label: { de: "UNESCO", en: "UNESCO", ru: "ЮНЕСКО" },
+  },
+  {
+    key: "weatherFeb",
+    icon: "🌡️",
+    value: "Tiflis ≈ 5 / −1 °C",
+    label: {
+      de: "Ø Feb (Tag/Nacht)",
+      en: "Avg Feb (day/night)",
+      ru: "Сред. февр. (д/н)",
+    },
+  },
+  {
+    key: "visa",
+    icon: "🛂",
+    value: "Oft visumfrei; prüfen",
+    label: {
+      de: "Einreise/Visum",
+      en: "Entry/Visa",
+      ru: "Виза",
+    },
+  },
+  {
+    key: "drive",
+    icon: "🚗",
+    value: "Rechtsverkehr",
+    label: { de: "Verkehr", en: "Driving", ru: "Движение" },
+  },
+  {
+    key: "emergency",
+    icon: "🚑",
+    value: "112",
+    label: { de: "Notruf", en: "Emergency", ru: "Экстренный" },
+  },
+  {
+    key: "tips",
+    icon: "💁",
+    value: "≈ 10 % üblich",
+    label: { de: "Trinkgeld", en: "Tipping", ru: "Чаевые" },
+  },
+  {
+    key: "sim",
+    icon: "📶",
+    value: "Prepaid ~5–15 GEL",
+    label: {
+      de: "SIM (Magti/Beeline)",
+      en: "SIM (Magti/Beeline)",
+      ru: "SIM (Magti/Beeline)",
+    },
+  },
+  {
+    key: "best",
+    icon: "📅",
+    value: "Mai–Jun • Sep–Okt",
+    label: {
+      de: "Beste Reisezeit",
+      en: "Best months",
+      ru: "Лучшее время",
+    },
+  },
+  {
+    key: "flight",
+    icon: "✈️",
+    value: "DE–TBS ≈ 4–5 h (direkt)",
+    label: {
+      de: "Flugdauer",
+      en: "Flight time",
+      ru: "Перелёт",
+    },
+  },
+  {
+    key: "pay",
+    icon: "💳",
+    value: "Karte meist ok; Bargeld praktisch",
+    label: { de: "Zahlen", en: "Payments", ru: "Оплата" },
+  },
 ];
 
 // ======================================================
-// Ort / Venue (Gudauri / Monte)
+// Ort / Venue (Gudauri / Alpina)
 // ======================================================
 export const ORT = {
-  name: "Monte Gudauri, Georgien",
-  adresse: "Monte Hotel, Gudauri, Georgische Heerstraße (E117)",
-  googleMapsUrl: LINKS.maps.monteGudauri,
+  name: "Alpina Hotel Georgia, Gudauri",
+  adresse: "Alpina Hotel, Upper Gudauri, Georgische Heerstraße (E117)",
+  googleMapsUrl: LINKS.maps.monteGudauri, // zeigt jetzt auf Alpina
   stadtKurzinfo:
     "Gudauri liegt hoch im Großen Kaukasus – Skiort mit weiten Bergblicken, frischer Luft und gemütlichen Hotels.",
   mustSees: [
@@ -148,29 +276,29 @@ export const ORT = {
 };
 
 // ======================================================
-// Unterkunft / Hotel Monte Gudauri
+// Unterkunft / Alpina Hotel Georgia
 // ======================================================
 export const LOCATION_DETAILS = {
-  name: "Hotel Monte Gudauri",
-  adresse: "Upper Gudauri, Near Post, Gudauri 4702, Georgia",
-  website: "https://www.montegudauri.com/",
-  bookingUrl: "https://www.booking.com/hotel/ge/monte.html",
+  name: "Alpina Hotel Georgia",
+  adresse: "Upper Gudauri, Gudauri 4702, Georgia",
+  website: "https://hotelalpina.ge/",
+  bookingUrl: "https://www.booking.com/hotel/ge/alpina.de.html",
   kurzbeschreibung:
-    "Gemütliches Hotel im Skigebiet Gudauri – mit Restaurant, Bar, Sauna, Jacuzzi und weitem Bergblick über den Kaukasus.",
+    "Modernes Hotel im Skigebiet Gudauri – mit Sonnenterrasse, Restaurant, Bar und weitem Bergblick über den Kaukasus. Direkter Zugang zu den Skipisten (ski-in / ski-out).",
   hinweise: [
-    "Kostenloser Shuttle zum Shino-Skilift laut Hotel.",
+    "Ski-in / Ski-out – direkter Pistenzugang.",
     "Frühstücksbuffet täglich im Restaurant verfügbar.",
-    "Sauna & Jacuzzi stehen Gästen kostenfrei zur Verfügung.",
+    "Kostenlose Parkplätze direkt am Hotel.",
   ],
   galerie: [
-    "/Hotel-Monte-Gudauri.jpg", // dein neues Hauptbild (aus public/)
-    "https://www.montegudauri.com/wp-content/uploads/2023/01/monte-view.jpg",
-    "https://www.montegudauri.com/wp-content/uploads/2023/01/ski-slopes-gudauri.jpg",
-    "https://www.montegudauri.com/wp-content/uploads/2023/01/mount-kazbegi.jpg",
+    "/Hotel-Alpina-Gudauri.jpg", // neues Hauptbild (in /public ablegen)
+  "/Alpina-Bild-2.webp",
+  "/Alpina-Bild-3.webp",
+  "/Alpina-Bild-4.webp",
   ],
-  mapsUrl: "https://www.google.com/maps/search/?api=1&query=Monte+Hotel+Gudauri+Upper+Gudauri+Near+Post",
+  mapsUrl:
+    "https://www.google.com/maps/search/?api=1&query=Alpina+Hotel+Gudauri",
 };
-
 
 // ======================================================
 // Anreise / Transfers
@@ -213,7 +341,9 @@ export const ANREISE = {
       {
         route: "Tbilisi → Gudauri (Marshrutka/Bus)",
         from: "Didube Bus Station",
-        stations: [{ label: "Didube Bus Station", url: LINKS.maps.didubeStation }],
+        stations: [
+          { label: "Didube Bus Station", url: LINKS.maps.didubeStation },
+        ],
         to: { label: "Gudauri", url: LINKS.maps.gudauri },
         note: "Tagsüber regelmäßig; Fahrzeit 2–3 Std., Preis ~20–30 GEL (bar).",
       },
@@ -229,7 +359,7 @@ export const ANREISE = {
 // ======================================================
 export const UNTERKUNFT = [
   {
-    name: "Monte Gudauri",
+    name: "Alpina Hotel Georgia",
     details:
       "Zimmer direkt an der Feier-Location – kurzer Weg, Restaurant & Bar, Bergblick.",
     url: LINKS.booking.methis,
@@ -310,25 +440,50 @@ export const TEXTS = {
       flights: "Flüge/Anreise",
       region: "Infos zur Region",
       location: "Location",
-       winter: "Winter in Georgien",   // 👈 NEU
+      winter: "Winter in Georgien", // 👈 NEU
       rsvp: "RSVP",
       calendar: "Kalender",
-     gallery: "Essen · Trinken · Feiern",
+      gallery: "Essen · Trinken · Feiern",
     },
+
+    // Hero-Bereich / Startseite
+    heroEyebrow: "Große Party in Gudauri in Georgien !!!",
+    heroTitle: "Wir heiraten!",
+    heroLogoAlt: "Olga & Volker – Hochzeitslogo",
+    heroSub:
+      "Willkommen – hier findet ihr alles zu Anreise, Location, Ablauf und am wichtigsten - Die Anmeldung.\nWir freuen uns riesig, wenn möglichst viele von euch mit uns feiern!",
+
+    countdownLabel: "Noch",
+    countdownDays: "Tage",
+    countdownHours: "Stunden",
+    countdownMinutes: "Minuten",
+    countdownSeconds: "Sekunden",
+    countdownFinished: "Heute ist es so weit! 🎉",
+
+    cta1: "1. RSVP ausfüllen",
+    cta2: "2. Flug buchen",
+    cta3: "3. Ort merken",
+
+    quickRegion: "Kachetien (Telavi/Sighnaghi)",
+    quickFood: "Georgische Küche & Wein",
+    quickCeremony: "Freie Trauung",
+
     heroIntro: "Wir heiraten in Gudauri, Georgien",
-    heroThanks: "Wir freuen uns riesig, wenn möglichst viele von euch mit uns feiern!",
+    heroThanks:
+      "Wir freuen uns riesig, wenn möglichst viele von euch mit uns feiern!",
     dateLabel: "Hochzeitsdatum",
     sectionFeier: "Die Feier",
     feierSub: "Wichtige Eckdaten",
     stimmung: "Stimmung aus Georgien",
-    stimmungSub: "Berge, Altstädte & Ausblicke – unsere Inspiration",
+    stimmungSub:
+      "Berge, Altstädte & Ausblicke – unsere Inspiration",
 
     flightsTitle: "Flüge & Anreise",
     flightsSub: "Ziel: Tbilisi (TBS) – Hochzeit am 28.02.2026",
     transfersTitle: "Transfers & Wege",
     regionTitle: "Region & Ausflüge",
     locationTitle: "Die Location",
-    locationSub: "Monte Gudauri – Berge, Panorama & Feier",
+    locationSub: "Gudauri – Alpina Hotel Georgia, Berge, Panorama & Feier",
 
     rsvpTitle: "Zusagen & Absagen (RSVP)",
     rsvpSub: "Bitte gebt uns bis 24. November 2025 Bescheid",
@@ -373,12 +528,15 @@ export const TEXTS = {
     emailPlaceholder: "name@mail.de",
     dietPlaceholder: "nein, nur Party am besten ;-)",
     orEmail: "oder an",
-    privacy: "Ich stimme der Verarbeitung meiner Angaben zur Organisation der Hochzeit zu.",
-    privacyNote: "Nur für die Planung – danach löschen wir die Daten.",
+    privacy:
+      "Ich stimme der Verarbeitung meiner Angaben zur Organisation der Hochzeit zu.",
+    privacyNote:
+      "Nur für die Planung – danach löschen wir die Daten.",
     privacyTitle: "Datenschutz",
     privacyBody:
       "Wir behandeln eure Angaben vertraulich und nutzen sie ausschließlich zur Planung. Nach dem Event werden die Daten gelöscht.",
-    rsvpSuccess: "Danke! Eure Antwort wurde übermittelt. 💌",
+    rsvpSuccess:
+      "Danke! Eure Antwort wurde übermittelt. 💌",
 
     factsTitle: "Georgien in Zahlen & Fakten",
     packlistTitle: "🎒 Packliste (Februar in Georgien)",
@@ -400,11 +558,13 @@ export const TEXTS = {
 
     // Startseite – Karten / Texte
     sectionCelebration: "Die Feier",
-    sectionCelebrationSub: "Alles Wichtige auf einen Blick – Ort, Zeitplan, Kontakt & Highlights.",
+    sectionCelebrationSub:
+      "Alles Wichtige auf einen Blick – Ort, Zeitplan, Kontakt & Highlights.",
     cardVenueTitle: "Ort & Ablauf",
-    venueLead: "Trauung & Dinner im",
-    venueName: "Monte Gudauri",
-    venueTail: "Dresscode: elegant, winterfest. Musik & Tanz bis in die Nacht.",
+    venueLead: "Trauung im",
+    venueName: "Alpina Hotel Georgia",
+    venueTail:
+      "Dresscode: elegant, winterfest. Musik & Tanz bis in die Nacht.",
     mapsOpen: "Adresse in Google Maps öffnen",
     hlWine: "Gemütliche Bar & Lounge",
     hlMusic: "Musik & Tanz",
@@ -413,16 +573,16 @@ export const TEXTS = {
     cardTimelineTitle: "Zeitplan",
     tl14: "Freie Trauung",
     tl1530: "Sektempfang",
-    tl18: "Dinner",
     tlEveningTime: "abends",
     tlEve: "Musik, Tanz & Überraschungen",
 
     cardContactTitle: "Kontakt",
-    contactLead: "Fragen zu Anreise, Unterkunft oder Allergien?",
+    contactLead:
+      "Fragen zu Anreise, Unterkunft oder Allergien?",
     contactEmailLabel: "love@example.com",
 
     accommodationIntro:
-      "Monte Gudauri ist ein gemütliches Hotel im Skigebiet – mit Restaurant, Bar und weitem Bergblick.",
+      "Alpina Hotel Georgia ist ein gemütliches Hotel im Skigebiet – mit Restaurant, Bar und weitem Bergblick.",
     bookingCta: "→ Auf Booking.com ansehen",
     hotelFeatures: {
       rooms: "Komfortable Zimmer",
@@ -437,14 +597,18 @@ export const TEXTS = {
     openMap: "Auf Karte öffnen",
 
     transfersIntro:
-      "Die Fahrt vom Tbilisi International Airport (TBS) nach Gudauri/Monte dauert ca. 2–2,5 Std. (je nach Verkehr & Wetter) über die Georgische Heerstraße (E117). Hier sind die besten Optionen:",
+      "Die Fahrt vom Tbilisi International Airport (TBS) nach Gudauri/Alpina Hotel Georgia dauert ca. 2–2,5 Std. (je nach Verkehr & Wetter) über die Georgische Heerstraße (E117). Hier sind die besten Optionen:",
     transferOptions: {
       shuttleTitle: "🚐 Shuttle-Service",
-      shuttleText: "Sammeltransfer am Hochzeitstag – bitte vorher anmelden.",
-      shuttleNote: "Shuttle-Koordination (WhatsApp verfügbar)",
+      shuttleText:
+        "Sammeltransfer am Hochzeitstag – bitte vorher anmelden.",
+      shuttleNote:
+        "Shuttle-Koordination (WhatsApp verfügbar)",
       taxiTitle: "🚕 Taxi / Fahrer",
-      taxiText: "Komfortable Privattransfers oder lokale Taxis direkt am Flughafen.",
-      taxiPrice: "Preis ca. 200–300 GEL pro Strecke (je nach Saison/Wetter).",
+      taxiText:
+        "Komfortable Privattransfers oder lokale Taxis direkt am Flughafen.",
+      taxiPrice:
+        "Preis ca. 200–300 GEL pro Strecke (je nach Saison/Wetter).",
       rentTitle: "🚗 Mietwagen",
       rentText:
         "Ideal, wenn ihr flexibel reisen möchtet. Mietwagen sind direkt am Flughafen Tbilisi verfügbar.",
@@ -464,25 +628,50 @@ export const TEXTS = {
       flights: "Flights & Arrival",
       region: "About the Region",
       location: "Venue",
-        winter: "Winter in Georgia",  // 👈 NEW
+      winter: "Winter in Georgia", // 👈 NEW
       rsvp: "RSVP",
       calendar: "Calendar",
       gallery: "Eating · Drinking · Celebrating",
     },
+
+    // Hero section / home
+    heroEyebrow: "Big party in Gudauri, Georgia!!!",
+    heroTitle: "We're getting married!",
+    heroLogoAlt: "Olga & Volker – wedding logo",
+    heroSub:
+      "Welcome – here you will find everything about travel, location, schedule, and most importantly – the RSVP.\nWe are so excited to celebrate with as many of you as possible!",
+
+    countdownLabel: "Only",
+    countdownDays: "Days",
+    countdownHours: "Hours",
+    countdownMinutes: "Minutes",
+    countdownSeconds: "Seconds",
+    countdownFinished: "Today is the big day! 🎉",
+
+    cta1: "1. Fill out RSVP",
+    cta2: "2. Book flight",
+    cta3: "3. Save the location",
+
+    quickRegion: "Kakheti (Telavi/Sighnaghi)",
+    quickFood: "Georgian cuisine & wine",
+    quickCeremony: "Free ceremony & dinner",
+
     heroIntro: "We’re getting married in Gudauri, Georgia",
-    heroThanks: "We’d be so happy if many of you could join us to celebrate!",
+    heroThanks:
+      "We’d be so happy if many of you could join us to celebrate!",
     dateLabel: "Wedding Date",
     sectionFeier: "The Celebration",
     feierSub: "Key Details",
     stimmung: "Impressions of Georgia",
-    stimmungSub: "Mountains, old towns & breathtaking views – our inspiration",
+    stimmungSub:
+      "Mountains, old towns & breathtaking views – our inspiration",
 
     flightsTitle: "Flights & Arrival",
     flightsSub: "Destination: Tbilisi (TBS) – Wedding on 28 Feb 2026",
     transfersTitle: "Transfers & Directions",
     regionTitle: "Region & Highlights",
     locationTitle: "The Location",
-    locationSub: "Monte Gudauri – mountain views & celebration",
+    locationSub: "Gudauri – Alpina Hotel Georgia, mountains & celebration",
 
     rsvpTitle: "RSVP – Confirm or Decline",
     rsvpSub: "Please reply by November 24, 2025",
@@ -527,12 +716,15 @@ export const TEXTS = {
     emailPlaceholder: "name@mail.com",
     dietPlaceholder: "no, only party is best ;-)",
     orEmail: "or via email to",
-    privacy: "I agree that my data may be used for wedding organization purposes.",
-    privacyNote: "For planning only – all data will be deleted afterwards.",
+    privacy:
+      "I agree that my data may be used for wedding organization purposes.",
+    privacyNote:
+      "For planning only – all data will be deleted afterwards.",
     privacyTitle: "Privacy Policy",
     privacyBody:
       "We treat your data confidentially and use it solely for organizing the wedding. After the event, all information will be deleted.",
-    rsvpSuccess: "Thank you! Your response has been received. 💌",
+    rsvpSuccess:
+      "Thank you! Your response has been received. 💌",
 
     factsTitle: "Georgia in Numbers",
     packlistTitle: "🎒 Packing List (February in Georgia)",
@@ -557,8 +749,9 @@ export const TEXTS = {
       "All the essentials—location, timeline, contact & highlights.",
     cardVenueTitle: "Venue & Plan",
     venueLead: "Ceremony & dinner at",
-    venueName: "Monte Gudauri",
-    venueTail: "Dress code: elegant, winter-ready. Music & dancing into the night.",
+    venueName: "Alpina Hotel Georgia",
+    venueTail:
+      "Dress code: elegant, winter-ready. Music & dancing into the night.",
     mapsOpen: "Open address in Google Maps",
     hlWine: "Cozy bar & lounge",
     hlMusic: "Music & dancing",
@@ -567,16 +760,16 @@ export const TEXTS = {
     cardTimelineTitle: "Timeline",
     tl14: "Ceremony",
     tl1530: "Reception",
-    tl18: "Dinner",
     tlEveningTime: "evening",
     tlEve: "Music, dancing & surprises",
 
     cardContactTitle: "Contact",
-    contactLead: "Questions about travel, accommodation or allergies?",
+    contactLead:
+      "Questions about travel, accommodation or allergies?",
     contactEmailLabel: "love@example.com",
 
     accommodationIntro:
-      "Monte Gudauri is a cozy mountain hotel with a restaurant, bar and sweeping views.",
+      "Alpina Hotel Georgia is a cozy mountain hotel with a restaurant, bar and sweeping views.",
     bookingCta: "→ View on Booking.com",
     hotelFeatures: {
       rooms: "Comfortable rooms",
@@ -591,14 +784,17 @@ export const TEXTS = {
     openMap: "Open on map",
 
     transfersIntro:
-      "The trip from Tbilisi International Airport (TBS) to Gudauri/Monte takes about 2–2.5 h (traffic & weather) via the Georgian Military Highway (E117). Here are the best options:",
+      "The trip from Tbilisi International Airport (TBS) to Gudauri/Alpina Hotel Georgia takes about 2–2.5 h (traffic & weather) via the Georgian Military Highway (E117). Here are the best options:",
     transferOptions: {
       shuttleTitle: "🚐 Shuttle Service",
-      shuttleText: "Group transfer on the wedding day — please register in advance.",
+      shuttleText:
+        "Group transfer on the wedding day — please register in advance.",
       shuttleNote: "Shuttle coordination (WhatsApp available)",
       taxiTitle: "🚕 Taxi / Private Driver",
-      taxiText: "Comfortable private transfers or local taxis available at the airport.",
-      taxiPrice: "Approx. 200–300 GEL per trip (season/weather).",
+      taxiText:
+        "Comfortable private transfers or local taxis available at the airport.",
+      taxiPrice:
+        "Approx. 200–300 GEL per trip (season/weather).",
       rentTitle: "🚗 Car Rental",
       rentText:
         "Perfect if you prefer flexibility. Rental cars available directly at Tbilisi Airport.",
@@ -618,28 +814,56 @@ export const TEXTS = {
       flights: "Рейсы и прибытие",
       region: "О регионе",
       location: "Локация",
-       winter: "Зима в Грузии",  // 👈 НОВОЕ
+      winter: "Зима в Грузии", // 👈 НОВОЕ
       rsvp: "RSVP",
       calendar: "Календарь",
       gallery: "Еда · Напитки · Праздники",
     },
+
+    // Hero / Startseite
+    heroEyebrow: "Большой праздник в Гудаури, Грузия!!!",
+    heroTitle: "Мы женимся!",
+    heroLogoAlt: "Ольга и Волкер – свадебный логотип",
+    heroSub:
+      "Добро пожаловать – здесь вы найдёте всю информацию о поездке, локации, расписании и главное – регистрации.\nМы будем рады видеть как можно больше друзей и семьи!",
+
+    countdownLabel: "До события осталось",
+    countdownDays: "Дней",
+    countdownHours: "Часов",
+    countdownMinutes: "Минут",
+    countdownSeconds: "Секунд",
+    countdownFinished: "Сегодня этот день! 🎉",
+
+    cta1: "1. Заполнить RSVP",
+    cta2: "2. Забронировать билет",
+    cta3: "3. Запомнить место",
+
+    quickRegion: "Кахетия (Телави/Сигнахи)",
+    quickFood: "Грузинская кухня и вино",
+    quickCeremony: "Церемония и ужин",
+
     heroIntro: "Мы женимся в Гудаури, Грузия",
-    heroThanks: "Мы будем счастливы, если вы сможете отпраздновать с нами этот день!",
+    heroThanks:
+      "Мы будем счастливы, если вы сможете отпраздновать с нами этот день!",
     dateLabel: "Дата свадьбы",
     sectionFeier: "Празднование",
     feierSub: "Основная информация",
     stimmung: "Атмосфера Грузии",
-    stimmungSub: "Горы, старые города и виды — наше вдохновение",
+    stimmungSub:
+      "Горы, старые города и виды — наше вдохновение",
 
     flightsTitle: "Рейсы и прибытие",
-    flightsSub: "Пункт назначения: Тбилиси (TBS) — свадьба 28.02.2026",
+    flightsSub:
+      "Пункт назначения: Тбилиси (TBS) — свадьба 28.02.2026",
     transfersTitle: "Трансферы и маршруты",
     regionTitle: "О регионе и достопримечательности",
     locationTitle: "Место проведения",
-    locationSub: "Monte Gudauri — горные виды и праздник",
+    locationSub:
+      "Гудаури – Alpina Hotel Georgia, горные виды и праздник",
 
     rsvpTitle: "Подтверждение участия (RSVP)",
-    rsvpSub: "Пожалуйста, дайте нам знать до 24 ноября 2025 года.",
+    rsvpSub:
+      "Пожалуйста, дайте нам знать до 24 ноября 2025 года.",
     contact: "Контакт",
     addToCal: "Добавить в календарь",
     planTrip: "Спланировать поездку",
@@ -681,12 +905,15 @@ export const TEXTS = {
     emailPlaceholder: "name@mail.ru",
     dietPlaceholder: "нет, только вечеринка лучше всего ;-)",
     orEmail: "или по адресу",
-    privacy: "Я согласен(а) на обработку данных для организации свадьбы.",
-    privacyNote: "Только для планирования — после мероприятия данные будут удалены.",
+    privacy:
+      "Я согласен(а) на обработку данных для организации свадьбы.",
+    privacyNote:
+      "Только для планирования — после мероприятия данные будут удалены.",
     privacyTitle: "Конфиденциальность",
     privacyBody:
       "Мы обращаемся с вашими данными конфиденциально и используем их только для планирования свадьбы. После мероприятия данные будут удалены.",
-    rsvpSuccess: "Спасибо! Ваш ответ отправлен 💌",
+    rsvpSuccess:
+      "Спасибо! Ваш ответ отправлен 💌",
 
     factsTitle: "Грузия в цифрах",
     packlistTitle: "🎒 Список вещей (февраль в Грузии)",
@@ -707,11 +934,13 @@ export const TEXTS = {
     },
 
     sectionCelebration: "Праздник",
-    sectionCelebrationSub: "Всё важное: место, расписание, контакты и главное.",
+    sectionCelebrationSub:
+      "Всё важное: место, расписание, контакты и главное.",
     cardVenueTitle: "Место и программа",
     venueLead: "Церемония и ужин в",
-    venueName: "Monte Gudauri",
-    venueTail: "Дресс-код: элегантно и тепло. Музыка и танцы до ночи.",
+    venueName: "Alpina Hotel Georgia",
+    venueTail:
+      "Дресс-код: элегантно и тепло. Музыка и танцы до ночи.",
     mapsOpen: "Открыть адрес в Google Maps",
     hlWine: "Уютный бар и лаунж",
     hlMusic: "Музыка и танцы",
@@ -725,11 +954,12 @@ export const TEXTS = {
     tlEve: "Музыка, танцы и сюрпризы",
 
     cardContactTitle: "Контакты",
-    contactLead: "Вопросы по дороге, проживанию или аллергиям?",
+    contactLead:
+      "Вопросы по дороге, проживанию или аллергиям?",
     contactEmailLabel: "love@example.com",
 
     accommodationIntro:
-      "Monte Gudauri — уютный горный отель с рестораном, баром и панорамными видами.",
+      "Alpina Hotel Georgia — уютный горный отель с рестораном, баром и панорамными видами.",
     bookingCta: "→ Открыть на Booking.com",
     hotelFeatures: {
       rooms: "Уютные номера",
@@ -744,14 +974,17 @@ export const TEXTS = {
     openMap: "Открыть на карте",
 
     transfersIntro:
-      "Поездка из аэропорта Тбилиси (TBS) до Гудаури/Monte занимает около 2–2,5 ч (зависит от погоды и трафика) по Военно-Грузинской дороге (E117). Вот лучшие варианты:",
+      "Поездка из аэропорта Тбилиси (TBS) до Гудаури/Alpina Hotel Georgia занимает около 2–2,5 ч (зависит от погоды и трафика) по Военно-Грузинской дороге (E117). Вот лучшие варианты:",
     transferOptions: {
       shuttleTitle: "🚐 Трансфер-шаттл",
-      shuttleText: "Групповой трансфер в день свадьбы — требуется предварительная запись.",
+      shuttleText:
+        "Групповой трансфер в день свадьбы — требуется предварительная запись.",
       shuttleNote: "Координация шаттла (WhatsApp)",
       taxiTitle: "🚕 Такси / частный водитель",
-      taxiText: "Комфортные частные трансферы или местные такси прямо в аэропорту.",
-      taxiPrice: "Около 200–300 GEL за поездку (в зависимости от сезона/погоды).",
+      taxiText:
+        "Комфортные частные трансферы или местные такси прямо в аэропорту.",
+      taxiPrice:
+        "Около 200–300 GEL за поездку (в зависимости от сезона/погоды).",
       rentTitle: "🚗 Аренда автомобиля",
       rentText:
         "Удобно для самостоятельных поездок. Аренда доступна прямо в аэропорту Тбилиси.",
@@ -779,9 +1012,9 @@ const endUtc = new Date(new Date(DATUM.iso).getTime() + 6 * 60 * 60 * 1000)
   .replace(".000Z", "Z");
 
 export const googleCalUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(
-  `Hochzeit ${PAAR.braut} & ${PAAR.braeutigam}`
+  `Hochzeit ${PAAR.braut} & ${PAAR.braeutigam}`,
 )}&dates=${startUtc}%2F${endUtc}&location=${encodeURIComponent(
-  ORT.name
+  ORT.name,
 )}&details=${encodeURIComponent("Wir freuen uns auf euch!")}`;
 
 // ======================================================
@@ -789,29 +1022,48 @@ export const googleCalUrl = `https://calendar.google.com/calendar/render?action=
 // ======================================================
 export const PROGRAMM = [
   {
-    time: "14:00",
-    title: { de: "Freie Trauung", en: "Wedding ceremony", ru: "Церемония" },
-    place: { de: "Panorama-Bereich", en: "Panorama area", ru: "Панорамная зона" },
+    time: "15:00",
+    title: {
+      de: "Freie Trauung",
+      en: "Wedding ceremony",
+      ru: "Церемония",
+    },
+    place: {
+      de: "Panorama-Bereich",
+      en: "Panorama area",
+      ru: "Панорамная зона",
+    },
   },
   {
-    time: "15:30",
-    title: { de: "Sektempfang", en: "Reception", ru: "Фуршет" },
-    place: { de: "Hotel-Lounge", en: "Hotel lounge", ru: "Лаунж отеля" },
+    time: "15:45",
+    title: {
+      de: "Sektempfang + Fotos",
+      en: "Reception & Photos",
+      ru: "Фуршет и фото",
+    },
+    place: {
+      de: "Hotel-Lounge",
+      en: "Hotel lounge",
+      ru: "Лаунж отеля",
+    },
   },
   {
     time: "18:00",
     title: { de: "Dinner", en: "Dinner", ru: "Ужин" },
-    place: { de: "Restaurant", en: "Restaurant", ru: "Ресторан" },
+    place: {
+      de: "Restaurant",
+      en: "Restaurant",
+      ru: "Ресторан",
+    },
   },
   {
     time: "20:30",
-    title: { de: "Eröffnungstanz & Party", en: "First dance & party", ru: "Первый танец и вечеринка" },
+    title: {
+      de: "Mal sehen, was der Abend so bringt",
+      en: "Let's see what the evening brings",
+      ru: "Посмотрим, что нам принесёт вечер",
+    },
     place: { de: "Saal", en: "Hall", ru: "Зал" },
-  },
-  {
-    time: "23:00",
-    title: { de: "Überraschung", en: "Surprise", ru: "Сюрприз" },
-    place: { de: "Terrasse", en: "Terrace", ru: "Терраса" },
   },
 ];
 

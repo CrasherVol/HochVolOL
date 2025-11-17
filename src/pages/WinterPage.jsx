@@ -7,6 +7,7 @@ import Gallery from "../components/Gallery.jsx";
 import WeatherWidget from "../components/WeatherWidget.jsx";
 import { TEXTS } from "../data/constants.js";
 import ExternalLink from "../components/ExternalLink.jsx";
+import PisteStatus from "../components/PisteStatus.jsx";
 
 import {
   Snowflake,
@@ -59,14 +60,33 @@ const W = {
     ],
     slopePdfBtn: "Pistenplan als PDF ansehen",
     actsTitle: "Winteraktivitäten & Erlebnisse",
-    actsIntro: "In Gudauri und Umgebung erwarten dich viele Möglichkeiten – von entspannt bis abenteuerlich:",
+    actsIntro:
+      "In Gudauri und Umgebung erwarten dich viele Möglichkeiten – von entspannt bis abenteuerlich:",
     moreAreasTitle: "Weitere Skigebiete in Georgien",
     miniAreas: [
-      { title: "Bakuriani", text: "Familienfreundlich, neue Lifte (Kinderbereiche).", href: "https://www.georgia.travel/bakuriani" },
-      { title: "Mestia – Hatsvali", text: "Klein & aussichtsreich in Swanetien.", href: "https://www.georgia.travel/ski" },
-      { title: "Tetnuldi", text: "Hochalpin mit langen Abfahrten.", href: "https://www.georgia.travel/ski" },
+      {
+        title: "Bakuriani",
+        text: "Familienfreundlich, neue Lifte (Kinderbereiche).",
+        href: "https://www.georgia.travel/bakuriani",
+      },
+      {
+        title: "Mestia – Hatsvali",
+        text: "Klein & aussichtsreich in Swanetien.",
+        href: "https://www.georgia.travel/ski",
+      },
+      {
+        title: "Tetnuldi",
+        text: "Hochalpin mit langen Abfahrten.",
+        href: "https://www.georgia.travel/ski",
+      },
     ],
     galleryTitle: "Winter-Impressionen",
+
+    snowTitle: "Schnee & Pistenstatus",
+    snowIntro:
+      "Hier findet ihr allgemeine Infos zu Schnee, Pisten und Sicherheit in Gudauri sowie Links zu aktuellen Berichten.",
+    snowHint:
+      "Für den tagesaktuellen Stand zu Schneehöhen, geöffneten Liften und Lawinensituation nutzt bitte die verlinkten externen Seiten.",
   },
   en: {
     pageTitle: "Winter in Georgia",
@@ -102,14 +122,33 @@ const W = {
     ],
     slopePdfBtn: "View piste map (PDF)",
     actsTitle: "Winter activities & experiences",
-    actsIntro: "In and around Gudauri you’ll find plenty to do – from relaxed to full-on adventure:",
+    actsIntro:
+      "In and around Gudauri you’ll find plenty to do – from relaxed to full-on adventure:",
     moreAreasTitle: "Other ski areas in Georgia",
     miniAreas: [
-      { title: "Bakuriani", text: "Family-friendly, new lifts (kids’ areas).", href: "https://www.georgia.travel/bakuriani" },
-      { title: "Mestia – Hatsvali", text: "Small & scenic in Svaneti.", href: "https://www.georgia.travel/ski" },
-      { title: "Tetnuldi", text: "High-alpine terrain with long descents.", href: "https://www.georgia.travel/ski" },
+      {
+        title: "Bakuriani",
+        text: "Family-friendly, new lifts (kids’ areas).",
+        href: "https://www.georgia.travel/bakuriani",
+      },
+      {
+        title: "Mestia – Hatsvali",
+        text: "Small & scenic in Svaneti.",
+        href: "https://www.georgia.travel/ski",
+      },
+      {
+        title: "Tetnuldi",
+        text: "High-alpine terrain with long descents.",
+        href: "https://www.georgia.travel/ski",
+      },
     ],
     galleryTitle: "Winter impressions",
+
+    snowTitle: "Snow & slope status",
+    snowIntro:
+      "Here you’ll find general information about snow, slopes and safety in Gudauri plus links to current reports.",
+    snowHint:
+      "For day-to-day details on snow depth, open lifts and avalanche situation, please use the linked external sites.",
   },
   ru: {
     pageTitle: "Зима в Грузии",
@@ -145,35 +184,95 @@ const W = {
     ],
     slopePdfBtn: "Схема трасс (PDF)",
     actsTitle: "Зимние активности и впечатления",
-    actsIntro: "В Гудаури и окрестностях — масса вариантов: от релакса до адреналина:",
+    actsIntro:
+      "В Гудаури и окрестностях — масса вариантов: от релакса до адреналина:",
     moreAreasTitle: "Другие горнолыжные курорты Грузии",
     miniAreas: [
-      { title: "Бакуриани", text: "Подходит для семей, новые подъёмники (детские зоны).", href: "https://www.georgia.travel/bakuriani" },
-      { title: "Местия — Хацвали", text: "Небольшой и очень живописный курорт в Сванетии.", href: "https://www.georgia.travel/ski" },
-      { title: "Тетнульди", text: "Высокогорье с длинными спусками.", href: "https://www.georgia.travel/ski" },
+      {
+        title: "Бакуриани",
+        text: "Подходит для семей, новые подъёмники (детские зоны).",
+        href: "https://www.georgia.travel/bakuriani",
+      },
+      {
+        title: "Местия — Хацвали",
+        text: "Небольшой и очень живописный курорт в Сванетии.",
+        href: "https://www.georgia.travel/ski",
+      },
+      {
+        title: "Тетнульди",
+        text: "Высокогорье с длинными спусками.",
+        href: "https://www.georgia.travel/ski",
+      },
     ],
     galleryTitle: "Зимние впечатления",
+
+    snowTitle: "Снег и состояние трасс",
+    snowIntro:
+      "Здесь — общая информация о снеговых условиях, трассах и безопасности в Гудаури, а также ссылки на актуальные отчёты.",
+    snowHint:
+      "Для ежедневной информации о высоте снега, работе подъёмников и лавинной обстановке используйте указанные внешние сайты.",
   },
 };
 
 /* ==== Animierte Icons ==== */
 const AnimatedSnowflake = () => (
-  <Snowflake size={20} style={{ color: "#3b82f6", animation: "spin 12s linear infinite" }} />
+  <Snowflake
+    size={20}
+    style={{ color: "#3b82f6", animation: "spin 12s linear infinite" }}
+  />
 );
 const AnimatedSun = () => (
-  <CloudSun size={22} style={{ color: "#f59e0b", animation: "floatY 5s ease-in-out infinite" }} />
+  <CloudSun
+    size={22}
+    style={{ color: "#f59e0b", animation: "floatY 5s ease-in-out infinite" }}
+  />
 );
 
 export default function WinterPage({ lang, setLang }) {
   const t = TEXTS[lang] || TEXTS.de; // global (Nav etc.)
-  const w = W[lang] || W.de;         // lokale i18n-Texte
+  const w = W[lang] || W.de; // lokale i18n-Texte
   const acts = ACTIVITIES[lang] || ACTIVITIES.de; // 💡 lokalisiert!
+  const snowLinks = SNOW_LINKS[lang] || SNOW_LINKS.de;
 
-  
+  // kleine Überschriften + Bulletpoints für Schnee-Box, je nach Sprache
+  const snowOverviewTitle =
+    lang === "en" ? "Overview" : lang === "ru" ? "Обзор" : "Überblick";
+
+  const snowCurrentTitle =
+    lang === "en"
+      ? "Current info"
+      : lang === "ru"
+      ? "Актуальная информация"
+      : "Aktuelle Infos";
+
+  const snowBullets =
+    lang === "en"
+      ? [
+          "Altitude approx. 2,000–3,200 m",
+          "Season usually from December to April",
+          "South-facing slopes: often sunny, but winter road conditions",
+        ]
+      : lang === "ru"
+      ? [
+          "Высота примерно 2 000–3 200 м",
+          "Сезон обычно с декабря по апрель",
+          "Южные склоны: много солнца, но зимние дорожные условия",
+        ]
+      : [
+        "--> schnapp dir die Bretter oder das Board und dann rauf auf den Berg und rein ins Vergnügen",
+        "- viel Schnee und schöne Pisten",
+        "- immer eine Ski- oder Snowboadfahrt wert",
+
+        ];
+
   return (
     <Layout lang={lang} setLang={setLang}>
       <Section
-        title={<><AnimatedSnowflake /> {w.pageTitle}</>}
+        title={
+          <>
+            <AnimatedSnowflake /> {w.pageTitle}
+          </>
+        }
         subtitle={w.pageSub}
       >
         {/* === HERO-BEREICH === */}
@@ -193,11 +292,26 @@ export default function WinterPage({ lang, setLang }) {
           <div>
             <h3 style={{ marginTop: 0 }}>{w.heroTitle}</h3>
             <p style={{ color: "#334155" }}>{w.heroText}</p>
-            <div style={{ marginTop: ".8rem", display: "flex", flexWrap: "wrap", gap: ".5rem" }}>
-              <span className="badge"><Mountain size={14} /> {w.badgeHeight}</span>
-              <span className="badge"><Snowflake size={14} /> {w.badgeSeason}</span>
-              <span className="badge"><Ticket size={14} /> {w.badgeSlopes}</span>
-              <span className="badge"><Clock size={14} /> {w.badgeDrive}</span>
+            <div
+              style={{
+                marginTop: ".8rem",
+                display: "flex",
+                flexWrap: "wrap",
+                gap: ".5rem",
+              }}
+            >
+              <span className="badge">
+                <Mountain size={14} /> {w.badgeHeight}
+              </span>
+              <span className="badge">
+                <Snowflake size={14} /> {w.badgeSeason}
+              </span>
+              <span className="badge">
+                <Ticket size={14} /> {w.badgeSlopes}
+              </span>
+              <span className="badge">
+                <Clock size={14} /> {w.badgeDrive}
+              </span>
             </div>
           </div>
 
@@ -212,19 +326,35 @@ export default function WinterPage({ lang, setLang }) {
               padding: "1rem",
             }}
           >
-            <div style={{ display: "flex", alignItems: "center", gap: ".5rem", marginBottom: ".5rem" }}>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: ".5rem",
+                marginBottom: ".5rem",
+              }}
+            >
               <AnimatedSun />
               <strong>{w.weatherTitle}</strong>
             </div>
-            <WeatherWidget lat={42.4791} lon={44.4778} place="Gudauri" lang={lang} />
+            <WeatherWidget
+              lat={42.4791}
+              lon={44.4778}
+              place="Gudauri"
+              lang={lang}
+            />
           </div>
         </div>
 
         {/* === GEORGIEN IM WINTER === */}
         <Card title={w.whyTitle} className="hover-react">
           <p style={{ color: "#334155" }}>{w.whyP1}</p>
-          <ul style={{ marginLeft: "1rem", color: "#334155", lineHeight: 1.6 }}>
-            {w.whyBullets.map((b) => <li key={b}>{b}</li>)}
+          <ul
+            style={{ marginLeft: "1rem", color: "#334155", lineHeight: 1.6 }}
+          >
+            {w.whyBullets.map((b) => (
+              <li key={b}>{b}</li>
+            ))}
           </ul>
         </Card>
 
@@ -234,8 +364,12 @@ export default function WinterPage({ lang, setLang }) {
         {/* === SKIGEBIET GUDAURI === */}
         <Card title={w.gudauriTitle} className="hover-react">
           <p style={{ color: "#334155" }}>{w.gudauriText}</p>
-          <ul style={{ marginLeft: "1rem", color: "#334155", lineHeight: 1.6 }}>
-            {w.gudauriBullets.map((b) => <li key={b}>{b}</li>)}
+          <ul
+            style={{ marginLeft: "1rem", color: "#334155", lineHeight: 1.6 }}
+          >
+            {w.gudauriBullets.map((b) => (
+              <li key={b}>{b}</li>
+            ))}
           </ul>
           <div style={{ marginTop: "1rem", textAlign: "center" }}>
             <a
@@ -265,6 +399,213 @@ export default function WinterPage({ lang, setLang }) {
             </a>
           </div>
         </Card>
+
+        {/* kleiner Abstand */}
+        <div style={{ height: "1rem" }} />
+
+        {/* === SCHNEE & PISTENSTATUS (eigene Sektion + Video) === */}
+        <Card title={w.snowTitle} className="hover-react">
+          <p style={{ color: "#334155" }}>{w.snowIntro}</p>
+
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+              gap: "0.75rem",
+              marginTop: ".75rem",
+            }}
+          >
+            {/* Box: Überblick */}
+            <div
+              style={{
+                background: "rgba(255,255,255,0.9)",
+                borderRadius: "0.9rem",
+                border: "1px solid #e2e8f0",
+                padding: ".75rem .9rem",
+                display: "grid",
+                gap: ".4rem",
+              }}
+            >
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: ".4rem",
+                }}
+              >
+                <Snowflake size={16} />
+                <strong>{snowOverviewTitle}</strong>
+              </div>
+              <ul
+                style={{
+                  margin: 0,
+                  paddingLeft: "1.1rem",
+                  color: "#475569",
+                  fontSize: ".9rem",
+                  lineHeight: 1.5,
+                }}
+              >
+                {snowBullets.map((line) => (
+                  <li key={line}>{line}</li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Box: Links zu Status & Prognose */}
+            <div
+              style={{
+                background: "rgba(255,255,255,0.9)",
+                borderRadius: "0.9rem",
+                border: "1px solid #e2e8f0",
+                padding: ".75rem .9rem",
+                display: "grid",
+                gap: ".5rem",
+              }}
+            >
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: ".4rem",
+                }}
+              >
+                <Wind size={16} />
+                <strong>{snowCurrentTitle}</strong>
+              </div>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: ".4rem",
+                }}
+              >
+                <a
+                  href={snowLinks.report}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="btn-chip"
+                  style={{
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: ".4rem",
+                  }}
+                >
+                  <ExternalLinkIcon size={14} />
+                  <span>
+                    {lang === "en"
+                      ? "Snow report & slope status"
+                      : lang === "ru"
+                      ? "Снег и состояние трасс"
+                      : "Schneebericht & Pistenstatus"}
+                  </span>
+                </a>
+                <a
+                  href={snowLinks.forecast}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="btn-chip"
+                  style={{
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: ".4rem",
+                  }}
+                >
+                  <CloudSun size={14} />
+                  <span>
+                    {lang === "en"
+                      ? "Weather & snow forecast"
+                      : lang === "ru"
+                      ? "Погода и прогноз снега"
+                      : "Wetter & Schneevorhersage"}
+                  </span>
+                </a>
+                <a
+                  href={snowLinks.lifts}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="btn-chip"
+                  style={{
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: ".4rem",
+                  }}
+                >
+                  <MapPin size={14} />
+                  <span>
+                    {lang === "en"
+                      ? "Lift overview Gudauri"
+                      : lang === "ru"
+                      ? "Схема подъёмников Гудаури"
+                      : "Liftübersicht Gudauri"}
+                  </span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <p
+            style={{
+              fontSize: ".85rem",
+              color: "#64748b",
+              marginTop: ".75rem",
+              display: "flex",
+              alignItems: "flex-start",
+              gap: ".35rem",
+            }}
+          >
+            <Info size={14} style={{ marginTop: "2px", flexShrink: 0 }} />
+            <span>{w.snowHint}</span>
+          </p>
+
+          {/* YouTube-Video (legaler Embed) */}
+          <div
+            style={{
+              marginTop: "1rem",
+              borderRadius: "0.9rem",
+              overflow: "hidden",
+              border: "1px solid #e2e8f0",
+              boxShadow: "0 10px 28px rgba(15,23,42,0.18)",
+              background: "#020617",
+            }}
+          >
+            <div
+              style={{
+                position: "relative",
+                paddingBottom: "56.25%",
+                height: 0,
+              }}
+            >
+              <iframe
+                src="https://www.youtube.com/embed/EYbGmNrS5-0"
+                title="Gudauri Winter – YouTube"
+                style={{
+                  position: "absolute",
+                  inset: 0,
+                  width: "100%",
+                  height: "100%",
+                  border: 0,
+                }}
+                loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+              />
+            </div>
+          </div>
+        </Card>
+
+        {/* kleiner Abstand */}
+        <div style={{ height: "1rem" }} />
+
+        {/* === PISTENSTATUS / LIFTE (deine Komponente) === */}
+        <PisteStatus
+          lang={lang}
+          links={{
+            status:
+              "https://www.skiresort.de/skigebiet/gudauri/schneebericht/", // Pistenstatus
+            webcams: "https://www.gudauri.info/en/webcam/", // Webcams
+            map: "https://piste-maps.co.uk/Piste-Maps/Georgia/Gudauri-Piste-Ski-Map-2023-24.pdf", // Pistenplan
+          }}
+        />
 
         <div style={{ height: "1rem" }} />
 
@@ -297,7 +638,12 @@ export default function WinterPage({ lang, setLang }) {
             }}
           >
             {w.miniAreas.map((m) => (
-              <MiniArea key={m.title} title={m.title} text={m.text} href={m.href} />
+              <MiniArea
+                key={m.title}
+                title={m.title}
+                text={m.text}
+                href={m.href}
+              />
             ))}
           </div>
         </Card>
@@ -306,13 +652,19 @@ export default function WinterPage({ lang, setLang }) {
         <Card title={w.galleryTitle} className="hover-react">
           <Gallery
             images={[
-              "https://images.unsplash.com/photo-1610212152844-5cbbbd50456c?q=80&w=1000&auto=format&fit=crop",
-              "https://images.unsplash.com/photo-1578301978693-85fa9c032c2f?q=80&w=1000&auto=format&fit=crop",
-              "https://images.unsplash.com/photo-1486915309851-b0cc1f8a0083?q=80&w=1000&auto=format&fit=crop",
-              "https://images.unsplash.com/photo-1516012376757-2e5b9a8d4d50?q=80&w=1000&auto=format&fit=crop",
+              "/winter/georgia-1.jpg",
+              "/winter/georgia-2.jpg",
+              "/winter/georgia-3.jpg",
+              "/winter/georgia-4.jpg",
+              "/winter/georgia-5.jpg",
+              "/winter/georgia-6.jpg",
+              "/winter/georgia-7.jpg",
+              "/winter/georgia-8.jpg",
             ]}
           />
         </Card>
+
+
 
         {/* === CSS === */}
         <style>{`
@@ -460,6 +812,29 @@ const ACTIVITIES = {
   ],
 };
 
+/* === Links für Schnee/Pistenstatus === */
+const SNOW_LINKS = {
+  de: {
+    report: "https://www.skiresort.de/skigebiet/gudauri/schneebericht/",
+    forecast:
+      "https://www.meteoblue.com/de/wetter/woche/gudauri_georgien_614410",
+    lifts: "https://www.gudauri.info/en/lifts/",
+  },
+  en: {
+    report: "https://www.skiresort.info/ski-resort/gudauri/snow-report/",
+    forecast:
+      "https://www.meteoblue.com/en/weather/week/gudauri_georgia_614410",
+    lifts: "https://www.gudauri.info/en/lifts/",
+  },
+  ru: {
+    report:
+      "https://www.skiresort.info/%D0%BA%D1%83%D1%80%D0%BE%D1%80%D1%82/gudauri/snow-report/",
+    forecast:
+      "https://www.meteoblue.com/ru/%D0%BF%D0%BE%D0%B3%D0%BE%D0%B4%D0%B0/week/gudauri_%D0%93%D1%80%D1%83%D0%B7%D0%B8%D1%8F_614410",
+    lifts: "https://www.gudauri.info/en/lifts/",
+  },
+};
+
 /* === Komponenten === */
 function Activity({ img, title, text, type, link }) {
   return (
@@ -487,11 +862,25 @@ function Activity({ img, title, text, type, link }) {
         }}
       />
       <div style={{ padding: ".6rem .75rem", flex: 1 }}>
-        <div style={{ fontWeight: 700, display: "flex", justifyContent: "space-between" }}>
+        <div
+          style={{
+            fontWeight: 700,
+            display: "flex",
+            justifyContent: "space-between",
+          }}
+        >
           <span>{title}</span>
           <ExternalLinkIcon size={14} />
         </div>
-        <p style={{ color: "#475569", fontSize: ".9rem", marginTop: ".35rem" }}>{text}</p>
+        <p
+          style={{
+            color: "#475569",
+            fontSize: ".9rem",
+            marginTop: ".35rem",
+          }}
+        >
+          {text}
+        </p>
         <span
           style={{
             display: "inline-block",
@@ -529,7 +918,10 @@ function MiniArea({ title, text, href }) {
       <div style={{ display: "flex", alignItems: "center", gap: ".45rem" }}>
         <Mountain size={16} />
         <strong>{title}</strong>
-        <ExternalLinkIcon size={14} style={{ marginLeft: "auto", opacity: 0.7 }} />
+        <ExternalLinkIcon
+          size={14}
+          style={{ marginLeft: "auto", opacity: 0.7 }}
+        />
       </div>
       <div style={{ color: "#64748b", fontSize: ".95rem" }}>{text}</div>
     </ExternalLink>

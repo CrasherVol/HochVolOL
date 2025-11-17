@@ -1,8 +1,8 @@
 // src/pages/HomePage.jsx
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Layout from "../components/Layout.jsx";
 import Card from "../components/Card.jsx";
-import { TEXTS, DATUM, LINKS } from "../data/constants.js";
+import { TEXTS, DATUM, LINKS, getProgramm } from "../data/constants.js";
 import {
   CalendarHeart,
   MapPin,
@@ -19,6 +19,33 @@ import {
 export default function HomePage({ lang, setLang }) {
   const t = TEXTS[lang] || TEXTS.de;
   const tt = (key, fallback) => (t && t[key] !== undefined ? t[key] : fallback);
+
+  const targetDate = new Date(DATUM.iso);
+
+  const getTimeLeft = () => {
+    const diff = targetDate.getTime() - Date.now();
+    if (diff <= 0) {
+      return { isPast: true, days: 0, hours: 0, minutes: 0, seconds: 0 };
+    }
+    const totalSeconds = Math.floor(diff / 1000);
+    const days = Math.floor(totalSeconds / (60 * 60 * 24));
+    const hours = Math.floor((totalSeconds % (60 * 60 * 24)) / (60 * 60));
+    const minutes = Math.floor((totalSeconds % (60 * 60)) / 60);
+    const seconds = totalSeconds % 60;
+    return { isPast: false, days, hours, minutes, seconds };
+  };
+
+  const [timeLeft, setTimeLeft] = useState(getTimeLeft);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTimeLeft(getTimeLeft());
+    }, 1000);
+    return () => clearInterval(timer);
+  }, []);
+
+  // Zeitplan aus PROGRAMM / getProgramm(lang)
+  const timeline = getProgramm(lang);
 
   return (
     <Layout lang={lang} setLang={setLang}>
@@ -40,17 +67,58 @@ export default function HomePage({ lang, setLang }) {
           {tt("heroTitle", "Wir heiraten!")}
         </h1>
 
-<div className="names-line highlight-names">
-  <span className="name">Olga</span>
-  <span className="and">&amp;</span>
-  <span className="name">Volker</span>
-</div>
-
-
+        <div className="names-line highlight-names">
+          <span className="name">Olga</span>
+          <span className="and">&amp;</span>
+          <span className="name">Volker</span>
+        </div>
 
         <div className="date-pill">
           <CalendarHeart size={18} />
           <span>{DATUM.text}</span>
+        </div>
+
+        {/* ---------- COUNTDOWN unter dem Datum ---------- */}
+        <div className="countdown-wrap">
+          {timeLeft.isPast ? (
+            <div className="countdown-finished pill-dark">
+              {tt("countdownFinished", "Heute ist es so weit! 🎉")}
+            </div>
+          ) : (
+            <>
+              <div className="countdown-label">
+                {tt("countdownLabel", "Noch")}
+              </div>
+              <div className="countdown-boxes">
+                <div className="countdown-box">
+                  <div className="countdown-number">{timeLeft.days}</div>
+                  <div className="countdown-unit">
+                    {tt("countdownDays", "Tage")}
+                  </div>
+                </div>
+                <div className="countdown-box">
+                  <div className="countdown-number">{timeLeft.hours}</div>
+                  <div className="countdown-unit">
+                    {tt("countdownHours", "Stunden")}
+                  </div>
+                </div>
+                <div className="countdown-box">
+                  <div className="countdown-number">{timeLeft.minutes}</div>
+                  <div className="countdown-unit">
+                    {tt("countdownMinutes", "Minuten")}
+                  </div>
+                </div>
+                <div className="countdown-box">
+                  <div className="countdown-number">
+                    {String(timeLeft.seconds).padStart(2, "0")}
+                  </div>
+                  <div className="countdown-unit">
+                    {tt("countdownSeconds", "Sekunden")}
+                  </div>
+                </div>
+              </div>
+            </>
+          )}
         </div>
 
         <p className="home-hero-sub pill-dark">
@@ -90,7 +158,7 @@ export default function HomePage({ lang, setLang }) {
           </div>
           <div className="quick">
             <Clock size={14} />
-            <span>{tt("quickCeremony", "Freie Trauung & Dinner")}</span>
+            <span>{tt("quickCeremony", "Freie Trauung")}</span>
           </div>
         </div>
       </section>
@@ -116,11 +184,9 @@ export default function HomePage({ lang, setLang }) {
             className="hover-react feier-card"
           >
             <p className="feier-text">
-              {tt("venueLead", "Trauung & Dinner im")}{" "}
-              <strong>
-                {tt("venueName", "Chateau Methis Kalaki")}
-              </strong>
-              .<br />
+              {tt("venueLead", "Trauung im")}{" "}
+              <strong>{tt("venueName", "Chateau Methis Kalaki")}</strong>.
+              <br />
               {tt(
                 "venueTail",
                 "Dresscode: elegant, winterfest. Musik & Tanz bis in die Nacht."
@@ -159,20 +225,11 @@ export default function HomePage({ lang, setLang }) {
             className="hover-react feier-card"
           >
             <ul className="mini-timeline">
-              <li>
-                <span>14:00</span> {tt("tl14", "Freie Trauung")}
-              </li>
-              <li>
-                <span>15:30</span>{" "}
-                {tt("tl1530", "Sektempfang & Weinverkostung")}
-              </li>
-              <li>
-                <span>18:00</span> {tt("tl18", "Dinner")}
-              </li>
-              <li>
-                <span>{tt("tlEveningTime", "abends")}</span>{" "}
-                {tt("tlEve", "Musik, Tanz & Überraschungen")}
-              </li>
+              {timeline.map((item, idx) => (
+                <li key={idx}>
+                  <span>{item.time}</span> {item.title}
+                </li>
+              ))}
             </ul>
           </Card>
 

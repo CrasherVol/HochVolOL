@@ -169,8 +169,6 @@ export default function Layout({ children, lang, setLang }) {
       style={{
         minHeight: "100vh",
         background: "transparent",
-        position: "relative",
-        zIndex: 1,
       }}
     >
       <Header lang={lang} setLang={setLang} />

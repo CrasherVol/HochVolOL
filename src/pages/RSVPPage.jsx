@@ -225,8 +225,8 @@ export default function RSVPPage({ lang, setLang }) {
                   {lang === "en"
                     ? "Yes. Please indicate it in the form so we can plan seats and dinner."
                     : lang === "ru"
-                    ? "Да. Пожалуйста, укажите это в форме, чтобы мы смогли спланировать места и ужин."
-                    : "Ja. Bitte im Formular angeben, damit wir Plätze und Dinner planen können."}
+                    ? "Да. Пожалуйста, укажите это в форме, чтобы мы могли заготовить достаточное количество клеток."
+                    : "Yes. Please indicate this on the form so that we can obtain enough cages."}
                 </div>
               </details>
 

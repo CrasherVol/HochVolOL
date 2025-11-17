@@ -17,7 +17,6 @@ import {
   ParkingCircle,
   Sun,
   Snowflake,
-  Trees,
 } from "lucide-react";
 
 export default function LocationPage({ lang, setLang }) {
@@ -27,15 +26,16 @@ export default function LocationPage({ lang, setLang }) {
   // nimmt das 1. Galerie-Bild, sonst das lokale Fallback aus /public
   const heroImage =
     (Array.isArray(LOCATION_DETAILS?.galerie) && LOCATION_DETAILS.galerie[0]) ||
-    "/Hotel-Monte-Gudauri.jpg";
+    "/Hotel-Alpina-Gudauri.jpg";
 
-  // Galerie-Captions passend zu Gudauri/Monte (mit Fallbacks, falls keine Übersetzungen existieren)
-  const galleryCaptions = [
-    t?.galleryCaptions?.monte1 || "Hotel Monte Gudauri",
-    t?.galleryCaptions?.monte2 || "Blick über Gudauri",
-    t?.galleryCaptions?.monte3 || "Shino-Skilift & Pisten",
-    t?.galleryCaptions?.monte4 || "Kaukasus-Panorama",
-  ];
+  // Galerie-Captions (Fallbacks, falls keine Übersetzungen existieren)
+const galleryCaptions = [
+  t?.galleryCaptions?.alpina1 || "Alpina Hotel Georgia",
+  t?.galleryCaptions?.alpina2 || "Alpina Terasse bei Schnee",
+  t?.galleryCaptions?.alpina3 || "Alpina bei Schnee",
+  t?.galleryCaptions?.alpina4 || "Alpina Kaminzimmer",
+];
+
 
   return (
     <Layout lang={lang} setLang={setLang}>
@@ -54,9 +54,9 @@ export default function LocationPage({ lang, setLang }) {
           {heroImage && (
             <img
               src={heroImage}
-              alt={LOCATION_DETAILS?.name || "Hotel Monte Gudauri"}
+              alt={LOCATION_DETAILS?.name || "Alpina Hotel Georgia"}
               style={{
-                width: "100%",
+                width: "80%",
                 height: "auto",
                 borderRadius: ".75rem",
                 marginBottom: ".75rem",
@@ -69,18 +69,28 @@ export default function LocationPage({ lang, setLang }) {
           <p style={{ marginBottom: ".5rem" }}>
             <MapPin
               className="w-4 h-4"
-              style={{ display: "inline", marginRight: ".25rem", verticalAlign: "-2px" }}
+              style={{
+                display: "inline",
+                marginRight: ".25rem",
+                verticalAlign: "-2px",
+              }}
             />
             {LOCATION_DETAILS.adresse}
           </p>
 
           {/* Action Buttons */}
-          <div style={{ display: "flex", gap: ".6rem", flexWrap: "wrap", marginBottom: ".75rem" }}>
+          <div
+            style={{
+              display: "flex",
+              gap: ".6rem",
+              flexWrap: "wrap",
+              marginBottom: ".75rem",
+            }}
+          >
             <a
               className="cta-primary"
               href={
-                LOCATION_DETAILS.website ||
-                "https://www.facebook.com/profile.php?id=100089988360226"
+                LOCATION_DETAILS.website || "https://hotelalpina.ge/"
               }
               target="_blank"
               rel="noreferrer"
@@ -89,7 +99,11 @@ export default function LocationPage({ lang, setLang }) {
             </a>
             <a
               className="cta-ghost"
-              href={LOCATION_DETAILS.bookingUrl || (LINKS?.booking?.methis ?? "#")}
+              href={
+                LOCATION_DETAILS.bookingUrl ||
+                (LINKS?.booking?.alpina ??
+                  "https://www.booking.com/hotel/ge/alpina.de.html")
+              }
               target="_blank"
               rel="noreferrer"
             >
@@ -97,7 +111,10 @@ export default function LocationPage({ lang, setLang }) {
             </a>
             <a
               className="cta-ghost"
-              href={LOCATION_DETAILS.mapsUrl || "https://www.google.com/maps/search/?api=1&query=Monte+Hotel+Gudauri"}
+              href={
+                LOCATION_DETAILS.mapsUrl ||
+                "https://www.google.com/maps/search/?api=1&query=Alpina+Hotel+Gudauri"
+              }
               target="_blank"
               rel="noreferrer"
             >
@@ -108,67 +125,96 @@ export default function LocationPage({ lang, setLang }) {
           {/* Kurzbeschreibung */}
           <p style={{ marginBottom: ".75rem" }}>
             {LOCATION_DETAILS.kurzbeschreibung ||
-              "Gemütliches Hotel im Skigebiet Gudauri – mit Restaurant, Bar, Sauna, Jacuzzi und weitem Bergblick über den Kaukasus."}
+              "Modernes Hotel im Skigebiet Gudauri – mit Sonnenterrasse, Restaurant, Bar und weitem Bergblick über den Kaukasus. Direkter Zugang zu den Skipisten (ski-in / ski-out)."}
           </p>
 
-          {/* Hinweise (bestehendes Feld weiter nutzen) */}
-          {Array.isArray(LOCATION_DETAILS.hinweise) && LOCATION_DETAILS.hinweise.length > 0 && (
-            <ul style={{ marginLeft: "1rem", listStyle: "disc", marginBottom: "0.75rem" }}>
-              {LOCATION_DETAILS.hinweise.map((h, i) => (
-                <li key={i}>{h}</li>
-              ))}
-            </ul>
-          )}
+          {/* Hinweise */}
+          {Array.isArray(LOCATION_DETAILS.hinweise) &&
+            LOCATION_DETAILS.hinweise.length > 0 && (
+              <ul
+                style={{
+                  marginLeft: "1rem",
+                  listStyle: "disc",
+                  marginBottom: "0.75rem",
+                }}
+              >
+                {LOCATION_DETAILS.hinweise.map((h, i) => (
+                  <li key={i}>{h}</li>
+                ))}
+              </ul>
+            )}
         </Card>
 
-        {/* ---------- GRID: Ausstattung / Zimmer / Spa / Essen & Terrasse ---------- */}
+        {/* ---------- GRID: Ausstattung / Zimmer / Aktivitäten & Essen ---------- */}
         <div
           style={{
             display: "grid",
             gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
             gap: "1rem",
-            marginBottom: "1.25rem", // << Abstand NACH obenem Grid
+            marginBottom: "1.25rem",
           }}
         >
           {/* Ausstattung */}
           <Card title={t.tipsTitle || "Ausstattung"} className="hover-react">
             <div className="amenities" style={{ display: "grid", gap: ".5rem" }}>
-              <Amenity icon={<BedDouble size={16} />} label="Komfortable Zimmer (teils mit Balkon/Ausblick)" />
-              <Amenity icon={<Wifi size={16} />} label="WLAN inklusive" />
-              <Amenity icon={<ParkingCircle size={16} />} label="Kostenlose Parkplätze" />
-              <Amenity icon={<Utensils size={16} />} label="Restaurant & Bar im Haus" />
-              <Amenity icon={<Bath size={16} />} label="Sauna & Jacuzzi (inklusive)" />
-              <Amenity icon={<Sun size={16} />} label="Shuttle zum Shino-Skilift" />
-              <Amenity icon={<Snowflake size={16} />} label="Ski-Lagerung / Wintersportlage" />
+              <Amenity
+                icon={<BedDouble size={16} />}
+                label="Komfortable Zimmer, viele mit Balkon & Bergblick"
+              />
+              <Amenity
+                icon={<Wifi size={16} />}
+                label="Kostenfreies WLAN im ganzen Hotel"
+              />
+              <Amenity
+                icon={<ParkingCircle size={16} />}
+                label="Kostenlose Parkplätze direkt am Hotel"
+              />
+              <Amenity
+                icon={<Utensils size={16} />}
+                label="Restaurant mit georgischer & europäischer Küche"
+              />
+              <Amenity icon={<Wine size={16} />} label="Gemütliche Bar & Lounge im Haus" />
+              <Amenity
+                icon={<Sun size={16} />}
+                label="Sonnenterrasse mit Panorama über Gudauri"
+              />
+              <Amenity
+                icon={<Snowflake size={16} />}
+                label="Direkter Zugang zu den Skipisten (ski-in/ski-out)"
+              />
             </div>
           </Card>
 
           {/* Zimmer */}
           <Card title="Zimmer" className="hover-react">
             <ul style={{ marginLeft: "1rem", listStyle: "disc" }}>
-              <li>Double / Twin · teilweise mit Balkon & Blick</li>
-              <li>Hochwertige Bettwäsche, gute Schallisolierung</li>
-              <li>Eigenes Bad, Pflegeprodukte, Föhn</li>
-              <li>Heizung · Wasserkocher · Minibar (je nach Zimmer)</li>
+              <li>
+                Double / Twin & Familienzimmer – teilweise mit Balkon & Bergblick
+              </li>
+              <li>Hochwertige Bettwäsche, TV & gute Schallisolierung</li>
+              <li>Eigenes Bad mit Pflegeprodukten & Föhn</li>
+              <li>Heizung · Wasserkocher/Kaffee-Setup (je nach Zimmer)</li>
             </ul>
           </Card>
 
-          {/* Spa & Wellness */}
-          <Card title="Spa & Wellness" className="hover-react">
+          {/* Aktivitäten & Freizeit */}
+          <Card title="Aktivitäten & Freizeit" className="hover-react">
             <ul style={{ marginLeft: "1rem", listStyle: "disc" }}>
-              <li>Sauna & Jacuzzi (für Gäste inklusive)</li>
-              <li>Ruheraum – perfekt für Wintertage</li>
-              <li>Massagen nach Verfügbarkeit</li>
+              <li>Ski-in/Ski-out & kurze Wege zu den Liften</li>
+              <li>Ski- und Snowboardfahren direkt ab Unterkunft</li>
+              <li>Gemütliche Lounge-Bereiche für den Abend</li>
             </ul>
           </Card>
 
           {/* Restaurant & Terrasse */}
           <Card title="Restaurant & Terrasse" className="hover-react">
             <ul style={{ marginLeft: "1rem", listStyle: "disc" }}>
-              <li>Georgische & internationale Küche</li>
+              <li>
+                Georgische & internationale Küche im hauseigenen Restaurant
+              </li>
               <li>Bar/Lounge für den Abend</li>
               <li>Frühstücksbuffet verfügbar</li>
-              <li>Überdachte Terrasse mit Bergblick</li>
+              <li>Sonnenterrasse mit freiem Blick auf die Berge</li>
             </ul>
           </Card>
         </div>
@@ -177,7 +223,7 @@ export default function LocationPage({ lang, setLang }) {
         <Card
           title={t.dayFlow}
           className="hover-react"
-          style={{ marginBottom: "1.25rem" }} // << Abstand unterhalb
+          style={{ marginBottom: "1.25rem" }}
         >
           {getProgramm(lang).map((p, idx) => (
             <div
@@ -193,7 +239,13 @@ export default function LocationPage({ lang, setLang }) {
                 marginBottom: ".5rem",
               }}
             >
-              <div style={{ width: "5rem", textAlign: "center", fontFeatureSettings: '"tnum" 1' }}>
+              <div
+                style={{
+                  width: "5rem",
+                  textAlign: "center",
+                  fontFeatureSettings: '"tnum" 1',
+                }}
+              >
                 {p.time}
               </div>
               <div style={{ fontWeight: 600 }}>{p.title}</div>
@@ -204,10 +256,7 @@ export default function LocationPage({ lang, setLang }) {
 
         {/* ---------- Galerie ---------- */}
         <Card title={t.gallery} className="hover-react">
-          <Gallery
-            images={LOCATION_DETAILS.galerie}
-            captions={galleryCaptions}
-          />
+          <Gallery images={LOCATION_DETAILS.galerie} captions={galleryCaptions} />
         </Card>
       </Section>
     </Layout>
