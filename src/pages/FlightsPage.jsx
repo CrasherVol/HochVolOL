@@ -135,6 +135,7 @@ export default function FlightsPage({ lang, setLang }) {
       }}
     >
       <option value="DUS">Düsseldorf (DUS)</option>
+      <option value="FMO">Münster/Osnabrück (FMO)</option>
       <option value="CGN">Köln/Bonn (CGN)</option>
       <option value="BER">Berlin (BER)</option>
       <option value="FRA">Frankfurt (FRA)</option>
