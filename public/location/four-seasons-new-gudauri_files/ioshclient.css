@@ -1,0 +1,755 @@
+/* API SPECIFIC CSS */
+.hapi_loading { margin:3px 0; padding:0 0 0 34px; background:url(loading.gif) 0 0 no-repeat; font:normal 18px/28px tahoma, arial, sans-serif; color:#555555; }
+.hapi_info, .hapi_error, .hapi_warning, .hapi_success {
+	margin:12px 0; padding:8px; color:#444; background-color:#F6F6F6; border:1px solid #D2D2D2; border-radius:4px; box-shadow:0 1px 0 rgba(255, 255, 255, 0.8) inset, 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+.hapi_error { background-color:#fee8e8; border-color:#f6cdcd; }
+.hapi_warning { background-color:#f9f6cf; border-color:#e0dba4; }
+.hapi_info { background-color:#deeefb; border-color:#b1d1ec; }
+.hapi_success { background-color:#ebfadd; border-color:#d6ecc0; }
+/** Featherlight CSS - Version 1.3.4 */
+@media all{.featherlight{display:none;position:fixed;top:0;right:0;bottom:0;left:0;z-index:2147483647;text-align:center;white-space:nowrap;cursor:pointer;background:#333;background:rgba(0,0,0,0)}.featherlight:last-of-type{background:rgba(0,0,0,.8)}.featherlight:before{content:'';display:inline-block;height:100%;vertical-align:middle;margin-right:-.25em}.featherlight .featherlight-content{position:relative;text-align:left;vertical-align:middle;display:inline-block;overflow:auto;padding:25px 25px 0;border-bottom:25px solid transparent;min-width:30%;margin-left:5%;margin-right:5%;max-height:95%;background:#fff;cursor:auto;white-space:normal}.featherlight .featherlight-inner{display:block}.featherlight .featherlight-close-icon{position:absolute;z-index:9999;top:0;right:0;line-height:25px;width:25px;cursor:pointer;text-align:center;font-family:Arial,sans-serif;background:#fff;background:rgba(255,255,255,.3);color:#000}.featherlight .featherlight-image{width:100%}.featherlight-iframe .featherlight-content{border-bottom:0;padding:0}.featherlight iframe{border:0}}@media only screen and (max-width:1024px){.featherlight .featherlight-content{margin-left:10px;margin-right:10px;max-height:98%;padding:10px 10px 0;border-bottom:10px solid transparent}}
+/** Featherlight Gallery CSS - Version 1.3.4 */
+@media all{.featherlight-next,.featherlight-previous{display:block;position:absolute;top:25px;right:25px;bottom:0;left:80%;cursor:pointer;-webkit-touch-callout:none;-webkit-user-select:none;-khtml-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;background:rgba(0,0,0,0)}.featherlight-previous{left:25px;right:80%}.featherlight-next:hover,.featherlight-previous:hover{background:rgba(255,255,255,.25)}.featherlight-next span,.featherlight-previous span{display:none;position:absolute;top:50%;left:5%;width:82%;text-align:center;font-size:80px;line-height:80px;margin-top:-40px;text-shadow:0 0 5px #fff;color:#fff;font-style:normal;font-weight:400}.featherlight-next span{right:5%;left:auto}.featherlight-next:hover span,.featherlight-previous:hover span{display:inline-block}.featherlight-loading .featherlight-next,.featherlight-loading .featherlight-previous{display:none}}@media only screen and (max-device-width:1024px){.featherlight-next:hover,.featherlight-previous:hover{background:0 0}.featherlight-next span,.featherlight-previous span{display:block}}@media only screen and (max-width:1024px){.featherlight-next,.featherlight-previous{top:10px;right:10px;left:85%}.featherlight-previous{left:10px;right:85%}.featherlight-next span,.featherlight-previous span{margin-top:-30px;font-size:40px}}
+/**
+IOSR HOTELS
+"IOS" style by Is Open Source
+*/
+.iosh_global { margin:0 0 20px 0; padding:0; }
+.iosh_invisible { margin:0; padding:0; visibility:hidden; display:none; }
+.iosh_invisible2 { visibility:hidden; display:none; }
+.iosh_h1 { margin:16px 0 16px 0; padding:0; border:none; vertical-align:baseline; background:transparent; font:normal 24px/28px 'Open Sans', Arial, 'Helvetica Neue', Helvetica, sans-serif; color:#454545; letter-spacing:0; }
+.iosh_h1 span.iosh_high { color:#cc0000; }
+.iosh_h1 a { color:#4591d6; text-decoration: none; }
+.iosh_h1 a:hover { color:#000000; text-decoration: none; }
+.iosh_h2 { margin:2px 0 4px 0; padding:0; border:none; vertical-align:baseline; background:transparent; font:normal 18px/22px tahoma, Geneva, sans-serif; color:#555555; }
+.iosh_h3 { margin:4px 0 6px 0; padding:0; border:none; vertical-align:baseline; background:transparent; font:bold 15px/19px 'Open Sans', Arial, 'Helvetica Neue', Helvetica, sans-serif; color:#555555; }
+.iosh_h3 span { background-color:#3c96ef; color:#FFF; padding:2px 4px; }
+.iosh_h4 { margin:4px 0 4px 0; padding:0; border:none; vertical-align: baseline; background:transparent; font:bold 13px/16px 'Open Sans', Arial, 'Helvetica Neue', Helvetica, sans-serif; color:#444444; }
+/* TEXT/NOTES/INFO BOXES */
+.iosh_notice { margin:0 0 16px 0; padding:6px 10px; font:normal 11px/14px verdana, arial, sans-serif; color:#666666; background-color:#F4F4F4; border:1px solid #DDDDDD; text-align:justify; }
+.iosh_notebox { margin:16px 0 16px 0; padding:6px; font:normal 13px/16px tahoma, Geneva, sans-serif; color:#333; background-color:#fdf6d4; border:1px solid #e1c95a; -moz-border-radius:5px; -webkit-border-radius:5px; border-radius:5px; }
+.iosh_highlightbox { margin:16px 0 16px 0; padding:10px 40px 10px 10px; font:normal 13px/16px 'Open Sans', Arial, 'Helvetica Neue', Helvetica, sans-serif; color:#333333; border:1px solid #DDDDDD; -moz-border-radius:8px; -webkit-border-radius:8px; border-radius:8px; background:#F2F2F2 url(corner_tick.png) 100% 0 no-repeat; }
+.iosh_rescodelocal { margin:0; padding:2px 4px !important; display:block; background:#66a01f; color:#FFF; font:normal 11px/13px tahoma, arial, sans-serif; border-radius:3px; }
+.iosh_guestsinfobox { margin:4px 0 4px 0; padding:4px; font:normal 13px/16px 'Open Sans', Arial, 'Helvetica Neue', Helvetica, sans-serif;  color:#222; background-color:#FFFFFF; border:1px solid #cccccc; -moz-border-radius:3px; -webkit-border-radius:3px; border-radius:3px; }
+.iosh_guestsinfobox span { color:#666; }
+.iosh_guestsinfobox a, .iosh_guestsinfobox a:hover, .iosh_guestsinfobox a:visited, .iosh_guestsinfobox a:active, .iosh_guestsinfobox a:link { text-decoration:none; color:#1866b7; padding-right:12px; border:none; }
+.iosh_guestsinfobox a:hover { color:#000000; }
+.iosh_goto { margin:5px 0 15px 0; padding:0; text-align:right; }
+.iosh_goto a, .iosh_goto a:hover, .iosh_goto a:link, .iosh_goto a:visited, .iosh_goto a:active { text-decoration:none; margin:0; padding:0 0 0 16px; background:transparent url(sprite16.png) 0 -704px no-repeat; font:normal 13px/16px tahoma, arial, sans-serif; color:#666; }
+.iosh_goto a:focus { outline:none; }
+.iosh_goto a:hover { color:#2E80DC; }
+/* map spot */
+.iosh_spotbox { margin:0; padding:0; font:normal 12px/14px tahoma, Geneva, sans-serif; color:#222; overflow:hidden; width:270px; }
+.iosh_spotimg { margin:0 5px 0 0; padding:0; float:left; width:60px; }
+.iosh_spotimg img { margin:0; padding:4px; border:1px solid #ccc; background-color:#fff; }
+.iosh_spottext { margin:0; padding:0; float:left; font:normal 12px/14px tahoma, Geneva, sans-serif; color:#222; width:200px; }
+.iosh_spotbox h3, .iosh_spottext h3 { margin:0 0 2px 0; padding:0; font:bold 13px/16px tahoma, Geneva, sans-serif; color:#555; }
+/* FORMS */
+.iosh_formwrap { margin:0 0 20px 0; padding:20px; background-color:#F2F2F2; border-radius:10px; }
+.iosh_formwrap_titled { margin:0 0 20px 0; padding:40px 20px 20px 20px; background-color:#F2F2F2; border-radius:10px; position:relative; }
+.iosh_formtitle { position:absolute; top:0; left:0; display:block; width:100%; background:#cbddee; margin:0; padding:0; color:#FFF; font:bold 13px/16px Arial, Helvetica, sans-serif; -webkit-border-top-left-radius: 10px; -webkit-border-top-right-radius: 10px; -moz-border-radius-topleft: 10px; -moz-border-radius-topright: 10px; border-top-left-radius: 10px; border-top-right-radius: 10px; }
+.iosh_formtitle h4, .iosh_formtitle h4.iosh_formh4 { display:inline-block; width:auto; background:#4591d6; margin:0; padding:4px 20px; color:#FFF; font:bold 13px/16px Arial, Helvetica, sans-serif; -webkit-border-top-left-radius: 10px; -moz-border-radius-topleft: 10px; border-top-left-radius: 10px; }
+.iosh_formtitle h4 span, .iosh_formtitle h4.iosh_formh4 span { font-size:12px; font-weight:normal; }
+.iosh_formtitle h4 a, .iosh_formtitle h4 a:hover, .iosh_formtitle h4 a:visited, .iosh_formtitle h4 a:link,
+.iosh_formtitle h4.iosh_formh4 a, .iosh_formtitle h4.iosh_formh4 a:hover, .iosh_formtitle h4.iosh_formh4 a:visited, .iosh_formtitle h4.iosh_formh4 a:link { outline:none; text-decoration:none; color:#DDDDDD; border:none; }
+.iosh_formtitle h4 a:hover, .iosh_formtitle h4.iosh_formh4 a:hover { color:#fafd02; }
+form.iosh_form { margin:0; padding:0; border:none; background:none; }
+form.iosh_form fieldset { margin:0; padding:0; border:none; background:none; }
+.iosh_formrow { margin:0 0 12px 0; padding:0; font:normal 13px/16px Arial, Helvetica, sans-serif; color:#444444; }
+.iosh_formrow > label { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; margin:0 10px 0 0; padding:3px 0; display:block; float:left; width:170px; border:none; background:transparent; font:normal 14px/16px arial, helvetica, sans-serif; color:#333; text-align:left; }
+.iosh_formrow > div { margin:0 0 0 180px; }
+.iosh_formrow:after{ content:''; display:block; clear:both; }
+.iosh_tip { margin:0; padding:2px 0; font:normal 12px/14px tahoma, arial, sans-serif; color:#888; }
+.iosh_tip a { color:#555555; text-decoration:none; }
+.iosh_tip a:hover { color:#222222; }
+/* for search form module */
+.iosh_formwrapshort { margin:5px 0; padding:10px; font:normal 13px/16px tahoma, Geneva, sans-serif; color:#333; background-color:transparent; border:none; -moz-border-radius:7px; -webkit-border-radius:7px; border-radius:7px; }
+.iosh_bg_yellow { background-color:#f8f7b6; border:1px solid #f4dc0d; }
+.iosh_bg_blue { background-color:#ddf3fc; border:1px solid #83cae4; }
+.iosh_bg_green { background-color:#ddf8c8; border:1px solid #a3dd78; }
+.iosh_bg_gray { background-color:#F0F0F0; border:1px solid #CCCCCC; }
+.iosh_formwrapshort form { margin:0; padding:0; }
+.iosh_formrowshort { margin:0 0 3px 0; padding:0; font:normal 13px/16px tahoma, Helvetica, sans-serif; color:#333; }
+.iosh_formrowshort > label { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; margin:0 5px 0 0; padding:3px 0; display:block; float:left; width:100px; border:none; background:transparent; font:normal 13px/16px tahoma, helvetica, sans-serif; color:#333; text-align:left; }
+.iosh_formrowshort > label.iosh_vert { margin:0 0 3px 0; float:none; width:auto; }
+.iosh_formrowshort > div { margin:0 0 0 105px; }
+.iosh_formrowshort > div.iosh_vert { margin:0 0 3px 0; }
+.iosh_formrowshort:after{ content:''; display:block; clear:both; }
+/* SELECT BOX */
+select.iosh_select { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; margin:0; padding:3px 6px; font:normal 13px/16px arial, helvetica, sans-serif; color:#333; background-color:#FFFFFF; border:1px solid #CCC; border-radius:4px; }
+select.iosh_select[disabled="disabled"] { color:#666; }
+select.iosh_select:focus { background-color:#FFFFFF; border:1px solid #888888; outline:none; }
+select.iosh_select optgroup { font-weight:bold; color:#666; overflow:hidden; }
+select.iosh_select option { padding:0; overflow:hidden; }
+select.iosh_select option.iosh_option2 { padding:0 0 0 15px; }
+select.iosh_select option.iosh_option3 { padding:0 0 0 30px; }
+select.iosh_select option.iosh_option4 { padding:0 0 0 45px; }
+select.iosh_selectsmall { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; margin:0; padding:0; font:normal 12px/14px tahoma, verdana, sans-serif; color:#333; background-color:#FFFFFF; border:1px solid #CCC; border-radius:0; }
+/* TEXTAREA */
+textarea.iosh_textarea { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; margin:0; padding:3px 6px; width:100%; max-width:400px; font:normal 13px/16px arial, helvetica, sans-serif; color:#333; background-color:#FFFFFF; border:1px solid #CCC;  border-radius:4px; height:60px; }
+textarea.iosh_textarea:focus { background-color:#FFFFFF; border:1px solid #888888; outline:none; }
+textarea.iosh_textareafull { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; margin:0; padding:3px 6px; width:100%; font:normal 13px/16px arial, helvetica, sans-serif; color:#333; background-color:#FFFFFF; border:1px solid #CCC;  border-radius:4px; height:60px; }
+textarea.iosh_textareafull:focus { background-color:#FFFFFF; border:1px solid #888888; outline:none; }
+/* INPUT TEXT */
+input.iosh_intext, input[type="text"].iosh_intext, input[type="email"].iosh_intext, input[type="number"].iosh_intext {
+	-webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; margin:0; padding:3px 6px; width:180px; max-width:100%; height:auto;
+	font:normal 13px/16px arial, helvetica, sans-serif; color:#333; background-color:#FFFFFF; border:1px solid #CCC; border-radius: 4px;
+}
+input.iosh_intext:focus { background-color:#FFFFFF; border:1px solid #888888; outline:none; }
+input.iosh_intext:disabled { background-color:#E8E8E8; color:#666; }
+/* INPUT DATE */
+input[type="date"].iosh_indate, input[type="text"].iosh_indate, input.iosh_indate {
+	-webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; margin:0; padding:3px 6px 3px 28px; width:120px; height:auto;
+	font:normal 13px/16px arial, helvetica, sans-serif; color:#333; background-color:#FFFFFF; border:1px solid #CCC; border-radius: 4px; background:#FFFFFF url(datebg.png) 0 50% no-repeat;
+}
+input[type="date"].iosh_indate { width:180px; }
+input[type="date"].iosh_indate:focus, input[type="text"].iosh_indate:focus, input.iosh_indate:focus { background-color:#FFFFFF; border:1px solid #888888; outline:none; }
+input[type="date"].iosh_indate:disabled, input[type="text"].iosh_indate:disabled, input.iosh_indate:disabled { background-color:#E8E8E8; color:#666; }
+input.iosh_short, input[type="text"].iosh_short, input[type="email"].iosh_short, input[type="number"].iosh_short { width:80px; max-width:100%; } /* applies on iosh_intext elements */
+input.iosh_long, input[type="text"].iosh_long, input[type="email"].iosh_long, input[type="number"].iosh_long { width:280px; max-width:100%; } /* applies on iosh_intext elements */
+/* ON/OFF CHECKBOX */
+label.iosh_onofflab { margin:0; padding:0; float:none !important; width:auto !important; border:none; position: relative; display: block; font:normal 16px/16px sans-serif; cursor:pointer; }
+input[type="checkbox"].iosh_onoff { position:absolute; opacity:0; margin:0; padding:0; display:none; visibility:hidden; }
+input[type="checkbox"].iosh_onoff + div {
+	display: inline-block; vertical-align: middle; width: 3em; height: 1em; border: 1px solid rgba(0,0,0,.3); border-radius: 999px; margin: 0; background: white;
+	background-image: linear-gradient(rgba(0,0,0,.1), transparent), linear-gradient(90deg, hsl(210, 90%, 60%) 50%, transparent 50%); background-size: 200% 100%; background-position: 100% 0; background-origin:border-box; background-clip:border-box;
+	overflow: hidden; transition-duration: 0.4s; transition-property: padding, width, background-position, text-indent;	box-shadow: 0 .1em .1em rgba(0,0,0,.2) inset, 0 .45em 0 .1em rgba(0,0,0,.05) inset; font-size: 16px;
+}
+input[type="checkbox"].iosh_onoff:checked + div { padding-left: 2em; width:1em; background-position: 0 0; }
+input[type="checkbox"].iosh_onoff + div:before {
+	content: 'YES'; float: left; width: 1.65em; height:1.65em; margin:-0.1em; border:1px solid rgba(0,0,0,.35); border-radius:inherit; background: white; background-image:linear-gradient(rgba(0,0,0,.2), transparent);
+	box-shadow: 0 0.1em 0.1em 0.1em hsla(0,0%,100%,.8) inset, 0 0 0.5em rgba(0,0,0,.3); color: white; text-shadow: 0 -1px 1px rgba(0,0,0,.3); text-indent: -2.5em;
+}
+input[type="checkbox"].iosh_onoff:active + div:before { background-color: #eee; }
+input[type="checkbox"].iosh_onoff + div:before, input[type="checkbox"].iosh_onoff + div:after { font: bold 60%/1.9 sans-serif; text-transform: uppercase; }
+input[type="checkbox"].iosh_onoff + div:after { content: 'NO'; float: left; text-indent: .5em; color:#666666; color:rgba(0,0,0,.45); text-shadow: none; }
+/* BUTTON */
+button.iosh_btn, button[type="submit"].iosh_btn, button[type="button"].iosh_btn,
+	button.iosh_btn:hover, button[type="submit"].iosh_btn:hover, button[type="button"].iosh_btn:hover {
+	-webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; margin:0; padding:7px 14px; width:auto; height:auto; display:inline-block; text-shadow: 0 1px 0 rgba(255,255,255, 0.8); text-align:center;
+	font:bold 14px/18px helvetica, arial, sans-serif; color: #888; border: 1px solid #bcbcbc; border-radius:4px; -moz-box-shadow: 0 1px 3px rgba(0,0,0,0.12); -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.12); box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+	background:none; background-color:#EFEFEF;
+	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#FFFFFF', endColorstr='#e1dfe2');/* IE7-8-9 */
+	-webkit-linear-gradient:top, rgba(255,255,255,1) 0,rgba(239,239,239,1) 60%,rgba(225,223,226,1) 100%;
+	background-image: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(239,239,239,1) 60%,rgba(225,223,226,1) 100%);
+	background-image: -moz-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(239,239,239,1) 60%,rgba(225,223,226,1) 100%);
+	background-image: -o-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(239,239,239,1) 60%,rgba(225,223,226,1) 100%);
+	background-image: -ms-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(239,239,239,1) 60%,rgba(225,223,226,1) 100%);
+	background-image: linear-gradient(top, rgba(255,255,255,1) 0%,rgba(239,239,239,1) 60%,rgba(225,223,226,1) 100%);
+}
+button.iosh_btn:hover, button[type="submit"].iosh_btn:hover, button[type="button"].iosh_btn:hover { color:#555; cursor:pointer; }
+button.iosh_btn:active, button[type="submit"].iosh_btn:active, button[type="button"].iosh_btn:active,
+button.iosh_btn:active:after, button[type="submit"].iosh_btn:active:after, button[type="button"].iosh_btn:active:after,
+button.iosh_btn:active:before, button[type="submit"].iosh_btn:active:before, button[type="button"].iosh_btn:active:before {-moz-box-shadow:none; -webkit-box-shadow:none; box-shadow: none; }
+/* iosh_btn ADDON - BUTTON 100% WIDTH */
+button.iosh_btnfull, button[type="submit"].iosh_btnfull, button[type="button"].iosh_btnfull,
+button.iosh_btnfull:hover, button[type="submit"].iosh_btnfull:hover, button[type="button"].iosh_btnfull:hover { display:block; width:100%; }
+/* iosh_btn ADDON - COLOURFUL (BLUE) BUTTON */
+button.iosh_btnclr, button[type="submit"].iosh_btnclr, button[type="button"].iosh_btnclr,
+	button.iosh_btnclr:hover, button[type="submit"].iosh_btnclr:hover, button[type="button"].iosh_btnclr:hover {
+	background-color:#3c96ef; color:#cde4fb; text-shadow:none; border-color:#23619c;
+	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#55a8fa', endColorstr='#2a6cab');/* IE7-8-9 */
+	-webkit-linear-gradient:top, rgba(85,168,250,1) 0,rgba(60,150,239,1) 60%,rgba(42,108,171,1) 100%;
+	background-image: -webkit-linear-gradient(top, rgba(85,168,250,1) 0%,rgba(60,150,239,1) 60%,rgba(42,108,171,1) 100%);
+	background-image: -moz-linear-gradient(top, rgba(85,168,250,1) 0%,rgba(60,150,239,1) 60%,rgba(42,108,171,1) 100%);
+	background-image: -o-linear-gradient(top, rgba(85,168,250,1) 0%,rgba(60,150,239,1) 60%,rgba(42,108,171,1) 100%);
+	background-image: -ms-linear-gradient(top, rgba(85,168,250,1) 0%,rgba(60,150,239,1) 60%,rgba(42,108,171,1) 100%);
+	background-image: linear-gradient(top, rgba(85,168,250,1) 0%,rgba(60,150,239,1) 60%,rgba(42,108,171,1) 100%);
+}
+button.iosh_btnclr:hover, button[type="submit"].iosh_btnclr:hover, button[type="button"].iosh_btnclr:hover { color:#FFFFFF; cursor:pointer; }
+/* book button */
+button.iosh_btnbook, button.iosh_btnbook:hover, button[type="submit"].iosh_btnbook, button[type="submit"].iosh_btnbook:hover,
+	button[type="button"].iosh_btnbook, button[type="button"].iosh_btnbook:hover {
+	-webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; margin:0; padding:2px 6px; width:auto; height:auto; min-width:100px; display:inline-block;  text-shadow: none; text-align:center;
+	font:bold 13px/16px helvetica, arial, sans-serif; color: #FFFFFF; border: 1px solid #23619c; border-radius:4px; -moz-box-shadow: 0 1px 3px rgba(0,0,0,0.12); -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.12); box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+	background:none; background-color:#3c96ef;
+	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#55a8fa', endColorstr='#2a6cab');/* IE7-8-9 */
+	-webkit-linear-gradient:top, rgba(85,168,250,1) 0,rgba(60,150,239,1) 60%,rgba(42,108,171,1) 100%;
+	background-image: -webkit-linear-gradient(top, rgba(85,168,250,1) 0%,rgba(60,150,239,1) 60%,rgba(42,108,171,1) 100%);
+	background-image: -moz-linear-gradient(top, rgba(85,168,250,1) 0%,rgba(60,150,239,1) 60%,rgba(42,108,171,1) 100%);
+	background-image: -o-linear-gradient(top, rgba(85,168,250,1) 0%,rgba(60,150,239,1) 60%,rgba(42,108,171,1) 100%);
+	background-image: -ms-linear-gradient(top, rgba(85,168,250,1) 0%,rgba(60,150,239,1) 60%,rgba(42,108,171,1) 100%);
+	background-image: linear-gradient(top, rgba(85,168,250,1) 0%,rgba(60,150,239,1) 60%,rgba(42,108,171,1) 100%);
+}
+button.iosh_btnbook:hover, button[type="submit"].iosh_btnbook:hover, button[type="button"].iosh_btnbook:hover {
+	cursor:pointer; background:none; background-image:none; background-color:#1560aa; border-color:#143d64; -ms-filter: "progid:DXImageTransform.Microsoft.gradient(enabled=false)";
+}
+button.iosh_btnbook[disabled="disabled"], button.iosh_btnbook:disabled,
+	button.iosh_btnbook[disabled="disabled"]:hover, button.iosh_btnbook:disabled:hover {
+	background-color:#EFEFEF; color:#888888; text-shadow:none; border-color:#bcbcbc;
+	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#FFFFFF', endColorstr='#e1dfe2');/* IE7-8-9 */
+	-webkit-linear-gradient:top, rgba(255,255,255,1) 0,rgba(239,239,239,1) 60%,rgba(225,223,226,1) 100%;
+	background-image: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(239,239,239,1) 60%,rgba(225,223,226,1) 100%);
+	background-image: -moz-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(239,239,239,1) 60%,rgba(225,223,226,1) 100%);
+	background-image: -o-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(239,239,239,1) 60%,rgba(225,223,226,1) 100%);
+	background-image: -ms-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(239,239,239,1) 60%,rgba(225,223,226,1) 100%);
+	background-image: linear-gradient(top, rgba(255,255,255,1) 0%,rgba(239,239,239,1) 60%,rgba(225,223,226,1) 100%);
+}
+button.iosh_btnbook[disabled="disabled"]:hover, button[type="submit"].iosh_btnbook:disabled:hover { color:#888888; cursor:default; }
+button.iosh_btnbook > div { margin:0; padding:0; text-align:center; font-size:12px; font-weight:normal; line-height:14px; }
+/* lightbox buttons */
+button#cboxClose, button[type=button]#cboxClose, button#cboxClose:focus,
+button#cboxNext, button[type=button]#cboxNext, button#cboxNext:focus,
+button#cboxPrevious, button[type=button]#cboxPrevious, button#cboxPrevious:focus,
+button#cboxSlideshow, button[type=button]#cboxSlideshow, button#cboxSlideshow:focus {
+	margin:0; padding:1px 3px; background:none; background-color:#666666; color:#FFF; border:none; outline:none; font:normal 12px/14px tahoma, arial, sans-serif;
+}
+/* BUTTON LINK */
+a.iosh_btnlink, a.iosh_btnlink:link, a.iosh_btnlink:visited, a.iosh_btnlink:hover, a.iosh_btnlink:active, a.iosh_btnlink:focus {
+	-webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; margin:0; padding:7px 14px; width:auto; height:auto; display:inline-block; text-shadow: 0 1px 0 rgba(255,255,255, 0.8); text-align:center;
+	font:bold 14px/18px helvetica, arial, sans-serif; color: #888; border: 1px solid #bcbcbc; border-radius:4px; text-decoration:none; -moz-box-shadow: 0 1px 3px rgba(0,0,0,0.12); -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.12); box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+	background:none; background-color:#EFEFEF;
+	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#FFFFFF', endColorstr='#e1dfe2');/* IE7-8-9 */
+	-webkit-linear-gradient:top, rgba(255,255,255,1) 0,rgba(239,239,239,1) 60%,rgba(225,223,226,1) 100%;
+	background-image: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(239,239,239,1) 60%,rgba(225,223,226,1) 100%);
+	background-image: -moz-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(239,239,239,1) 60%,rgba(225,223,226,1) 100%);
+	background-image: -o-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(239,239,239,1) 60%,rgba(225,223,226,1) 100%);
+	background-image: -ms-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(239,239,239,1) 60%,rgba(225,223,226,1) 100%);
+	background-image: linear-gradient(top, rgba(255,255,255,1) 0%,rgba(239,239,239,1) 60%,rgba(225,223,226,1) 100%);
+}
+a.iosh_btnlink:hover { color:#555; }
+a.iosh_btnlink:active { color:#555; }
+/* INPUT RANGE */
+input[type="range"].iosh_range {
+	-webkit-box-sizing:border-box; -moz-box-sizing:border-box; box-sizing:border-box; -webkit-appearance:none; -moz-appearance:none;
+	-webkit-tap-highlight-color: rgba(255, 255, 255, 0); width:180px; height:20px; margin:0; padding:0; border:1px solid #CCC; border-radius:4px; background:#FFFFFF;
+}
+input[type="range"].iosh_range:focus { visibility:visible; outline:none; }
+input[type="range"].iosh_range::-moz-range-track { border:none; background:transparent; }
+input[type="range"].iosh_range::-ms-track { border:none; color:transparent; background:transparent; }
+input[type="range"].iosh_range::-ms-fill-lower, input[type="range"].iosh_range::-ms-fill-upper { background:transparent; }
+input[type="range"].iosh_range::-ms-tooltip { display:none; }
+input[type="range"].iosh_range::-webkit-slider-thumb {
+	-webkit-appearance:none; -moz-appearance:none; width:30px; height:20px; border:none; border-radius:4px; background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #529de1), color-stop(100%, #245e8f));
+	background-image: -webkit-linear-gradient(top , #529de1 0, #245e8f 100%); background-image: linear-gradient(to bottom, #529de1 0, #245e8f 100%);
+}
+input[type="range"].iosh_range::-moz-range-thumb { width: 30px; height:20px; border: none; border-radius:4px; background-image: linear-gradient(to bottom, #529de1 0, #245e8f 100%); }
+input[type="range"].iosh_range::-ms-thumb { width:30px; height: 20px; border-radius:4px; border: 0; background-image: linear-gradient(to bottom, #529de1 0, #245e8f 100%); }
+output.iosh_output { display:inline-block; margin:0; padding:1px 5px; font:bold 12px/18px tahoma, arial, sans-serif; color:#FFFFFF; background-color:#529de1; vertical-align:top; border-radius:3px; }
+/* RADIO BOXES */
+input[type=radio].iosh_radio { display:none; }
+input[type=radio].iosh_radio + label.iosh_radiolabel {
+	margin:0; padding:0 0 0 30px; height:25px; float:none; width:auto; display:inline-block; background:transparent url(radiobg.png) 0 0 no-repeat;
+	vertical-align:middle; cursor:pointer; font:normal 14px/25px arial, helvetica, sans-serif; color:#555555;
+}
+input[type=radio].iosh_radio:checked + label.iosh_radiolabel { background-position:0 -25px; color:#333333; }
+label.iosh_radiolabel { background-image:url(radiobg.png); -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; }
+/* CHECK BOXES */
+input[type=checkbox].iosh_checkbox { display:none; }
+input[type=checkbox].iosh_checkbox + label.iosh_checkboxlabel {
+	margin:0; padding:0 0 0 30px; height:25px; float:none; width:auto; display:inline-block; background:transparent url(radiobg.png) 0 0 no-repeat;
+	vertical-align:middle; cursor:pointer; font:normal 14px/25px arial, helvetica, sans-serif; color:#555555;
+}
+input[type=checkbox].iosh_checkbox:checked + label.iosh_checkboxlabel { background-position:0 -25px; color:#333333; }
+label.iosh_checkboxlabel { background-image:url(radiobg.png); -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; }
+/* TABLE */
+table.iosh_tbl { margin:0; padding:0; width:100%; border:none; background-image:none; background-color:#fff; border-collapse:collapse; }
+table.iosh_tbl tr { margin:0 ; padding:0; }
+table.iosh_tbl tr th, table.iosh_tbl tr.noborder th { margin:0; padding:4px 6px; font:bold 13px/16px tahoma, Geneva, sans-serif; text-align:left; background-image:none; background-color:#558dc4; color:#eff5fb; text-shadow:none; border:1px solid #23619c; white-space:nowrap; vertical-align:top; }
+table.iosh_tbl tr td, table.iosh_tbl tr.noborder td { margin:0; padding:4px 6px; font:normal 13px/16px tahoma, Geneva, sans-serif; text-align:left; border:1px solid #CCCCCC; background-image:none; background-color:#fff; color:#444; vertical-align:top; }
+table.iosh_tbl tr.noborder th, table.iosh_tbl tr.noborder td { border:none; }
+table.iosh_tbl tr th.iosh_center, table.iosh_tbl tr td.iosh_center, table.iosh_tbl tr.noborder th.iosh_center, table.iosh_tbl tr.noborder td.iosh_center { text-align:center; }
+table.iosh_tbl tr th.iosh_just, table.iosh_tbl tr td.iosh_just, table.iosh_tbl tr.noborder th.iosh_just, table.iosh_tbl tr.noborder td.iosh_just { text-align:justify; }
+table.iosh_tbl tr th.iosh_right, table.iosh_tbl tr td.iosh_right, table.iosh_tbl tr.noborder th.iosh_right, table.iosh_tbl tr.noborder td.iosh_right{text-align:right;}
+table.iosh_tbl td strong { font-weight:bold; }
+/* picked rooms table */
+table.iosh_pickedtbl { margin:0; padding:0; width:100%; border:none; border-collapse:collapse; }
+table.iosh_pickedtbl tr { margin:0 0 5px 0; padding:0; border:none; }
+table.iosh_pickedtbl tr th { margin:0; padding:3px 6px; font:bold 13px/16px tahoma, Geneva, sans-serif; text-align:left; border:none; color:#555; white-space:nowrap; vertical-align:top; }
+table.iosh_pickedtbl tr td { margin:0; padding:3px 6px; font:normal 13px/16px tahoma, Geneva, sans-serif; text-align:left; border:none; color:#444; vertical-align:top; }
+table.iosh_pickedtbl tr th.iosh_center, table.iosh_pickedtbl tr td.iosh_center { text-align:center; }
+table.iosh_pickedtbl tr th.iosh_right, table.iosh_pickedtbl tr td.iosh_right { text-align:right; }
+table.iosh_pickedtbl td strong { font-weight:bold; }
+/* logistics table */
+table.iosh_logtbl { margin:0; padding:0; width:100%; border:none; border-collapse:collapse; }
+table.iosh_logtbl tr { margin:0; padding:0; border:none; }
+table.iosh_logtbl tr th { margin:0; padding:6px; font:bold 13px/16px tahoma, arial, sans-serif; text-align:left; border:1px solid #2268a8; background-color:#4591d6; color:#FFFFFF; white-space:nowrap; vertical-align:top; }
+table.iosh_logtbl tr td { margin:0; padding:4px 6px; font:normal 13px/16px tahoma, arial, sans-serif; text-align:left; border:1px solid #BBBBBB; color:#444444; vertical-align:top; }
+table.iosh_logtbl tr.iosh_row0 td { background-color:#FFFFFF; }
+table.iosh_logtbl tr.iosh_row1 td { background-color:#EFEFEF; }
+table.iosh_logtbl tr.iosh_rowsum td { background-color:#cbddee; color:#333333; }
+table.iosh_logtbl tr:hover td { background-color:#f8f9b7; }
+table.iosh_logtbl tr th.iosh_center, table.iosh_logtbl tr td.iosh_center { text-align:center; }
+.iosh_smallnote { margin:0; padding:0; font:normal 11px/14px tahoma, verdana, sans-serif; color:#666; }
+.iosh_change, .iosh_h3 span.iosh_change { background-color:transparent; padding:0; font:normal 13px/16px tahoma, verdana, sans-serif; direction:ltr; color:#666; }
+.iosh_h3 span.iosh_change a, .iosh_change a, .iosh_change a:link, .iosh_change a:visited, .iosh_change a:hover, .iosh_change a:active, .iosh_change a:focus { outline:none; text-decoration:none; color:#3366FF; }
+.iosh_h3 span.iosh_change a:hover, .iosh_change a:hover { color:#ff6600; }
+/* search form - pick guests */
+.iosh_pickrowguests { margin:3px 0 0 0; padding:0; font:normal 11px/14px tahoma, arial, sans-serif; position:relative; display:block; height:14px; color:#777777; }
+.iosh_pickadults { margin:0; padding:0; position:absolute; top:0; left:64px; width:84px; display:inline-block; text-align:center; overflow:hidden; }
+.iosh_pickchildren { margin:0; padding:0; position:absolute; top:0; left:148px; width:84px; display:inline-block; text-align:center; overflow:hidden; }
+.iosh_pickrow { margin:0 0 3px 0; padding:0; font:bold 14px/18px tahoma, arial, sans-serif; }
+.iosh_pickroomnum { margin:0; padding:3px 0; display:inline-block; width:30px; text-align:center; background-color:#3c96ef; color:#FFF;  font:bold 14px/18px tahoma, arial, sans-serif; }
+.iosh_pickrow:hover .iosh_pickroomnum { background-color:#23619c; }
+.iosh_pickboxroom { margin:0 4px 0 0; padding:0; width:60px; float:left; }
+.iosh_pickboxguests { margin:0; padding:0; width:84px; float:left; vertical-align:top; }
+a.iosh_pickroomact, a.iosh_pickroomact:visited, a.iosh_pickroomact:hover, a.iosh_pickroomact:link, a.iosh_pickroomact:active { margin:0; padding:3px 0; text-decoration:none; display:inline-block; width:30px; text-align:center; background-color:#888888; color:#FFF; font:bold 14px/18px tahoma, arial, sans-serif; border:none; }
+a.iosh_pickroomact:hover { background-color:#333333; color:#FFF; text-decoration:none; border:none; }
+a.iosh_pickaction, a.iosh_pickaction:active, a.iosh_pickaction:hover ,a.iosh_pickaction:visited, a.iosh_pickaction:link { margin:0; padding:3px 0; text-decoration:none; display:inline-block; width:24px; text-align:center; background:none; color:#23619c; font:bold 14px/18px tahoma, arial, sans-serif; border:none; }
+a.iosh_pickaction:hover { background-color:#23619c; color:#FFF; text-decoration:none; border:none; }
+input.iosh_inguests, input[type=text].iosh_inguests {
+	-webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; vertical-align:top; display:inline-block; height:auto; border-radius:none;
+	margin:0; padding:3px 0 3px 0; width:32px; font:normal 16px/18px tahoma, arial, sans-serif; color:#333333; background:none; border:none; text-align:center;
+}
+/* hotel page book form - pick guests */
+.iosh_pickbookwrap { margin:5px 0; padding:6px; border:1px solid #DDDDDD; border-radius:4px; overflow: hidden; }
+.iosh_pickrowrooms { margin:3px 0; padding:0; }
+.iosh_roomsselbox { margin:0; padding:0; float:left; width:100px; }
+.iosh_roomsselbox > div { margin:0; padding:0; text-align:center; font:normal 13px/16px tahoma, arial, sans-serif; color:#666666; }
+.iosh_roomspricebox { margin:0; padding:0; float:left; font:normal 13px/16px tahoma, arial, sans-serif; color:#666666; }
+
+.iosh_roomsbookbox { margin:0 0 0 100px; padding:0; text-align:right; }
+.iosh_pickbookadults { margin:0; padding:0; position:absolute; top:0; left:34px; width:84px; display:inline-block; text-align:center; overflow:hidden; }
+.iosh_pickbookchildren { margin:0; padding:0; position:absolute; top:0; left:118px; width:84px; display:inline-block; text-align:center; overflow:hidden; }
+.iosh_pickbookroom { margin:0 4px 0 0; padding:0; width:30px; float:left; }
+a.iosh_anotref, a.iosh_anotref:visited, a.iosh_anotref:active, a.iosh_anotref:hover, a.iosh_anotref:link { margin:0; padding:0 0 0 20px; font:normal 12px/16px tahoma, arial, sans-serif; color:#666666; text-decoration:none; background:transparent url(sprite16.png) 0 0 no-repeat; border:none; }
+a.iosh_anotref:hover { color:#333333; }
+a.iosh_anotref_on, a.iosh_anotref_on:visited, a.iosh_anotref_on:active, a.iosh_anotref_on:hover, a.iosh_anotref_on:link { background:transparent url(sprite16.png) 0 -100px no-repeat; color:#333333; }
+a.iosh_anotref_on:hover { color:#333333; }
+.iosh_onlyleft { margin:8px 0; padding:0; font:bold 12px/16px tahoma, arial, sans-serif; color:#BC3E3E; }
+/* TABS */
+.reshtabswrap { margin:0 0 30px 0; padding:0; background:#EFEFEF; }
+ul.reshtabs { margin:0; padding:0; list-style:none; height:28px; font:normal 14px/25px "Trebuchet MS", Tahoma, Arial, sans-serif; border-bottom:1px solid #DDD; background:#FFF; }
+.reshtabs li { margin:0 2px -1px 0; padding:0 13px 1px 13px; float:left; display:inline; color:#666666; cursor:pointer; background:#E9E9E9; border:1px solid #D4D4D4; border-bottom: 1px solid #E9E9E9; position:relative; }
+.reshtabs li:hover { color:#F70; padding:0 13px; background:#FFFFDF; border:1px solid #FFCA95; }
+.reshtabs li.reshtabcur { padding:0 13px 2px 13px; color:#333; background:#FFFFFF; border:1px solid #D4D4D4; border-bottom:1px solid #FFFFFF; }
+.reshtab { margin:0; padding:12px; display:none; border:1px solid #D4D4D4; border-width:0 1px 1px 1px; background:#FFFFFF; }
+.reshtab.reshtabvis { display:block; }
+/* ROOM / MOVE CALENDAR */
+a.iosh_calelink, a.iosh_calelink:visited, a.iosh_calelink:hover, a.iosh_calelink:link, a.iosh_calelink:active { margin: 0; padding:0 0 0 18px; background:transparent url(sprite16.png) 0 -674px no-repeat; font:normal 12px/16px tahoma, helvetica, sans-serif; color:#1575bc; text-decoration:none; }
+a.iosh_calelink:hover { color:#222222; }
+.iosrcal_wrap { margin:0; padding:0; }
+.iosrcal_tbl_wrap { width:450px; float:left; margin:0 20px 20px 0; padding:4px; border:1px solid #ccc; }
+table.iosrcal_tbl { margin:0; padding:0; width:100%; border:none; }
+table.iosrcal_tbl th { width:62px; margin:0; padding:3px; border:1px solid #ccc; text-align:center; background-color:#5D86B5; font: bold 13px/16px tahoma, arial, sans-serif; color:#FFFFFF; }
+table.iosrcal_tbl th.iosr_month { margin:0; padding:4px; border:1px solid #ccc; text-align:center; background-color:#335696; font:bold 14px/18px tahoma, arial, sans-serif; color:#FFFFFF; }
+table.iosrcal_tbl th.iosr_weekend { background-color:#d0561a; }
+table.iosrcal_tbl td { width:62px; height:40px; margin:0; padding:2px; border:1px solid #ccc; text-align:center; border-collapse:collapse; font:normal 11px/14px tahoma, arial, sans-serif; color:#333333; overflow:hidden; }
+table.iosrcal_tbl td div { margin:0; padding:0; font:bold 16px/20px tahoma, arial, sans-serif; color:#333333; }
+table.iosrcal_tbl td.roomav { background-color:#008000; color:#FFFFFF; }
+table.iosrcal_tbl td.roomav div { color:#FFFFFF; }
+table.iosrcal_tbl td.roomav:hover { background-color:#44B62B; }
+table.iosrcal_tbl td.roomnotav { background-color:#FF0000; color:#FFFFFF; }
+table.iosrcal_tbl td.roomnotav div { color:#FFFFFF; }
+table.iosrcal_tbl td.roomnotav:hover { background-color:#F37070; }
+table.iosrcal_tbl td.roombooked { background-color:#ff8c00; color:#FFFFFF; }
+table.iosrcal_tbl td.roombooked div { color:#FFFFFF; }
+table.iosrcal_tbl td.roombooked:hover { background-color:#e843c7; }
+table.iosrcal_tbl td.roomnodata { background-color:#666666; color:#FFFFFF; }
+table.iosrcal_tbl td.roomnodata div { color:#FFFFFF; }
+table.iosrcal_tbl td.roomnodata:hover { background-color:#888888; }
+table.iosrcal_tbl td.roomav_high, table.iosrcal_tbl td.roomnotav_high, table.iosrcal_tbl td.roombooked_high, table.iosrcal_tbl td.roomnodata_high { background-color:#FF6600; color:#FFFFFF; }
+table.iosrcal_tbl td.roomav_high div, table.iosrcal_tbl td.roomnotav_high div, table.iosrcal_tbl td.roombooked_high div, table.iosrcal_tbl td.roomnodata_high div { color:#FFFFFF; }
+table.iosrcal_tbl td.roomav_high:hover, table.iosrcal_tbl td.roomnotav_high:hover, table.iosrcal_tbl td.roombooked_high:hover, table.iosrcal_tbl td.roomnodata_high:hover { background-color:#FF6600; }
+a.iosh_calnavbk3, a.iosh_calnavbk3:visited, a.iosh_calnavbk3:hover, a.iosh_calnavbk3:link { text-decoration:none; border:none; display:inline-block; width:16px !important; height:16px !important; margin:0; padding:0;  font:normal 12px/16px tahoma, geneva, sans-serif; color:#fff; background:transparent url(calarrows.png) 0 -16px no-repeat; }
+a.iosh_calnavbk3:hover { background-position:0 0; }
+a.iosh_calnavbk1, a.iosh_calnavbk1:visited, a.iosh_calnavbk1:hover, a.iosh_calnavbk1:link { text-decoration:none; border:none; display:inline-block; width:16px !important; height:16px !important; margin:0; padding:0;  font:normal 12px/16px tahoma, geneva, sans-serif; color:#fff; background:transparent url(calarrows.png) -16px -16px no-repeat; }
+a.iosh_calnavbk1:hover { background-position:-16px 0; }
+a.iosh_calnavfw1, a.iosh_calnavfw1:visited, a.iosh_calnavfw1:hover, a.iosh_calnavfw1:link {	text-decoration:none; border:none; display:inline-block; width:16px !important; height:16px !important; margin:0; padding:0; font:normal 12px/16px tahoma, geneva, sans-serif; color:#fff; background:transparent url(calarrows.png) -32px -16px no-repeat; }
+a.iosh_calnavfw1:hover { background-position:-32px 0; }
+a.iosh_calnavfw3, a.iosh_calnavfw3:visited, a.iosh_calnavfw3:hover, a.iosh_calnavfw3:link {	text-decoration:none; border:none; display:inline-block; width:16px !important; height:16px !important; margin:0; padding:0; font:normal 12px/16px tahoma, geneva, sans-serif; color:#fff; background:transparent url(calarrows.png) -48px -16px no-repeat; }
+a.iosh_calnavfw3:hover { background-position:-48px 0; }
+.iosh_calindex { margin:0; padding:0; font:normal 12px/16px tahoma, arial, sans-serif; color:#555; }
+.iosh_calindex div { margin:0 0 2px 0; padding:0; font:normal 12px/16px tahoma, arial, sans-serif; color:#555; }
+.iosh_calindex div.cal_column {float:left; width:33%; }
+.iosh_calindex div.clear { margin:0; padding:0; float:none; clear:both; width:auto; }
+.iosh_calindex span { margin:0; padding:0 10px; font-weight:bold; color:#FFFFFF; }
+.iosh_calindex span.roomav { background-color:#008000; }
+.iosh_calindex span.roomnotav { background-color:#d2691e; }
+.iosh_calindex span.roombooked { background-color:#ff8c00; }
+.iosh_calindex span.roomnodata { background-color:#888888; }
+/* RESERVATION/ROOM MOVE INFORMATIONAL BOX */
+.iosh_movebox_left { margin:0; padding:0; width:480px; float:left; }
+.iosh_movebox_right { margin:0; padding:0; width:300px; float:left; }
+.move_info_box { margin:8px 0; padding:4px; background-color:#eeeeee; color:#444; border:1px solid #ccc; font:normal 12px/16px Tahoma, Arial, sans-serif; -webkit-border-radius:4px; -moz-border-radius:4px; border-radius: 4px; }
+.move_info_box_side { width:500px; float:left; margin:0 0 0 10px; padding:4px; background-color:#eeeeee; color:#444; border:1px solid #ccc; font:normal 12px/16px Tahoma, Arial, sans-serif; -webkit-border-radius:4px; -moz-border-radius:4px; border-radius: 4px; }
+.move_error { color:#FF0000; }
+/* LOCATION / SEARCH PAGE */
+/* hotel box */
+.iosh_hotelbox { margin:0 0 0 0; padding:8px; background-color:#FFFFFF;  border:1px solid #DDDDDD; }
+.iosh_hotelboxright { margin:0; padding:0; float:right; width:150px; }
+.iosh_hotelboxleft { margin:0 150px 0 0; padding:0; position: relative; }
+.iosh_hotelboximg { margin:0; padding:0; width:90px; float:left; }
+.iosh_hotelboximg span { margin:2px 0 0 0; padding:0; display:block; text-align:center; font:normal 11px/14px tahoma, helvetica, sans-serif; color:#666; }
+.iosh_hotelboxdetails { margin:0 0 0 90px; padding:0 0 0 5px; }
+.iosh_hotelboxdetails h3 { display:block; margin:0; padding:0; color:#333; font:normal 17px/20px 'Open Sans',​helvetica, sans-serif; border:none; overflow:hidden; white-space:nowrap;}
+.iosh_hotelboxdetails h3 a, .iosh_hotelboxdetails h3 a:visited, .iosh_hotelboxdetails h3 a:hover { text-decoration:none; border:none; color:#1575bc; }
+.iosh_hotboxaddress { margin:0; padding:0 0 0 16px; font:normal 12px/16px tahoma, helvetica, sans-serif; color:#555; background:url(sprite16.png) 0 -450px no-repeat; }
+.iosh_hotboxaddress a { color:#1575bc; text-decoration:none; }
+.iosh_hotboxaddress a:hover { color:#000000; text-decoration:none; }
+.iosh_roompromo { margin:3px 0; padding:2px 4px 3px 16px; font:normal 12px/13px tahoma, helvetica, sans-serif; color:#FFFFFF; background:#66a01f url(sprite16.png) 0 -482px no-repeat; border-radius:3px; }
+.iosh_hotelroom { margin:7px 0 0 0; padding:7px 0 0 0; font:normal 13px/16px tahoma, arial, sans-serif; color:#444444; border-top:1px solid #ddd; }
+.iosh_hotelroom h4 { margin:0 0 4px 0; padding:0; border:none; text-decoration:none; font:normal 15px/18px 'Open Sans',​helvetica, sans-serif; color:#444444; }
+.iosh_hotelroom h4 a, .iosh_hotelroom h4 a:visited, .iosh_hotelroom h4 a:hover, .iosh_hotelroom h4 a:link, .iosh_hotelroom h4 a:active { text-decoration:none; color:#579b03; }
+.iosh_hotelroom h4 a:hover { text-decoration:none; color:#222222; }
+.iosh_persons { padding:0 0 0 16px; font:normal 15px/16px 'Open Sans',​helvetica, sans-serif; color:#777777; vertical-align:bottom; background:url(sprite16.png) 0 -546px no-repeat; direction:ltr; }
+.iosh_hotelboxcontact { margin:0 0 3px 0; padding:0 0 0 18px; font:normal 13px/16px tahoma, helvetica, sans-serif; color:#444444; background:url(sprite16.png) 0 -610px no-repeat; }
+.iosh_hotelboxscore { margin:0 0 10px 0; padding:0; background-color:#EBEBEB; border-radius:3px; }
+.iosh_hotelboxscorel { display:block; float:left; width:60px; padding:4px 0; border-radius:3px; background-color:#25add9; text-align:center; font:bold 18px/22px tahoma, Helvetica, sans-serif; color:#FFFFFF; }
+.iosh_hotelboxscorer { display:block; float:right; width:85px; padding:6px 0; text-align:center; font:normal 13px/18px tahoma, Helvetica, sans-serif; color:#777777; text-decoration:none; border:none; }
+.iosh_hotelboxbottom { margin:0 0 25px 0; padding:6px 10px; font:normal 13px/16px tahoma, helvetica, sans-serif; color:#666666; background-color:#F2F2F2; border:1px solid #DDDDDD; border-top:none; border-collapse:collapse; }
+.iosh_hotelboxbottom > div { margin:0 0 5px 0; padding:0 0 0 16px; background:url(sprite16.png) 0 -578px no-repeat; }
+.iosh_pricefrom { margin:10px 0; padding:0; font:normal 13px/20px tahoma, helvetica, sans-serif; color:#555; text-align:center; }
+.iosh_pricefrom span { font:normal 17px/20px tahoma, helvetica, sans-serif; color:#333; }
+.iosh_pricefrom div { margin:0; padding:0; font:normal 11px/13px tahoma, helvetica, sans-serif; color:#777; text-align:center; }
+.iosh_quickimgwrap { margin:0; padding:0; text-align:center; position:relative; }
+.iosh_quickimgwrap img { margin:0; padding:4px; border:1px solid #CCC; width:80px; height:80px; }
+.iosh_quickimgwrap a { position:absolute; top:5px; left:5px; margin:0; padding:0; width:80px; height:80px; display:block; background:none; z-index:2; }
+.iosh_quickimgwrap a:hover { background: rgb(136, 136, 136); background: url(magnify32w.png) 24px 24px no-repeat rgba(0, 0, 0, 0.3); }
+/* mini rating score used in modules */
+.iosh_miniscore { margin:0; padding:0 4px 0 0; display:inline-block; background-color:#EBEBEB; border-radius:2px; font:normal 12px/16px tahoma, Helvetica, sans-serif; color:#777777; }
+.iosh_miniscore > span { display:inline-block; width:40px; text-align:center; margin:0 4px 0 0; padding:1px 0; border-radius:2px; background-color:#25add9; font:bold 12px/14px tahoma, Helvetica, sans-serif; color:#FFFFFF; }
+/* image corner score used in modules */
+.iosh_cornerscore { position:absolute; top:5px; right:5px; margin:0; padding:3px 6px; display:inline-block; text-align:center; background-color:#25add9; border-radius:3px; font:bold 13px/16px tahoma, Helvetica, sans-serif; color:#FFFFFF; }
+/* HOTEL PAGE */
+.iosh_stars { margin:0 5px; padding:0; display:inline-block; width:75px; height:14px; background: transparent url(stars-sprite.png) 0 0 no-repeat; font-size:14px; line-height:14px; vertical-align:middle; }
+h3 span.iosh_stars, .iosh_h3 span.iosh_stars { background-color:transparent; padding:0; color:inherit; }
+.stars0 { background-position: 0 0; }
+.stars1 { background-position: 0 -14px; }
+.stars2 { background-position: 0 -28px; }
+.stars3 { background-position: 0 -42px; }
+.stars4 { background-position: 0 -56px; }
+.stars5 { background-position: 0 -70px; }
+.stars10 { background-position: 0 -84px; }
+.stars11 { background-position: 0 -98px; }
+.stars12 { background-position: 0 -112px; }
+.stars13 { background-position: 0 -126px; }
+.stars14 { background-position: 0 -140px; }
+.stars15 { background-position: 0 -154px; }
+.iosh_hotaddress { margin:0 0 5px 0; padding:0; }
+.iosh_hotelmain { float:left; width:100%; margin:0; padding:0; }
+.iosh_hotelmain_inner { margin:0 0 0 210px; padding:0; }
+.iosh_hotelside { margin:0 0 0 -100%; padding:0; width:200px; float:left; overflow:hidden; }
+.iosh_noreservations { margin:2px 0; padding:0 0 0 16px; background:url(sprite16.png) 0 -642px no-repeat; font:normal 13px/16px tahoma, helvetica, sans-serif; color:#444444; }
+/* room box */
+.iosh_roombox { margin:0; padding:8px; background-color:#FFFFFF;  border:1px solid #DDDDDD; }
+.iosh_roomboximg { margin:0; padding:0; width:100%; float: none;}
+.iosh_img2 { margin:0; padding:0 10px 0 0; width:90px; float: left;}
+.iosh_roomboxdetails { margin:0; padding:0 0 0 5px; position: relative; }
+.iosh_roomboxdetails h3, .iosh_roomboxdetails h3.iosh_roomtitleh3 { display:block; margin:0; padding:0; color:#1575bc; font:normal 17px/20px 'Open Sans',​helvetica, sans-serif; border:none; overflow:hidden; white-space:normal; clear:none;  }
+.iosh_roomboximg span { margin:2px 0 0 0; padding:0; display:block; text-align:center; font:normal 11px/14px tahoma, helvetica, sans-serif; color:#666; }
+.iosh_roomimgwrap { margin:0; padding:0; text-align:left; position:relative; overflow: hidden; }
+.iosh_roomimgwrap a { text-decoration:none; border:none; }
+.iosh_roomimgwrap img { margin:0; padding:4px; border:1px solid #CCC; width:80px; height:80px; }
+.iosh_roomimgwrap a:hover img { border-color:#888; }
+.iosh_roomdbox { margin:5px 0; padding:0; font:normal 13px/16px tahoma, Geneva, sans-serif; color:#555555; }
+.iosh_roomdbox h4, .iosh_roomdbox h4.iosh_h4 { margin:0 0 4px 0; padding:0; border:none; text-decoration:none; font:bold 15px/18px 'Open Sans',​helvetica, sans-serif; color:#777777; }
+.iosh_roomdbox h3, .iosh_roomdbox h3.iosh_h3 { margin:0 0 5px 0; padding:0; border:none; text-decoration:none; font:bold 17px/21px 'Open Sans',​helvetica, sans-serif; color:#777777; }
+.iosh_roomdbox p { margin:0 0 15px 0; padding:0; font:normal 13px/16px tahoma, Geneva, sans-serif; color:#555555; text-align:left; }
+.iosh_roomboxbottom { margin:0 0 25px 0; padding:6px 10px; font:normal 13px/16px tahoma, helvetica, sans-serif; color:#666666; background-color:#F2F2F2; border:1px solid #DDDDDD; border-top:none; border-collapse:collapse; }
+.iosh_roomboxbottom > div { margin:0 0 5px 0; padding:0 0 0 16px; background:url(sprite16.png) 0 -578px no-repeat; }
+/* meals */
+.iosh_meals_allinclusive { padding:0 0 0 20px; background:transparent url(meal-allinclusive.png) 0 0 no-repeat; font:normal 13px/16px tahoma, helvetica, sans-serif; color:#aa6125; }
+.iosh_meals_fullboard { padding:0 0 0 20px; background:transparent url(meal-full.png) 0 0 no-repeat; font:normal 13px/16px tahoma, helvetica, sans-serif; color:#aa6125; }
+.iosh_meals_halfboard { padding:0 0 0 20px; background:transparent url(meal-half.png) 0 0 no-repeat; font:normal 13px/16px tahoma, helvetica, sans-serif; color:#aa6125; }
+.iosh_meals_breakfast { padding:0 0 0 20px; background:transparent url(meal-breakfast.png) 0 0 no-repeat; font:normal 13px/16px tahoma, helvetica, sans-serif; color:#aa6125; }
+/* hotel navigation */
+nav.iosh_nav { margin:9px 0 15px 0; padding:5px 60px 5px 7px; display:block; background-color:#EFEFEF; font:normal 13px/16px Arial, Helvetica, sans-serif; color:#FFFFFF; position:relative; border:1px solid #DDDDDD; }
+a.iosh_nava { margin:0 7px 0 0; padding:0 7px 0 0; font:normal 13px/16px tahoma, Helvetica, sans-serif; color:#666666; text-decoration:none; border:none; border-right:1px solid #CCCCCC; }
+a.iosh_nava:hover { color:#222222; }
+a.iosh_navaback_off, a.iosh_navaback_on { display:inline-block; visibility:visible; margin:0 15px 0 0; padding:0 0 0 20px; font:normal 13px/16px tahoma, Helvetica, sans-serif; text-decoration:none; border:none; background:transparent url(sprite16.png) 0 -400px no-repeat; color:#3c96ef; }
+a.iosh_navaback_off { display:none; visibility:hidden; }
+span.iosh_navtitle_off { display:none; visibility:hidden; margin:0; padding:0; font:bold 13px/16px tahoma, Helvetica, sans-serif; color:#666; }
+span.iosh_navtitle_on { display:inline-block; visibility:visible; margin:0; padding:0; font:bold 13px/16px tahoma, Helvetica, sans-serif; color:#666; }
+a.iosh_rscore, a.iosh_rscore:visited, a.iosh_rscore:link, a.iosh_rscore:active { position:absolute; top:-9px; right:0; display:inline-block; background-color:#25add9; padding:4px 8px; text-align:center; border-radius:3px; font:normal 11px/14px tahoma, Helvetica, sans-serif; color:#FFFFFF; text-decoration:none; border:none; }
+a.iosh_rscore span { display:block; text-align:center; font:bold 18px/22px tahoma, Helvetica, sans-serif; color:#FFFFFF; }
+a.iosh_rscore:hover { background-color:#048ab5; color:#FFFFFF; text-decoration:none; }
+/* location ordering links */
+.iosh_ordering { display:block; margin:0 0 20px 0; padding:0; font:normal 12px/16px tahoma, helvetica, sans-serif; color:#888888; }
+.iosh_ordering > span { margin:0 10px 3px 0; padding:0; }
+.iosh_ordering > a { margin:0 6px 3px 0; padding:0 18px 0 0; display:inline-block; text-decoration:none; font:normal 12px/16px tahoma, helvetica, sans-serif; color:#666666; background:url(sprite16.png) 100% 0 no-repeat; }
+.iosh_ordering > a.iosh_orderselected { color:#1575bc; background:url(sprite16.png) 100% -100px no-repeat; }
+.iosh_ordering > a:hover { text-decoration:none; color:#000000; background-position: 100% -100px; }
+a.iosh_gallink { margin:0; padding:0; text-decoration:none; }
+.iosh_thumb { margin:0 3px; padding:4px; border:1px solid #ccc; background-color:#fff; }
+.iosh_largeimage { margin:0 3px; padding:4px; border:1px solid #ccc; background-color:#fff; }
+.iosh_strechimg { margin:0 0 15px 0; padding:4px; background-color:#fff; border:1px solid #ddd; height:160px; overflow:hidden; position:relative; }
+.iosh_strechimg img { width:100%; height:160px; border:none; }
+.iosh_strechimg span { padding:8px 12px; position:absolute; top:20px; left:20px; background-color:#333; opacity: 0.6; color:#fff; font:bold 18px/24px arial, sans-serif; -moz-border-radius:8px; -webkit-border-radius:8px; border-radius:8px; z-index:2; }
+.iosh_morebox { margin:0; padding:0; display:none; }
+a.iosh_centlink, a.iosh_centlink:visited, a.iosh_centlink:link, a.iosh_centlink:hover, a.iosh_centlink:active, a.iosh_centlink:focus { margin:2px 0; padding:0; text-decoration:none; display:block; text-align:center; font:normal 12px/14px tahoma, Geneva, sans-serif; color:#666; }
+a.iosh_centlink:hover { color:#3c96ef; }
+a.iosh_centlink:focus { display:block; outline:none; }
+a.iosh_morelink, a.iosh_morelink:visited, a.iosh_morelink:link, a.iosh_morelink:hover, a.iosh_morelink:active, a.iosh_morelink:focus { margin:2px 0; padding:0 16px 0 0; text-decoration:none; border:none; background:transparent url(sprite16.png) 100% -350px no-repeat; font:normal 13px/16px tahoma, arial, helvetica, sans-serif; color:#4591d6; }
+a.iosh_morelink:hover { color:#333333; }
+/* sidebox in hotel or location page */
+.iosh_sidebox { margin:0 0 15px 0; padding:0; }
+.module .iosh_sidebox h3, .iosh_sidebox h3, div.iosh_sidebox h3 { margin:0 0 6px 0; padding:2px 4px; border:none; vertical-align:baseline; background:none; background-color:#3c96ef; font:bold 14px/19px 'Open Sans', Arial, 'Helvetica Neue', Helvetica, sans-serif; color:#FFFFFF; }
+.iosh_sidebox ul { margin:0; padding:0; list-style:none; }
+.iosh_sidebox ul li { margin:0 0 5px 0; padding:0 0 5px 0; list-style:none; border-bottom:1px solid #ccc; font:normal 12px/16px tahoma, Geneva, sans-serif; color:#555; }
+.iosh_sidebox ul li.iosh_noborder { padding:0; border:none; }
+.iosh_sidebox ul li img.iosh_sideimg { width:30px; float:left; margin:0 5px 0 0; padding:3px; border:1px solid #ccc; }
+.iosh_sidebox ul li img.iosh_sideimg:hover { border-color:#999; }
+/* filtering options */
+div.iosh_filtersbox { margin:0 0 8px 0; padding:0; }
+h4.iosh_filtertitle { margin:0 0 4px 0; padding:0; background:none; border:none; font:bold 12px/16px tahoma, arial, sans-serif; color:#666666; }
+h4.iosh_filtertitle a.iosh_filterclose, h4.iosh_filtertitle a.iosh_filterclose:visited, h4.iosh_filtertitle a.iosh_filterclose:hover, h4.iosh_filtertitle a.iosh_filterclose:link { margin:0; padding:0 0 0 20px; display:block; text-decoration:none; border:none; background:transparent url(sprite16.png) 0 -300px no-repeat; font:bold 13px/16px tahoma, arial, sans-serif; color:#666666; }
+h4.iosh_filtertitle a.iosh_filteropen, h4.iosh_filtertitle a.iosh_filteropen:visited, h4.iosh_filtertitle a.iosh_filteropen:hover, h4.iosh_filtertitle a.iosh_filteropen:link { margin:0; padding:0 0 0 20px; display:block; text-decoration:none; border:none; background:transparent url(sprite16.png) 0 -350px no-repeat; font:bold 13px/16px tahoma, arial, sans-serif; color:#666666; }
+h4.iosh_filtertitle a.iosh_filterclose:hover, h4.iosh_filtertitle a.iosh_filteropen:hover { color:#222222; }
+ul.iosh_filteroptions { margin:0; padding:0; text-indent:0; list-style:none; background:none; clear:both; }
+ul.iosh_filteroptions li { margin:0 0 4px 0; padding:0; text-indent:0; list-style:none; background:none; border:none; font:normal 13px/16px tahoma, arial, sans-serif; color:#444444; overflow:hidden; }
+ul.iosh_filteroptions li a, ul.iosh_filteroptions li a:visited, ul.iosh_filteroptions li a:active, ul.iosh_filteroptions li a:hover, ul.iosh_filteroptions li a:link { margin:0; padding:0 0 0 20px; display:block; text-decoration:none; color:#444444; font:normal 13px/16px tahoma, arial, sans-serif; background:transparent url(sprite16.png) 0 0 no-repeat; }
+ul.iosh_filteroptions li a:hover { color:#000000;  background-position:0 -100px; }
+ul.iosh_filteroptions li a.iosh_filterselected, ul.iosh_filteroptions li a.iosh_filterselected:visited, ul.iosh_filteroptions li a.iosh_filterselected:active, ul.iosh_filteroptions li a.iosh_filterselected:hover, ul.iosh_filteroptions li a.iosh_filterselected:link { margin:0; padding:0 0 0 20px; display:block; text-decoration:none; color:#444444; font:normal 13px/16px tahoma, arial, sans-serif; background:transparent url(sprite16.png) 0 -100px no-repeat; }
+ul.iosh_filteroptions li a.iosh_filterselected:hover { color:#000000;  background-position:0 -200px; }
+ul.iosh_filteroptions li a span { color:#666; }
+/* static image maps */
+.iosh_static_map { margin:0; padding:0; }
+.iosh_static_map img { border:none; margin:0; padding:0; width:100%; height:auto; }
+/* IMAGE GALLERY (street view, quick view, etc) */
+.iosh_gallerywrap { margin:0; padding:4px; border:1px solid #CCC; background-color:#FFFFFF; }
+ul.iosh_gallery, ul.iosh_gallery li { margin:0; padding:0; text-indent:0; list-style:none; border:none; background:none; }
+.iosh_gallerywrap img, ul.iosh_gallery li img { border:none; margin:0; padding:0; width:100%; height:auto; }
+.iosh_gallerywrap img.lbox, ul.iosh_gallery li img.lbox { max-height:260px; }
+ul.iosh_images_slider { margin:0; padding:0; text-indent:0; list-style:none; border:none; background:none; }
+ul.iosh_images_slider li { margin:0; padding:0; text-indent:0; list-style:none; border:none; background:none; }
+ul.iosh_images_slider li img { border:none; margin:0; padding:0; width:100%; height:auto; }
+/* rating stars */
+.iosh_rating { margin:0; padding:0; width:60px; height:16px; display:inline-block; background:url(star_rating.png) 0 2px no-repeat; }
+.rating5 { background-position:0 2px; }
+.rating4 { background-position:-12px 2px; }
+.rating3 { background-position:-24px 2px; }
+.rating2 { background-position:-36px 2px; }
+.rating1 { background-position:-48px 2px; }
+.rating0 { background-position:-60px 2px; }
+/* REVIEWS */
+.iosh_reviewbox { margin:0 0 25px 0; padding:0; border-bottom:1px solid #dddddd; }
+.iosh_reviewtop { margin:0 0 3px 0; padding:0; background-color:#EFEFEF; overflow:hidden; }
+.iosh_reviewscore { margin:0; padding:7px 0; background-color:#3c96ef; color:#FFFFFF; display:block; float:left; width:50px; text-align:center; font: bold 18px/22px tahoma,Helvetica,sans-serif; }
+.iosh_unpublished { background-color:#FF6600; }
+.iosh_reviewtopin { display:block; margin:0 0 0 52px; padding:0 0 0 10px; }
+.iosh_reviewtopinac { margin:0 80px 0 0; padding:2px 0; }
+.iosh_reviewauthor {margin:0; padding:0; font: bold 13px/16px tahoma,Helvetica,sans-serif; color:#666666; }
+.iosh_reviewauthor span { padding:0 0 0 20px; color:#888888; }
+.iosh_reviewcountry {margin:0; padding:0; font: normal 12px/16px tahoma,Helvetica,sans-serif; color:#666666; }
+.iosh_reviewcountry img { border:none; vertical-align:middle; }
+.iosh_reviewdate { display:block; float:right; width:78px; margin:0; padding:2px 0; background-color:#878d92; font: normal 12px/16px tahoma,Helvetica,sans-serif; color:#FFFFFF; text-align:center; }
+.iosh_reviewdate span { display:block; text-align:center; font:bold 13px/16px tahoma,Helvetica,sans-serif; color:#FFFFFF; }
+.iosh_reviewmid { margin:0; padding:6px 10px; background-color:#F2F2F2; }
+.iosh_reviewmid > p { margin:4px 0 14px 0; padding:0 0 0 20px; text-align:justify; font:normal 13px/16px 'Open Sans', Arial, 'Helvetica Neue', Helvetica, sans-serif; color:#555555; background:transparent url(speech16.png) 0 0 no-repeat; }
+.iosh_reviewitemscore { margin:0 5px 0 0; padding:2px 4px; border-radius:3px; background-color:#FFFFFF; border:1px solid #DDD; display:inline-block; width:80px; white-space:nowrap; overflow:hidden; font:normal 11px/14px tahoma,Helvetica,sans-serif; color:#666666; }
+.iosh_reviewitemscore > div { margin:0; padding:0; }
+.iosh_reviewitemscore:hover { border-color:#BBBBBB; color:#333333; }
+.iosh_reviewprive { margin:10px 0 0 0; padding:0; }
+.iosh_reviewprive > div { margin:0 5px 2px 0; padding:1px 4px; display:inline-block; background-color:#F2F2F2; border:1px solid #CCCCCC; }
+/* module IOSR Hotel reviews */
+.iosh_reviewoveralltop { margin:0 0 3px 0; padding:0; background-color:#DFDFDF; overflow:hidden; }
+.iosh_reviewoverallscore { margin:0; padding:7px 0; background-color:#7fb12f; color:#FFFFFF; display:block; float:left; width:50px; text-align:center; font: bold 18px/22px tahoma,Helvetica,sans-serif; }
+/* module IOSR Hotel rating */
+.iosh_bigrating { margin:2px 0; padding:10px; display:block; max-width:120px; -moz-border-radius:10px; -webkit-border-radius:10px; border-radius:10px; font:normal 26px/29px tahoma, arial, sans-serif; color:#FFF; background-color:#3188d9; text-align:center; clear:both; }
+.iosh_bigrating > div { margin:2px 0 0 0; font:normal 13px/16px 'Open Sans', Arial, 'Helvetica Neue', Helvetica, sans-serif; color:#FFF; }
+ul.iosh_scorebrakedown { margin:0; padding:0; text-indent:0; list-style:none; background:none; }
+ul.iosh_scorebrakedown li { margin:0 0 5px 0; padding:0; text-indent:0; list-style:none; background:none; }
+ul.iosh_scorebrakedown li p { margin:0 0 1px 0; padding:0; font:normal 14px/17px tahoma, arial, sans-serif; color:#666666; text-align:left; }
+div.iosh_scorebar { margin:0; padding:0; width:85%; height:16px; float:left; background-color:#f2f4f8; border:1px solid #cfcfcf; box-sizing: border-box; clear:both; -moz-border-radius:3px; -webkit-border-radius:3px; border-radius:3px; }
+div.iosh_scorebar > div { background-color:#87c2f6; box-sizing: border-box; -moz-border-radius:2px; -webkit-border-radius:2px; border-radius:2px; height:14px; width:50%; }
+ul.iosh_scorebrakedown li > span { display:block; margin:0; padding:0; width:14%; float:left; text-align:right; box-sizing:border-box; font:normal 14px/14px 'Open Sans', Arial, 'Helvetica Neue', Helvetica, sans-serif; color:#666666; }
+/* HOTEL QUICK VIEW (POPUP) */
+.iosh_qtitle {  margin:0 0 5px 0; padding:5px 10px; background-color:#e0effd; border:1px solid #c9d7e5; }
+.iosh_qtitle h2 { margin:0; padding:0; border:none; vertical-align:baseline; font:bold 16px/19px arial, helvetica, sans-serif; color:#4591d6; }
+.iosh_qtitle div { margin:0; padding:0; font:normal 11px/14px verdana, helvetica, sans-serif; color:#555555; }
+.iosh_qimgwrap { width:410px; float:left; margin:0; padding:0; }
+.iosh_qdetailswrap { width:255px; float:left; margin:0; padding:0 0 0 5px; background-color:#FFFFFF; }
+/* half and full boxes */
+.iosh_halfline { margin:0 0 10px 0; padding:0; }
+.iosh_halffirst { margin:0 2% 0 0; padding:0; border:none; width:49%; float:left; }
+.iosh_halfsecond { margin:0; padding:0; border:none; width:49%; float:left; }
+.iosh_box { margin:0; padding:4px; border:1px solid #ccc; background:#f8f8f8 url(corner_tick.png) 100% 0 no-repeat; }
+.iosh_box:hover { background-color:#e1f1ff; border-color:#badbf8; }
+.iosh_box img { border:1px solid #ccc; margin:0 5px 0 0; padding:3px; background-color:#fff; width:45px; height:45px; float:left; }
+.iosh_boxtext { margin:0; padding:0; vertical-align:top; overflow:hidden; font:normal 13px/16px tahoma, Geneva, sans-serif; color:#333; }
+h4.iosh_boxtitle { margin:0; padding:0; border:none; background:none; font:bold 13px/16px tahoma, Geneva, sans-serif; color:#333; }
+h4.iosh_boxtitle a { text-decoration:none; display:block; }
+a.iosh_boxopen, a.iosh_boxopen:link, a.iosh_boxopen:active, a.iosh_boxopen:hover, a.iosh_boxopen:visited { margin:0; outline:none; padding:0 18px 0 0; text-decoration:none; color:#555; background:url(arrow_down.png) 100% 0 no-repeat; }
+.iosh_boxtext ul { margin:0; padding:0; list-style:none; }
+.iosh_boxtext ul li { margin:0 0 3px 0; padding:0; list-style:none; border:none; font:normal 13px/16px tahoma, Geneva, sans-serif; color:#555; }
+p.iosh_lightp { margin:5px 0 20px 0; padding:0; font:normal 13px/16px tahoma, verdana, sans-serif; color:#555555; }
+/* ADDONS & SPECIALS */
+.iosh_vspace { margin:20px 0; }
+.iosh_vsspace { margin:5px 0; }
+.iosh_dspace { margin-bottom:20px; }
+.iosh_dsspace { margin:0 0 5px 0; }
+.iosh_tsspace { margin:5px 0 0 0; }
+.iosh_tspace { margin:20px 0 0 0; }
+.iosh_pad { margin:0; padding:5px; }
+.iosh_zero { margin:0; padding:0; }
+.iosh_space { margin:5px; }
+.iosh_center { text-align:center; }
+.iosh_just { text-align:justify; }
+.iosh_oldprice { color:#ff0000; text-decoration: line-through; }
+.clear { clear:both; }
+sup { vertical-align:super; font-size:0.8em; }
+/*** BX SLIDER ***/
+.bx-wrapper { position: relative; margin: 0 auto 60px; padding: 0; *zoom: 1; }
+.bx-wrapper img { max-width: 100%; display: block; }
+.bx-wrapper .bx-viewport {
+	/* -moz-box-shadow: 0 0 5px #ccc; -webkit-box-shadow: 0 0 5px #ccc; box-shadow: 0 0 5px #ccc; border:  5px solid #fff; left: -5px; */
+	background: #fff; -webkit-transform: translatez(0); -moz-transform: translatez(0); -ms-transform: translatez(0); -o-transform: translatez(0); transform: translatez(0);
+}
+.bx-wrapper .bx-pager, .bx-wrapper .bx-controls-auto { position: absolute; bottom: -30px; width: 100%; }
+.bx-wrapper .bx-loading { min-height: 50px; background: url(bx_loader.gif) center center no-repeat #fff; height: 100%; width: 100%; position: absolute; top: 0; left: 0; z-index: 2000; }
+.bx-wrapper .bx-pager { text-align: center; font-size: .85em; font-family: Arial; font-weight: bold; color: #666; padding-top: 20px; }
+.bx-wrapper .bx-pager .bx-pager-item, .bx-wrapper .bx-controls-auto .bx-controls-auto-item { display: inline-block; *zoom: 1; *display: inline; }
+.bx-wrapper .bx-pager.bx-default-pager a { background: #666; text-indent: -9999px; display: block; width: 10px; height: 10px; margin: 0 5px; outline: 0; -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px; }
+.bx-wrapper .bx-pager.bx-default-pager a:hover, .bx-wrapper .bx-pager.bx-default-pager a.active { background: #000; }
+.bx-wrapper .bx-prev { left: 10px; background: url(bx_controls.png) no-repeat 0 -32px; }
+.bx-wrapper .bx-next { right: 10px; background: url(bx_controls.png) no-repeat -43px -32px; }
+.bx-wrapper .bx-prev:hover { background-position: 0 0; }
+.bx-wrapper .bx-next:hover { background-position: -43px 0; }
+.bx-wrapper .bx-controls-direction a { position: absolute; top: 50%; margin-top: -16px; outline: 0; width: 32px; height: 32px; text-indent: -9999px; z-index: 9999; }
+.bx-wrapper .bx-controls-direction a.disabled { display: none; }
+.bx-wrapper .bx-controls-auto { text-align: center; }
+.bx-wrapper .bx-controls-auto .bx-start { display: block; text-indent: -9999px; width: 10px; height: 11px; outline: 0; background: url(bx_controls.png) -86px -11px no-repeat; margin: 0 3px; }
+.bx-wrapper .bx-controls-auto .bx-start:hover,
+.bx-wrapper .bx-controls-auto .bx-start.active { background-position: -86px 0; }
+.bx-wrapper .bx-controls-auto .bx-stop { display: block; text-indent: -9999px; width: 9px; height: 11px; outline: 0; background: url(bx_controls.png) -86px -44px no-repeat; margin: 0 3px; }
+.bx-wrapper .bx-controls-auto .bx-stop:hover, .bx-wrapper .bx-controls-auto .bx-stop.active { background-position: -86px -33px; }
+.bx-wrapper .bx-controls.bx-has-controls-auto.bx-has-pager .bx-pager { text-align: left; width: 80%; }
+.bx-wrapper .bx-controls.bx-has-controls-auto.bx-has-pager .bx-controls-auto { right: 0; width: 35px; }
+.bx-wrapper .bx-caption { position: absolute; bottom: 0; left: 0; background: #666\9; background: rgba(80, 80, 80, 0.75); width: 100%; }
+.bx-wrapper .bx-caption span { color: #fff; font-family: Arial; display: block; font-size: .85em; padding: 10px; }
+/*** TOOLTIP ***/
+abbr.iosh_tooltip {
+	display:inline-block; width:16px; height:16px; font:bold 12px/16px tahoma, helvetica, sans-serif; color:#FFFFFF; text-align:center; vertical-align:middle;
+	background-color:#555555; -webkit-border-radius: 50%; -moz-border-radius: 50%; border-radius: 50%; border: none; cursor: help; text-decoration: none;
+}
+abbr.iosh_tooltipsmall {
+	display:inline-block; padding:0; margin:0; width:12px; height:12px; font:bold 10px/12px tahoma, helvetica, sans-serif; color:#FFFFFF; text-align:center; vertical-align:middle;
+	background-color:#555555; -webkit-border-radius: 2px; -moz-border-radius: 2px; border-radius: 2px; border: none; cursor: help; text-decoration: none;
+}
+#iosh_tooltip {
+	position: absolute; padding: 15px; z-index:100; text-align: center; color: #fff; font:normal 0.875em/1.2em Ubuntu, sans-serif; text-shadow: 0 1px rgba( 0, 0, 0, .5 );
+	background: #333;
+	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#555555', endColorstr='#222222');/* IE7-8-9 */
+	background: -webkit-gradient( linear, left top, left bottom, from( rgba( 0, 0, 0, .7 ) ), to( rgba( 0, 0, 0, .9 ) ) );
+	background: -webkit-linear-gradient( top, rgba( 0, 0, 0, .7 ), rgba( 0, 0, 0, .9) );
+	background: -moz-linear-gradient( top, rgba( 0, 0, 0, .7 ), rgba( 0, 0, 0, .9) );
+	background: -ms-radial-gradient( top, rgba( 0, 0, 0, .7 ), rgba( 0, 0, 0, .9) );
+	background: -o-linear-gradient( top, rgba( 0, 0, 0, .7 ), rgba( 0, 0, 0, .9) );
+	background: linear-gradient( top, rgba( 0, 0, 0, .7 ), rgba( 0, 0, 0, .9) );
+	-webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; border-top: 1px solid #fff;
+	-webkit-box-shadow: 0 3px 5px rgba( 0, 0, 0, .3 ); -moz-box-shadow: 0 3px 5px rgba( 0, 0, 0, .3 ); box-shadow: 0 3px 5px rgba( 0, 0, 0, .3 );
+}
+#iosh_tooltip:after { width:0; height:0; border-left: 10px solid transparent; border-right: 10px solid transparent; border-top: 10px solid #333; border-top-color: rgba(0, 0, 0, .8); content: ''; position: absolute; left: 50%; bottom: -10px; margin-left: -10px; }
+#iosh_tooltip.top:after { border-top-color: transparent; border-bottom: 10px solid #333; border-bottom-color:#333333; border-bottom-color:rgba(0, 0, 0, .7); top: -20px; bottom: auto; }
+#iosh_tooltip.left:after { left:10px; margin:0; }
+#iosh_tooltip.right:after { right:10px; left: auto; margin:0; }
+
+.iosh_roomboxcale { margin:0; padding:0; width:100%;}
+.iosh_roomboxcale .iosh_roomcalelegend { display: block; width: 100%; padding: 5px;}
+.iosh_roomcalewrap { margin:0; padding:0; text-align:left; position:relative; display: block; width: 100%; box-sizing: border-box; overflow: hidden; }
+.iosh_roomcalewrap .iosh_roomcale { display: block; width: 20%; float: left; padding: 0; }
+.iosh_roomcalewrap .iosh_roomcale.preloading { background: url(bx_loader.gif) no-repeat scroll center center transparent; min-height: 32px;}
+.iosh_roomcalewrap .iosh_roomcale.preloading .iosh_roomcaleframe { width: 100%; height: 0px;}
+.iosh_roomcalewrap .iosh_roomcale .iosh_roomcaleframe { height: 100%; width: 100%; }
+
+.iosh_roomcalewrap .iosh_roomcale .iosrcal_tbl_wrap { width: 100%; margin: 0; box-sizing: border-box; }
+.iosh_vsspace.availcale { display: none; }
+
+.iosh_roomcalewrap table.iosrcal_tbl td { width: auto; height: auto; font-size: 10px;}
+.iosh_roomcalewrap table.iosrcal_tbl th { width: auto; height: auto; font-size: 11px;}
+.iosh_roomcalewrap table.iosrcal_tbl td div { font-size: 11px; line-height: 9px; }
+.iosh_roomcalewrap table.iosrcal_tbl td.roomav, .iosh_roomcalelegend .iosh_calindex span.roomav { background-color: #008000; }
+.iosh_roomcalewrap table.iosrcal_tbl td.roomnotav, .iosh_roomcalelegend .iosh_calindex span.roomnotav { background-color: #d2691e; /*#FF8C00;*/ }
+.iosh_roomcalewrap table.iosrcal_tbl td.roombooked, .iosh_roomcalelegend .iosh_calindex span.roombooked { background-color: #ff8c00;/*#D2691E;*/ }
+
+a.iosh_calnavbk1, a.iosh_calnavbk1:visited, a.iosh_calnavbk1:hover, a.iosh_calnavbk1:link{text-decoration:none;border:none;display:inline-block;width:16px !important;height:16px !important;margin:0;padding:0;font:normal 12px/16px tahoma, geneva, sans-serif;color:#fff;background:transparent url(calarrows.png) -16px -16px no-repeat;}
+/*a.iosh_calnavbk1:hover{background-position:-16px 0;}*/
+a.iosh_calnavfw1, a.iosh_calnavfw1:visited, a.iosh_calnavfw1:hover, a.iosh_calnavfw1:link{text-decoration:none;border:none;display:inline-block;width:16px !important;height:16px !important;margin:0;padding:0;font:normal 12px/16px tahoma, geneva, sans-serif;color:#fff;background:transparent url(calarrows.png) -32px -16px no-repeat;}
+/*a.iosh_calnavfw1:hover{background-position:-32px 0;}*/
+
+a.disabled{
+    pointer-events: none;
+    cursor: default;
+    color: #aaa !important;
+}
+
+
+@media only screen and (max-width: 1024px) {
+}
+
+@media only screen and (max-width: 850px) {
+	.iosh_roomcale.month3 { display: none !important; }
+	.iosh_roomcale { width: 33% !important; }
+}
+
+@media only screen and (max-width: 800px) {
+	.iosh_formrow > label, .iosh_formrowshort > label { margin:0; padding:3px 0; display:block; float:none; width:auto; }
+	.iosh_formrow > div, .iosh_formrowshort > div { margin:0; }
+	select.iosh_select { width:100%; padding-top:5px; padding-bottom:5px; }
+	input.iosh_intext, input[type=text].iosh_intext, input[type=email].iosh_intext, input[type=date].iosh_indate, input.iosh_indate, input[type=text].iosh_indate  { width:100%; padding-top:5px; padding-bottom:5px; }
+	input.iosh_short { padding-top:5px; padding-bottom:5px; }
+	button.iosh_btn, button[type="submit"].iosh_btn, button[type="button"].iosh_btn,
+	button.iosh_btn:hover, button[type="submit"].iosh_btn:hover, button[type="button"].iosh_btn:hover { margin:5px 0; width:100%; display:block; }
+	.iosh_halffirst { margin:0 0 10px 0; width:100%; float:none; }
+	.iosh_halfsecond { width:100%; float:none; }
+	.iosh_hotelmain { float:none; width:100%; margin:0 0 20px 0; padding:0; }
+	.iosh_hotelmain_inner { margin:0; padding:0; }
+	.iosh_hotelside { margin:0; padding:0; width:100%; float:none; }
+	.iosh_strechimg { height:auto; }
+	.iosh_strechimg img { width:100%; height:auto; }
+	.iosh_largeimage { width:100%; height:auto; }
+	.iosh_reviewtopinac { margin:0 0 0 0; }
+	.iosh_reviewauthor span { display:none; visibility:hidden; }
+	.iosh_reviewdate { float:none; width:auto; margin-top:2px; }
+	.iosh_reviewdate span { display:inline; font-weight:normal; padding-left:6px; }
+	.iosh_movebox_left { margin:0 0 8px 0; padding:0; width:auto; float:none; }
+	.iosh_movebox_right { margin:0; padding:0; width:auto; float:none; }
+}
+@media only screen and (max-width: 690px) {
+	.iosh_qimgwrap { width:100%; float:none; margin:0 0 10px 0; }
+	.iosh_qdetailswrap { width:100%; float:none; margin:0; padding:0; }
+	.iosh_hotelboximg { margin:0; padding:0; width:100%; float:none; display:block; }
+	.iosh_hotelboxdetails { margin:0; padding:0; }
+	.iosh_mobilehide { display:none; visibility:hidden; }
+	.iosh_roomboxcale { display:none; visibility:hidden; }
+	.availcale { display: block !important; }
+	.iosh_pickbookwrap.only-one .iosh_roomsselbox { flex-direction: column; }
+	.iosh_pickbookwrap.only-one .iosh_roomsselbox .guest_info { margin-bottom: 10px; }
+	.iosh_zero.title-price { position: relative !important; margin: 10px 0; }
+}
+@media only screen and (max-width: 500px) {
+	.iosh_hotelboxright { float:none; display:none; }
+	.iosh_hotelboxleft { margin:0; }
+	.iosh_roomboximg { margin:0; padding:0; width:100%; float:none; display:block; }
+	.iosh_roomboxdetails { margin:0; padding:0; }
+}
+@media only screen and (max-width: 400px) {
+	span.iosh_navtitle_on { display:none; visibility:hidden; }
+}
+@media print {
+	.iosh_noprint { display:none; visibility:hidden; }
+}
+
+.iosh_roombox.isams {
+	background-color: #deeefb;
+	border: 1px solid #b1d1ec;
+	box-shadow: 0 1px 0 rgba(255, 255, 255, 0.8) inset, 0 1px 3px rgba(0, 0, 0, 0.1);
+	border-radius: 4px;
+        padding: 0 5px;
+}
+
+.amsnote { display: block; text-align: right; color: #138496; font-style: italic; margin: 10px 0;}
+
+
+.iosh_roomcalewrap.flex { display: flex; flex-wrap: wrap; }
+.iosh_roomcalewrap.flex .iosh_roomcale {flex: 1 0 20%; float: unset; width: auto; max-width: 25%; }
+
+.iosh_pickbookwrap.only-one { position: relative; }
+.iosh_pickbookwrap.only-one .select-room { font-size: 18px; line-height: 40px; margin: auto 10px auto 0;}
+.iosh_pickbookwrap.only-one .iosh_roomsselbox { display: flex;
+width: 100%;
+justify-content: flex-end;}
+
+.iosh_pickbookwrap.only-one .iosh_pickrowguests { margin: 0 0 0 10px; }
+.iosh_pickbookwrap.only-one .iosh_pickrow { margin: 0 0 0 10px; overflow: hidden; }
+
+.iosh_zero.title-price {    text-align: right;
+    color: #FF8C00;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.free-cancellation { color: green; }

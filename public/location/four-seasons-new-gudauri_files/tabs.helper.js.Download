@@ -1,0 +1,26 @@
+function startTabs(paneid) {
+	jQuery('#' + paneid + ' .tab_content').hide();
+	var tabidx = -1;
+	jQuery('#' + paneid + ' ul.tabs li').each(function(idx) {
+		if (jQuery(this).hasClass('tabopen') == true) { tabidx = idx; jQuery(this).addClass('active').show(); }
+	});
+	if (tabidx > -1) {
+		jQuery('#' + paneid + ' .tab_content').each(function(idx) { if (idx == tabidx) { jQuery(this).show(); } });
+	} else {
+		jQuery('#' + paneid + ' ul.tabs li:first').addClass("active").show();
+		jQuery('#' + paneid + ' .tab_content:first').show();
+	}
+
+	jQuery('#' + paneid + ' ul.tabs li').click(function() {
+		jQuery('#' + paneid + ' ul.tabs li').removeClass('active');
+		jQuery(this).addClass('active');
+		jQuery('#' + paneid + ' .tab_content').hide();
+		var activeTab = jQuery('a', this).attr('href');
+		if (document.getElementById('tabopen')){
+			var tabidx = jQuery(this).index() + 1;
+			document.getElementById('tabopen').value = tabidx;
+		}
+		jQuery('#' + paneid + ' ' + activeTab).fadeIn();
+		return false;
+	});
+}

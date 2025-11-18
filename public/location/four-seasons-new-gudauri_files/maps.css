@@ -1,0 +1,575 @@
+/**
+* @package		Elxis
+* @subpackage	Component Maps
+* @copyright	Copyright (c) 2009-2014 Andrey Kambalov. All rights reserved.
+* @license		GPL
+* @author		Andrey Kambalov ( ACampball@yandex.ru )
+*/
+
+div.map-image { position: relative; margin-right: 5px; margin-bottom: 5px; z-index: 50; overflow: hidden; }
+
+div.map-image img { max-width: none; }
+
+td.map_img { width: 70px; }
+td.map_info { text-align: left; vertical-align: top; }
+
+/* ***************************************** */
+/* MAP INFO TOP                              */
+/* ***************************************** */
+div.map_info_top {
+	clear: both;
+    display: inline-block;
+    position: relative;
+    z-index: 200;
+    width: 100%;
+}
+
+/* LEGEND */
+div.map_info_top .map-legend {
+    position: relative;
+}
+div.map_info_top .map-legend h3 {
+	background: no-repeat scroll right 50% #888888;
+    border-left: 1px solid #CCCCCC;
+    border-top: 1px solid #CCCCCC;
+    border-right: 1px solid #CCCCCC;
+    border-nottom: none;
+    border-radius: 3px 3px 0 0;
+    cursor: default;
+    display: block;
+    font-family: Roboto,Arial,sans-serif;
+    font-size: 11px;
+    font-weight: normal;
+    margin: 0;
+    padding: 2px;
+    color: #FFFFFF;
+    font-weight: bold;
+}
+.map_info_top .map-legend > div.map-legend-wrap {
+    background-color: #FFFFFF;
+    border: 1px solid #CCCCCC;
+    border-radius: 0 3px 3px;
+    display: block;
+    max-height: 300px;
+    overflow: auto;
+    position: relative;
+}
+
+.map_info_top .map-legend-wrap > div.legend_row {
+    clear: both;
+    overflow: hidden;
+    padding: 5px 0 5px 5px;
+    vertical-align: middle;
+    border-bottom: 1px solid #EEEEEE;
+}
+
+.map_info_top .map-legend-wrap .legend_row > img {
+    float: left;
+    max-width: 16px;
+}
+
+.map_info_top .map-legend-wrap .legend_row > span {
+    display: block;
+    float: left;
+    margin: 0 0 0 5px;
+    width: auto;
+    font-family: Roboto,Arial,sans-serif;
+    font-size: 12px;
+    color: #555555;
+}
+
+/* SIDEBAR */
+div.map_info_top .map-sidebar {
+    position: relative;
+}
+div.map_info_top .map-sidebar h3 {
+	background: no-repeat scroll right 50% #888888;
+    border-left: 1px solid #CCCCCC;
+    border-top: 1px solid #CCCCCC;
+    border-right: 1px solid #CCCCCC;
+    border-nottom: none;
+    border-radius: 3px 3px 0 0;
+    cursor: default;
+    display: block;
+    font-family: Roboto,Arial,sans-serif;
+    font-size: 11px;
+    font-weight: normal;
+    margin: 0;
+    padding: 2px;
+    color: #FFFFFF;
+    font-weight: bold;
+}
+div.map_info_top .map-sidebar > div.map-sidebar-wrap {
+    background-color: #FFFFFF;
+    border-left: 1px solid #CCCCCC;
+    border-right: 1px solid #CCCCCC;
+    border-bottom: 1px solid #CCCCCC;
+    border-top: none;
+    border-radius: 0 0 3px 3px;
+    display: block;
+    overflow: auto;
+    position: relative;
+}
+
+/* DIRECTIONS */
+div.map_info_top .map-directions {
+    position: relative;
+}
+div.map_info_top .map-directions h3 {
+	background: no-repeat scroll right 50% #888888;
+    border-left: 1px solid #CCCCCC;
+    border-top: 1px solid #CCCCCC;
+    border-right: 1px solid #CCCCCC;
+    border-nottom: none;
+    border-radius: 3px 3px 0 0;
+    cursor: default;
+    display: block;
+    font-family: Roboto,Arial,sans-serif;
+    font-size: 11px;
+    font-weight: normal;
+    margin: 0;
+    padding: 2px;
+    color: #FFFFFF;
+    font-weight: bold;
+}
+div.map_info_top .map-directions > div.map-directions-wrap {
+    background-color: #FFFFFF;
+    border-left: 1px solid #CCCCCC;
+    border-right: 1px solid #CCCCCC;
+    border-bottom: 1px solid #CCCCCC;
+    border-top: none;
+    border-radius: 0 0 3px 3px;
+    display: block;
+    overflow: auto;
+    position: relative;
+}
+
+/* ***************************************** */
+/* MAP INFO OVER                             */
+/* ***************************************** */
+div.map_info_over1 {
+	left: 78px;
+    margin: 5px;
+    position: absolute;
+    top: 0;
+    z-index: 100;
+}
+
+.map_info_over .map-legend {
+	float: left;
+    position: relative;
+}
+.map_info_over .map-legend h3 {
+	background: url("/components/com_maps/images/arrow_down.png") no-repeat scroll right 50% #FFFFFF;
+    border: 1px solid #CCCCCC;
+    border-radius: 3px;
+    cursor: pointer;
+    display: inline-block;
+    font-family: Roboto,Arial,sans-serif;
+    font-size: 11px;
+    font-weight: normal;
+    margin: 0;
+    padding: 2px 16px 2px 2px;
+}
+
+.map_info_over .map-legend > div.map-legend-wrap {
+    background-color: #FFFFFF;
+    border: 1px solid #CCCCCC;
+    border-radius: 0 3px 3px;
+    display: none;
+    max-height: 300px;
+    overflow: auto;
+    position: absolute;
+}
+
+.map_info_over .map-legend-wrap > div.legend_row {
+    clear: both;
+    overflow: hidden;
+    padding: 5px 0 5px 5px;
+    vertical-align: middle;
+    border-bottom: 1px solid #EEEEEE;
+}
+
+.map_info_over .map-legend-wrap .legend_row > img {
+    float: left;
+    max-width: 16px;
+}
+
+.map_info_over .map-legend-wrap .legend_row > span {
+    display: block;
+    float: left;
+    margin: 0 0 0 5px;
+    width: auto;
+    font-family: Roboto,Arial,sans-serif;
+    font-size: 12px;
+    color: #555555;
+}
+
+.map_info_over .map-sidebar {
+    float: left;
+    position: relative;
+}
+
+.map_info_over .map-sidebar h3 {
+	background: url("/components/com_maps/images/arrow_down.png") no-repeat scroll right 50% #FFFFFF;
+    border: 1px solid #CCCCCC;
+    border-radius: 3px;
+    cursor: pointer;
+    display: inline-block;
+    font-family: Roboto,Arial,sans-serif;
+    font-size: 11px;
+    font-weight: normal;
+    margin: 0;
+    padding: 2px 16px 2px 2px;
+}
+
+.map_info_over .map-directions {
+    float: left;
+    position: relative;
+}
+
+.map_info_over .map-directions h3 {
+	background: url("/components/com_maps/images/arrow_down.png") no-repeat scroll right 50% #FFFFFF;
+    border: 1px solid #CCCCCC;
+    border-radius: 3px;
+    cursor: pointer;
+    display: inline-block;
+    font-family: Roboto,Arial,sans-serif;
+    font-size: 11px;
+    font-weight: normal;
+    margin: 0;
+    padding: 2px 16px 2px 2px;
+}
+
+/* ***************************************** */
+/* MAP INFO BOTTOM                           */
+/* ***************************************** */
+div.map_info_bottom {
+	clear: both;
+    display: inline-block;
+    position: relative;
+    z-index: 200;
+    width: 100%;
+    padding-top: 10px;
+}
+
+/* LEGEND */
+div.map_info_bottom .map-legend {
+    position: relative;
+}
+div.map_info_bottom .map-legend h3 {
+	background: no-repeat scroll right 50% #888888;
+    border-left: 1px solid #CCCCCC;
+    border-top: 1px solid #CCCCCC;
+    border-right: 1px solid #CCCCCC;
+    border-nottom: none;
+    border-radius: 3px 3px 0 0;
+    cursor: default;
+    display: block;
+    font-family: Roboto,Arial,sans-serif;
+    font-size: 11px;
+    font-weight: normal;
+    margin: 0;
+    padding: 2px;
+    color: #FFFFFF;
+    font-weight: bold;
+}
+.map_info_bottom .map-legend > div.map-legend-wrap {
+    background-color: #FFFFFF;
+    border: 1px solid #CCCCCC;
+    border-radius: 0 3px 3px;
+    display: block;
+    max-height: 300px;
+    overflow: auto;
+    position: relative;
+}
+
+.map_info_bottom .map-legend-wrap > div.legend_row {
+    clear: both;
+    overflow: hidden;
+    padding: 5px 0 5px 5px;
+    vertical-align: middle;
+    border-bottom: 1px solid #EEEEEE;
+}
+
+.map_info_bottom .map-legend-wrap .legend_row > img {
+    float: left;
+    max-width: 16px;
+}
+
+.map_info_bottom .map-legend-wrap .legend_row > span {
+    display: block;
+    float: left;
+    margin: 0 0 0 5px;
+    width: auto;
+    font-family: Roboto,Arial,sans-serif;
+    font-size: 12px;
+    color: #555555;
+}
+
+/* SIDEBAR */
+div.map_info_bottom .map-sidebar {
+    position: relative;
+}
+div.map_info_bottom .map-sidebar h3 {
+	background: no-repeat scroll right 50% #888888;
+    border-left: 1px solid #CCCCCC;
+    border-top: 1px solid #CCCCCC;
+    border-right: 1px solid #CCCCCC;
+    border-nottom: none;
+    border-radius: 3px 3px 0 0;
+    cursor: default;
+    display: block;
+    font-family: Roboto,Arial,sans-serif;
+    font-size: 11px;
+    font-weight: normal;
+    margin: 0;
+    padding: 2px;
+    color: #FFFFFF;
+    font-weight: bold;
+}
+div.map_info_bottom .map-sidebar > div.map-sidebar-wrap {
+    background-color: #FFFFFF;
+    border-left: 1px solid #CCCCCC;
+    border-right: 1px solid #CCCCCC;
+    border-bottom: 1px solid #CCCCCC;
+    border-top: none;
+    border-radius: 0 0 3px 3px;
+    display: block;
+    overflow: auto;
+    position: relative;
+}
+
+/* ROUTES */
+div.map_info_bottom .map-directions {
+    position: relative;
+}
+div.map_info_bottom .map-directions h3 {
+	background: no-repeat scroll right 50% #888888;
+    border-left: 1px solid #CCCCCC;
+    border-top: 1px solid #CCCCCC;
+    border-right: 1px solid #CCCCCC;
+    border-nottom: none;
+    border-radius: 3px 3px 0 0;
+    cursor: default;
+    display: block;
+    font-family: Roboto,Arial,sans-serif;
+    font-size: 11px;
+    font-weight: normal;
+    margin: 0;
+    padding: 2px;
+    color: #FFFFFF;
+    font-weight: bold;
+}
+div.map_info_bottom .map-directions > div.map-directions-wrap {
+    background-color: #FFFFFF;
+    border-left: 1px solid #CCCCCC;
+    border-right: 1px solid #CCCCCC;
+    border-bottom: 1px solid #CCCCCC;
+    border-top: none;
+    border-radius: 0 0 3px 3px;
+    display: block;
+    overflow: auto;
+    position: relative;
+}
+
+/* ***************************************** */
+/* OTHER                                     */
+/* ***************************************** */
+.sidebar_col {
+	float: left;}
+.map-sidebar a.map_marker {
+	color: #555555;
+    cursor: pointer;
+    display: block;
+    font-family: Roboto,Arial,sans-serif;
+    font-size: 11px;
+    font-weight: normal;
+    padding: 3px;
+    text-decoration: none;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.map-sidebar a.map_marker:hover {
+    text-decoration: none;
+    color: #B82200;
+}
+.map-sidebar a.map_marker img {	float: left;
+    max-width: 16px;
+    padding: 0 3px 0 0 ;
+}
+div.sidebar_row.active a {
+    color: #B82200;
+}
+.map-sidebar > div.map-sidebar-wrap {
+    background-color: #FFFFFF;
+    border: 1px solid #CCCCCC;
+    border-radius: 0 3px 3px;
+    display: none;
+    max-height: 300px;
+    overflow: auto;
+    position: absolute;
+}
+
+.map-sidebar > div.map-sidebar-wrap.open {
+    display: block;
+}
+.map-legend > div.map-legend-wrap.open {
+    display: block;
+}
+
+.map-sidebar div.sidebar_row:hover,
+.map-sidebar div.sidebar_row.active {
+	background-color: #EEEEEE;
+}
+
+div.sidebar_row {}
+
+div.sidebar_col.columns1 {
+	width: 100%;
+	margin: 0;
+    padding: 0;
+}
+
+div.sidebar_col.columns2 {
+	float: left;
+	width: 50%;
+	margin: 0;
+    padding: 0;
+}
+div.sidebar_col.columns3 {
+	float: left;
+	width: 33.3%;
+	margin: 0;
+    padding: 0;
+}
+div.sidebar_col.columns4 {
+	float: left;
+	width: 25%;
+	margin: 0;
+    padding: 0;
+}
+div.sidebar_col.columns5 {
+	float: left;
+	width: 20%;
+	margin: 0;
+    padding: 0;
+}
+
+.map-directions a {
+	color: #555555;
+    cursor: pointer;
+    display: block;
+    font-family: Roboto,Arial,sans-serif;
+    font-size: 11px;
+    font-weight: normal;
+    padding: 3px;
+    text-decoration: none;
+}
+.map-directions a:hover {
+    text-decoration: none;
+    color: #B82200;
+}
+div.direction_row.active a {
+    color: #B82200;
+}
+.map-directions > div.map-directions-wrap {
+    background-color: #FFFFFF;
+    border: 1px solid #CCCCCC;
+    border-radius: 0 3px 3px;
+    display: none;
+    max-height: 300px;
+    overflow: auto;
+    position: absolute;
+}
+
+.map-directions div.direction_row:hover,
+.map-directions div.direction_row.active {
+	background-color: #EEEEEE;
+}
+
+/* ***************************************** */
+/* INFO WINDOW                               */
+/* ***************************************** */
+
+.mapinfo {
+	display: block;
+    line-height: 20px;
+    width: 100%;
+    height: 100%;
+    white-space: nowrap;
+}
+
+.mapinfo .infowindow_row {
+    border: 1px solid #BBD7E4;
+    border-radius: 3px;
+    box-shadow: 2px 2px 0 #E1E1E1;
+    display: block;
+    margin: 0 5px 15px 5px;
+    padding: 0px;
+    line-height: 20px;
+}
+
+.mapinfo .description {
+	border: 1px solid #BBD7E4;
+    border-radius: 3px;
+    box-shadow: 2px 2px 0 #E1E1E1;
+    display: block;
+    margin: 0 5px 15px 5px;
+    padding: 5px;
+}
+
+.mapinfo h2 {
+	margin-bottom: 10px;
+	display: block;
+	white-space: nowrap;
+	font-size: 14px;
+}
+
+
+#direction_panel {
+	overflow: auto;
+	background: none repeat scroll 0 0 #FFF;
+}
+
+#direction_panel table.adp-directions { width: 100%; }
+
+.sidebar_group {	background: url("../images/more.png") no-repeat scroll 100% 4px transparent;	border: 1px solid #ccc;
+    border-radius: 5px;
+    display: block;
+    margin: 5px;
+    overflow: hidden;
+    padding: 0;
+    position: relative;}
+
+.sidebar_group .show_marks {
+    position: absolute;
+    right: 23px;
+    top: 2px;
+}
+
+.sidebar_group > .sidebar_col {	display: none;
+	padding-left: 10px;}
+
+.sidebar_group.open > .sidebar_col {
+	display: block;
+}
+
+a.legend_title, a.legend_title:hover, a.legend_title:link, a.legend_title:active {
+    border: none;
+    color: #1a75cf;
+    cursor: pointer;
+    display: block;
+    font-size: inherit;
+    margin: 0;
+    padding: 3px;
+    text-decoration: none;
+}
+
+a.legend_title img {
+    float: left;
+    max-width: 16px;
+    padding: 0 3px 0 0;
+}
+

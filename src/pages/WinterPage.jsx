@@ -275,76 +275,110 @@ export default function WinterPage({ lang, setLang }) {
         }
         subtitle={w.pageSub}
       >
-        {/* === HERO-BEREICH === */}
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "1.2fr .8fr",
-            gap: "1rem",
-            alignItems: "stretch",
-            marginBottom: "1.5rem",
-            background: "rgba(255,255,255,0.75)",
-            border: "1px solid #eef2f6",
-            borderRadius: "1rem",
-            padding: "1rem",
-          }}
-        >
-          <div>
-            <h3 style={{ marginTop: 0 }}>{w.heroTitle}</h3>
-            <p style={{ color: "#334155" }}>{w.heroText}</p>
-            <div
-              style={{
-                marginTop: ".8rem",
-                display: "flex",
-                flexWrap: "wrap",
-                gap: ".5rem",
-              }}
-            >
-              <span className="badge">
-                <Mountain size={14} /> {w.badgeHeight}
-              </span>
-              <span className="badge">
-                <Snowflake size={14} /> {w.badgeSeason}
-              </span>
-              <span className="badge">
-                <Ticket size={14} /> {w.badgeSlopes}
-              </span>
-              <span className="badge">
-                <Clock size={14} /> {w.badgeDrive}
-              </span>
-            </div>
-          </div>
+ {/* === HERO-BEREICH (NEU) === */}
+<div
+  style={{
+    display: "grid",
+    gridTemplateColumns: "1.1fr .9fr",
+    gap: "1rem",
+    alignItems: "stretch",
+    marginBottom: "1.5rem",
+    background: "rgba(255,255,255,0.75)",
+    border: "1px solid #eef2f6",
+    borderRadius: "1rem",
+    padding: "1.2rem",
+  }}
+>
+  {/* Linker Infobereich */}
+  <div>
+    <h3 style={{ marginTop: 0 }}>{w.heroTitle}</h3>
 
-          {/* Wetter */}
-          <div
-            className="hover-react"
-            style={{
-              alignSelf: "stretch",
-              background: "rgba(255,255,255,0.8)",
-              border: "1px solid #eef2f6",
-              borderRadius: "1rem",
-              padding: "1rem",
-            }}
-          >
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: ".5rem",
-                marginBottom: ".5rem",
-              }}
-            >
-              <AnimatedSun />
-              <strong>{w.weatherTitle}</strong>
-            </div>
-            <WeatherWidget
-              lat={42.4791}
-              lon={44.4778}
-              place="Gudauri"
-              lang={lang}
-            />
-          </div>
-        </div>
+    {/* Neuer ausführlicher Wintertext */}
+    <p style={{ color: "#334155", lineHeight: 1.6 }}>
+      {lang === "en"
+        ? "Georgia is a true hidden gem for winter lovers: impressive Caucasus peaks, powder well into spring, plenty of sunshine and genuine hospitality. Gudauri offers modern lifts, wide open slopes, cozy bars and lots of adventure – from paragliding to heli-skiing. Thanks to its south-facing exposure, the weather is often clear, bright and pleasantly mild."
+        : lang === "ru"
+        ? "Грузия — настоящий зимний секрет: величественные вершины Кавказа, пухляк до весны, много солнца и искреннее гостеприимство. Гудаури предлагает современные подъёмники, широкие трассы, уютные бары и массу активностей — от параплана до хели-ски. Южная экспозиция обеспечивает частую ясную и мягкую погоду."
+        : "Georgien ist ein echter Geheimtipp für Winterfans: mächtige Kaukasusgipfel, Powder bis in den Frühling, viele Sonnentage und herzliche Gastfreundschaft. Gudauri bietet moderne Lifte, breite Pisten, gemütliche Bars und jede Menge Abenteuer – von Paragliding bis Heli-Ski. Durch die Südlage ist das Wetter oft klar und angenehm."}
+    </p>
+
+    {/* BADGES */}
+    <div
+      style={{
+        marginTop: ".8rem",
+        display: "flex",
+        flexWrap: "wrap",
+        gap: ".5rem",
+      }}
+    >
+      {/* Bestehende Badges */}
+      <span className="badge">
+        <Mountain size={14} /> {w.badgeHeight}
+      </span>
+      <span className="badge">
+        <Snowflake size={14} /> {w.badgeSeason}
+      </span>
+      <span className="badge">
+        <Ticket size={14} /> {w.badgeSlopes}
+      </span>
+      <span className="badge">
+        <Clock size={14} /> {w.badgeDrive}
+      </span>
+
+      {/* NEUE BADGES */}
+      <span className="badge">
+        <CloudSun size={14} />{" "}
+        {lang === "en"
+          ? "250+ sunny days"
+          : lang === "ru"
+          ? "250+ солнечных дней"
+          : "250+ Sonnentage"}
+      </span>
+
+      <span className="badge">
+        <Wind size={14} />{" "}
+        {lang === "en"
+          ? "Often calm weather"
+          : lang === "ru"
+          ? "Часто тихая погода"
+          : "Meist wenig Wind"}
+      </span>
+
+
+    </div>
+  </div>
+
+  {/* Wetterbox */}
+  <div
+    className="hover-react"
+    style={{
+      alignSelf: "stretch",
+      background: "rgba(255,255,255,0.8)",
+      border: "1px solid #eef2f6",
+      borderRadius: "1rem",
+      padding: "1rem",
+    }}
+  >
+    <div
+      style={{
+        display: "flex",
+        alignItems: "center",
+        gap: ".5rem",
+        marginBottom: ".5rem",
+      }}
+    >
+      <AnimatedSun />
+      <strong>{w.weatherTitle}</strong>
+    </div>
+    <WeatherWidget
+      lat={42.4791}
+      lon={44.4778}
+      place="Gudauri"
+      lang={lang}
+    />
+  </div>
+</div>
+
 
         {/* === GEORGIEN IM WINTER === */}
         <Card title={w.whyTitle} className="hover-react">

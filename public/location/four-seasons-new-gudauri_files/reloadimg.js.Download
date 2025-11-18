@@ -1,0 +1,19 @@
+jQuery(document).ready( function() {
+	jQuery('img.reloadimg').each( function() {        var id = jQuery(this).attr('id'),
+        	interval = parseInt(jQuery(this).attr('interval'))*1000;
+
+        if ( interval > 0 ) {
+			setTimeout(function(){refreshTimer(id, interval)}, interval);
+		}
+	});
+
+});
+function refreshTimer(id, interval) {
+	var url = jQuery('#'+id).attr('src');
+	url = url.substr(0, url.indexOf('?_')) + '?_' + +Math.random();
+	jQuery('<img>').attr('src', url).load(function() {
+		jQuery('#'+id).attr('src', url);
+		setTimeout(function(){refreshTimer(id, interval)}, interval);
+	});
+}
+

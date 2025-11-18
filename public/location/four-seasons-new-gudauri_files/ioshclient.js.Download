@@ -1,0 +1,1093 @@
+var iosrapiavsub = 0;
+
+$(document).ready(function () {
+    if (document.getElementById('pickcheckin108')) {
+        $('#pickcheckin108').Zebra_DatePicker({lang: 'en', direction: true, pair: $('#pickcheckout108'), format: 'd-m-Y'});
+        $('#pickcheckout108').Zebra_DatePicker({lang: 'en', direction: 1, format: 'd-m-Y'});
+    }
+});
+
+function setRoomsNumber(sfx, act) {
+    var numfield = 'numrooms' + sfx;
+    if (!document.getElementById(numfield)) {
+        return;
+    }
+    var numrooms = document.getElementById(numfield).value;
+    numrooms = parseInt(numrooms, 10);
+    if (numrooms < 1) {
+        numrooms = 1;
+    }
+    if (act == 'add') {
+        if (numrooms > 4) {
+            return;
+        } //max rooms 5 reached
+        numrooms++;
+    } else if (act == 'delete') {
+        if (numrooms < 2) {
+            return;
+        } //min rooms 1 reached
+        numrooms--;
+    } else {
+        return; //invalid action
+    }
+    document.getElementById(numfield).value = numrooms;
+    for (var i = 1; i < 21; i++) {
+        var rowfield = 'room' + i + 'guestinfo' + sfx;
+        if (!document.getElementById(rowfield)) {
+            continue;
+        }
+        if (i > numrooms) {
+            document.getElementById(rowfield).className = 'iosh_invisible2';
+        } else {
+            document.getElementById(rowfield).className = 'iosh_pickrow';
+        }
+    }
+    calcRoomsTotal(sfx);
+}
+
+function setRoomGuests(sfx, idx, gtype, act) {
+    var elem = 'room' + idx + '' + gtype + '' + sfx;
+    if (!document.getElementById(elem)) {
+        return;
+    }
+    var val = document.getElementById(elem).value;
+    val = parseInt(val, 10);
+    if (val < 0) {
+        val = 0;
+    }
+    if (val > 10) {
+        val = 10;
+    }
+    if (act == 'add') {
+        if (val > 9) {
+            return;
+        } //max guests 10 reached
+        val++;
+    } else if (act == 'delete') {
+        if (val < 1) {
+            return;
+        } //min guests 0 reached
+        val--;
+    } else {
+        return; //invalid action
+    }
+    if (gtype == 'adults') {
+        if (val < 2) {
+            val = 1;
+        } //min adults 1 reached
+    }
+    document.getElementById(elem).value = val;
+    calcRoomsTotal(sfx);
+}
+
+function calcRoomsTotal(sfx) {
+    var numfield = 'numrooms' + sfx;
+    var langbox = 'lngpick' + sfx;
+    var sumbox = 'guestinfo' + sfx;
+    if (!document.getElementById(numfield)) {
+        return;
+    }
+    if (!document.getElementById(langbox)) {
+        return;
+    }
+    if (!document.getElementById(sumbox)) {
+        return;
+    }
+    var numrooms = document.getElementById(numfield).value;
+    numrooms = parseInt(numrooms, 10);
+    if (numrooms < 1) {
+        numrooms = 1;
+    }
+
+    var sum = 0, total_adults = 0, total_children = 0, sum = 0, sumtxt = '';
+    for (var i = 1; i < 21; i++) {
+        if (i > numrooms) {
+            break;
+        }
+        var adfield = 'room' + i + 'adults' + sfx;
+        var chfield = 'room' + i + 'children' + sfx;
+        sum = document.getElementById(adfield).value;
+        sum = parseInt(sum, 10);
+        total_adults += sum;
+        sum = document.getElementById(chfield).value;
+        sum = parseInt(sum, 10);
+        total_children += sum;
+    }
+
+    var lngarr = document.getElementById(langbox).innerHTML.split(',');
+    sumtxt += (numrooms == 1) ? '1 ' + lngarr[0] : numrooms + ' ' + lngarr[1];
+    sumtxt += ', ';
+    sumtxt += (total_adults == 1) ? '1 ' + lngarr[2] : total_adults + ' ' + lngarr[3];
+    if (total_children > 0) {
+        sumtxt += ', ';
+        sumtxt += (total_children == 1) ? '1 ' + lngarr[4] : total_children + ' ' + lngarr[5];
+    }
+    document.getElementById(sumbox).innerHTML = sumtxt;
+}
+
+function ioshapiactav(sfx) {
+    if (iosrapiavsub == 1) {
+        return false;
+    }//no double submission
+
+    var elemidx = 'apiid' + sfx;
+    var apiid = document.getElementById(elemidx).value;
+    var elemidx = 'roomid' + sfx;
+    var roomid = document.getElementById(elemidx).value;
+
+    elemidx = 'pickcheckin' + sfx;
+    var checkin = document.getElementById(elemidx).value;
+    if (checkin == '') {
+        alert('Please select a check-in date!');
+        document.getElementById(elemidx).focus();
+        return;
+    }
+
+    elemidx = 'pickcheckout' + sfx;
+    var checkout = document.getElementById(elemidx).value;
+    if (checkout == '') {
+        alert('Please select a check-out date!');
+        document.getElementById(elemidx).focus();
+        return;
+    }
+
+    var elemidx = 'currency' + sfx;
+    var currency = document.getElementById(elemidx).value;
+
+    elemidx = 'numrooms' + sfx;
+    var numrooms = document.getElementById(elemidx).value;
+    numrooms = parseInt(numrooms, 10);
+    if (numrooms < 1) {
+        numrooms = 1;
+    }
+
+    elemidx = 'rand' + sfx;
+    var randval = document.getElementById(elemidx).value;
+    randval = parseInt(randval, 10);
+    if (randval < 1) {
+        randval = 1;
+    }
+
+    elemidx = 'apilang' + sfx;
+    var langval = document.getElementById(elemidx).value;
+    elemidx = 'guilang' + sfx;
+    var guilangval = document.getElementById(elemidx).value;
+
+    var datastr = 'act=avrooms&apiid=' + apiid + '&roomid=' + roomid + '&apilang=' + langval + '&guilang=' + guilangval + '&currency=' + currency + '&checkin=' + checkin + '&checkout=' + checkout + '&numrooms=' + numrooms + '&rand=' + randval;
+    var adults, children;
+    for (var i = 1; i < 21; i++) {
+        if (i > numrooms) {
+            break;
+        }
+        elemidx = 'room' + i + 'adults' + sfx;
+        if (!document.getElementById(elemidx)) {
+            break;
+        }
+
+        adults = document.getElementById(elemidx).value;
+        adults = parseInt(adults, 10);
+        if (adults < 1) {
+            adults = 1;
+        }
+
+        elemidx = 'room' + i + 'children' + sfx;
+        children = document.getElementById(elemidx).value;
+        children = parseInt(children, 10);
+        if (children < 0) {
+            children = 0;
+        }
+        datastr += '&room' + i + 'adults=' + adults + '&room' + i + 'children=' + children;
+    }
+
+    datastr += '&rnd=' + Math.floor((Math.random() * 100) + 1);
+
+    elemidx = 'clienturl' + sfx;
+    var aurl = document.getElementById(elemidx).value + '/ajax.php';
+    var txtwait = $('#lngwait' + sfx).text();
+
+    $.ajax({
+        type: "POST",
+        url: aurl,
+        data: datastr,
+        cache: false,
+        beforeSend: function () {
+            iosrapiavsub == 1;
+            $('#iosrapicontent' + sfx).html('<div class="hapi_loading">' + txtwait + '</div>');
+        },
+        complete: function () {
+            iosrapiavsub == 0;
+            ioshtip();
+        },
+        success: function (data, textStatus, jqXHR) {
+            $('#iosrapicontent' + sfx).html(data);
+            if ( roomid > 0 ) {
+                var bparent = $('#booknr' + roomid).parent(),
+                    wrap = bparent.closest('.iosh_pickbookwrap');
+                if ( wrap.hasClass('only-one') ) {
+                    $('.select-room input[type="checkbox"]', wrap).click();
+                } else {
+                    $('a.rplus', bparent).click();
+                }
+            }
+            loadIFrameCall();
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            $('#iosrapicontent' + sfx).html('<div class="hapi_error">Request failed! ' + errorThrown + '</div>');
+        }
+    });
+    return false;
+}
+
+function setBookRooms(rid, maxrooms, act, childbeds) {
+    var numfield = 'booknr' + rid;
+    var butfield = 'bookpickedsub' + rid;
+    var labelsbox = 'room' + rid + '_guestinfolabels';
+    var notrefbox = 'room' + rid + '_notrefundtoggle';
+
+    if (!document.getElementById(numfield)) {
+        return;
+    }
+    var numrooms = document.getElementById(numfield).value;
+    numrooms = parseInt(numrooms, 10);
+    if (numrooms < 0) {
+        numrooms = 0;
+    }
+    if (numrooms > maxrooms) {
+        numrooms = maxrooms;
+    }
+
+    if (act == 'add') {
+        if (numrooms > 4) {
+            return;
+        } //max rooms 5 reached
+        if (numrooms >= maxrooms) {
+            return;
+        } //max available rooms reached
+        numrooms++;
+    } else if (act == 'delete') {
+        if (numrooms < 1) {
+            return;
+        } //min rooms 0 reached
+        numrooms--;
+    } else {
+        return; //invalid action
+    }
+
+    document.getElementById(numfield).value = numrooms;
+
+    for (var i = 1; i < 21; i++) {
+        var rowfield = 'room' + rid + '_guestinfo' + i;
+        if (!document.getElementById(rowfield)) {
+            continue;
+        }
+        if (i > numrooms) {
+            document.getElementById(rowfield).className = 'iosh_invisible2';
+        } else {
+            document.getElementById(rowfield).className = 'iosh_pickrow';
+        }
+    }
+
+    if (numrooms === 0) {
+        document.getElementById(labelsbox).className = 'iosh_invisible2';
+        document.getElementById(butfield).disabled = true;
+        var pricefield = 'bookpickedprice' + rid;
+        document.getElementById(pricefield).innerHTML = '0.00';
+        if (document.getElementById(notrefbox)) {
+            document.getElementById(notrefbox).className = 'iosh_invisible2';
+        }
+    } else {
+        document.getElementById(labelsbox).className = 'iosh_pickrowguests';
+        document.getElementById(butfield).disabled = false;
+        if (document.getElementById(notrefbox)) {
+            document.getElementById(notrefbox).className = 'iosh_tsspace';
+        }
+        calcBookRoomTotal(rid, childbeds);
+    }
+}
+
+function calcBookRoomTotal(rid, childbeds) {
+    var numfield = 'booknr' + rid;
+    var chargefield = 'bookct' + rid;
+    var notreffield = 'booknotref' + rid;
+    var chdiscfield = 'bookchilddiscount' + rid;
+
+    if (!document.getElementById(numfield)) {
+        return;
+    }
+    var numrooms = document.getElementById(numfield).value;
+    numrooms = parseInt(numrooms, 10);
+    if (numrooms < 1) {
+        return;
+    } //ooops!
+    var chargetype = document.getElementById(chargefield).value;
+    chargetype = parseInt(chargetype, 10);
+    var notrefund = document.getElementById(notreffield).value;
+    notrefund = parseInt(notrefund, 10);
+    var useNotRefund = document.getElementById('iosh_bookroomsnotrefund').value;
+    useNotRefund = parseInt(useNotRefund, 10);
+    var childdiscount = document.getElementById(chdiscfield).value;
+    childdiscount = parseInt(childdiscount, 10);
+
+    var unitprice, prfield, adfield, chfield, numad, numch, numpers, priceadults, pricechildren;
+    var newprice = 0.00;
+
+    if (chargetype === 0) { //per room
+        if (numrooms > 20) {
+            prfield = 'bookprice' + rid + '_20';
+            unitprice = (document.getElementById(prfield).value);
+            newprice = unitprice * numrooms;
+        } else {
+            prfield = 'bookprice' + rid + '_' + numrooms;
+            newprice = document.getElementById(prfield).value;
+        }
+    } else {//per person
+        var roomslimit = numrooms + 1;
+        for (var i = 1; i < roomslimit; i++) {
+            adfield = 'bookad' + rid + '_' + i;
+            chfield = 'bookch' + rid + '_' + i;
+            numad = document.getElementById(adfield).value;
+            numad = parseInt(numad, 10);
+            numch = document.getElementById(chfield).value;
+            numch = parseInt(numch, 10);
+            numch = Math.ceil(numch * childbeds);
+
+            numpers = numad + numch;
+            priceadults = 0.00;
+            pricechildren = 0.00;
+
+            if (numpers > 20) {
+                prfield = 'bookprice' + rid + '_20';
+                unitprice = (document.getElementById(prfield).value) / numpers;
+            } else {
+                prfield = 'bookprice' + rid + '_' + numpers;
+                unitprice = (document.getElementById(prfield).value) / numpers;
+            }
+
+            priceadults = unitprice * numad;
+            pricechildren = unitprice * numch;
+            if (childdiscount > 0) {
+                pricechildren = pricechildren - ((pricechildren * childdiscount) / 100);
+            }
+            priceadults = parseFloat(priceadults);
+            pricechildren = parseFloat(pricechildren);
+
+            newprice += priceadults;
+            newprice += pricechildren;
+        }
+    }
+
+    //notrefund discount
+    if (useNotRefund == 1) {
+        if (notrefund > 0) {
+            newprice = newprice - ((newprice * notrefund) / 100);
+        }
+    }
+
+    newprice = parseFloat(newprice);
+    var pricefield = 'bookpickedprice' + rid;
+    document.getElementById(pricefield).innerHTML = newprice.toFixed(2);
+}
+
+function toggleNotRefund() {
+    if (!document.getElementById('iosh_bookroomsnotrefund')) {
+        return;
+    }
+    var val = document.getElementById('iosh_bookroomsnotrefund').value;
+    val = parseInt(val, 10);
+    if (val == 1) {
+        val = 0;
+    } else {
+        val = 1;
+    }
+    document.getElementById('iosh_bookroomsnotrefund').value = val;
+    var elem = '';
+    for (var i = 1; i < 100; i++) {
+        elem = 'iosh_anonref' + i;
+        if (!document.getElementById(elem)) {
+            break;
+        }
+        if (val == 1) {
+            document.getElementById(elem).className = 'iosh_anotref iosh_anotref_on';
+        } else {
+            document.getElementById(elem).className = 'iosh_anotref';
+        }
+    }
+
+    var idxfield = '', rid = 0, i = 1;
+    for (i = 1; i < 100; i++) {
+        idxfield = 'idxbookroom' + i;
+        if (!document.getElementById(idxfield)) {
+            break;
+        }
+        rid = document.getElementById(idxfield).value;
+        rid = parseInt(rid, 10);
+        calcBookRoomTotal(rid);
+    }
+}
+
+function setBookGuests(rid, idx, maxpersons, gtype, act, childbeds) {
+    childbeds = childbeds || 1;
+    if (gtype == 'adults') {
+        var elem = 'bookad' + rid + '_' + idx;
+    } else {
+        var elem = 'bookch' + rid + '_' + idx;
+    }
+    if (!document.getElementById(elem)) {
+        return;
+    }
+    var elemad = 'bookad' + rid + '_' + idx;
+    var elemch = 'bookch' + rid + '_' + idx;
+    var totalPersons = parseInt(document.getElementById(elemad).value, 10) + parseInt(document.getElementById(elemch).value, 10) * childbeds;
+    var val = document.getElementById(elem).value;
+    val = parseInt(val, 10);
+    if (val < 0) {
+        val = 0;
+    }
+    if (val > maxpersons) {
+        val = maxpersons;
+    }
+    if ( act == 'add' && totalPersons >= maxpersons ) {
+        return;
+    }
+
+    if (act == 'add') {
+        if (val >= maxpersons) {
+            return;
+        } //max guests reached
+        val++;
+    } else if (act == 'delete') {
+        if (val < 1) {
+            return;
+        } //min guests reached
+        val--;
+    } else {
+        return; //invalid action
+    }
+    if (gtype == 'adults') {
+        if (val < 2) {
+            val = 1;
+        } //min adults 1 reached
+    }
+
+    if (gtype == 'adults') {
+        totalPersons = val + parseInt(document.getElementById(elemch).value, 10) * childbeds;
+    } else {
+        totalPersons = parseInt(document.getElementById(elemad).value, 10) + val * childbeds;
+    }
+
+    if ( act == 'add' && totalPersons > maxpersons ) {
+        return;
+    }
+
+    document.getElementById(elem).value = val;
+    calcBookRoomTotal(rid, childbeds);
+}
+
+
+function ioshapiactinit(sfx) {
+    if (iosrapiavsub == 1) {
+        return false;
+    }//no double submission
+
+    var formidx = 'fmbookrooms' + sfx;
+    if (!document.getElementById(formidx)) {
+        return false;
+    }
+
+    var dataser = $('#' + formidx).serializeArray();
+    var formURL = $('#' + formidx).attr("action");
+    var txtwait = $('#lngwait' + sfx).text();
+
+    $.ajax({
+        type: "POST",
+        url: formURL,
+        data: dataser,
+        cache: false,
+        beforeSend: function () {
+            iosrapiavsub == 1;
+            $('#iosrapicontent' + sfx).html('<div class="hapi_loading">' + txtwait + '</div>');
+        },
+        complete: function () {
+            iosrapiavsub == 0;
+            ioshtip();
+        },
+        success: function (data, textStatus, jqXHR) {
+            $('#iosrapicontent' + sfx).html(data);
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            $('#iosrapicontent' + sfx).html('<div class="hapi_error">Request failed! ' + errorThrown + '</div>');
+        }
+    });
+}
+
+function reshcalcservices(asidsstr, decs) {
+    if (asidsstr == '') {
+        return false;
+    }
+    var asids = asidsstr.split(',');
+    var q = 0;
+    var am = 0.00;
+    var total = 0.00;
+    if (asids instanceof Array) {
+        decs = parseInt(decs, 10);
+        for (var i in asids) {
+            asid = parseInt(asids[i], 10);
+            if (asid > 0) {
+                if (document.getElementById('reshservices' + asid)) {
+                    q = document.getElementById('reshservices' + asid).options[document.getElementById('reshservices' + asid).selectedIndex].value;
+                    q = parseInt(q, 10);
+                    if (document.getElementById('userviceprice' + asid)) {
+                        am = document.getElementById('userviceprice' + asid).value;
+                        total += parseFloat(am) * q;
+                    }
+                }
+            }
+        }
+        document.getElementById('servicestotal').innerHTML = total.toFixed(decs);
+        if (document.getElementById('resh_roomstotal')) {
+            var roomstotal = document.getElementById('resh_roomstotal').value;
+            var restotal = parseFloat(roomstotal);
+            restotal += total;
+            document.getElementById('resh_restotal').innerHTML = restotal.toFixed(decs);
+            if (document.getElementById('resh_feepcnt')) {
+                var pcnt = document.getElementById('resh_feepcnt').value;
+                pcnt = parseInt(pcnt, 10);
+                if (pcnt > 0) {
+                    var feetotal = (restotal * pcnt) / 100;
+                    document.getElementById('resh_feetotal').innerHTML = feetotal.toFixed(decs);
+                }
+            }
+        }
+    } else {
+        return false;
+    }
+}
+
+
+function ioshapiactbook(sfx) {
+    if (iosrapiavsub == 1) {
+        return false;
+    }//no double submission
+
+    var formidx = 'reshbookfm' + sfx;
+    if (!document.getElementById(formidx)) {
+        return false;
+    }
+
+    var dataser = $('#' + formidx).serializeArray();
+    var formURL = $('#' + formidx).attr("action");
+    var txtwait = $('#lngwait' + sfx).text();
+
+    $.ajax({
+        type: "POST",
+        url: formURL,
+        data: dataser,
+        cache: false,
+        beforeSend: function () {
+            iosrapiavsub == 1;
+            $('#iosrapicontent' + sfx).html('<div class="hapi_loading">' + txtwait + '</div>');
+        },
+        complete: function () {
+            iosrapiavsub == 0;
+            ioshtip();
+        },
+        success: function (data, textStatus, jqXHR) {
+            $('#iosrapicontent' + sfx).html(data);
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            $('#iosrapicontent' + sfx).html('<div class="hapi_error">Request failed! ' + errorThrown + '</div>');
+        }
+    });
+}
+
+/* Tooltip */
+function ioshtip() {
+    $(function () {
+        var targets = $('[rel~=iosh_tooltip]'), target = false, tooltip = false, title = false;
+        targets.bind('mouseenter', function () {
+            target = $(this);
+            tip = target.attr('title');
+            tooltip = $('<div id="iosh_tooltip"></div>');
+            if (!tip || tip == '') {
+                return false;
+            }
+            target.removeAttr('title');
+            tooltip.css('opacity', 0).html(tip).appendTo('body');
+            var init_tooltip = function () {
+                if ($(window).width() < tooltip.outerWidth() * 1.5) {
+                    tooltip.css('max-width', $(window).width() / 2);
+                } else {
+                    tooltip.css('max-width', 340);
+                }
+                var pos_left = target.offset().left + (target.outerWidth() / 2) - (tooltip.outerWidth() / 2), pos_top = target.offset().top - tooltip.outerHeight() - 20;
+                if (pos_left < 0) {
+                    pos_left = target.offset().left + target.outerWidth() / 2 - 20;
+                    tooltip.addClass('left');
+                } else {
+                    tooltip.removeClass('left');
+                }
+                if (pos_left + tooltip.outerWidth() > $(window).width()) {
+                    pos_left = target.offset().left - tooltip.outerWidth() + target.outerWidth() / 2 + 20;
+                    tooltip.addClass('right');
+                } else {
+                    tooltip.removeClass('right');
+                }
+                if (pos_top < 0) {
+                    var pos_top = target.offset().top + target.outerHeight();
+                    tooltip.addClass('top');
+                } else {
+                    tooltip.removeClass('top');
+                }
+                tooltip.css({left: pos_left, top: pos_top}).animate({top: '+=10', opacity: 1}, 50);
+            };
+            init_tooltip();
+            $(window).resize(init_tooltip);
+            var remove_tooltip = function () {
+                tooltip.animate({top: '-=10', opacity: 0}, 50, function () {
+                    $(this).remove();
+                });
+                target.attr('title', tip);
+            };
+            target.bind('mouseleave', remove_tooltip);
+            tooltip.bind('click', remove_tooltip);
+        });
+    });
+}
+
+/**
+ * Featherlight - ultra slim jQuery lightbox
+ * Version 1.3.4 - http://noelboss.github.io/featherlight/
+ * Copyright 2015, Noël Raoul Bossart (http://www.noelboss.com)
+ * MIT Licensed.
+ **/
+!function (a) {
+    "use strict";
+    function b(a, c) {
+        if (!(this instanceof b)) {
+            var d = new b(a, c);
+            return d.open(), d
+        }
+        this.id = b.id++, this.setup(a, c), this.chainCallbacks(b._callbackChain)
+    }
+    if ("undefined" == typeof a)
+        return void("console"in window && window.console.info("Too much lightness, Featherlight needs jQuery."));
+    var c = [], d = function (b) {
+        return c = a.grep(c, function (a) {
+            return a !== b && a.$instance.closest("body").length > 0
+        })
+    }, e = function (a, b) {
+        var c = {}, d = new RegExp("^" + b + "([A-Z])(.*)");
+        for (var e in a) {
+            var f = e.match(d);
+            if (f) {
+                var g = (f[1] + f[2].replace(/([A-Z])/g, "-$1")).toLowerCase();
+                c[g] = a[e]
+            }
+        }
+        return c
+    }, f = {keyup: "onKeyUp", resize: "onResize"}, g = function (c) {
+        a.each(b.opened().reverse(), function () {
+            return c.isDefaultPrevented() || !1 !== this[f[c.type]](c) ? void 0 : (c.preventDefault(), c.stopPropagation(), !1)
+        })
+    }, h = function (c) {
+        if (c !== b._globalHandlerInstalled) {
+            b._globalHandlerInstalled = c;
+            var d = a.map(f, function (a, c) {
+                return c + "." + b.prototype.namespace
+            }).join(" ");
+            a(window)[c ? "on" : "off"](d, g)
+        }
+    };
+    b.prototype = {constructor: b, namespace: "featherlight", targetAttr: "data-featherlight", variant: null, resetCss: !1, background: null, openTrigger: "click", closeTrigger: "click", filter: null, root: "body", openSpeed: 250, closeSpeed: 250, closeOnClick: "background", closeOnEsc: !0, closeIcon: "&#10005;", loading: "", persist: !1, otherClose: null, beforeOpen: a.noop, beforeContent: a.noop, beforeClose: a.noop, afterOpen: a.noop, afterContent: a.noop, afterClose: a.noop, onKeyUp: a.noop, onResize: a.noop, type: null, contentFilters: ["jquery", "image", "html", "ajax", "iframe", "text"], setup: function (b, c) {
+            "object" != typeof b || b instanceof a != !1 || c || (c = b, b = void 0);
+            var d = a.extend(this, c, {target: b}), e = d.resetCss ? d.namespace + "-reset" : d.namespace, f = a(d.background || ['<div class="' + e + "-loading " + e + '">', '<div class="' + e + '-content">', '<span class="' + e + "-close-icon " + d.namespace + '-close">', d.closeIcon, "</span>", '<div class="' + d.namespace + '-inner">' + d.loading + "</div>", "</div>", "</div>"].join("")), g = "." + d.namespace + "-close" + (d.otherClose ? "," + d.otherClose : "");
+            return d.$instance = f.clone().addClass(d.variant), d.$instance.on(d.closeTrigger + "." + d.namespace, function (b) {
+                var c = a(b.target);
+                ("background" === d.closeOnClick && c.is("." + d.namespace) || "anywhere" === d.closeOnClick || c.closest(g).length) && (b.preventDefault(), d.close())
+            }), this
+        }, getContent: function () {
+            if (this.persist !== !1 && this.$content)
+                return this.$content;
+            var b = this, c = this.constructor.contentFilters, d = function (a) {
+                return b.$currentTarget && b.$currentTarget.attr(a)
+            }, e = d(b.targetAttr), f = b.target || e || "", g = c[b.type];
+            if (!g && f in c && (g = c[f], f = b.target && e), f = f || d("href") || "", !g)
+                for (var h in c)
+                    b[h] && (g = c[h], f = b[h]);
+            if (!g) {
+                var i = f;
+                if (f = null, a.each(b.contentFilters, function () {
+                    return g = c[this], g.test && (f = g.test(i)), !f && g.regex && i.match && i.match(g.regex) && (f = i), !f
+                }), !f)
+                    return"console"in window && window.console.error("Featherlight: no content filter found " + (i ? ' for "' + i + '"' : " (no target specified)")), !1
+            }
+            return g.process.call(b, f)
+        }, setContent: function (b) {
+            var c = this;
+            return(b.is("iframe") || a("iframe", b).length > 0) && c.$instance.addClass(c.namespace + "-iframe"), c.$instance.removeClass(c.namespace + "-loading"), c.$instance.find("." + c.namespace + "-inner").not(b).slice(1).remove().end().replaceWith(a.contains(c.$instance[0], b[0]) ? "" : b), c.$content = b.addClass(c.namespace + "-inner"), c
+        }, open: function (b) {
+            var d = this;
+            if (d.$instance.hide().appendTo(d.root), !(b && b.isDefaultPrevented() || d.beforeOpen(b) === !1)) {
+                b && b.preventDefault();
+                var e = d.getContent();
+                if (e)
+                    return c.push(d), h(!0), d.$instance.fadeIn(d.openSpeed), d.beforeContent(b), a.when(e).always(function (a) {
+                        d.setContent(a), d.afterContent(b)
+                    }).then(d.$instance.promise()).done(function () {
+                        d.afterOpen(b)
+                    })
+            }
+            return d.$instance.detach(), a.Deferred().reject().promise()
+        }, close: function (b) {
+            var c = this, e = a.Deferred();
+            return c.beforeClose(b) === !1 ? e.reject() : (0 === d(c).length && h(!1), c.$instance.fadeOut(c.closeSpeed, function () {
+                c.$instance.detach(), c.afterClose(b), e.resolve()
+            })), e.promise()
+        }, chainCallbacks: function (b) {
+            for (var c in b)
+                this[c] = a.proxy(b[c], this, a.proxy(this[c], this))
+        }}, a.extend(b, {id: 0, autoBind: "[data-featherlight]", defaults: b.prototype, contentFilters: {jquery: {regex: /^[#.]\w/, test: function (b) {
+                    return b instanceof a && b
+                }, process: function (b) {
+                    return this.persist !== !1 ? a(b) : a(b).clone(!0)
+                }}, image: {regex: /\.(png|jpg|jpeg|gif|tiff|bmp|svg)(\?\S*)?$/i, process: function (b) {
+                    var c = this, d = a.Deferred(), e = new Image, f = a('<img src="' + b + '" alt="" class="' + c.namespace + '-image" />');
+                    return e.onload = function () {
+                        f.naturalWidth = e.width, f.naturalHeight = e.height, d.resolve(f)
+                    }, e.onerror = function () {
+                        d.reject(f)
+                    }, e.src = b, d.promise()
+                }}, html: {regex: /^\s*<[\w!][^<]*>/, process: function (b) {
+                    return a(b)
+                }}, ajax: {regex: /./, process: function (b) {
+                    var c = a.Deferred(), d = a("<div></div>").load(b, function (a, b) {
+                        "error" !== b && c.resolve(d.contents()), c.fail()
+                    });
+                    return c.promise()
+                }}, iframe: {process: function (b) {
+                    var c = new a.Deferred, d = a("<iframe/>").hide().attr("src", b).css(e(this, "iframe")).on("load", function () {
+                        c.resolve(d.show())
+                    }).appendTo(this.$instance.find("." + this.namespace + "-content"));
+                    return c.promise()
+                }}, text: {process: function (b) {
+                    return a("<div>", {text: b})
+                }}}, functionAttributes: ["beforeOpen", "afterOpen", "beforeContent", "afterContent", "beforeClose", "afterClose"], readElementConfig: function (b, c) {
+            var d = this, e = new RegExp("^data-" + c + "-(.*)"), f = {};
+            return b && b.attributes && a.each(b.attributes, function () {
+                var b = this.name.match(e);
+                if (b) {
+                    var c = this.value, g = a.camelCase(b[1]);
+                    if (a.inArray(g, d.functionAttributes) >= 0)
+                        c = new Function(c);
+                    else
+                        try {
+                            c = a.parseJSON(c)
+                        } catch (h) {
+                        }
+                    f[g] = c
+                }
+            }), f
+        }, extend: function (b, c) {
+            var d = function () {
+                this.constructor = b
+            };
+            return d.prototype = this.prototype, b.prototype = new d, b.__super__ = this.prototype, a.extend(b, this, c), b.defaults = b.prototype, b
+        }, attach: function (b, c, d) {
+            var e = this;
+            "object" != typeof c || c instanceof a != !1 || d || (d = c, c = void 0), d = a.extend({}, d);
+            var f, g = d.namespace || e.defaults.namespace, h = a.extend({}, e.defaults, e.readElementConfig(b[0], g), d);
+            return b.on(h.openTrigger + "." + h.namespace, h.filter, function (g) {
+                var i = a.extend({$source: b, $currentTarget: a(this)}, e.readElementConfig(b[0], h.namespace), e.readElementConfig(this, h.namespace), d), j = f || a(this).data("featherlight-persisted") || new e(c, i);
+                "shared" === j.persist ? f = j : j.persist !== !1 && a(this).data("featherlight-persisted", j), i.$currentTarget.blur(), j.open(g)
+            }), b
+        }, current: function () {
+            var a = this.opened();
+            return a[a.length - 1] || null
+        }, opened: function () {
+            var b = this;
+            return d(), a.grep(c, function (a) {
+                return a instanceof b
+            })
+        }, close: function () {
+            var a = this.current();
+            return a ? a.close() : void 0
+        }, _onReady: function () {
+            var b = this;
+            b.autoBind && (a(b.autoBind).each(function () {
+                b.attach(a(this))
+            }), a(document).on("click", b.autoBind, function (c) {
+                c.isDefaultPrevented() || (c.preventDefault(), b.attach(a(c.currentTarget)), a(c.target).click())
+            }))
+        }, _callbackChain: {onKeyUp: function (a, b) {
+                return 27 === b.keyCode ? (this.closeOnEsc && this.$instance.find("." + this.namespace + "-close:first").click(), !1) : a(b)
+            }, onResize: function (a, b) {
+                if (this.$content.naturalWidth) {
+                    var c = this.$content.naturalWidth, d = this.$content.naturalHeight;
+                    this.$content.css("width", "").css("height", "");
+                    var e = Math.max(c / parseInt(this.$content.parent().css("width"), 10), d / parseInt(this.$content.parent().css("height"), 10));
+                    e > 1 && this.$content.css("width", "" + c / e + "px").css("height", "" + d / e + "px")
+                }
+                return a(b)
+            }, afterContent: function (a, b) {
+                var c = a(b);
+                return this.onResize(b), c
+            }}}), a.featherlight = b, a.fn.featherlight = function (a, c) {
+        return b.attach(this, a, c)
+    }, a(document).ready(function () {
+        b._onReady()
+    })
+}(jQuery);
+
+/**
+ * Featherlight Gallery – an extension for the ultra slim jQuery lightbox
+ * Version 1.3.4 - http://noelboss.github.io/featherlight/
+ * Copyright 2015, Noël Raoul Bossart (http://www.noelboss.com)
+ * MIT Licensed.
+ **/
+!function (a) {
+    "use strict";
+    function b(c, d) {
+        if (!(this instanceof b)) {
+            var e = new b(a.extend({$source: c, $currentTarget: c.first()}, d));
+            return e.open(), e
+        }
+        a.featherlight.apply(this, arguments), this.chainCallbacks(h)
+    }
+    var c = function (a) {
+        window.console && window.console.warn && window.console.warn("FeatherlightGallery: " + a)
+    };
+    if ("undefined" == typeof a)
+        return c("Too much lightness, Featherlight needs jQuery.");
+    if (!a.featherlight)
+        return c("Load the featherlight plugin before the gallery plugin");
+    var d = "ontouchstart"in window || window.DocumentTouch && document instanceof DocumentTouch, e = a.event && a.event.special.swipeleft && a, f = window.Hammer && function (a) {
+        var b = new window.Hammer.Manager(a[0]);
+        return b.add(new window.Hammer.Swipe), b
+    }, g = d && (e || f);
+    d && !g && c("No compatible swipe library detected; one must be included before featherlightGallery for swipe motions to navigate the galleries.");
+    var h = {afterClose: function (a, b) {
+            var c = this;
+            return c.$instance.off("next." + c.namespace + " previous." + c.namespace), c._swiper && (c._swiper.off("swipeleft", c._swipeleft).off("swiperight", c._swiperight), c._swiper = null), a(b)
+        }, beforeOpen: function (a, b) {
+            var c = this;
+            return c.$instance.on("next." + c.namespace + " previous." + c.namespace, function (a) {
+                var b = "next" === a.type ? 1 : -1;
+                c.navigateTo(c.currentNavigation() + b)
+            }), g ? c._swiper = g(c.$instance).on("swipeleft", c._swipeleft = function () {
+                c.$instance.trigger("next")
+            }).on("swiperight", c._swiperight = function () {
+                c.$instance.trigger("previous")
+            }) : c.$instance.find("." + c.namespace + "-content").append(c.createNavigation("previous")).append(c.createNavigation("next")), a(b)
+        }, onKeyUp: function (a, b) {
+            var c = {37: "previous", 39: "next"}[b.keyCode];
+            return c ? (this.$instance.trigger(c), !1) : a(b)
+        }};
+    a.featherlight.extend(b, {autoBind: "[data-featherlight-gallery]"}), a.extend(b.prototype, {previousIcon: "&#9664;", nextIcon: "&#9654;", galleryFadeIn: 100, galleryFadeOut: 300, slides: function () {
+            return this.filter ? this.$source.find(this.filter) : this.$source
+        }, images: function () {
+            return c("images is deprecated, please use slides instead"), this.slides()
+        }, currentNavigation: function () {
+            return this.slides().index(this.$currentTarget)
+        }, navigateTo: function (b) {
+            var c = this, d = c.slides(), e = d.length, f = c.$instance.find("." + c.namespace + "-inner");
+            return b = (b % e + e) % e, c.$currentTarget = d.eq(b), c.beforeContent(), a.when(c.getContent(), f.fadeTo(c.galleryFadeOut, .2)).always(function (a) {
+                c.setContent(a), c.afterContent(), a.fadeTo(c.galleryFadeIn, 1)
+            })
+        }, createNavigation: function (b) {
+            var c = this;
+            return a('<span title="' + b + '" class="' + this.namespace + "-" + b + '"><span>' + this[b + "Icon"] + "</span></span>").click(function () {
+                a(this).trigger(b + "." + c.namespace)
+            })
+        }}), a.featherlightGallery = b, a.fn.featherlightGallery = function (a) {
+        return b.attach(this, a)
+    }, a(document).ready(function () {
+        b._onReady()
+    })
+}(jQuery);
+
+jQuery(document).ready(function () {
+    jQuery(document).on('click', 'a.iosh_calnavfw1', function () {
+        var parent = jQuery(this).closest('.iosh_roomboxcale'),
+                addmonth = parseInt(parent.attr('addmonth'));
+        addmonth++;
+        parent.attr('addmonth', addmonth);
+        jQuery('a.iosh_calnavbk1', parent).show().addClass('disabled');
+        jQuery(this).addClass('disabled');
+        jQuery('.iosh_roomcale', parent).html('').addClass('preloading');
+        loadIFrameCall(parent);
+    });
+    jQuery(document).on('click', 'a#showavcalendars', function () {
+        var elem = jQuery('#norooms_avcalendars'),
+                apiid = jQuery('#apiid108').val(),
+                langval = jQuery('#apilang108').val(),
+                guilangval = jQuery('#guilang108').val(),
+                currency = jQuery('#currency108').val(),
+                checkin = jQuery('#pickcheckin108').val(),
+                aurl = jQuery('#clienturl108').val() + '/ajax.php',
+                datastr = 'act=roomscalendars&apiid=' + apiid + '&apilang=' + langval + '&guilang=' + guilangval + '&currency=' + currency + '&checkin=' + checkin;
+
+        elem.addClass('preloading').html('');
+
+        $.ajax({
+            type: "POST",
+            url: aurl,
+            data: datastr,
+            dataType: 'json',
+            cache: false,
+            success: function (jsonObj, textStatus, jqXHR) {
+                for (var idx in jsonObj.items) {
+                    elem.append(jsonObj.items[idx]);
+                }
+                $(".cboxPhoto").colorbox();
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                jQuery(elem).removeClass('preloading');
+            }
+        });
+    });
+    jQuery(document).on('click', 'a.iosh_calnavbk1', function () {
+        var parent = jQuery(this).closest('.iosh_roomboxcale'),
+                addmonth = parseInt(parent.attr('addmonth'));
+        addmonth--;
+        parent.attr('addmonth', addmonth);
+        jQuery('a.iosh_calnavbk1', parent).show().addClass('disabled');
+        jQuery(this).addClass('disabled');
+        jQuery('.iosh_roomcale', parent).html('').addClass('preloading');
+        loadIFrameCall(parent);
+        if ( addmonth < 0 ) {
+            jQuery('a.iosh_calnavbk1', parent).hide().addClass('disabled');
+        }
+    });
+});
+
+function showavcalendars(hid, roomid) {
+    if ( roomid == undefined ) { roomid = 0; }
+    var elem = jQuery('#norooms_avcalendars'),
+            apiid = jQuery('#apiid108').val(),
+            langval = jQuery('#apilang108').val(),
+            guilangval = jQuery('#guilang108').val(),
+            currency = jQuery('#currency108').val(),
+            checkin = jQuery('#pickcheckin108').val(),
+            aurl = jQuery('#clienturl108').val() + '/ajax.php',
+            datastr = 'act=roomscalendars&apiid=' + apiid + '&roomid=' + roomid + '&apilang=' + langval + '&guilang=' + guilangval + '&currency=' + currency + '&checkin=' + checkin + '&hid=' + hid;
+
+    elem.addClass('preloading').html('');
+
+    $.ajax({
+        type: "POST",
+        url: aurl,
+        data: datastr,
+        dataType: 'json',
+        cache: false,
+        success: function (jsonObj, textStatus, jqXHR) {
+            for (var idx in jsonObj.items) {
+                elem.append(jsonObj.items[idx]);
+            }
+            $(".cboxPhoto").colorbox({maxWidth: "98%", maxHeight: "98%"});
+            loadIFrameCall();
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            jQuery(elem).removeClass('preloading');
+        }
+    });
+}
+
+
+function loadIFrameCall(elem) {
+    elem = elem || '.iosh_roomboxcale';
+    jQuery(elem).each(function () {
+        var apiid = document.getElementById('apiid108').value,
+                langval = document.getElementById('apilang108').value,
+                guilangval = document.getElementById('guilang108').value,
+                currency = document.getElementById('currency108').value,
+                aurl = document.getElementById('clienturl108').value + '/ajax.php',
+                checkin = jQuery(this).attr('checkin'),
+                addmonth = jQuery(this).attr('addmonth'),
+                rid = jQuery(this).attr('roomid'),
+                datastr = 'act=availcalendar&apiid=' + apiid + '&apilang=' + langval + '&guilang=' + guilangval + '&currency=' + currency + '&checkin=' + checkin + '&addmonth=' + addmonth + '&rid=' + rid,
+                parent = this;
+        $.ajax({
+            type: "POST",
+            url: aurl,
+            data: datastr,
+            dataType: 'json',
+            cache: false,
+            success: function (jsonObj, textStatus, jqXHR) {
+                jQuery('a.iosh_calnavfw1', parent).removeClass('disabled');
+                jQuery('a.iosh_calnavbk1', parent).removeClass('disabled');
+
+                for (var idx in jsonObj.items) {
+                    var table = jQuery('.iosrcal_tbl_wrap', jsonObj.items[idx]),
+                            calindex = jQuery('.iosh_calindex', jsonObj.items[idx]);
+
+                    jQuery('.iosh_h3', table).remove();
+                    jQuery('.iosh_calnavfw1, .iosh_calnavfw1, .iosh_calnavbk1, .iosh_calnavfw3, .iosh_calnavbk3', table).remove();
+//				fix = table.html().replace(/\.\S\S/g, "");
+//				table.html(fix);
+                    jQuery('.priceclass, .iosr_price1, .iosr_price2, .iosr_pricec1, .iosr_pricec2', table).each(function () {
+                        var price = jQuery(this).text();
+                        price = price.replace(/\.\S*/g, "");
+                        jQuery(this).text(price);
+                    });
+
+                    jQuery('.iosh_roomcale.preloading.month' + idx, parent).html(table).removeClass('preloading');
+
+                    if (idx == 0) {
+                        jQuery('.iosh_roomcalelegend', parent).html(calindex)
+                    }
+                }
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                jQuery(elem).removeClass('preloading');
+            }
+        });
+        /*
+         jQuery('.iosh_roomcale.preloading').each( function() {
+         var wrap = jQuery(this).closest('.iosh_roomboxcale'),
+         elem = this,
+         url = jQuery(this).attr('url'),
+         idx = jQuery(this).index();;
+
+         $.ajax({
+         type: "GET",
+         url: url,
+         cache: false,
+         success: function(data, textStatus, jqXHR) {
+         var table = jQuery('.iosrcal_tbl_wrap', data),
+         calindex = jQuery('.iosh_calindex', data);
+         ;
+         jQuery('.iosh_h3', table).remove();
+         jQuery('.iosh_calnavfw1, .iosh_calnavfw1, .iosh_calnavbk1, .iosh_calnavfw3, .iosh_calnavbk3', table).remove();
+         fix = table.html().replace(/\.\S\S/g, "");
+         table.html(fix);
+
+         jQuery(elem).html(table).removeClass('preloading');
+
+         if ( idx == 0 ) {
+         jQuery('.iosh_roomcalelegend', wrap).html(calindex)
+         }
+         },
+         error: function (jqXHR, textStatus, errorThrown) {
+         jQuery(elem).removeClass('preloading');
+         }
+         });
+         */
+        /*
+         iframe.attr('src', iframe.attr('preload')).load( function() {
+         jQuery(this.contentWindow.document.body).css('height', 'auto');
+         jQuery('.iosrcal_tbl_wrap', this.contentWindow.document.body).css({'width': '100%', 'margin': '0'});
+         jQuery('.iosh_h3', this.contentWindow.document.body).hide();
+         jQuery('.iosh_calnavfw1, .iosh_calnavfw1, .iosh_calnavbk1, .iosh_calnavfw3, .iosh_calnavbk3', this.contentWindow.document.body).hide();
+
+         jQuery('.iosh_calindex', this.contentWindow.document.body).hide();
+
+         jQuery(elem).removeClass('preloading');
+
+         iHeight = this.contentWindow.document.body.offsetHeight;
+         jQuery(this).height(iHeight);
+         jQuery(elem).animate({'height': iHeight}, 500);
+         });
+         */
+
+    });
+}

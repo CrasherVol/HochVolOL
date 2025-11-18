@@ -42,6 +42,47 @@ export default function LocationPage({ lang, setLang }) {
       ? "Наличие номеров и цены постоянно меняются — проверяйте, пожалуйста, напрямую через Booking или сайт отеля."
       : "Verfügbarkeit und Preise ändern sich schnell – bitte direkt über Booking oder die Hotel-Webseite prüfen.";
 
+        // Hauptbeschreibung Alpina je Sprache
+  const mainDescDe =
+    "Modernes Hotel im Skigebiet Gudauri – mit Sonnenterrasse, Restaurant, Bar und weitem Bergblick über den Kaukasus. Direkter Zugang zu den Skipisten (ski-in / ski-out).";
+
+  const mainDescEn =
+    "Modern hotel in the Gudauri ski area – with sun terrace, restaurant, bar and wide mountain views across the Caucasus. Direct access to the slopes (ski-in / ski-out).";
+
+  const mainDescRu =
+    "Современный отель на горнолыжном курорте Гудаури — с солнечной террасой, рестораном, баром и панорамными видами на Кавказ. Прямой выход на склоны (ski-in / ski-out).";
+
+  const mainDesc =
+    lang === "en"
+      ? mainDescEn
+      : lang === "ru"
+      ? mainDescRu
+      : LOCATION_DETAILS.kurzbeschreibung || mainDescDe;
+
+  // Stichpunkte/Hinweise je Sprache
+  const hintsByLang = {
+    de: [
+      "Ski-in / Ski-out – direkter Pistenzugang.",
+      "Frühstücksbuffet täglich im Restaurant verfügbar.",
+      "Kostenlose Parkplätze direkt am Hotel.",
+    ],
+    en: [
+      "Ski-in / ski-out – direct access to the slopes.",
+      "Breakfast buffet available every morning in the restaurant.",
+      "Free parking directly at the hotel.",
+    ],
+    ru: [
+      "Ski-in / ski-out — прямой выход на трассы.",
+      "Завтрак-шведский стол подаётся каждый день в ресторане.",
+      "Бесплатная парковка прямо у отеля.",
+    ],
+  };
+
+  const hints =
+    hintsByLang[lang] ||
+    LOCATION_DETAILS.hinweise ||
+    hintsByLang.de;
+
   return (
     <Layout lang={lang} setLang={setLang}>
       <Section
@@ -109,7 +150,7 @@ export default function LocationPage({ lang, setLang }) {
               target="_blank"
               rel="noreferrer"
             >
-              Booking
+              {lang === "en" ? "Booking.com" : lang === "ru" ? "Бронирование" : "Booking"}
             </a>
             <a
               className="cta-ghost"
@@ -124,27 +165,24 @@ export default function LocationPage({ lang, setLang }) {
             </a>
           </div>
 
-          {/* Kurzbeschreibung */}
-          <p style={{ marginBottom: ".75rem" }}>
-            {LOCATION_DETAILS.kurzbeschreibung ||
-              "Modernes Hotel im Skigebiet Gudauri – mit Sonnenterrasse, Restaurant, Bar und weitem Bergblick über den Kaukasus. Direkter Zugang zu den Skipisten (ski-in / ski-out)."}
-          </p>
+          {/* Kurzbeschreibung (i18n) */}
+          <p style={{ marginBottom: ".75rem" }}>{mainDesc}</p>
 
-          {/* Hinweise */}
-          {Array.isArray(LOCATION_DETAILS.hinweise) &&
-            LOCATION_DETAILS.hinweise.length > 0 && (
-              <ul
-                style={{
-                  marginLeft: "1rem",
-                  listStyle: "disc",
-                  marginBottom: "0.75rem",
-                }}
-              >
-                {LOCATION_DETAILS.hinweise.map((h, i) => (
-                  <li key={i}>{h}</li>
-                ))}
-              </ul>
-            )}
+          {/* Hinweise (i18n) */}
+          {Array.isArray(hints) && hints.length > 0 && (
+            <ul
+              style={{
+                marginLeft: "1rem",
+                listStyle: "disc",
+                marginBottom: "0.75rem",
+              }}
+            >
+              {hints.map((h, i) => (
+                <li key={i}>{h}</li>
+              ))}
+            </ul>
+          )}
+
         </Card>
 
         {/* ---------- GALERIE direkt unter Alpina-Karte ---------- */}
@@ -170,62 +208,192 @@ export default function LocationPage({ lang, setLang }) {
             <div className="amenities" style={{ display: "grid", gap: ".5rem" }}>
               <Amenity
                 icon={<BedDouble size={16} />}
-                label="Komfortable Zimmer, viele mit Balkon & Bergblick"
+                label={
+                  lang === "en"
+                    ? "Comfortable rooms, many with balcony & mountain views"
+                    : lang === "ru"
+                    ? "Комфортные номера, многие с балконом и видом на горы"
+                    : "Komfortable Zimmer, viele mit Balkon & Bergblick"
+                }
               />
               <Amenity
                 icon={<Wifi size={16} />}
-                label="Kostenfreies WLAN im ganzen Hotel"
+                label={
+                  lang === "en"
+                    ? "Free Wi-Fi throughout the hotel"
+                    : lang === "ru"
+                    ? "Бесплатный Wi-Fi по всему отелю"
+                    : "Kostenfreies WLAN im ganzen Hotel"
+                }
               />
               <Amenity
                 icon={<ParkingCircle size={16} />}
-                label="Kostenlose Parkplätze direkt am Hotel"
+                label={
+                  lang === "en"
+                    ? "Free parking directly at the hotel"
+                    : lang === "ru"
+                    ? "Бесплатная парковка прямо у отеля"
+                    : "Kostenlose Parkplätze direkt am Hotel"
+                }
               />
               <Amenity
                 icon={<Utensils size={16} />}
-                label="Restaurant mit georgischer & europäischer Küche"
+                label={
+                  lang === "en"
+                    ? "Restaurant with Georgian & European cuisine"
+                    : lang === "ru"
+                    ? "Ресторан с грузинской и европейской кухней"
+                    : "Restaurant mit georgischer & europäischer Küche"
+                }
               />
-              <Amenity icon={<Wine size={16} />} label="Gemütliche Bar & Lounge im Haus" />
+              <Amenity
+                icon={<Wine size={16} />}
+                label={
+                  lang === "en"
+                    ? "Cozy bar & lounge in-house"
+                    : lang === "ru"
+                    ? "Уютный бар и лаунж в отеле"
+                    : "Gemütliche Bar & Lounge im Haus"
+                }
+              />
               <Amenity
                 icon={<Sun size={16} />}
-                label="Sonnenterrasse mit Panorama über Gudauri"
+                label={
+                  lang === "en"
+                    ? "Sun terrace with panorama over Gudauri"
+                    : lang === "ru"
+                    ? "Солнечная терраса с панорамой Гудаури"
+                    : "Sonnenterrasse mit Panorama über Gudauri"
+                }
               />
               <Amenity
                 icon={<Snowflake size={16} />}
-                label="Direkter Zugang zu den Skipisten (ski-in/ski-out)"
+                label={
+                  lang === "en"
+                    ? "Direct access to the slopes (ski-in/ski-out)"
+                    : lang === "ru"
+                    ? "Прямой выход на трассы (ski-in/ski-out)"
+                    : "Direkter Zugang zu den Skipisten (ski-in/ski-out)"
+                }
               />
             </div>
           </Card>
 
           {/* Zimmer */}
-          <Card title="Zimmer" className="hover-react">
+          <Card
+            title={
+              lang === "en" ? "Rooms" : lang === "ru" ? "Номера" : "Zimmer"
+            }
+            className="hover-react"
+          >
             <ul style={{ marginLeft: "1rem", listStyle: "disc" }}>
               <li>
-                Double / Twin & Familienzimmer – teilweise mit Balkon & Bergblick
+                {lang === "en"
+                  ? "Double / Twin & family rooms – some with balcony & mountain view"
+                  : lang === "ru"
+                  ? "Двухместные / семейные номера — частично с балконом и видом на горы"
+                  : "Double / Twin & Familienzimmer – teilweise mit Balkon & Bergblick"}
               </li>
-              <li>Hochwertige Bettwäsche, TV & gute Schallisolierung</li>
-              <li>Eigenes Bad mit Pflegeprodukten & Föhn</li>
-              <li>Heizung · Wasserkocher/Kaffee-Setup (je nach Zimmer)</li>
+              <li>
+                {lang === "en"
+                  ? "High-quality bedding, TV & good soundproofing"
+                  : lang === "ru"
+                  ? "Качественное постельное бельё, TV и хорошая шумоизоляция"
+                  : "Hochwertige Bettwäsche, TV & gute Schallisolierung"}
+              </li>
+              <li>
+                {lang === "en"
+                  ? "Private bathroom with toiletries & hairdryer"
+                  : lang === "ru"
+                  ? "Собственная ванная комната с косметическими средствами и феном"
+                  : "Eigenes Bad mit Pflegeprodukten & Föhn"}
+              </li>
+              <li>
+                {lang === "en"
+                  ? "Heating · kettle/coffee setup (depending on room type)"
+                  : lang === "ru"
+                  ? "Отопление · чайник/кофе-сет (в зависимости от типа номера)"
+                  : "Heizung · Wasserkocher/Kaffee-Setup (je nach Zimmer)"}
+              </li>
             </ul>
           </Card>
 
           {/* Aktivitäten & Freizeit */}
-          <Card title="Aktivitäten & Freizeit" className="hover-react">
+          <Card
+            title={
+              lang === "en"
+                ? "Activities & leisure"
+                : lang === "ru"
+                ? "Активности и отдых"
+                : "Aktivitäten & Freizeit"
+            }
+            className="hover-react"
+          >
             <ul style={{ marginLeft: "1rem", listStyle: "disc" }}>
-              <li>Ski-in/Ski-out & kurze Wege zu den Liften</li>
-              <li>Ski- und Snowboardfahren direkt ab Unterkunft</li>
-              <li>Gemütliche Lounge-Bereiche für den Abend</li>
+              <li>
+                {lang === "en"
+                  ? "Ski-in/ski-out & short ways to the lifts"
+                  : lang === "ru"
+                  ? "Ski-in/ski-out и короткая дорога до подъёмников"
+                  : "Ski-in/Ski-out & kurze Wege zu den Liften"}
+              </li>
+              <li>
+                {lang === "en"
+                  ? "Skiing and snowboarding directly from the hotel"
+                  : lang === "ru"
+                  ? "Катание на лыжах и сноуборде прямо от отеля"
+                  : "Ski- und Snowboardfahren direkt ab Unterkunft"}
+              </li>
+              <li>
+                {lang === "en"
+                  ? "Cozy lounge areas for the evening"
+                  : lang === "ru"
+                  ? "Уютные лаунж-зоны для вечера"
+                  : "Gemütliche Lounge-Bereiche für den Abend"}
+              </li>
             </ul>
           </Card>
 
           {/* Restaurant & Terrasse */}
-          <Card title="Restaurant & Terrasse" className="hover-react">
+          <Card
+            title={
+              lang === "en"
+                ? "Restaurant & terrace"
+                : lang === "ru"
+                ? "Ресторан и терраса"
+                : "Restaurant & Terrasse"
+            }
+            className="hover-react"
+          >
             <ul style={{ marginLeft: "1rem", listStyle: "disc" }}>
               <li>
-                Georgische & internationale Küche im hauseigenen Restaurant
+                {lang === "en"
+                  ? "Georgian & international cuisine in the in-house restaurant"
+                  : lang === "ru"
+                  ? "Грузинская и международная кухня в ресторанe отеля"
+                  : "Georgische & internationale Küche im hauseigenen Restaurant"}
               </li>
-              <li>Bar/Lounge für den Abend</li>
-              <li>Frühstücksbuffet verfügbar</li>
-              <li>Sonnenterrasse mit freiem Blick auf die Berge</li>
+              <li>
+                {lang === "en"
+                  ? "Bar/lounge for the evening"
+                  : lang === "ru"
+                  ? "Бар/лаунж для вечера"
+                  : "Bar/Lounge für den Abend"}
+              </li>
+              <li>
+                {lang === "en"
+                  ? "Breakfast buffet available"
+                  : lang === "ru"
+                  ? "Доступен завтрак-шведский стол"
+                  : "Frühstücksbuffet verfügbar"}
+              </li>
+              <li>
+                {lang === "en"
+                  ? "Sun terrace with unobstructed mountain views"
+                  : lang === "ru"
+                  ? "Солнечная терраса с открытым видом на горы"
+                  : "Sonnenterrasse mit freiem Blick auf die Berge"}
+              </li>
             </ul>
           </Card>
         </div>
@@ -385,6 +553,19 @@ function AltHotel({ hotel, lang }) {
       ? hotel.distanceRu
       : hotel.distanceDe;
 
+  const routeLabel =
+    lang === "en"
+      ? "Open route from Alpina in Google Maps"
+      : lang === "ru"
+      ? "Открыть маршрут от Alpina в Google Картах"
+      : "Route vom Alpina auf Google Maps öffnen";
+
+  const websiteLabel =
+    lang === "en" ? "Website" : lang === "ru" ? "Веб-сайт" : "Website";
+
+  const bookingLabel =
+    lang === "en" ? "Booking" : lang === "ru" ? "Бронирование" : "Booking";
+
   return (
     <div
       className="hover-react"
@@ -472,7 +653,7 @@ function AltHotel({ hotel, lang }) {
                 fontSize: ".8rem",
               }}
             >
-              Route vom Alpina auf Google Maps öffnen
+              {routeLabel}
             </a>
           )}
         </div>
@@ -503,7 +684,7 @@ function AltHotel({ hotel, lang }) {
                 textDecoration: "none",
               }}
             >
-              Website
+              {websiteLabel}
             </a>
           )}
           {hotel.bookingUrl && (
@@ -523,7 +704,7 @@ function AltHotel({ hotel, lang }) {
                 textDecoration: "none",
               }}
             >
-              Booking
+              {bookingLabel}
             </a>
           )}
         </div>
@@ -537,7 +718,7 @@ const NEAR_HOTELS = [
   {
     name: "Chalet Papa Basili",
     image: "/location/chalet-papa-basili.jpg",
-    websiteUrl: "https://www.facebook.com/papabasili/",
+    websiteUrl: "https://www.chaletpapabasili.com/",
     bookingUrl: "https://www.booking.com/hotel/ge/chalet-papa-basili.de.html",
     mapsUrl:
       "https://www.google.com/maps/dir/?api=1&origin=Alpina+Hotel+Gudauri&destination=Chalet+Papa+Basili",
@@ -551,7 +732,6 @@ const NEAR_HOTELS = [
     textRu:
       "Уютное шале с видом на горы. Очень близко к Alpina — идеально для компаний.",
     tags: ["Sehr nah", "Chalet", "Bergblick"],
-    distanceRu: "Всего около 200 м от Alpina",
   },
   {
     name: "Monte Hotel Gudauri",
@@ -574,7 +754,7 @@ const NEAR_HOTELS = [
   {
     name: "Winter House Gudauri",
     image: "/location/winter-house.jpg",
-    websiteUrl: "https://winterhousegudauri.com/",
+    websiteUrl: "https://www.winterhouse.ge/home/en",
     bookingUrl:
       "https://www.booking.com/hotel/ge/winter-house-gudauri.de.html",
     mapsUrl:
@@ -591,7 +771,7 @@ const NEAR_HOTELS = [
   {
     name: "Hotel Tsiga",
     image: "/location/hotel-tsiga.jpg",
-    websiteUrl: null,
+    websiteUrl: "https://www.tsiga.ge/",
     bookingUrl: "https://www.booking.com/hotel/ge/tsiga-gudauri.de.html",
     mapsUrl:
       "https://www.google.com/maps/dir/?api=1&origin=Alpina+Hotel+Gudauri&destination=Hotel+Tsiga+Gudauri",
@@ -626,9 +806,29 @@ const NEAR_PENSIONS = [
     tags: ["Frühstück", "Günstig", "Sehr nah"],
   },
   {
+  name: "Four Seasons – New Gudauri",
+  image: "/location/four-seasons-new-gudauri.jpg",
+  websiteUrl: "https://www.gudauriski.ge/fourseasons",
+  bookingUrl: "https://www.booking.com/Share-qRbQlt",
+  mapsUrl:
+    "https://www.google.com/maps/dir/?api=1&origin=Alpina+Hotel+Gudauri&destination=New+Gudauri+Four+Seasons",
+  tags: ["Modern", "Top Bewertungen", "Komfort"],
+
+  textDe:
+    "Modernes und sehr beliebtes Hotel im Herzen von New Gudauri. Komfortable Zimmer, schöne Aussicht und ideale Lage für Aktivitäten.",
+  textEn:
+    "Modern and very popular hotel in the heart of New Gudauri. Comfortable rooms, great views and an ideal location for activities.",
+  textRu:
+    "Современный и очень популярный отель в центре Нью Гудаури. Комфортабельные номера, красивый вид и отличное расположение для отдыха.",
+
+  distanceDe: "Ca. 1–2 km vom Alpina (etwa 3–5 Minuten Fahrt)",
+  distanceEn: "Approx. 1–2 km from Alpina (about 3–5 min by car)",
+  distanceRu: "Около 1–2 км от Alpina (примерно 3–5 минут на машине)",
+},
+{
     name: "Tsar Bani Spa & Hotel",
     image: "/location/tsar-bani.jpg",
-    websiteUrl: "https://tsarbani.ge/",
+    websiteUrl: "http://www.tsarbani.com/",
     bookingUrl: "https://www.booking.com/hotel/ge/tsar-bani-spa.de.html",
     mapsUrl:
       "https://www.google.com/maps/dir/?api=1&origin=Alpina+Hotel+Gudauri&destination=Tsar+Bani+Gudauri",
@@ -646,7 +846,7 @@ const NEAR_PENSIONS = [
   {
     name: "Gudauri Loft Hotel",
     image: "/location/gudauri-loft.jpg",
-    websiteUrl: "https://loftgudauri.ge/",
+    websiteUrl: "https://gudauriloft.ge/",
     bookingUrl: "https://www.booking.com/hotel/ge/gudauri-loft.de.html",
     mapsUrl:
       "https://www.google.com/maps/dir/?api=1&origin=Alpina+Hotel+Gudauri&destination=Gudauri+Loft+Hotel",
@@ -665,17 +865,14 @@ const NEAR_PENSIONS = [
     name: "Loft 2 Aparthotel",
     image: "/location/loft2.jpg",
     websiteUrl: null,
-    bookingUrl:
-      "https://www.booking.com/hotel/ge/gudauri-loft-2.en-gb.html",
+    bookingUrl: "https://www.booking.com/Share-65ajzb5",
     mapsUrl:
       "https://www.google.com/maps/dir/?api=1&origin=Alpina+Hotel+Gudauri&destination=Gudauri+Loft+2",
     distanceDe: "Ca. 500–600 m vom Alpina",
     distanceEn: "Approx. 500–600 m from Alpina",
     distanceRu: "Около 500–600 м от Alpina",
-    textDe:
-      "Studios & Apartments – manche mit Frühstück buchbar.",
-    textEn:
-      "Studios & apartments – some offer breakfast options.",
+    textDe: "Studios & Apartments – manche mit Frühstück buchbar.",
+    textEn: "Studios & apartments – some offer breakfast options.",
     textRu:
       "Студии и апартаменты — завтрак возможен в некоторых вариантах.",
     tags: ["Apartments", "Optional Frühstück"],
@@ -683,7 +880,7 @@ const NEAR_PENSIONS = [
   {
     name: "Quadrumi Mountain House",
     image: "/location/quadrumi.jpg",
-    websiteUrl: "https://quadrumi.com/",
+    websiteUrl: "https://quadrum-gudauri.com/",
     bookingUrl:
       "https://www.booking.com/hotel/ge/quadrumi-mountain-house.en-gb.html",
     mapsUrl:
@@ -718,9 +915,9 @@ const ALT_HOTELS = [
       "Modern ski-in/ski-out hotel with spa, indoor pool and sun terrace.",
     textRu:
       "Современный ski-in/ski-out отель со спа, крытым бассейном и террасой.",
-    distanceDe: "Wenige Fahrminuten vom Alpina",
-    distanceEn: "A short drive from Alpina",
-    distanceRu: "Несколько минут на машине от Alpina",
+    distanceDe: "Ca. 2–3 km vom Alpina (etwa 5–7 Min Fahrt)",
+    distanceEn: "Approx. 2–3 km from Alpina (about 5–7 min by car)",
+    distanceRu: "Около 2–3 км от Alpina (примерно 5–7 минут на машине)",
   },
   {
     name: "Gudauri Inn",
@@ -736,9 +933,9 @@ const ALT_HOTELS = [
       "Popular hotel with restaurant & terrace. Strong value option.",
     textRu:
       "Популярный отель с рестораном и террасой. Хороший бюджетный вариант.",
-    distanceDe: "5–10 Minuten vom Alpina",
-    distanceEn: "5–10 minutes from Alpina",
-    distanceRu: "5–10 минут от Alpina",
+    distanceDe: "Ca. 3–4 km vom Alpina (etwa 5–10 Min Fahrt)",
+    distanceEn: "Approx. 3–4 km from Alpina (about 5–10 min by car)",
+    distanceRu: "Около 3–4 км от Alpina (примерно 5–10 минут на машине)",
   },
   {
     name: "Carpe Diem Gudauri",
@@ -755,9 +952,9 @@ const ALT_HOTELS = [
       "Stylish hotel near the lift with restaurant & sauna.",
     textRu:
       "Стильный отель рядом с подъёмником, ресторан и сауна.",
-    distanceDe: "5–10 Minuten vom Alpina",
-    distanceEn: "5–10 minutes from Alpina",
-    distanceRu: "5–10 минут от Alpina",
+    distanceDe: "Ca. 3–4 km vom Alpina (etwa 5–10 Min Fahrt)",
+    distanceEn: "Approx. 3–4 km from Alpina (about 5–10 min by car)",
+    distanceRu: "Около 3–4 км от Alpina (примерно 5–10 минут на машине)",
   },
   {
     name: "Marco Polo Gudauri",
@@ -773,8 +970,8 @@ const ALT_HOTELS = [
       "Classic ski resort hotel right by the slopes.",
     textRu:
       "Классический горнолыжный отель у трассы.",
-    distanceDe: "5–10 Minuten vom Alpina",
-    distanceEn: "5–10 minutes from Alpina",
-    distanceRu: "5–10 минут от Alpina",
+    distanceDe: "Ca. 3–4 km vom Alpina (etwa 5–10 Min Fahrt)",
+    distanceEn: "Approx. 3–4 km from Alpina (about 5–10 min by car)",
+    distanceRu: "Около 3–4 км от Alpina (примерно 5–10 минут на машине)",
   },
 ];

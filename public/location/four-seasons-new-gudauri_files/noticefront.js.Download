@@ -1,0 +1,94 @@
+var noticefront = {
+    init: function() {
+   		jQuery(document).on('change', 'div.advert_row ul.checkbox  input[type=checkbox]', function() {   			if ( jQuery(this).is(':checked') ) {   				jQuery(this).closest('li').addClass('active');   			} else {   				jQuery(this).closest('li').removeClass('active');
+   			}
+        });
+   		jQuery(document).on('change', 'div.advert_row ul.radiobox  input[type=radio]', function() {
+  			jQuery(this).closest('div.control').find('li').removeClass('active');
+			jQuery(this).closest('li').addClass('active');
+        });
+   		jQuery(document).on('change', 'ul.timepub  input[type=radio].timepub', function() {
+  			jQuery(this).closest('ul.timepub').find('li[class^="timepub"]').removeClass('active');
+			jQuery(this).closest('li[class^="timepub"]').addClass('active');
+        });
+        jQuery('a.more').click( function() {        	var elem = jQuery(this).attr('more');
+        	var more = jQuery(this);
+        	jQuery('#'+elem).toggle('slow', function() { more.toggleClass('active'); });        });
+
+        jQuery('a#ntc_login').click( function() {
+        	var login_url = jQuery('ntc-core').attr('login');
+        	location.href = login_url;
+
+/*			jQuery.colorbox({iframe:true, width:800, height:600, href:login_url});*/
+        });
+
+		jQuery('ul.ntctabs').each(function() {
+			jQuery('li', this).click(function(){
+				jQuery(this).addClass('ntctabcur').siblings()
+							.removeClass('ntctabcur').parents('div.ntctabswrap')
+							.find('div.ntctab').eq(jQuery(this).index()).fadeIn(150).siblings('div.ntctab').hide();
+			});
+		});
+
+		jQuery('.pr_grid_block span').click( function(e) {
+	        if ( jQuery(this).hasClass('pr_grid_active') ) { return false; }
+			jQuery('.pr_grid_block span').removeClass('pr_grid_active');
+			jQuery(this).addClass('pr_grid_active');
+			var pr_grid_id = parseInt(jQuery(this).attr('grid_id'));
+			$.cookie('notice_pr_grid_id', pr_grid_id, { expires: 30, path: '/', secure: false });
+			ajaxFilter();
+//			window.location.reload();
+    });
+
+    },
+
+	scrollToPos: function(element) {		var pos_top = jQuery(element).offset().top;		jQuery('html,body').animate({ scrollTop: pos_top}, 500);
+	},
+
+	hiddenPrint: function($link) {		if ( jQuery('#hiddenPrint').length == 0 ) {			var iframe = jQuery("<iframe>").attr("id", "hiddenPrint").css('display', 'none');			jQuery('body').append(iframe);		}
+		jQuery('#hiddenPrint').attr("src", $link);	},
+
+	add_favorite: function (a) {
+		title = jQuery(a).attr('favorite-title');
+		url = jQuery(a).attr('favorite-url');
+		try {
+			// Internet Explorer
+			window.external.AddFavorite(url, title);
+		}
+		catch (e) {
+			try {
+				// Mozilla
+				window.sidebar.addPanel(title, url, "");
+			}
+			catch (e) {
+				// Opera
+				if ( (typeof(opera)=="object") || window.sidebar) {
+					a.rel = "sidebar";
+					a.title = title;
+					a.href = url;
+					return true;
+				} else {					if ( jQuery('#favorite_fail').length == 0 ) {
+						alert('Unknown browser');
+					} else {
+						alert(jQuery('#favorite_fail').text());					}
+				}
+			}
+		}
+		return false;
+	}
+
+}
+
+var userAgent = navigator.userAgent.toLowerCase();
+
+jQuery.browser = {
+     version: (userAgent.match( /.+(?:rv|it|ra|ie|me)[\/: ]([\d.]+)/ ) || [])[1],
+     chrome: /chrome/.test( userAgent ),
+     safari: /webkit/.test( userAgent ) && !/chrome/.test( userAgent ),
+     opera: /opera/.test( userAgent ),
+     msie: /msie/.test( userAgent ) && !/opera/.test( userAgent ),
+     mozilla: /mozilla/.test( userAgent ) && !/(compatible|webkit)/.test( userAgent )
+};
+
+jQuery(document).ready(function(){noticefront.init();});
+

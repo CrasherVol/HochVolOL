@@ -1,0 +1,49 @@
+jQuery(document).ready(function () {
+    if (window.addEventListener) {
+        window.addEventListener("message", winCallParent, false);
+    } else if (window.attachEvent) {
+        window.attachEvent("onmessage", winCallParent, false);
+    }
+});
+function callParentFunction() {
+    if ( arguments.length < 1 ) { return; }
+    var callback = arguments[0],
+        args = Array.prototype.slice.call(arguments).slice(1);
+
+    window.parent.postMessage({
+        'func': callback,
+        'agrs': args
+    }, "*");
+}
+
+function winCallParent(event) {
+    var data = event.data;
+
+    if (typeof (window[data.func]) == "function") {
+        window[data.func].apply(null, data.agrs);
+    }
+}
+function closecolorbox() {
+    jQuery.colorbox.close();
+}
+function reloadPage() {
+    location.reload(true);
+}
+
+function updateField() {
+    if ( arguments.length < 1 ) { return; }
+    var text = [],
+        field = $('#' + arguments[0]),
+        joinChar = arguments[1],
+        args = Array.prototype.slice.call(arguments).slice(2);
+
+    if ( field.length == 0 ) { return; }
+    for(var i in args ) {
+        var argument = args[i],
+            elem = $('#' + argument);
+        if ( elem.length == 1 && elem.val() != '' ) {
+            text.push(elem.val())
+        }
+    }
+    field.val(text.join(','));
+}

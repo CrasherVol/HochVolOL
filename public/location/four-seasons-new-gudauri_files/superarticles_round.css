@@ -1,0 +1,70 @@
+/**
+Package			Elxis CMS
+Subpackage		mod_superarticles
+Author			Duilio Lupini ( speck - http://www.elxisitalia.com )
+Copyright		Copyright (c) 2006-2012 Elxis CMS (http://www.elxis.org). All rights reserved.
+License			Elxis Public License ( http://www.elxis.org/elxis-public-license.html )
+Date			2012-11-03 21:38:00
+Description 	CSS stylesheet for module_superarticles
+TIPS:           how to use PIE.htc and documentation please visit http://css3pie.com/ 
+vers			2.11
+HOW IS WORKS PIE.HTC:   
+pie.htc works only on IE7-IR8-IE9 browsers. You must check set the MIME Types of your server and if not exist add a new MIME Type:
+File extension: .HTC
+MIME TYPE: text/x-component
+*/
+
+div.superarticles {}
+
+div.superarticles-ltr h2 { }
+div.superarticles-rtl h2 {  }
+
+div.superarticles-ltr h2 a {  }
+div.superarticles-rtl h2 a { }
+
+div.contentsup .elx_featured_box { 
+	padding:5px 5px 5px 5px;
+	margin: 0px;
+	border:1px solid #cccccc;
+	position:relative;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	border-radius: 6px;
+	behavior: url(/modules/mod_superarticles/css/PIE.htc); 
+}
+
+div.superarticles div.elx_dateauthor { margin:0 0 10px 0; }
+div.superarticles div.elx_dateauthor > div{ margin:0 0 5px 0; }
+div.superarticles div.elx_dateauthor i{ margin:0px 0 10px 0; width:100%; }
+
+div.superarticles div.readmore { text-align: center; }
+div.superarticles a.readmore{ padding:2px 15px;}
+
+div.superarticles a.readmore:hover{}
+
+div.superarticles .col1_contentsup1 .elx_featured_box { margin: 0px 0px 10px 0px; }
+
+div.superarticles .col2_contentsup1 .elx_featured_box { margin: 0px 5px 10px 0px; }
+div.superarticles .col2_contentsup2 .elx_featured_box { margin: 0px 0px 10px 5px; }
+
+div.superarticles .col3_contentsup1 .elx_featured_box { margin: 0px 0px 5px 0px; }
+div.superarticles .col3_contentsup2 .elx_featured_box { margin: 0px 5px 5px 5px; }
+div.superarticles .col3_contentsup3 .elx_featured_box { margin: 0px 0px 5px 0px; }
+
+div.superarticles .col4_contentsup1 .elx_featured_box { margin: 0px 0px 5px 0px; }
+div.superarticles .col4_contentsup2 .elx_featured_box,
+div.superarticles .col4_contentsup3 .elx_featured_box { margin: 0px 0px 5px 5px; }
+div.superarticles .col4_contentsup4 .elx_featured_box { margin: 0px 0px 5px 5px; }
+
+div.superarticles .col5_contentsup1 .elx_featured_box { margin: 0px 0px 5px 0px; }
+div.superarticles .col5_contentsup2 .elx_featured_box,
+div.superarticles .col5_contentsup3 .elx_featured_box,
+div.superarticles .col5_contentsup4 .elx_featured_box { margin: 0px 0px 5px 5px; }
+div.superarticles .col5_contentsup5 .elx_featured_box { margin: 0px 0px 5px 5px; }
+
+div.superarticles .col6_contentsup1 .elx_featured_box { margin: 0px 0px 5px 0px; }
+div.superarticles .col6_contentsup2 .elx_featured_box,
+div.superarticles .col6_contentsup3 .elx_featured_box,
+div.superarticles .col6_contentsup4 .elx_featured_box,
+div.superarticles .col6_contentsup5 .elx_featured_box { margin: 0px 0px 5px 5px; }
+div.superarticles .col6_contentsup6 .elx_featured_box { margin: 0px 0px 5px 5px; }

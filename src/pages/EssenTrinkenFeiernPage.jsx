@@ -128,21 +128,50 @@ function VibesRow({ tags }) {
 
 function CTAGroup({ v }) {
   const hasGeo = typeof v.lat === "number" && typeof v.lng === "number";
+
   return (
     <div style={{ display: "flex", gap: ".5rem", flexWrap: "wrap", marginTop: ".7rem" }}>
       {hasGeo && (
         <>
-          <a href={mapsSearchUrl(v.lat, v.lng)} target="_blank" rel="noreferrer" className="btn-chip">📍 Ort ansehen</a>
-          <a href={mapsDirectionsFromHere(v.lat, v.lng)} target="_blank" rel="noreferrer" className="btn-chip">🚶 Route (ab hier)</a>
-          <a href={mapsDirectionsFromHotel(v.lat, v.lng)} target="_blank" rel="noreferrer" className="btn-chip">🏨 Route (ab Monte)</a>
+          <a href={mapsSearchUrl(v.lat, v.lng)} target="_blank" rel="noreferrer" className="btn-chip">
+            📍 Ort ansehen
+          </a>
+          <a href={mapsDirectionsFromHere(v.lat, v.lng)} target="_blank" rel="noreferrer" className="btn-chip">
+            🚶 Route (ab hier)
+          </a>
+          <a href={mapsDirectionsFromHotel(v.lat, v.lng)} target="_blank" rel="noreferrer" className="btn-chip">
+            🏨 Route (ab Monte)
+          </a>
         </>
       )}
-      {v.menu && <a href={v.menu} target="_blank" rel="noreferrer" className="btn-chip"><Utensils size={16} /> Speisekarte</a>}
-      {v.drinks && <a href={v.drinks} target="_blank" rel="noreferrer" className="btn-chip"><Martini size={16} /> Drinks</a>}
-      {v.instagram && <a href={v.instagram} target="_blank" rel="noreferrer" className="btn-chip"><ExternalLink size={16} /> Instagram</a>}
+
+      {v.website && (
+        <a href={v.website} target="_blank" rel="noreferrer" className="btn-chip">
+          <ExternalLink size={16} /> Website
+        </a>
+      )}
+
+      {v.menu && (
+        <a href={v.menu} target="_blank" rel="noreferrer" className="btn-chip">
+          <Utensils size={16} /> Speisekarte
+        </a>
+      )}
+
+      {v.drinks && (
+        <a href={v.drinks} target="_blank" rel="noreferrer" className="btn-chip">
+          <Martini size={16} /> Drinks
+        </a>
+      )}
+
+      {v.instagram && (
+        <a href={v.instagram} target="_blank" rel="noreferrer" className="btn-chip">
+          <ExternalLink size={16} /> Instagram
+        </a>
+      )}
     </div>
   );
 }
+
 
 function VenueCard({ v }) {
   const isBar = v.kind === "bar";
@@ -525,10 +554,11 @@ const restaurants = [
     number: 1,
     kind: "restaurant",
     name: "Drunk Cherry (Mtvrali Alubali)",
+    website: "https://drunkcherrygudauri.com/",
     tags: ["Georgisch", "Pizza", "Terrasse", "Après-Ski"],
     desc: "Legendärer Treff mit Aussicht. Georgische Klassiker, Burger & Pizza, große Terrasse.",
     hours: "09:00–01:00",
-    image: "/places/drunk-cherry.webp",
+    image: "/places/drunk-cherry.jpg",
     lat: 42.46996,
     lng: 44.49085,
     menu: "https://drunkcherrygudauri.com/menu/",
@@ -537,8 +567,9 @@ const restaurants = [
     number: 2,
     kind: "restaurant",
     name: "AfterSkis",
+    website: "https://www.instagram.com/afterskis.gudauri/",
     tags: ["Georgisch", "Rustikal", "Dinner"],
-    desc: "Gemütlich & authentisch – Georgische Hausküche mit Chacha, ideal zum Abendessen.",
+    desc: "Gemütlich & authentisch – Georgische Hausküche.",
     hours: "09:00–23:00",
     image: "/places/afterskis.webp",
     lat: 42.4619129,
@@ -548,6 +579,7 @@ const restaurants = [
     number: 3,
     kind: "restaurant",
     name: "Cafe Vitamin (am Soliko-Lift)",
+    website: "https://www.instagram.com/cafevitamin_gudauri/",
     tags: ["Tagescafé", "Pistenblick"],
     desc: "Khachapuri, Suppen & heiße Getränke direkt am Hang.",
     hours: "10:00–17:00",
@@ -559,19 +591,19 @@ const restaurants = [
     number: 4,
     kind: "restaurant",
     name: "Marco Polo Restaurant „Soliko“",
+    website: "https://marcopolo.ge/",
     tags: ["Hotelrestaurant", "Klassisch"],
-    desc: "Gehobenes Dinner im Marco Polo Hotel mit georgisch-europäischer Küche & Bar.",
+    desc: "Gehobenes Dinner im Marco Polo Hotel.",
     hours: "18:00–23:00",
     image: "/places/marco-polo-soliko.webp",
     lat: 42.4719,
     lng: 44.4925,
   },
-
-  // ➕ neue Restaurants
   {
     number: 5,
     kind: "restaurant",
     name: "Restaurant Dariali",
+    website: "https://www.instagram.com/dariali_restaurant/",
     tags: ["Georgisch", "Hausküche"],
     desc: "Herzhafte georgische Klassiker – gemütlich und bodenständig.",
     hours: "Saisonal",
@@ -583,8 +615,9 @@ const restaurants = [
     number: 6,
     kind: "restaurant",
     name: "Quadrum Restaurant Gudauri",
+    website: "https://www.instagram.com/quadrumgudauri/",
     tags: ["Hotelrestaurant", "Aussicht"],
-    desc: "Restaurant im Quadrum-Komplex – Panorama & solide Küche.",
+    desc: "Panorama & solide Küche.",
     hours: "Saisonal",
     image: "/places/quadrum.webp",
     lat: 42.47643934653898,
@@ -594,6 +627,7 @@ const restaurants = [
     number: 7,
     kind: "restaurant",
     name: "Restaurant Gudauri",
+    website: "https://www.instagram.com/restaurantgudauri/",
     tags: ["Georgisch", "Grill"],
     desc: "Beliebter Spot unweit vom Monte – deftige Speisen & Snacks.",
     hours: "Saisonal",
@@ -605,24 +639,26 @@ const restaurants = [
     number: 8,
     kind: "restaurant",
     name: "Montis",
+    website: "https://www.instagram.com/montis_gudauri/",
     tags: ["Burger", "Pizza", "Casual"],
     desc: "Locker & unkompliziert – Burgers, Pizza, schnelle Küche.",
     hours: "Saisonal",
     image: "/places/montis.webp",
-    // 👉 wenn du Koordinaten hast, ergänzen und es erscheint auch als Pin
   },
   {
     number: 9,
     kind: "restaurant",
     name: "Platforma BomBora",
+    website: "https://www.instagram.com/platforma_bombora/",
     tags: ["Après-Ski", "Panorama"],
     desc: "Auf/nahe der Piste – Stimmung & Snacks mit Blick.",
-    hours: "Saisonal (tagsüber)",
+    hours: "Saisonal",
     image: "/places/platforma-bombora.webp",
     lat: 42.47284868817391,
     lng: 44.487056320612254,
   },
 ];
+
 
 // ---------- Bars ----------
 const bars = [
@@ -630,6 +666,7 @@ const bars = [
     number: 101,
     kind: "bar",
     name: "Gudauri Travel Bar (Block 1)",
+    website: "https://www.instagram.com/gudauribar/",
     tags: ["Cocktails", "DJ", "Après-Ski"],
     desc: "Kultige Cocktailbar in New Gudauri Block 1 – Drinks, guter Sound, Ski-Movies.",
     hours: "09:00–02:00",
@@ -642,6 +679,7 @@ const bars = [
     number: 102,
     kind: "bar",
     name: "Black Dog Bar",
+    website: "https://www.instagram.com/blackdogbars_georgia/",
     tags: ["Craft Beer", "Snacks", "DJ/Live"],
     desc: "Kleine Bar nahe Gondel – Craft-Beer-Auswahl, Snacks & gelegentlich DJs.",
     hours: "14:00–01:00",
@@ -654,6 +692,7 @@ const bars = [
     number: 103,
     kind: "bar",
     name: "Grizzly Bar (Loft 1)",
+    website: "https://www.instagram.com/grizzly_bar_gudauri/",
     tags: ["DJ", "Shots", "Party"],
     desc: "Après-Ski pur: Shots, DJs, Tanzfläche. Direkt im Loft-Komplex.",
     hours: "09:00–23:00",
@@ -666,6 +705,7 @@ const bars = [
     number: 104,
     kind: "bar",
     name: "Posta Bar (Posta Hotel)",
+    website: "https://www.instagram.com/postabar_gudauri/",
     tags: ["Cocktails", "Lounge", "Modern"],
     desc: "Stylishe Bar im Posta Hotel – internationale Crowd, Cocktails & Design.",
     hours: "17:00–01:00",
@@ -678,6 +718,7 @@ const bars = [
     number: 105,
     kind: "bar",
     name: "Papa Basil’s (Chalet Papa Basili)",
+    website: "https://www.instagram.com/papabasil_gudauri/",
     tags: ["Wein & Chacha", "Lounge"],
     desc: "Kleine Weinbar mit lokalem Wein & Häppchen.",
     hours: "16:00–00:00",
@@ -685,12 +726,11 @@ const bars = [
     lat: 42.4763221,
     lng: 44.4781296,
   },
-
-  // ➕ neue Bars & Après-Ski
   {
     number: 106,
     kind: "bar",
     name: "Ice Bar",
+    website: "https://www.instagram.com/icebargudauri/",
     tags: ["Eisbar", "Piste", "Tagsüber"],
     desc: "Kalte Drinks in der Eisbar – direkt am Schnee, perfekter Fotospot.",
     hours: "Saisonal (tagsüber)",
@@ -702,6 +742,7 @@ const bars = [
     number: 107,
     kind: "bar",
     name: "Montis Green Door Bar",
+    website: "https://www.instagram.com/montis_greendoorbar/",
     tags: ["Cocktails", "Casual"],
     desc: "Unkomplizierte Bar – Treffpunkt für einen lockeren Abend.",
     hours: "Saisonal",
@@ -713,11 +754,11 @@ const bars = [
     number: 108,
     kind: "bar",
     name: "MONT NOIR BAR GUDAURI",
+    website: "https://www.instagram.com/montnoirbar/",
     tags: ["Cocktails", "DJ/Live"],
     desc: "Stylish, dunkel & laut – Cocktails und gelegentlich DJs.",
     hours: "Saisonal",
     image: "/places/mont-noir.webp",
-    // Alternative Koordinate (sehr nah): 42.464253345415564, 44.480575952389174
     lat: 42.46438897853548,
     lng: 44.481090710823786,
   },
@@ -725,14 +766,29 @@ const bars = [
     number: 109,
     kind: "bar",
     name: "Skideal (Après-Ski Spot)",
+    website: "https://www.instagram.com/skideal_gudauri/",
     tags: ["Après-Ski", "Terrasse", "Snacks"],
-    desc: "Shop & Treff am Hang – Terrasse, schnelle Drinks/Snacks (saisonal).",
+    desc: "Shop & Treff am Hang – Terrasse, schnelle Drinks/Snacks.",
     hours: "Saisonal (tagsüber)",
     image: "/places/skideal.webp",
     lat: 42.47458992472735,
     lng: 44.48025476479208,
   },
+  {
+  number: 110,
+  kind: "bar",
+  name: "Snow Time Bar",
+  website: "https://snowtimebar.ge/",
+  tags: ["Cocktails", "Shisha", "Après-Ski"],
+  desc: "Bar in Gudauri mit Shisha, Drinks, DJ, gratis Transfer von New Gudauri. Spiel- und Atmosphäre inklusive.",
+  hours: "15:00–23:30",
+  image: "/places/snow-time-bar.webp",
+  lat: 42.4700,
+  lng: 44.4920,
+  instagram: "https://www.instagram.com/snowtime.bar/",
+}
 ];
+
 
 
   const allVenues = useMemo(() => [...restaurants, ...bars], []);

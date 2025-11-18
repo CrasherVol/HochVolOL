@@ -1,0 +1,132 @@
+/*
+Hotels API plugin by Is Open Source
+Ioannis Sannos
+http://www.isopensource.com
+*/
+.hotapi_wrap { margin:5px 0 25px 0; padding:0;  font:normal 13px/16px tahoma, Geneva, sans-serif; color:#333333; }
+.hotapi_main { float:left; width:100%; margin:0; padding:0; }
+.hotapi_main_inner { margin:0 0 0 210px; padding:0; }
+.hotapi_side { margin:0 0 0 -100%; padding:0; width:200px; float:left; overflow:hidden; }
+h2.hotapi_h2 { margin:0 0 5px 0; padding:0; border:none; outline:none; vertical-align:baseline; background:transparent; font:normal 19px/22px tahoma, Geneva, sans-serif; color:#555555; }
+h2.hotapi_h2 img { margin:0 5px; padding: 0; border:none; }
+.hotapi_address { margin:0 0 5px 0; padding:0; font:normal 13px/16px tahoma, Geneva, sans-serif; color:#666666; }
+h3.hotapi_h3 { margin:15px 0 10px 0; padding:0; border:none; outline:none; vertical-align: baseline; background:transparent; font:bold 16px/18px tahoma, Geneva, sans-serif; color:#555555; }
+.hotapi_strechimg { margin:0 0 10px 0; padding:4px; background-color:#fff; border:1px solid #ddd; height:160px; overflow:hidden; position:relative; }
+.hotapi_strechimg img { width:100%; height:160px; border:none; }
+.hotapi_strechimg span {
+	padding:8px 12px; position:absolute; top:20px; left:20px; background-color:#333; opacity:0.6; color:#fff; font:bold 17px/22px arial, sans-serif;
+	-moz-border-radius:8px; -webkit-border-radius:8px; border-radius:8px; z-index:2;
+}
+.hotapi_thumb { margin:0 3px 3px 0; padding:4px; border:1px solid #ccc; background-color:#fff; }
+a.hotapi_gallink, a.hotapi_gallink:visited, a.hotapi_gallink:link, a.hotapi_gallink:active, a.hotapi_gallink:hover {
+	margin:0 5px 5px 0; padding:0; display:block !important; float:left !important; width:55px; border:none; text-decoration:none;
+}
+a.hotapi_gallink img { margin:0; padding:4px; border:1px solid #ccc; background-color:#fff; width:45px; height:45px; }
+a.hotapi_gallink:hover img { border:1px solid #888; }
+.hotapi_lbox { margin:0 0 20px 0; padding:2px 2px 0 2px; border:1px solid #cccccc; }
+.hotapi_lbox h4 { margin:0; padding:2px 3px; border:none; outline:none; vertical-align:baseline; background-color:#456A9D; font:bold 13px/18px arial, Geneva, sans-serif; color:#fff; }
+.hotapi_lbox ul { margin:0; padding:0; list-style:circle inside none !important; text-indent:0; border:none; }
+.hotapi_lbox ul > li { margin:0; padding:2px; list-style:circle inside none !important; text-indent:0; border:none; font:normal 13px/16px tahoma, verdana, sans-serif; background-color:#f6f6f6; }
+.hotapi_lbox ul > li:hover { background-color:#FFFFFF; }
+.hotapi_lbox ul > li:last-child { border:none; }
+.hotapi_lbox ul.hotapi_hidlist { display:none; }
+a.hotapi_morelink, a.hotapi_morelink:link, a.hotapi_morelink:visited, a.hotapi_morelink:active, a.hotapi_morelink:hover {
+	display:block; margin:0; padding:2px 0; text-align:center; background-color:#efefef; border-top:1px solid #CCC; color:#888; text-decoration:none; font:normal 12px/14px tahoma, Geneva, sans-serif;
+}
+a.hotapi_morelink:hover { color:#666666; letter-spacing:1px; }
+/* forms */
+.hotapi_form_box {
+	margin:5px 0 20px 0; padding:8px; background-color:#6E99C4; border:1px solid #FFFFFF; font:normal 13px/16px tahoma, Geneva, sans-serif; color:#FFFFFF; -moz-border-radius:7px; -webkit-border-radius:7px; border-radius:7px;
+}
+.hapi_ftitle { margin:0 0 5px 0; padding:0 0 3px 0; border-bottom:1px solid #DDDDDD; font:bold 14px/18px tahoma, Geneva, sans-serif; color:#FFFFFF; }
+.hotapi_form_box form { margin:0; padding:0; border:none; }
+label.hapi_label { margin:0 0 3px 0; padding:0; display:block; font:normal 13px/16px tahoma, Geneva, sans-serif; color:#FFFFFF; }
+input.hapi_text { margin:0 0 6px 0; padding:2px 3px; width:92% !important; background-color:#f2f2f2 !important; border:1px solid #CCC !important; font:normal 13px/16px tahoma, Geneva, sans-serif; color:#444; }
+textarea.hapi_tarea { margin:0 0 6px 0; padding:2px; width:92% !important; height:50px; background-color:#f2f2f2 !important; border:1px solid #CCC !important; font:normal 13px/16px tahoma, Geneva, sans-serif; color:#444; }
+input.hapi_text:hover, textarea.hapi_tarea:hover { background-color:#FFFFFF; }
+input.hapi_text:focus, textarea.hapi_tarea:focus { background-color:#FFFFFF; box-shadow:none; outline:none; }
+textarea.hapi_tarea:focus { height:100px; }
+button.hapi_button, button[type=submit].hapi_button, button.hapi_button:hover, button[type=submit]:hover.hapi_button, button[type=submit].hapi_button:hover {
+	margin:3px 0; padding:3px 8px; text-decoration:none; cursor:pointer; font:bold 12px/16px tahoma, geneva, sans-serif; color:#fff; height:auto;
+	border:none; -moz-border-radius:4px; -webkit-border-radius:4px; border-radius:4px; background-color:#575757; background-image:none;
+}
+button.hapi_button:hover, button[type=submit]:hover.hapi_button, button[type=submit].hapi_button:hover { background-color:#356a9b; background-image:none; border:none; }
+button.hapi_button[disabled=disabled], button[type=submit].hapi_button[disabled=disabled], button.hapi_button[disabled] { background-color:#888; cursor:default; }
+input.hapi_datepick {
+	margin:0 0 5px 0; padding:3px 4px 3px 24px; width:140px; border:1px solid #CCCCCC; font:normal 13px/16px tahoma, Geneva, sans-serif; color:#333; background:#FFFFFF url(calendar.png) 3px 3px no-repeat; direction:ltr; -moz-border-radius:3px; -webkit-border-radius:3px; border-radius:3px;
+}
+input.hapi_datepick:hover { background-color:#FFFFFF; }
+input.hapi_datepick:focus { background-color:#FFFFFF; border-color: #AAAAAA; box-shadow:none; outline:none; }
+.hapi_pickguests { margin:2px 0 5px 0; padding:0; font:normal 13px/16px tahoma, Geneva, sans-serif; color:#555; text-transform:lowercase; }
+.hapi_pickguests a, .hapi_pickguests a:visited, .hapi_pickguests a:link, .hapi_pickguests a:active, .hapi_pickguests a:hover { color:#222; text-decoration:none; border:none; }
+/* book form */
+.hapi_fbox { margin:20px 0 30px 0; padding:10px; border:1px solid #b7ddf2; background-color:#ebf4fb; color:#333; font:normal 13px/16px Tahoma, Verdana, Arial, Helvetica, sans-serif; }
+.hapi_fbox label { font:normal 13px/16px tahoma, verdana, sans-serif; color:#333; padding:2px; display:block; float:left; margin:0 10px 0 0; width:180px; text-align:left; }
+.hapi_fboxmob { margin:20px 0 30px 0; padding:10px; border:1px solid #b7ddf2; background-color:#ebf4fb; color:#333; font:normal 13px/16px Tahoma, Verdana, Arial, Helvetica, sans-serif; }
+.hapi_fboxmob label { font:normal 13px/16px tahoma, verdana, sans-serif; color:#333; padding:2px; display:block; margin:0 0 5px 0; text-align:left; }
+input.hapi_inputbox { font:normal 13px/16px tahoma, verdana, sans-serif; color:#333; padding:2px 5px; border:1px solid #aacfe4; background-color:#fff; width:180px; margin:0; -moz-border-radius:3px; border-radius:3px; }
+input.hapi_inputboxsm { font:normal 13px/16px tahoma, verdana, sans-serif; color:#333; padding:2px 5px; border:1px solid #aacfe4; background-color:#fff; width:70px; margin:0; -moz-border-radius:3px; border-radius:3px; }
+select.hapi_selectbox { font:normal 13px/16px tahoma, verdana, sans-serif; color:#333; padding:2px 5px; border:1px solid #aacfe4; background-color:#fff; margin:0; -moz-border-radius:3px; border-radius:3px; }
+select.hapi_selectboxsm { font:normal 11px/14px tahoma, verdana, sans-serif; color:#333; padding:1px 3px; border:1px solid #aacfe4; background-color:#fff; margin:0; }
+textarea.hapi_textbox { font:normal 13px/16px tahoma, verdana, sans-serif; color:#333; padding:2px; border:1px solid #aacfe4; width:100%; height:60px; background-color:#fff; margin:0; }
+input.hapi_inputbox:hover, input.hapi_inputboxsm:hover, select.hapi_selectbox:hover, textarea.hapi_textbox:hover { color:#333333; background-color:#FFFFFF; }
+input.hapi_inputbox:focus, input.hapi_inputboxsm:focus, select.hapi_selectbox:focus, textarea.hapi_textbox:focus {
+	outline:none; border-color: rgba(82, 168, 236, 0.8);
+	-webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 8px rgba(82, 168, 236, 0.6);
+	-moz-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 8px rgba(82, 168, 236, 0.6);
+	box-shadow:inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 8px rgba(82, 168, 236, 0.6);
+}
+.hapi_smallnote { margin:0; padding:0; font:normal 11px/14px tahoma, verdana, sans-serif; color:#666; }
+p.hapi_subp { margin:10px 0 20px 0; padding:0 0 5px 0; font:normal 13px/16px tahoma, verdana, sans-serif; color:#666; border-bottom:1px solid #b7ddf2; }
+div.hapi_formside { margin:0 0 0 194px; padding:0; }
+.hapi_reqmark { visibility:hidden; display:none; font:normal 12px/16px tahoma, verdana, sans-serif; color:#ff0000; }
+.hapi_reqmark img { vertical-align:middle; border:none; }
+.hapi_reqmark_show { visibility:visible; display:inline; font:normal 12px/16px tahoma, verdana, sans-serif; color:#ff0000; }
+.hapi_reqmark_show img { vertical-align:middle; border:none; }
+/* table */
+table.hotapi_tbl { margin:0; padding:0; width:100%; border:none; background-color:#fff; border-collapse:collapse; }
+table.hotapi_tbl tr { margin:0 0 5px 0; padding:0; border-bottom:1px solid #ccc; }
+table.hotapi_tbl tr th { margin:0; padding:3px 6px; font:bold 13px/16px tahoma, Geneva, sans-serif; text-align:left; border:none; background-color:#fff; color:#555; white-space:nowrap; vertical-align:top; }
+table.hotapi_tbl tr td { margin:0; padding:3px 6px; font:normal 13px/16px tahoma, Geneva, sans-serif; text-align:left; border:none; background-color:#fff; color:#444; vertical-align:top; }
+table.hotapi_tbl tr th.hotapi_center, table.hotapi_tbl tr td.hotapi_center { text-align:center; }
+table.hotapi_tbl td strong { font-weight:bold; }
+table.hotapi_pickedtbl { margin:0; padding:0; width:100%; border:none; border-collapse:collapse; }
+table.hotapi_pickedtbl tr { margin:0 0 5px 0; padding:0; border:none; }
+table.hotapi_pickedtbl tr th { margin:0; padding:3px 6px; font:bold 13px/16px tahoma, Geneva, sans-serif; text-align:left; border-bottom:1px solid #ccc; color:#555; white-space:nowrap; vertical-align:top; }
+table.hotapi_pickedtbl tr td { margin:0; padding:3px 6px; font:normal 13px/16px tahoma, Geneva, sans-serif; text-align:left; border:none; color:#444; vertical-align:top; }
+table.hotapi_pickedtbl tr th.hotapi_center, table.hotapi_pickedtbl tr td.hotapi_center { text-align:center; }
+table.hotapi_pickedtbl tr td.resh_selectbelow { font:normal 12px/16px tahoma, Geneva, sans-serif; text-align:center; color:#5489cb; text-transform:lowercase; padding:0 0 9px 0; }
+table.hotapi_pickedtbl td strong { font-weight:bold; }
+/* room */
+.hotapi_room { margin:0 0 5px 0; padding:5px; border:1px solid #ccc; background-color:#f2f2f2; }
+.hotapi_roompic { margin:0; padding:0; float:left; width:100px; text-align:center; }
+.hotapi_roomin { margin:0 0 0 100px; padding:0; font:normal 13px/16px verdana, Geneva, sans-serif; color:#333; vertical-align:top; }
+.hotapi_roompic a,.hotapi_roompic a:visited, .hotapi_roompic a:hover, .hotapi_roompic a:active, .hotapi_roompic a:link { text-decoration:none; }
+.hotapi_roompic img { margin:0; padding:4px; border:1px solid #ccc; background-color:#fff; width:80px; height:80px; }
+.hotapi_roompic > div { margin:3px 0 0 0; padding:0; text-align:center; font:normal 12px/14px tahoma, Geneva, sans-serif; color:#666; }
+.hotapi_roomin h4 { margin:0 0 2px 0; padding:0; border:none; text-decoration:none; font:bold 14px/18px verdana, Geneva, sans-serif; color:#555; }
+a.hotapi_calelink, a.hotapi_calelink:visited, a.hotapi_calelink:hover, a.hotapi_calelink:link {
+	margin: 0; padding:0 0 0 20px; background:transparent url(calendar.png) 0 0 no-repeat;
+	font:normal 12px/16px tahoma, Geneva, sans-serif; color:#555; text-decoration:none;
+}
+a.hotapi_calelink:hover { color:#ff6600; }
+.hotapi_roombookbox { margin:2px; padding:0 0 0 5px; width:140px; min-height:90px; float:right; font:normal 12px/16px tahoma, arial, sans-serif; color:#333; vertical-align:top; text-align:center; }
+.hotapi_roombookboxmob { margin:5px 0 0 0; padding:0; font:normal 12px/16px tahoma, arial, sans-serif; color:#333; }
+.hotapi_bookoption_off { margin:2px 0; padding:0; display:none; }
+.hotapi_bookoption_on { margin:2px 0; padding:0; display:block; }
+.hotapi_bookselect { margin:0; padding:0; font:normal 12px/16px tahoma, arial, sans-serif; color:#333; }
+.hotapi_pricecnt { margin:3px 0; padding:0; font:normal 13px/16px tahoma, Geneva, sans-serif; color:#333; }
+.hotapi_onlyone { margin:10px 0 5px 0; padding:0; font:bold 12px/16px tahoma, arial, sans-serif; color:#BC3E3E; }
+.hotapi_warn { margin: 2px 0; padding:0; font:normal 12px/16px tahoma, Geneva, sans-serif; color:#FF0000; }
+.hotapi_success { margin: 2px 0; padding:0; font:normal 12px/16px tahoma, Geneva, sans-serif; color:#008000; }
+.hotapi_wait { margin: 2px 0; padding:0; font:normal 12px/16px tahoma, Geneva, sans-serif; color:#666666; }
+.hotapi_highlightbox { margin:0 0 15px 0; padding:8px; font:normal 13px/16px verdana, Geneva, sans-serif; color:#333; border:1px solid #e4dc99; background-color:#fbf8e0; -moz-border-radius:7px; -webkit-border-radius:7px; border-radius:7px; }
+.hotapi_zero { margin:0; padding:0; }
+.hotapi_dspace { margin:0 0 20px 0; padding:0; }
+.hotapi_dsspace { margin:0 0 5px 0; padding:0; }
+.hotapi_tsspace { margin:5px 0 0 0; padding:0; }
+.hotapi_invisible { margin:0; padding:0; display:none; visibility:hidden; }
+.hotapi_invisible2 { margin:0; padding:0; display:none; }
+/* addon classes */
+.hotapi_center { text-align:center; }
+.hotapi_oldprice { color:#777777; text-decoration:line-through; }
