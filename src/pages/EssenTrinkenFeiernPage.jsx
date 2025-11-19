@@ -1193,6 +1193,114 @@ function MapGudauri({
     </div>
   );
 }
+function DishCard({ dish, lang, labels }) {
+  const L = dish[lang] || dish.de;
+  const imgSrc = dish.image || "/food/georgian-default.jpg";
+
+  const nameLabel =
+    lang === "de"
+      ? `Georgischer Name: ${dish.ge}`
+      : lang === "ru"
+      ? `Грузинское название: ${dish.ge}`
+      : `Georgian name: ${dish.ge}`;
+
+  return (
+    <div
+      style={{
+        borderRadius: "1.1rem",
+        padding: "1px",
+        background:
+          "linear-gradient(135deg, #eff6ff 0%, #dbeafe 40%, #bfdbfe 100%)",
+        boxShadow: "0 10px 25px rgba(15,23,42,0.08)",
+        height: "100%",
+        display: "flex",
+      }}
+    >
+      <div
+        style={{
+          borderRadius: "1rem",
+          background:
+            "linear-gradient(180deg, rgba(255,255,255,0.96), rgba(255,255,255,0.98))",
+          padding: ".7rem .8rem .85rem",
+          display: "flex",
+          flexDirection: "column",
+          gap: ".35rem",
+          width: "100%",
+        }}
+      >
+        {/* Bild oben */}
+        <div
+          style={{
+            overflow: "hidden",
+            borderRadius: ".8rem",
+            marginBottom: ".4rem",
+            border: "1px solid rgba(255,255,255,0.7)",
+            background: "linear-gradient(180deg,#eff6ff,#e0f2fe)",
+            flexShrink: 0,
+          }}
+        >
+          <ImgSafe
+            src={imgSrc}
+            fallback="/food/georgian-default.jpg"
+            alt={L.name}
+            style={{
+              width: "100%",
+              height: "150px",
+              objectFit: "cover",
+              display: "block",
+            }}
+          />
+        </div>
+
+        {/* Titel */}
+        <div
+          style={{
+            fontWeight: 700,
+            color: "#0f172a",
+          }}
+        >
+          {L.name}
+        </div>
+
+        {/* Georgischer Name */}
+        <div
+          style={{
+            fontSize: ".8rem",
+            color: "#6b7280",
+          }}
+        >
+          {nameLabel}
+        </div>
+
+        {/* Textliste – füllt den Rest, damit unten kein blauer Balken bleibt */}
+        <ul
+          style={{
+            listStyle: "disc",
+            marginLeft: "1rem",
+            fontSize: ".85rem",
+            color: "#374151",
+            display: "grid",
+            gap: ".15rem",
+            marginTop: ".2rem",
+          }}
+        >
+          <li>
+            <strong>{labels.what} </strong>
+            {L.what}
+          </li>
+          <li>
+            <strong>{labels.ingredients} </strong>
+            {L.ingredients}
+          </li>
+          <li>
+            <strong>{labels.why} </strong>
+            {L.why}
+          </li>
+        </ul>
+      </div>
+    </div>
+  );
+}
 
 /* ---------------- Seite: Essen · Trinken · Feiern ---------------- */
 export default function EssenTrinkenFeiernPage({ lang, setLang }) {
@@ -1682,7 +1790,7 @@ export default function EssenTrinkenFeiernPage({ lang, setLang }) {
           lang={lang}
         />
 
-        {/* --- GEORGISCHE KÖSTLICHKEITEN --- */}
+           {/* --- GEORGISCHE KÖSTLICHKEITEN --- */}
         <h2
           ref={dishesRef}
           style={{
@@ -1719,102 +1827,14 @@ export default function EssenTrinkenFeiernPage({ lang, setLang }) {
               gap: "1rem",
             }}
           >
-            {GEORGIAN_DISHES.map((dish) => {
-              const L = dish[lang] || dish.de;
-              return (
-                <div
-                  key={dish.key}
-                  style={{
-                    borderRadius: "1.1rem",
-                    padding: "1px",
-                    background:
-                      "linear-gradient(135deg, #eff6ff 0%, #dbeafe 40%, #bfdbfe 100%)",
-                    boxShadow: "0 10px 25px rgba(15,23,42,0.08)",
-                    display: "flex",
-                    flexDirection: "column",
-                  }}
-                >
-                  <div
-                    style={{
-                      borderRadius: "1rem",
-                      background:
-                        "linear-gradient(180deg, rgba(255,255,255,0.96), rgba(255,255,255,0.98))",
-                      padding: ".7rem .8rem .85rem",
-                      display: "grid",
-                      gap: ".35rem",
-                    }}
-                  >
-                    {/* kleines Bild oben */}
-                    <div
-                      style={{
-                        overflow: "hidden",
-                        borderRadius: ".8rem",
-                        marginBottom: ".4rem",
-                        border: "1px solid rgba(255,255,255,0.7)",
-                        background:
-                          "linear-gradient(180deg,#eff6ff,#e0f2fe)",
-                      }}
-                    >
-                      <ImgSafe
-                        src={dish.image}
-                        fallback="/food/georgian-default.jpg"
-                        alt={L.name}
-                        style={{
-                          width: "100%",
-                          height: "150px",
-                          objectFit: "cover",
-                          display: "block",
-                        }}
-                      />
-                    </div>
-
-                    <div
-                      style={{
-                        fontWeight: 700,
-                        color: "#0f172a",
-                      }}
-                    >
-                      {L.name}
-                    </div>
-                    <div
-                      style={{
-                        fontSize: ".8rem",
-                        color: "#6b7280",
-                      }}
-                    >
-                      {lang === "de"
-                        ? `Georgischer Name: ${dish.ge}`
-                        : lang === "ru"
-                        ? `Грузинское название: ${dish.ge}`
-                        : `Georgian name: ${dish.ge}`}
-                    </div>
-                    <ul
-                      style={{
-                        listStyle: "disc",
-                        marginLeft: "1rem",
-                        fontSize: ".85rem",
-                        color: "#374151",
-                        display: "grid",
-                        gap: ".15rem",
-                      }}
-                    >
-                      <li>
-                        <strong>{dishLabels.what} </strong>
-                        {L.what}
-                      </li>
-                      <li>
-                        <strong>{dishLabels.ingredients} </strong>
-                        {L.ingredients}
-                      </li>
-                      <li>
-                        <strong>{dishLabels.why} </strong>
-                        {L.why}
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              );
-            })}
+            {GEORGIAN_DISHES.map((dish) => (
+              <DishCard
+                key={dish.key}
+                dish={dish}
+                lang={lang}
+                labels={dishLabels}
+              />
+            ))}
           </div>
         </Card>
 
@@ -1897,6 +1917,7 @@ export default function EssenTrinkenFeiernPage({ lang, setLang }) {
         <Card title={mapCardTitle} className="hover-react">
           <MapGudauri venues={allVenues} lang={lang} />
         </Card>
+
       </Section>
     </Layout>
   );

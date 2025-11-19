@@ -62,23 +62,9 @@ const W = {
     actsTitle: "Winteraktivitäten & Erlebnisse",
     actsIntro:
       "In Gudauri und Umgebung erwarten dich viele Möglichkeiten – von entspannt bis abenteuerlich:",
-    moreAreasTitle: "Weitere Skigebiete in Georgien",
+    moreAreasTitle: "Hier könnte dein Name stehen - bezahlte Werbung, melde dich gerne",
     miniAreas: [
-      {
-        title: "Bakuriani",
-        text: "Familienfreundlich, neue Lifte (Kinderbereiche).",
-        href: "https://www.georgia.travel/bakuriani",
-      },
-      {
-        title: "Mestia – Hatsvali",
-        text: "Klein & aussichtsreich in Swanetien.",
-        href: "https://www.georgia.travel/ski",
-      },
-      {
-        title: "Tetnuldi",
-        text: "Hochalpin mit langen Abfahrten.",
-        href: "https://www.georgia.travel/ski",
-      },
+     
     ],
     galleryTitle: "Winter-Impressionen",
 
