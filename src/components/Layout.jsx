@@ -2,7 +2,6 @@
 import React from "react";
 import { NavLink, Link } from "react-router-dom";
 import {
-  CalendarHeart,
   Plane,
   Globe2,
   Users,
@@ -14,6 +13,7 @@ import {
 import { TEXTS, DATUM, PAAR } from "../data/constants";
 import { googleCalUrl } from "../data/calendar";
 import WeatherWidget from "./WeatherWidget.jsx";
+// import { googleCalUrl } from "../data/calendar";  // entfällt
 
 /* --- Kleine Flaggen (inline SVG) --- */
 function Flag({ code }) {
@@ -107,10 +107,16 @@ function Header({ lang, setLang }) {
     <header className="topbar">
       <div className="topbar-inner">
         {/* Logo / Brand */}
-        <Link to="/" className="brand">
-          <img src="/vo-logo.png" alt="Volker & Olga Logo" className="brand-logo" />
-          <span className="brand-name">Volker&nbsp;&amp;&nbsp;Olga</span>
-        </Link>
+ <Link to="/" className="brand">
+  <img src="/vo-logo.png" alt="Olga & Volker Logo" className="brand-logo" />
+  <span className="brand-name">
+    <span className="brand-line">Olga</span>
+    <span className="brand-line">&amp;</span>
+    <span className="brand-line">Volker</span>
+  </span>
+</Link>
+
+
 
         {/* Navigation + Utilities rechts */}
         <div className="topbar-right">
@@ -128,14 +134,10 @@ function Header({ lang, setLang }) {
             ))}
           </nav>
 
-          <div className="top-utils" style={{ display: "flex", alignItems: "center", gap: ".6rem" }}>
-            <a href={googleCalUrl} target="_blank" rel="noreferrer" className="btn-ghost">
-              <CalendarHeart size={16} />
-              <span>{t.nav.calendar}</span>
-            </a>
+<div className="top-utils" style={{ display: "flex", alignItems: "center", gap: ".6rem" }}>
+  <LangSwitcher lang={lang} setLang={setLang} />
+</div>
 
-            <LangSwitcher lang={lang} setLang={setLang} />
-          </div>
         </div>
       </div>
     </header>

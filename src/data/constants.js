@@ -241,14 +241,23 @@ export const FACTS = [
 ];
 
 // ======================================================
+// ======================================================
 // Ort / Venue (Gudauri / Alpina)
 // ======================================================
 export const ORT = {
   name: "Alpina Hotel Georgia, Gudauri",
   adresse: "Alpina Hotel, Upper Gudauri, Georgische Heerstraße (E117)",
   googleMapsUrl: LINKS.maps.monteGudauri, // zeigt jetzt auf Alpina
+
+  // 🔁 Mehrsprachige Kurzinfo
   stadtKurzinfo:
     "Gudauri liegt hoch im Großen Kaukasus – Skiort mit weiten Bergblicken, frischer Luft und gemütlichen Hotels.",
+  stadtKurzinfoI18N: {
+    de: "Gudauri liegt hoch im Großen Kaukasus – Skiort mit weiten Bergblicken, frischer Luft und gemütlichen Hotels.",
+    en: "Gudauri lies high in the Greater Caucasus – a ski resort with wide mountain views, fresh air and cozy hotels.",
+    ru: "Гудаури находится высоко в Большом Кавказе — горнолыжный курорт с широкими горными панорамами, чистым воздухом и уютными отелями.",
+  },
+
   mustSees: [
     {
       title: "Gudauri Panorama",
@@ -259,15 +268,7 @@ export const ORT = {
         ru: "Панорама горных хребтов — особенно красиво на закате.",
       },
     },
-    {
-      title: "Jvari / Cross Pass",
-      url: LINKS.maps.crossPass,
-      desc: {
-        de: "Spektakuläre Passstraße entlang der Georgischen Heerstraße.",
-        en: "Spectacular mountain pass along the Georgian Military Highway.",
-        ru: "Зрелищный перевал на Военно-Грузинской дороге.",
-      },
-    },
+
     {
       title: "Kazbegi / Stepantsminda",
       url: LINKS.maps.gudauri,
@@ -280,11 +281,12 @@ export const ORT = {
   ],
 };
 
+
 // ======================================================
-// Unterkunft / Alpina Hotel Georgia
+// Unterkunft / Alpina Hotel Gudauria
 // ======================================================
 export const LOCATION_DETAILS = {
-  name: "Alpina Hotel Georgia",
+  name: "Alpina Hotel Gudauria",
   adresse: "Upper Gudauri, Gudauri 4702, Georgia",
   website: "https://hotelalpina.ge/",
   bookingUrl: "https://www.booking.com/hotel/ge/alpina.de.html",
@@ -364,7 +366,7 @@ export const ANREISE = {
 // ======================================================
 export const UNTERKUNFT = [
   {
-    name: "Alpina Hotel Georgia",
+    name: "Alpina Hotel Gudauria",
     details:
       "Zimmer direkt an der Feier-Location – kurzer Weg, Restaurant & Bar, Bergblick.",
     url: LINKS.booking.methis,
@@ -443,9 +445,9 @@ export const TEXTS = {
     nav: {
       start: "Start",
       flights: "Flüge/Anreise",
-      region: "Infos zur Region",
-      location: "Location",
-      winter: "Winter in Georgien", // 👈 NEU
+      region: "Region & Ausflüge",
+      location: "Location & Unterkunft",
+      winter: "Winter & Aktivitäten in Georgien", // 👈 NEU
       rsvp: "RSVP",
       calendar: "Kalender",
       gallery: "Essen · Trinken · Feiern",
@@ -488,7 +490,7 @@ export const TEXTS = {
     transfersTitle: "Transfers & Wege",
     regionTitle: "Region & Ausflüge",
     locationTitle: "Die Location",
-    locationSub: "Gudauri – Alpina Hotel Georgia, Berge, Panorama & Feier",
+    locationSub: "Gudauri – Alpina Hotel Gudauria, Berge, Panorama & Feier",
 
     rsvpTitle: "Zusagen & Absagen (RSVP)",
     rsvpSub: "Bitte gebt uns bis 24. November 2025 Bescheid",
@@ -567,7 +569,7 @@ export const TEXTS = {
       "Alles Wichtige auf einen Blick – Ort, Zeitplan, Kontakt & Highlights.",
     cardVenueTitle: "Ort & Ablauf",
     venueLead: "Trauung im",
-    venueName: "Alpina Hotel Georgia",
+    venueName: "Alpina Hotel Gudauria",
     venueTail:
       "Dresscode: elegant, winterfest. Musik & Tanz bis in die Nacht.",
     mapsOpen: "Adresse in Google Maps öffnen",
@@ -587,7 +589,7 @@ export const TEXTS = {
     contactEmailLabel: "love@example.com",
 
     accommodationIntro:
-      "Alpina Hotel Georgia ist ein gemütliches Hotel im Skigebiet – mit Restaurant, Bar und weitem Bergblick.",
+      "Alpina Hotel Gudauria ist ein gemütliches Hotel im Skigebiet – mit Restaurant, Bar und weitem Bergblick.",
     bookingCta: "→ Auf Booking.com ansehen",
     hotelFeatures: {
       rooms: "Komfortable Zimmer",
@@ -602,7 +604,7 @@ export const TEXTS = {
     openMap: "Auf Karte öffnen",
 
     transfersIntro:
-      "Die Fahrt vom Tbilisi International Airport (TBS) nach Gudauri/Alpina Hotel Georgia dauert ca. 2–2,5 Std. (je nach Verkehr & Wetter) über die Georgische Heerstraße (E117). Hier sind die besten Optionen:",
+      "Die Fahrt vom Tbilisi International Airport (TBS) nach Gudauri/Alpina Hotel dauert ca. 2–2,5 Std. (je nach Verkehr & Wetter) über die Georgische Heerstraße (E117). Hier sind die besten Optionen:",
     transferOptions: {
       shuttleTitle: "🚐 Shuttle-Service",
       shuttleText:
@@ -616,7 +618,7 @@ export const TEXTS = {
         "Preis ca. 200–300 GEL pro Strecke (je nach Saison/Wetter).",
       rentTitle: "🚗 Mietwagen",
       rentText:
-        "Ideal, wenn ihr flexibel reisen möchtet. Mietwagen sind direkt am Flughafen Tbilisi verfügbar.",
+        "Ideal, wenn ihr flexibel reisen möchtet. Mietwagen sind direkt am Flughafen Tbilisi verfügbar. Denkt an euren internationalen Führerschein!",
       rentNote:
         "Fahrzeit: ca. 2–2,5 h über die E117 – im Winter ggf. Schneekettenpflicht.",
       busTitle: "🚌 Öffentliche Busse",
@@ -631,9 +633,9 @@ export const TEXTS = {
     nav: {
       start: "Home",
       flights: "Flights & Arrival",
-      region: "About the Region",
-      location: "Venue",
-      winter: "Winter in Georgia", // 👈 NEW
+      region: "Region & Excursions",
+      location: "Location & Accommodation",
+      winter: "Winter and activities in Georgia", // 👈 NEW
       rsvp: "RSVP",
       calendar: "Calendar",
       gallery: "Eating · Drinking · Celebrating",
@@ -676,7 +678,7 @@ export const TEXTS = {
     transfersTitle: "Transfers & Directions",
     regionTitle: "Region & Highlights",
     locationTitle: "The Location",
-    locationSub: "Gudauri – Alpina Hotel Georgia, mountains & celebration",
+    locationSub: "Gudauri – aAlpina Hotel Gudauri, mountains & celebration",
 
     rsvpTitle: "RSVP – Confirm or Decline",
     rsvpSub: "Please reply by November 24, 2025",
@@ -754,7 +756,7 @@ export const TEXTS = {
       "All the essentials—location, timeline, contact & highlights.",
     cardVenueTitle: "Venue & Plan",
     venueLead: "Ceremony & dinner at",
-    venueName: "Alpina Hotel Georgia",
+    venueName: "Alpina Hotel Gudauria",
     venueTail:
       "Dress code: elegant, winter-ready. Music & dancing into the night.",
     mapsOpen: "Open address in Google Maps",
@@ -774,7 +776,7 @@ export const TEXTS = {
     contactEmailLabel: "love@example.com",
 
     accommodationIntro:
-      "Alpina Hotel Georgia is a cozy mountain hotel with a restaurant, bar and sweeping views.",
+      "Alpina Hotel Gudauria is a cozy mountain hotel with a restaurant, bar and sweeping views.",
     bookingCta: "→ View on Booking.com",
     hotelFeatures: {
       rooms: "Comfortable rooms",
@@ -789,7 +791,7 @@ export const TEXTS = {
     openMap: "Open on map",
 
     transfersIntro:
-      "The trip from Tbilisi International Airport (TBS) to Gudauri/Alpina Hotel Georgia takes about 2–2.5 h (traffic & weather) via the Georgian Military Highway (E117). Here are the best options:",
+      "The trip from Tbilisi International Airport (TBS) to Gudauri/Alpina Hotel Gudauri takes about 2–2.5 h (traffic & weather) via the Georgian Military Highway (E117). Here are the best options:",
     transferOptions: {
       shuttleTitle: "🚐 Shuttle Service",
       shuttleText:
@@ -817,9 +819,9 @@ export const TEXTS = {
     nav: {
       start: "Главная",
       flights: "Рейсы и прибытие",
-      region: "О регионе",
-      location: "Локация",
-      winter: "Зима в Грузии", // 👈 НОВОЕ
+      region: "Регион и экскурсии",
+      location: "Расположение и проживание",
+      winter: "Зима и развлечения в Грузии", // 👈 НОВОЕ
       rsvp: "RSVP",
       calendar: "Календарь",
       gallery: "Еда · Напитки · Праздники",
@@ -864,7 +866,7 @@ export const TEXTS = {
     regionTitle: "О регионе и достопримечательности",
     locationTitle: "Место проведения",
     locationSub:
-      "Гудаури – Alpina Hotel Georgia, горные виды и праздник",
+      "Гудаури – Alpina Hotel Gudauria, горные виды и праздник",
 
     rsvpTitle: "Подтверждение участия (RSVP)",
     rsvpSub:
@@ -943,7 +945,7 @@ export const TEXTS = {
       "Всё важное: место, расписание, контакты и главное.",
     cardVenueTitle: "Место и программа",
     venueLead: "Церемония и ужин в",
-    venueName: "Alpina Hotel Georgia",
+    venueName: "Alpina Hotel Gudauri",
     venueTail:
       "Дресс-код: элегантно и тепло. Музыка и танцы до ночи.",
     mapsOpen: "Открыть адрес в Google Maps",
@@ -964,7 +966,7 @@ export const TEXTS = {
     contactEmailLabel: "love@example.com",
 
     accommodationIntro:
-      "Alpina Hotel Georgia — уютный горный отель с рестораном, баром и панорамными видами.",
+      "Alpina Hotel Gudauri — уютный горный отель с рестораном, баром и панорамными видами.",
     bookingCta: "→ Открыть на Booking.com",
     hotelFeatures: {
       rooms: "Уютные номера",
@@ -979,7 +981,7 @@ export const TEXTS = {
     openMap: "Открыть на карте",
 
     transfersIntro:
-      "Поездка из аэропорта Тбилиси (TBS) до Гудаури/Alpina Hotel Georgia занимает около 2–2,5 ч (зависит от погоды и трафика) по Военно-Грузинской дороге (E117). Вот лучшие варианты:",
+      "Поездка из аэропорта Тбилиси (TBS) до Гудаури/Alpina Hotel Gudauria занимает около 2–2,5 ч (зависит от погоды и трафика) по Военно-Грузинской дороге (E117). Вот лучшие варианты:",
     transferOptions: {
       shuttleTitle: "🚐 Трансфер-шаттл",
       shuttleText:
@@ -1032,12 +1034,12 @@ export const PROGRAMM = [
       de: "Freie Trauung",
       en: "Wedding ceremony",
       ru: "Церемония",
-    },
-    place: {
-      de: "Panorama-Bereich",
-      en: "Panorama area",
-      ru: "Панорамная зона",
-    },
+   },
+place: {
+  de: "Terrasse draußen!",
+  en: "Terrace outside!",
+  ru: "Терраса на улице!",
+},
   },
   {
     time: "15:45",
@@ -1045,12 +1047,12 @@ export const PROGRAMM = [
       de: "Sektempfang + Fotos",
       en: "Reception & Photos",
       ru: "Фуршет и фото",
-    },
-    place: {
-      de: "Hotel-Lounge",
-      en: "Hotel lounge",
-      ru: "Лаунж отеля",
-    },
+  },
+place: {
+  de: "Hotel-Lounge und draußen!",
+  en: "Hotel lounge and outside!",
+  ru: "Лаунж отеля и на улице!",
+},
   },
   {
     time: "18:00",

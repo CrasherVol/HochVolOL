@@ -192,9 +192,43 @@ body{ background: transparent; }
 :root { --accent:#7b2e2e; --accent-2:#b85c5c; }
 .topbar { position: sticky; top: 0; z-index: 50; backdrop-filter: blur(10px); background: rgba(255,255,255,.85); border-bottom: 1px solid #f1f5f9; box-shadow: 0 4px 18px rgba(184,92,92,.08); }
 .topbar-inner { max-width: 1100px; margin: 0 auto; padding: 0.55rem 1rem; display: flex; align-items: center; justify-content: space-between; gap: .75rem; }
-.brand { display: flex; align-items: center; gap: .6rem; text-decoration: none; }
-.brand-logo { width: 44px; height: 44px; object-fit: contain; border-radius: 10px; box-shadow: 0 0 18px rgba(184,92,92,.25); }
-.brand-name { font-family: "Playfair Display", serif; font-weight: 800; color: var(--accent); font-size: 1.15rem; }
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  text-decoration: none;
+  margin-right: 1.8rem;      /* Abstand zu den Tabs */
+  flex-shrink: 0;
+}
+
+.brand-name {
+  display: flex;
+  flex-direction: column;    /* 3 Zeilen untereinander */
+  line-height: 1.1;
+  font-family: "Playfair Display", serif;
+  font-weight: 800;
+  color: var(--accent);
+  font-size: 1.05rem;
+  margin-top: 0.1rem;        /* optische Zentrierung zum Logo */
+}
+
+.brand-line {
+  white-space: nowrap;
+}
+
+.brand-line:nth-child(1) {   /* Olga */
+  font-size: 1.05rem;
+}
+
+.brand-line:nth-child(2) {   /* & */
+  font-size: 0.9rem;
+  margin-left: 0.2rem;       /* kleine optische Korrektur */
+}
+
+.brand-line:nth-child(3) {   /* Volker */
+  font-size: 1.03rem;
+}
+
 .topbar-right { display: flex; align-items: center; gap: .75rem; flex: 1; justify-content: flex-end; }
 .topnav { display: flex; align-items: center; gap: .25rem; overflow-x: auto; padding: .15rem; scrollbar-width: none; }
 .topnav::-webkit-scrollbar { display: none; }
@@ -2077,4 +2111,233 @@ body:not(.no-effects) .cta-ghost:hover {
   background: rgba(15, 23, 42, 0.8);
   color: #f9fafb;
   box-shadow: 0 10px 28px rgba(15, 23, 42, 0.4);
+}
+
+/* ======================================================
+   NAV-OPTIMIERUNG FÜR LANGE LABELS (DE / EN / RU)
+   ====================================================== */
+
+/* Header-Bar – kompakter */
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  backdrop-filter: blur(10px);
+  background: rgba(255,255,255,.9);
+  border-bottom: 1px solid #f1f5f9;
+  box-shadow: 0 3px 12px rgba(184,92,92,.06);
+}
+
+/* Innen: Logo | Nav | Kalender+Flags in EINER Reihe */
+.topbar-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0.18rem 1rem;          /* deutlich weniger Höhe */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .75rem;
+  flex-wrap: nowrap;              /* NICHT umbrechen -> eine Reihe */
+}
+
+/* Logo + Name */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: .55rem;
+  text-decoration: none;
+}
+
+/* Logo etwas kleiner, aber nicht gequetscht */
+.brand-logo {
+  width: 40px;                    /* Kompromiss: kleiner, aber präsent */
+  height: 40px;
+  object-fit: contain;
+  border-radius: 10px;
+  box-shadow: 0 0 14px rgba(184,92,92,.22);
+}
+
+.brand-name {
+  font-family: "Playfair Display", serif;
+  font-weight: 800;
+  color: var(--accent);
+  font-size: 1.1rem;
+}
+
+/* rechts: Navigation + Kalender + Flags */
+.topbar-right {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  flex: 1 1 auto;
+  justify-content: flex-end;
+  min-width: 0;
+}
+
+/* Hauptnavigation in der Mitte – nimmt den restlichen Platz */
+.topnav {
+  display: flex;
+  align-items: center;
+  gap: .25rem;
+  padding: .08rem 0;
+  scrollbar-width: none;
+  overflow-x: auto;                /* wenn eng, kann horizontal gescrollt werden */
+  flex: 1 1 auto;
+  min-width: 0;
+}
+.topnav::-webkit-scrollbar { display: none; }
+
+/* einzelne runde Tabs – flacher & etwas kleiner */
+.nav-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .35rem;
+  padding: .26rem .7rem;           /* HIER viel Höhe gespart */
+  border-radius: 9999px;
+  font-size: .84rem;
+  line-height: 1.2;
+  text-align: center;
+  white-space: normal;
+  max-width: 11rem;
+  text-decoration: none;
+  color: #334155;
+  border: 1px solid transparent;
+  background: rgba(255,255,255,.7);
+  transition: background .2s ease, color .2s ease, border-color .2s ease;
+}
+
+.nav-link .nav-ico {
+  display: inline-grid;
+  place-items: center;
+}
+
+/* Hover / Active wie gehabt */
+.nav-link:hover {
+  background: #fff;
+  border-color: #f1f5f9;
+  color: var(--accent);
+}
+
+.nav-link .underline {
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 5px;
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform .25s ease;
+}
+.nav-link:hover .underline { transform: scaleX(1); }
+.nav-link.active {
+  background: #fff;
+  border-color: #f1f5f9;
+  color: var(--accent);
+}
+.nav-link.active .underline { transform: scaleX(1); }
+
+.top-utils {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  flex-direction: column;     /* Kalender + Flaggen untereinander */
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+
+/* FLAGGEN WIEDER UNTEREINANDER (kompakt und feste rechte Spalte) */
+.lang-wrap {
+  display: flex;
+  flex-direction: column;     /* untereinander */
+  gap: .25rem;
+  align-items: center;        /* zentriert */
+  justify-content: center;
+  padding-left: .3rem;        /* Abstand zur Navigation */
+  padding-right: .2rem;
+}
+
+
+.flag-btn {
+  padding: 3px;
+  border-radius: .6rem;
+  border:1px solid #e5e7eb;
+  background:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  width: 32px;                /* feste Breite → Layout stabil */
+  height: 26px;               /* kompakte Höhe → reduziert Headerhöhe */
+}
+
+.flag {
+  width: 22px;
+  height: 14px;
+  border-radius: 4px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 1px 3px rgba(0,0,0,.06);
+}
+
+
+/* Kalender-Button etwas flacher */
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+  padding: .32rem .65rem;
+  border-radius: .7rem;
+  border: 1px solid #f1f5f9;
+  background:#fff;
+  color:#334155;
+  text-decoration: none;
+  transition: all .2s ease;
+}
+.btn-ghost:hover { color: var(--accent); border-color: #eaeef3; }
+
+/* Responsiv: auf kleineren Screens etwas lockerer, aber nicht höher */
+@media (max-width: 960px) {
+  .topbar-inner {
+    padding-inline: .75rem;
+    gap: .5rem;
+  }
+
+  .brand-name {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .brand-name { display: none; }
+}
+
+/* === CityPage: Hover komplett deaktivieren === */
+.city-no-hover .card:hover,
+.city-no-hover .hover-react:hover,
+.city-no-hover .badge:hover,
+.city-no-hover .btn:hover,
+.city-no-hover .btn-chip:hover,
+.city-no-hover .stat-mini:hover {
+  color: inherit !important;
+  background: inherit !important;
+  transform: none !important;
+  box-shadow: none !important;
+  filter: none !important;
+  opacity: 1 !important;
+  font-weight: inherit !important;
+  cursor: default !important;
+}
+
+/* verhindert auch Farbänderungen in verschachteltem Inhalt */
+.city-no-hover .card:hover *,
+.city-no-hover .hover-react:hover *,
+.city-no-hover .stat-mini:hover * {
+  color: inherit !important;
+  background: inherit !important;
+  opacity: 1 !important;
+  font-weight: inherit !important;
 }

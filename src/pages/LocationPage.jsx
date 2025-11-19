@@ -29,7 +29,7 @@ export default function LocationPage({ lang, setLang }) {
 
   // Galerie-Captions (Fallbacks, falls keine Übersetzungen existieren)
   const galleryCaptions = [
-    t?.galleryCaptions?.alpina1 || "Alpina Hotel Georgia",
+    t?.galleryCaptions?.alpina1 || "Alpina Hotel Gudauri",
     t?.galleryCaptions?.alpina2 || "Alpina Terrasse bei Schnee",
     t?.galleryCaptions?.alpina3 || "Alpina bei Schnee",
     t?.galleryCaptions?.alpina4 || "Alpina Kaminzimmer",
@@ -42,7 +42,7 @@ export default function LocationPage({ lang, setLang }) {
       ? "Наличие номеров и цены постоянно меняются — проверяйте, пожалуйста, напрямую через Booking или сайт отеля."
       : "Verfügbarkeit und Preise ändern sich schnell – bitte direkt über Booking oder die Hotel-Webseite prüfen.";
 
-        // Hauptbeschreibung Alpina je Sprache
+  // Hauptbeschreibung Alpina je Sprache
   const mainDescDe =
     "Modernes Hotel im Skigebiet Gudauri – mit Sonnenterrasse, Restaurant, Bar und weitem Bergblick über den Kaukasus. Direkter Zugang zu den Skipisten (ski-in / ski-out).";
 
@@ -79,9 +79,15 @@ export default function LocationPage({ lang, setLang }) {
   };
 
   const hints =
-    hintsByLang[lang] ||
-    LOCATION_DETAILS.hinweise ||
-    hintsByLang.de;
+    hintsByLang[lang] || LOCATION_DETAILS.hinweise || hintsByLang.de;
+
+  const amenitiesTitle =
+    t.tipsTitle ||
+    (lang === "en"
+      ? "Amenities"
+      : lang === "ru"
+      ? "Удобства"
+      : "Ausstattung");
 
   return (
     <Layout lang={lang} setLang={setLang}>
@@ -100,7 +106,7 @@ export default function LocationPage({ lang, setLang }) {
           {heroImage && (
             <img
               src={heroImage}
-              alt={LOCATION_DETAILS?.name || "Alpina Hotel Georgia"}
+              alt={LOCATION_DETAILS?.name || "Alpina Hotel Gudauri"}
               style={{
                 width: "80%",
                 height: "auto",
@@ -150,7 +156,11 @@ export default function LocationPage({ lang, setLang }) {
               target="_blank"
               rel="noreferrer"
             >
-              {lang === "en" ? "Booking.com" : lang === "ru" ? "Бронирование" : "Booking"}
+              {lang === "en"
+                ? "Booking.com"
+                : lang === "ru"
+                ? "Бронирование"
+                : "Booking"}
             </a>
             <a
               className="cta-ghost"
@@ -182,7 +192,6 @@ export default function LocationPage({ lang, setLang }) {
               ))}
             </ul>
           )}
-
         </Card>
 
         {/* ---------- GALERIE direkt unter Alpina-Karte ---------- */}
@@ -204,7 +213,7 @@ export default function LocationPage({ lang, setLang }) {
           }}
         >
           {/* Ausstattung */}
-          <Card title={t.tipsTitle || "Ausstattung"} className="hover-react">
+          <Card title={amenitiesTitle} className="hover-react">
             <div className="amenities" style={{ display: "grid", gap: ".5rem" }}>
               <Amenity
                 icon={<BedDouble size={16} />}
@@ -281,9 +290,7 @@ export default function LocationPage({ lang, setLang }) {
 
           {/* Zimmer */}
           <Card
-            title={
-              lang === "en" ? "Rooms" : lang === "ru" ? "Номера" : "Zimmer"
-            }
+            title={lang === "en" ? "Rooms" : lang === "ru" ? "Номера" : "Zimmer"}
             className="hover-react"
           >
             <ul style={{ marginLeft: "1rem", listStyle: "disc" }}>
@@ -555,16 +562,21 @@ function AltHotel({ hotel, lang }) {
 
   const routeLabel =
     lang === "en"
-      ? "Open route from Alpina in Google Maps"
+      ? "Open route from your location in Google Maps"
       : lang === "ru"
-      ? "Открыть маршрут от Alpina в Google Картах"
-      : "Route vom Alpina auf Google Maps öffnen";
+      ? "Открыть маршрут от вашего местоположения в Google Картах"
+      : "Route vom aktuellen Standort auf Maps öffnen";
 
   const websiteLabel =
     lang === "en" ? "Website" : lang === "ru" ? "Веб-сайт" : "Website";
 
   const bookingLabel =
     lang === "en" ? "Booking" : lang === "ru" ? "Бронирование" : "Booking";
+
+  const tags =
+    Array.isArray(hotel.tags) && typeof hotel.tags[0] === "string"
+      ? hotel.tags
+      : hotel.tags?.[lang] || hotel.tags?.de || [];
 
   return (
     <div
@@ -601,7 +613,7 @@ function AltHotel({ hotel, lang }) {
         </div>
         <div style={{ fontSize: ".9rem", color: "#475569" }}>{text}</div>
 
-        {hotel.tags && hotel.tags.length > 0 && (
+        {tags && tags.length > 0 && (
           <div
             style={{
               display: "flex",
@@ -610,7 +622,7 @@ function AltHotel({ hotel, lang }) {
               marginTop: ".25rem",
             }}
           >
-            {hotel.tags.map((tag) => (
+            {tags.map((tag) => (
               <span
                 key={tag}
                 style={{
@@ -719,9 +731,10 @@ const NEAR_HOTELS = [
     name: "Chalet Papa Basili",
     image: "/location/chalet-papa-basili.jpg",
     websiteUrl: "https://www.chaletpapabasili.com/",
-    bookingUrl: "https://www.booking.com/hotel/ge/chalet-papa-basili.de.html",
+    bookingUrl:
+      "https://www.booking.com/hotel/ge/sunny-hills.de.html?aid=356980&label=gog235jc-10CAsoUkILc3VubnktaGlsbHNIB1gDaDuIAQGYATO4ARfIAQzYAQPoAQH4AQGIAgGoAgG4ApPE88gGwAIB0gIkNjAyNzFhNTAtN2EyOS00YWJmLTg5NmUtODM0MTQ5MTBiZjlm2AIB4AIB-Share-GlsNtva%401763500574-Share-2tR9da%401763500801&sid=dddac8c7364de34e98502ed0e257591e&all_sr_blocks=933308407_386602827_0_1_0_120981&checkin=2026-02-26&checkout=2026-03-03&dest_id=-2327363&dest_type=city&dist=0&group_adults=2&group_children=0&hapos=1&highlighted_blocks=933308407_386602827_0_1_0_120981&hpos=1&matching_block_id=933308407_386602827_0_1_0_120981&no_rooms=1&req_adults=2&req_children=0&room1=A%2CA&sb_price_type=total&sr_order=popularity&sr_pri_blocks=933308407_386602827_0_1_0_120981_177779&srepoch=1763500880&srpvid=86ed9626a4bd0052&type=total&ucfs=1&",
     mapsUrl:
-      "https://www.google.com/maps/dir/?api=1&origin=Alpina+Hotel+Gudauri&destination=Chalet+Papa+Basili",
+      "https://www.google.com/maps/dir/?api=1&destination=Chalet+Papa+Basili",
     distanceDe: "Nur ca. 200 m vom Alpina entfernt",
     distanceEn: "Only about 200 m from Alpina",
     distanceRu: "Всего около 200 м от Alpina",
@@ -731,7 +744,11 @@ const NEAR_HOTELS = [
       "Cozy chalet with mountain views. Very close to Alpina – ideal for groups.",
     textRu:
       "Уютное шале с видом на горы. Очень близко к Alpina — идеально для компаний.",
-    tags: ["Sehr nah", "Chalet", "Bergblick"],
+    tags: {
+      de: ["Sehr nah", "Chalet", "Bergblick"],
+      en: ["Very close", "Chalet", "Mountain view"],
+      ru: ["Очень близко", "Шале", "Вид на горы"],
+    },
   },
   {
     name: "Monte Hotel Gudauri",
@@ -739,7 +756,7 @@ const NEAR_HOTELS = [
     websiteUrl: "https://montegudauri.com/",
     bookingUrl: "https://www.booking.com/hotel/ge/monte.de.html",
     mapsUrl:
-      "https://www.google.com/maps/dir/?api=1&origin=Alpina+Hotel+Gudauri&destination=Monte+Hotel+Gudauri",
+      "https://www.google.com/maps/dir/?api=1&destination=Monte+Hotel+Gudauri",
     distanceDe: "Etwa 400 m Fußweg zum Alpina",
     distanceEn: "About 400 m walking distance from Alpina",
     distanceRu: "Около 400 м пешком от Alpina",
@@ -749,7 +766,11 @@ const NEAR_HOTELS = [
       "Quiet hotel with sauna & jacuzzi. Great location within walking distance to Alpina.",
     textRu:
       "Спокойный отель с сауной и джакузи. Отличное расположение, пешком до Alpina.",
-    tags: ["Sehr nah", "Sauna", "Jacuzzi"],
+    tags: {
+      de: ["Sehr nah", "Sauna", "Jacuzzi"],
+      en: ["Very close", "Sauna", "Jacuzzi"],
+      ru: ["Очень близко", "Сауна", "Джакузи"],
+    },
   },
   {
     name: "Winter House Gudauri",
@@ -758,7 +779,7 @@ const NEAR_HOTELS = [
     bookingUrl:
       "https://www.booking.com/hotel/ge/winter-house-gudauri.de.html",
     mapsUrl:
-      "https://www.google.com/maps/dir/?api=1&origin=Alpina+Hotel+Gudauri&destination=Winter+House+Gudauri",
+      "https://www.google.com/maps/dir/?api=1&destination=Winter+House+Gudauri",
     distanceDe: "Ca. 250 m oberhalb des Alpina",
     distanceEn: "Around 250 m above Alpina",
     distanceRu: "Примерно 250 м выше Alpina",
@@ -766,22 +787,31 @@ const NEAR_HOTELS = [
     textEn: "Very close, good value, family-run atmosphere.",
     textRu:
       "Очень близко, хорошее соотношение цены и качества, семейная атмосфера.",
-    tags: ["Sehr nah", "Familiengeführt"],
+    tags: {
+      de: ["Sehr nah", "Familiengeführt"],
+      en: ["Very close", "Family-run"],
+      ru: ["Очень близко", "Семейный отель"],
+    },
   },
   {
     name: "Hotel Tsiga",
     image: "/location/hotel-tsiga.jpg",
     websiteUrl: "https://www.tsiga.ge/",
-    bookingUrl: "https://www.booking.com/hotel/ge/tsiga-gudauri.de.html",
+    bookingUrl:
+      "https://www.booking.com/hotel/ge/tsiga.de.html?aid=356980&label=gog235jc-10CAsoUkILc3VubnktaGlsbHNIB1gDaDuIAQGYATO4ARfIAQzYAQPoAQH4AQGIAgGoAgG4ApPE88gGwAIB0gIkNjAyNzFhNTAtN2EyOS00YWJmLTg5NmUtODM0MTQ5MTBiZjlm2AIB4AIB-Share-biDXUS%401763500617&sid=dddac8c7364de34e98502ed0e257591e&all_sr_blocks=798241508_340022871_2_1_0&checkin=2026-02-26&checkout=2026-03-03&dest_id=-2327363&dest_type=city&dist=0&group_adults=2&group_children=0&hapos=1&highlighted_blocks=798241508_340022871_2_1_0&hpos=1&matching_block_id=798241508_340022871_2_1_0&no_rooms=1&req_adults=2&req_children=0&room1=A%2CA&sb_price_type=total&sr_order=popularity&sr_pri_blocks=798241508_340022871_2_1_0__235125&srepoch=1763500938&srpvid=b4919643dffc03b5&type=total&ucfs=1&",
     mapsUrl:
-      "https://www.google.com/maps/dir/?api=1&origin=Alpina+Hotel+Gudauri&destination=Hotel+Tsiga+Gudauri",
+      "https://www.google.com/maps/dir/?api=1&destination=Hotel+Tsiga+Gudauri",
     distanceDe: "Ca. 350 m zum Alpina",
     distanceEn: "Approx. 350 m to Alpina",
     distanceRu: "Около 350 м до Alpina",
     textDe: "Kleines, ruhiges Hotel – sehr nah am Alpina.",
     textEn: "Small, quiet hotel – very close to Alpina.",
     textRu: "Небольшой тихий отель — очень близко к Alpina.",
-    tags: ["Sehr nah", "Klein & ruhig"],
+    tags: {
+      de: ["Sehr nah", "Klein & ruhig"],
+      en: ["Very close", "Small & quiet"],
+      ru: ["Очень близко", "Небольшой и тихий"],
+    },
   },
 ];
 
@@ -791,9 +821,10 @@ const NEAR_PENSIONS = [
     name: "Snow House Gudauri",
     image: "/location/snow-house.jpg",
     websiteUrl: null,
-    bookingUrl: "https://www.booking.com/hotel/ge/snow-house-gudauri.de.html",
+    bookingUrl:
+      "https://www.booking.com/hotel/ge/snow-house.de.html?aid=356980&label=gog235jc-10CAsoUkILc3VubnktaGlsbHNIB1gDaDuIAQGYATO4ARfIAQzYAQPoAQH4AQGIAgGoAgG4ApPE88gGwAIB0gIkNjAyNzFhNTAtN2EyOS00YWJmLTg5NmUtODM0MTQ5MTBiZjlm2AIB4AIB-Share-CqGIobS%401763500654&sid=dddac8c7364de34e98502ed0e257591e&checkin=2026-02-26&checkout=2026-03-03&dest_id=-2327363&dest_type=city&dist=0&group_adults=2&group_children=0&hapos=1&hpos=1&no_rooms=1&req_adults=2&req_children=0&room1=A%2CA&sb_price_type=total&soh=1&sr_order=popularity&srepoch=1763500976&srpvid=725b9656974005ad&type=total&ucfs=1&#no_availability_msg",
     mapsUrl:
-      "https://www.google.com/maps/dir/?api=1&origin=Alpina+Hotel+Gudauri&destination=Snow+House+Gudauri",
+      "https://www.google.com/maps/dir/?api=1&destination=Snow+House+Gudauri",
     distanceDe: "Nur ca. 250–300 m vom Alpina",
     distanceEn: "Only 250–300 m from Alpina",
     distanceRu: "Всего 250–300 м от Alpina",
@@ -803,35 +834,40 @@ const NEAR_PENSIONS = [
       "Very close, affordable rooms, often with breakfast. Ideal for groups.",
     textRu:
       "Очень близко, недорогие номера, часто с завтраком. Отлично подходит для компаний.",
-    tags: ["Frühstück", "Günstig", "Sehr nah"],
+    tags: {
+      de: ["Frühstück", "Günstig", "Sehr nah"],
+      en: ["Breakfast", "Budget", "Very close"],
+      ru: ["Завтрак", "Недорого", "Очень близко"],
+    },
   },
   {
-  name: "Four Seasons – New Gudauri",
-  image: "/location/four-seasons-new-gudauri.jpg",
-  websiteUrl: "https://www.gudauriski.ge/fourseasons",
-  bookingUrl: "https://www.booking.com/Share-qRbQlt",
-  mapsUrl:
-    "https://www.google.com/maps/dir/?api=1&origin=Alpina+Hotel+Gudauri&destination=New+Gudauri+Four+Seasons",
-  tags: ["Modern", "Top Bewertungen", "Komfort"],
-
-  textDe:
-    "Modernes und sehr beliebtes Hotel im Herzen von New Gudauri. Komfortable Zimmer, schöne Aussicht und ideale Lage für Aktivitäten.",
-  textEn:
-    "Modern and very popular hotel in the heart of New Gudauri. Comfortable rooms, great views and an ideal location for activities.",
-  textRu:
-    "Современный и очень популярный отель в центре Нью Гудаури. Комфортабельные номера, красивый вид и отличное расположение для отдыха.",
-
-  distanceDe: "Ca. 1–2 km vom Alpina (etwa 3–5 Minuten Fahrt)",
-  distanceEn: "Approx. 1–2 km from Alpina (about 3–5 min by car)",
-  distanceRu: "Около 1–2 км от Alpina (примерно 3–5 минут на машине)",
-},
-{
+    name: "Four Seasons – New Gudauri",
+    image: "/location/four-seasons-new-gudauri.jpg",
+    websiteUrl: "https://www.gudauriski.ge/fourseasons",
+    bookingUrl: "https://www.booking.com/Share-qRbQlt",
+    mapsUrl: "https://maps.app.goo.gl/385UFW3kHf2kVAsb6",
+    textDe:
+      "Modernes und sehr beliebtes Hotel im Herzen von New Gudauri. Komfortable Zimmer, schöne Aussicht und ideale Lage für Aktivitäten.",
+    textEn:
+      "Modern and very popular hotel in the heart of New Gudauri. Comfortable rooms, great views and an ideal location for activities.",
+    textRu:
+      "Современный и очень популярный отель в центре Нью Гудаури. Комфортабельные номера, красивый вид и отличное расположение для отдыха.",
+    distanceDe: "Ca. 1–2 km vom Alpina (etwa 3–5 Minuten Fahrt)",
+    distanceEn: "Approx. 1–2 km from Alpina (about 3–5 min by car)",
+    distanceRu: "Около 1–2 км от Alpina (примерно 3–5 минут на машине)",
+    tags: {
+      de: ["Modern", "Top Bewertungen", "Komfort"],
+      en: ["Modern", "Top rated", "Comfort"],
+      ru: ["Современно", "Высокие оценки", "Комфорт"],
+    },
+  },
+  {
     name: "Tsar Bani Spa & Hotel",
     image: "/location/tsar-bani.jpg",
     websiteUrl: "http://www.tsarbani.com/",
-    bookingUrl: "https://www.booking.com/hotel/ge/tsar-bani-spa.de.html",
+    bookingUrl: "",
     mapsUrl:
-      "https://www.google.com/maps/dir/?api=1&origin=Alpina+Hotel+Gudauri&destination=Tsar+Bani+Gudauri",
+      "https://www.google.com/maps/dir/?api=1&destination=Tsar+Bani+Gudauri",
     distanceDe: "Ca. 450 m bis zum Alpina",
     distanceEn: "Approx. 450 m to Alpina",
     distanceRu: "Около 450 м до Alpina",
@@ -841,7 +877,11 @@ const NEAR_PENSIONS = [
       "Popular due to spa & baths. Very close location – many rooms include breakfast.",
     textRu:
       "Популярно благодаря спа и баням. Очень близко — много номеров с завтраком.",
-    tags: ["Spa", "Frühstück", "Sehr nah"],
+    tags: {
+      de: ["Spa", "Frühstück", "Sehr nah"],
+      en: ["Spa", "Breakfast", "Very close"],
+      ru: ["Спа", "Завтрак", "Очень близко"],
+    },
   },
   {
     name: "Gudauri Loft Hotel",
@@ -849,7 +889,7 @@ const NEAR_PENSIONS = [
     websiteUrl: "https://gudauriloft.ge/",
     bookingUrl: "https://www.booking.com/hotel/ge/gudauri-loft.de.html",
     mapsUrl:
-      "https://www.google.com/maps/dir/?api=1&origin=Alpina+Hotel+Gudauri&destination=Gudauri+Loft+Hotel",
+      "https://www.google.com/maps/dir/?api=1&destination=Gudauri+Loft+Hotel",
     distanceDe: "Rund 650 m vom Alpina",
     distanceEn: "Around 650 m from Alpina",
     distanceRu: "Около 650 м от Alpina",
@@ -859,7 +899,11 @@ const NEAR_PENSIONS = [
       "Popular hotel with breakfast, sauna & rooftop. Walkable but slightly farther.",
     textRu:
       "Популярный отель с завтраком, сауной и крышей. Можно дойти пешком, но чуть дальше.",
-    tags: ["Frühstück", "Sauna"],
+    tags: {
+      de: ["Frühstück", "Sauna"],
+      en: ["Breakfast", "Sauna"],
+      ru: ["Завтрак", "Сауна"],
+    },
   },
   {
     name: "Loft 2 Aparthotel",
@@ -867,7 +911,7 @@ const NEAR_PENSIONS = [
     websiteUrl: null,
     bookingUrl: "https://www.booking.com/Share-65ajzb5",
     mapsUrl:
-      "https://www.google.com/maps/dir/?api=1&origin=Alpina+Hotel+Gudauri&destination=Gudauri+Loft+2",
+      "https://www.google.com/maps/dir/?api=1&destination=Gudauri+Loft+2",
     distanceDe: "Ca. 500–600 m vom Alpina",
     distanceEn: "Approx. 500–600 m from Alpina",
     distanceRu: "Около 500–600 м от Alpina",
@@ -875,16 +919,19 @@ const NEAR_PENSIONS = [
     textEn: "Studios & apartments – some offer breakfast options.",
     textRu:
       "Студии и апартаменты — завтрак возможен в некоторых вариантах.",
-    tags: ["Apartments", "Optional Frühstück"],
+    tags: {
+      de: ["Apartments", "Optional Frühstück"],
+      en: ["Apartments", "Optional breakfast"],
+      ru: ["Апартаменты", "Завтрак по желанию"],
+    },
   },
   {
-    name: "Quadrumi Mountain House",
+    name: "Quadrum Mountain House",
     image: "/location/quadrumi.jpg",
     websiteUrl: "https://quadrum-gudauri.com/",
     bookingUrl:
       "https://www.booking.com/hotel/ge/quadrumi-mountain-house.en-gb.html",
-    mapsUrl:
-      "https://www.google.com/maps/dir/?api=1&origin=Alpina+Hotel+Gudauri&destination=Quadrumi",
+    mapsUrl: "https://www.google.com/maps/dir/?api=1&destination=Quadrumi",
     distanceDe: "Etwa 900 m (Bungalows, sehr beliebt)",
     distanceEn: "Approx. 900 m (wooden bungalows)",
     distanceRu: "Около 900 м (бунгало)",
@@ -894,7 +941,11 @@ const NEAR_PENSIONS = [
       "Wooden bungalows with beautiful views. Breakfast available.",
     textRu:
       "Деревянные бунгало с красивым видом. Завтрак доступен.",
-    tags: ["Bungalows", "Frühstück"],
+    tags: {
+      de: ["Bungalows", "Frühstück"],
+      en: ["Bungalows", "Breakfast"],
+      ru: ["Бунгало", "Завтрак"],
+    },
   },
 ];
 
@@ -907,8 +958,12 @@ const ALT_HOTELS = [
     bookingUrl:
       "https://www.booking.com/hotel/ge/gudauri-lodge.de.html",
     mapsUrl:
-      "https://www.google.com/maps/dir/?api=1&origin=Alpina+Hotel+Gudauri&destination=Gudauri+Lodge",
-    tags: ["Ski-in/Ski-out", "Spa & Pool", "Panorama"],
+      "https://www.google.com/maps/dir/?api=1&destination=Gudauri+Lodge",
+    tags: {
+      de: ["Ski-in/Ski-out", "Spa & Pool", "Panorama"],
+      en: ["Ski-in/ski-out", "Spa & pool", "Panorama"],
+      ru: ["Ski-in/Ski-out", "Спа и бассейн", "Панорама"],
+    },
     textDe:
       "Modernes Ski-in/Ski-out-Hotel mit Spa-Bereich, Innenpool und Sonnenterrasse.",
     textEn:
@@ -925,8 +980,12 @@ const ALT_HOTELS = [
     websiteUrl: "https://www.inngudauri.com/",
     bookingUrl: "https://gudauriinn.org/booking/",
     mapsUrl:
-      "https://www.google.com/maps/dir/?api=1&origin=Alpina+Hotel+Gudauri&destination=Gudauri+Inn",
-    tags: ["Preis-Leistung", "Restaurant", "Bergblick"],
+      "https://www.google.com/maps/dir/?api=1&destination=Gudauri+Inn",
+    tags: {
+      de: ["Preis-Leistung", "Restaurant", "Bergblick"],
+      en: ["Value for money", "Restaurant", "Mountain view"],
+      ru: ["Хорошая цена", "Ресторан", "Вид на горы"],
+    },
     textDe:
       "Beliebtes Hotel mit Restaurant & Terrasse. Sehr gute Option preislich.",
     textEn:
@@ -942,10 +1001,14 @@ const ALT_HOTELS = [
     image: "/location/carpe-diem-gudauri.jpg",
     websiteUrl: "https://carpediem.ge/",
     bookingUrl:
-      "https://www.booking.com/hotel/ge/carpe-diem-gudauri.de.html",
+      "https://www.booking.com/hotel/ge/hotel-carpe-diem-gudauri.de.html?aid=356980&label=gog235jc-10CAsoUkILc3VubnktaGlsbHNIB1gDaDuIAQGYATO4ARfIAQzYAQPoAQH4AQGIAgGoAgG4ApPE88gGwAIB0gIkNjAyNzFhNTAtN2EyOS00YWJmLTg5NmUtODM0MTQ5MTBiZjlm2AIB4AIB-Share-8wJe9g%401763500701&sid=dddac8c7364de34e98502ed0e257591e&checkin=2026-02-26&checkout=2026-03-03&dest_id=-2327363&dest_type=city&dist=0&group_adults=2&group_children=0&hapos=1&hpos=1&no_rooms=1&req_adults=2&req_children=0&room1=A%2CA&sb_price_type=total&soh=1&sr_order=popularity&srepoch=1763501022&srpvid=c650966de35b032c&type=total&ucfs=1&#no_availability_msg",
     mapsUrl:
-      "https://www.google.com/maps/dir/?api=1&origin=Alpina+Hotel+Gudauri&destination=Carpe+Diem+Gudauri",
-    tags: ["Nahe Lift", "Terrasse", "Sauna"],
+      "https://www.google.com/maps/dir/?api=1&destination=Carpe+Diem+Gudauri",
+    tags: {
+      de: ["Nahe Lift", "Terrasse", "Sauna"],
+      en: ["Near lift", "Terrace", "Sauna"],
+      ru: ["Возле подъёмника", "Терраса", "Сауна"],
+    },
     textDe:
       "Stylishes Hotel nahe des Lifts mit Restaurant & Sauna.",
     textEn:
@@ -962,8 +1025,12 @@ const ALT_HOTELS = [
     websiteUrl: "https://marcopolo.ge/",
     bookingUrl: "https://marcopolo.ge/booking/",
     mapsUrl:
-      "https://www.google.com/maps/dir/?api=1&origin=Alpina+Hotel+Gudauri&destination=Marco+Polo+Hotel+Gudauri",
-    tags: ["Klassiker", "Pool", "Spa"],
+      "https://www.google.com/maps/dir/?api=1&destination=Marco+Polo+Hotel+Gudauri",
+    tags: {
+      de: ["Klassiker", "Pool", "Spa"],
+      en: ["Classic", "Pool", "Spa"],
+      ru: ["Классика", "Бассейн", "Спа"],
+    },
     textDe:
       "Klassisches Ski-Resort-Hotel direkt an der Piste.",
     textEn:

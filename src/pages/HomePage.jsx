@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import Layout from "../components/Layout.jsx";
 import Card from "../components/Card.jsx";
-import { TEXTS, DATUM, LINKS, getProgramm } from "../data/constants.js";
+import { TEXTS, DATUM, LINKS, getProgramm, googleCalUrl } from "../data/constants.js";
 import {
   CalendarHeart,
   MapPin,
@@ -77,11 +77,16 @@ export default function HomePage({ lang, setLang }) {
           <span className="name">Volker</span>
         </div>
 
-        <div className="date-pill">
-          <CalendarHeart size={18} />
-    <span>{DATUM.textI18N?.[lang] || DATUM.textI18N.de}</span>
-
-        </div>
+     <a
+  href={googleCalUrl}
+  target="_blank"
+  rel="noreferrer"
+  className="date-pill"
+  style={{ textDecoration: "none", color: "inherit" }}
+>
+  <CalendarHeart size={18} />
+  <span>{DATUM.textI18N?.[lang] || DATUM.textI18N.de}</span>
+</a>
 
         {/* ---------- COUNTDOWN unter dem Datum ---------- */}
         <div className="countdown-wrap">
@@ -156,7 +161,7 @@ export default function HomePage({ lang, setLang }) {
           >
             <MapPin size={14} />
             <span>
-              {tt("quickRegion", "Gudauri · Alpina Hotel Georgia")}
+              {tt("quickRegion", "Gudauri · Alpina Hotel Gudauri")}
             </span>
           </a>
           <div className="quick">
@@ -193,7 +198,7 @@ export default function HomePage({ lang, setLang }) {
             <p className="feier-text">
               {tt("venueLead", "Trauung im")}{" "}
               <strong>
-                {tt("venueName", "Alpina Hotel Georgia")}
+                {tt("venueName", "Alpina Hotel Gudauri")}
               </strong>
               .
               <br />
