@@ -283,10 +283,10 @@ export const ORT = {
 
 
 // ======================================================
-// Unterkunft / Alpina Hotel Gudauria
+// Unterkunft / Alpina Hotel Gudauri
 // ======================================================
 export const LOCATION_DETAILS = {
-  name: "Alpina Hotel Gudauria",
+  name: "Alpina Hotel Gudauri",
   adresse: "Upper Gudauri, Gudauri 4702, Georgia",
   website: "https://hotelalpina.ge/",
   bookingUrl: "https://www.booking.com/hotel/ge/alpina.de.html",
@@ -366,7 +366,7 @@ export const ANREISE = {
 // ======================================================
 export const UNTERKUNFT = [
   {
-    name: "Alpina Hotel Gudauria",
+    name: "Alpina Hotel Gudauri",
     details:
       "Zimmer direkt an der Feier-Location – kurzer Weg, Restaurant & Bar, Bergblick.",
     url: LINKS.booking.methis,
@@ -490,7 +490,7 @@ export const TEXTS = {
     transfersTitle: "Transfers & Wege",
     regionTitle: "Region & Ausflüge",
     locationTitle: "Die Location",
-    locationSub: "Gudauri – Alpina Hotel Gudauria, Berge, Panorama & Feier",
+    locationSub: "Gudauri – Alpina Hotel Gudauri, Berge, Panorama & Feier",
 
     rsvpTitle: "Zusagen & Absagen (RSVP)",
     rsvpSub: "Bitte gebt uns bis 24. November 2025 Bescheid",
@@ -569,7 +569,7 @@ export const TEXTS = {
       "Alles Wichtige auf einen Blick – Ort, Zeitplan, Kontakt & Highlights.",
     cardVenueTitle: "Ort & Ablauf",
     venueLead: "Trauung im",
-    venueName: "Alpina Hotel Gudauria",
+    venueName: "Alpina Hotel Gudauri",
     venueTail:
       "Dresscode: elegant, winterfest. Musik & Tanz bis in die Nacht.",
     mapsOpen: "Adresse in Google Maps öffnen",
@@ -589,7 +589,7 @@ export const TEXTS = {
     contactEmailLabel: "love@example.com",
 
     accommodationIntro:
-      "Alpina Hotel Gudauria ist ein gemütliches Hotel im Skigebiet – mit Restaurant, Bar und weitem Bergblick.",
+      "Alpina Hotel Gudauri ist ein gemütliches Hotel im Skigebiet – mit Restaurant, Bar und weitem Bergblick.",
     bookingCta: "→ Auf Booking.com ansehen",
     hotelFeatures: {
       rooms: "Komfortable Zimmer",
@@ -756,7 +756,7 @@ export const TEXTS = {
       "All the essentials—location, timeline, contact & highlights.",
     cardVenueTitle: "Venue & Plan",
     venueLead: "Ceremony & dinner at",
-    venueName: "Alpina Hotel Gudauria",
+    venueName: "Alpina Hotel Gudauri",
     venueTail:
       "Dress code: elegant, winter-ready. Music & dancing into the night.",
     mapsOpen: "Open address in Google Maps",
@@ -776,7 +776,7 @@ export const TEXTS = {
     contactEmailLabel: "love@example.com",
 
     accommodationIntro:
-      "Alpina Hotel Gudauria is a cozy mountain hotel with a restaurant, bar and sweeping views.",
+      "Alpina Hotel Gudauri is a cozy mountain hotel with a restaurant, bar and sweeping views.",
     bookingCta: "→ View on Booking.com",
     hotelFeatures: {
       rooms: "Comfortable rooms",
@@ -866,7 +866,7 @@ export const TEXTS = {
     regionTitle: "О регионе и достопримечательности",
     locationTitle: "Место проведения",
     locationSub:
-      "Гудаури – Alpina Hotel Gudauria, горные виды и праздник",
+      "Гудаури – Alpina Hotel Gudauri, горные виды и праздник",
 
     rsvpTitle: "Подтверждение участия (RSVP)",
     rsvpSub:
@@ -981,7 +981,7 @@ export const TEXTS = {
     openMap: "Открыть на карте",
 
     transfersIntro:
-      "Поездка из аэропорта Тбилиси (TBS) до Гудаури/Alpina Hotel Gudauria занимает около 2–2,5 ч (зависит от погоды и трафика) по Военно-Грузинской дороге (E117). Вот лучшие варианты:",
+      "Поездка из аэропорта Тбилиси (TBS) до Гудаури/Alpina Hotel Gudauri занимает около 2–2,5 ч (зависит от погоды и трафика) по Военно-Грузинской дороге (E117). Вот лучшие варианты:",
     transferOptions: {
       shuttleTitle: "🚐 Трансфер-шаттл",
       shuttleText:
@@ -1054,23 +1054,30 @@ place: {
   ru: "Лаунж отеля и на улице!",
 },
   },
-  {
-    time: "18:00",
-    title: { de: "Dinner", en: "Dinner", ru: "Ужин" },
-    place: {
-      de: "Restaurant",
-      en: "Restaurant",
-      ru: "Ресторан",
-    },
+{
+  "time": "18:00",
+  "title": {
+    "de": "Dinner",
+    "en": "Dinner",
+    "ru": "Ужин"
   },
-  {
+  "place": {
+    "de": "Chimney Hall (Kaminsaal)",
+    "en": "Chimney Hall",
+    "ru": "Каминный зал"
+  }
+},
+{
     time: "20:30",
     title: {
       de: "Mal sehen, was der Abend so bringt",
       en: "Let's see what the evening brings",
       ru: "Посмотрим, что нам принесёт вечер",
     },
-    place: { de: "Saal", en: "Hall", ru: "Зал" },
+    place: {     
+    "de": "Chimney Hall (Kaminsaal)",
+    "en": "Chimney Hall",
+    "ru": "Каминный зал" },
   },
 ];
 
