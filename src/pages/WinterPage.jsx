@@ -27,7 +27,7 @@ import {
 /* ===================== Lokales i18n für diese Seite ===================== */
 const W = {
   de: {
-    pageTitle: "Winter in Georgien",
+    pageTitle: "Winter in Georgien - Unsere Location ist so winterlich, selbst die Pinguine haben gefragt, ob sie mitfeiern dürfen.",
     pageSub: "Pulverschnee, Sonne & Gastfreundschaft im Kaukasus",
     heroTitle: "Winterzauber im Kaukasus",
     heroText:
@@ -75,7 +75,7 @@ const W = {
       "Für den tagesaktuellen Stand zu Schneehöhen, geöffneten Liften und Lawinensituation nutzt bitte die verlinkten externen Seiten.",
   },
   en: {
-    pageTitle: "Winter in Georgia",
+    pageTitle: "Winter in Georgia - Our location is so wintery that even the penguins asked if they could join in the celebrations.",
     pageSub: "Powder, sunshine & hospitality in the Caucasus",
     heroTitle: "Winter magic in the Caucasus",
     heroText:
@@ -137,7 +137,7 @@ const W = {
       "For day-to-day details on snow depth, open lifts and avalanche situation, please use the linked external sites.",
   },
   ru: {
-    pageTitle: "Зима в Грузии",
+    pageTitle: "Зима в Грузии - Наше место расположения настолько зимнее, что даже пингвины спросили, могут ли они присоединиться к празднованию.",
     pageSub: "Пудра, солнце и гостеприимство Кавказа",
     heroTitle: "Зимняя магия на Кавказе",
     heroText:
