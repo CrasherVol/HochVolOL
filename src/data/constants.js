@@ -585,7 +585,7 @@ export const TEXTS = {
 
     cardContactTitle: "Kontakt",
     contactLead:
-      "Fragen zu Anreise, Unterkunft oder Allergien?",
+      "Fragen zu Anreise, Unterkunft oder sonstige Fragen. Gerne persönlich oder einfach hier per Email.",
     contactEmailLabel: "hoch-vol-ol@outlook.de",
 
     accommodationIntro:

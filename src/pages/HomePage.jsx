@@ -256,7 +256,7 @@ export default function HomePage({ lang, setLang }) {
             <p className="feier-text">
               {tt(
                 "contactLead",
-                "Fragen zu Anreise, Unterkunft oder Allergien?"
+                "Fragen zu Anreise, Unterkunft oder sonstige Fragen. Gerne persönlich oder einfach hier per Email."
               )}
               <br />
               <Mail size={16} style={{ verticalAlign: "-2px" }} />{" "}
