@@ -38,6 +38,7 @@ export default async function handler(req, res) {
         message: record.message || "",
         createdAt: record.createdAt || null,
         updatedAt: record.updatedAt || null,
+        extraGuests: record.extraGuests || "", // weitere angemeldete Personen
       };
 
       items.push(item);

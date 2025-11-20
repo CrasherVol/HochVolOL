@@ -7,16 +7,15 @@ const redis = new Redis({
   token: process.env.UPSTASH_REDIS_REST_TOKEN,
 });
 
-// E-Mail Transport (Outlook / SMTP)
+// ✉️ Gmail-Transport
 const transporter = nodemailer.createTransport({
-  host: "smtp-mail.outlook.com",
-  port: 587,
-  secure: false,
+  service: "gmail", // nutzt automatisch smtp.gmail.com
   auth: {
-    user: process.env.EMAIL_USER, // z.B. "hoch-vol-ol@outlook.de"
-    pass: process.env.EMAIL_PASS, // App-Passwort o.ä.
+    user: process.env.EMAIL_USER, // deine gmail-Adresse
+    pass: process.env.EMAIL_PASS, // das App-Passwort
   },
 });
+
 
 export default async function handler(req, res) {
   if (req.method !== "POST") {
