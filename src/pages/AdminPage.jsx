@@ -57,12 +57,13 @@ export default function AdminPage({ lang="de", setLang }) {
     return rows.filter(r =>
       (r.name||"").toLowerCase().includes(term) ||
       (r.email||"").toLowerCase().includes(term) ||
-      (r.message||"").toLowerCase().includes(term)
+      (r.message||"").toLowerCase().includes(term) ||
+      (r.extraGuests||"").toLowerCase().includes(term)
     );
   }, [rows, q]);
 
   function toCSV() {
-    const head = ["name","email","people","diet","message","attend","createdAt","updatedAt"];
+    const head = ["name","email","people","extraGuests","diet","message","attend","createdAt","updatedAt"];
     const esc = v => `"${String(v ?? "").replace(/"/g,'""')}"`;
     const body = filtered.map(r => head.map(k => esc(r[k])).join(",")).join("\n");
     const blob = new Blob([head.join(",")+"\n"+body], { type: "text/csv;charset=utf-8" });
@@ -70,6 +71,57 @@ export default function AdminPage({ lang="de", setLang }) {
     const a = document.createElement("a");
     a.href = url; a.download = "rsvp-admin-export.csv"; a.click();
     URL.revokeObjectURL(url);
+  }
+
+  async function handleDelete(email) {
+    const ok = window.confirm(`Eintrag mit E-Mail ${email} wirklich löschen?`);
+    if (!ok) return;
+
+    const adminKey = sessionStorage.getItem("adminKey");
+    if (!adminKey) {
+      alert("Kein Admin-Key gefunden, bitte neu anmelden.");
+      onLogout();
+      return;
+    }
+
+    const res = await fetch("/api/rsvp-delete", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "x-admin-key": adminKey,
+      },
+      body: JSON.stringify({ email }),
+    });
+
+    let data = {};
+    try {
+      data = await res.json();
+    } catch (e) {
+      // ignore
+    }
+
+    if (!res.ok || data.error) {
+      console.error("Löschen fehlgeschlagen:", data);
+      alert("Löschen fehlgeschlagen.");
+      return;
+    }
+
+    // betroffene Zeile finden, um Zähler zu aktualisieren
+    const row = rows.find(r => r.email === email);
+
+    setRows(prev => prev.filter(r => r.email !== email));
+
+    if (row) {
+      setStats(prev => {
+        const deltaYes = row.attend === "yes" ? -1 : 0;
+        const deltaNo  = row.attend === "no"  ? -1 : 0;
+        return {
+          yes: prev.yes + deltaYes,
+          no: prev.no + deltaNo,
+          total: Math.max(0, prev.total - 1),
+        };
+      });
+    }
   }
 
   return (
@@ -103,7 +155,7 @@ export default function AdminPage({ lang="de", setLang }) {
                 <div style={{display:"flex", gap:".5rem", flexWrap:"wrap"}}>
                   <input
                     className="input"
-                    placeholder="Suchen (Name, E-Mail, Nachricht)"
+                    placeholder="Suchen (Name, E-Mail, Nachricht, weitere Personen)"
                     value={q}
                     onChange={e=>setQ(e.target.value)}
                     style={{minWidth:240}}
@@ -123,10 +175,12 @@ export default function AdminPage({ lang="de", setLang }) {
                       <th style={{padding:".5rem"}}>Name</th>
                       <th style={{padding:".5rem"}}>E-Mail</th>
                       <th style={{padding:".5rem"}}>Personen</th>
+                      <th style={{padding:".5rem"}}>Weitere Personen</th>
                       <th style={{padding:".5rem"}}>Kinder/Diät</th>
                       <th style={{padding:".5rem"}}>Nachricht</th>
                       <th style={{padding:".5rem"}}>Erstellt</th>
                       <th style={{padding:".5rem"}}>Aktualisiert</th>
+                      <th style={{padding:".5rem"}}>Aktionen</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -136,10 +190,19 @@ export default function AdminPage({ lang="de", setLang }) {
                         <td style={{padding:".5rem"}}>{r.name || "—"}</td>
                         <td style={{padding:".5rem"}}>{r.email || "—"}</td>
                         <td style={{padding:".5rem"}}>{r.people || "—"}</td>
+                        <td style={{padding:".5rem"}}>{r.extraGuests || "—"}</td>
                         <td style={{padding:".5rem"}}>{r.diet || "—"}</td>
                         <td style={{padding:".5rem"}}>{r.message || "—"}</td>
                         <td style={{padding:".5rem", whiteSpace:"nowrap"}}>{r.createdAt ? new Date(r.createdAt).toLocaleString() : "—"}</td>
                         <td style={{padding:".5rem", whiteSpace:"nowrap"}}>{r.updatedAt ? new Date(r.updatedAt).toLocaleString() : "—"}</td>
+                        <td style={{padding:".5rem", whiteSpace:"nowrap"}}>
+                          <button
+                            className="btn-chip"
+                            onClick={() => handleDelete(r.email)}
+                          >
+                            Löschen
+                          </button>
+                        </td>
                       </tr>
                     ))}
                   </tbody>
