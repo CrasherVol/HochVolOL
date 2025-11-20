@@ -135,7 +135,7 @@ export default function RSVPForm({ lang = "de" }) {
           {status === "sending" ? t.sending : t.send}
         </button>
         <span>
-          {t.orEmail} <a href="mailto:love@example.com">love@example.com</a>
+          {t.orEmail} <a href="mailto:hoch-vol-ol@outlook.de">hoch-vol-ol@outlook.de</a>
         </span>
       </div>
 

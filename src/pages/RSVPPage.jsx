@@ -122,7 +122,7 @@ export default function RSVPPage({ lang, setLang }) {
               <Mail className="icon" />
               <div>
                 <strong>{t.orEmail}</strong>
-                <div className="sub">love@example.com</div>
+                <div className="sub">hoch-vol-ol@outlook.de</div>
               </div>
             </div>
           </div>

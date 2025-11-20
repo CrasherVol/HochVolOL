@@ -260,8 +260,8 @@ export default function HomePage({ lang, setLang }) {
               )}
               <br />
               <Mail size={16} style={{ verticalAlign: "-2px" }} />{" "}
-              <a className="underline" href="mailto:love@example.com">
-                {tt("contactEmailLabel", "love@example.com")}
+              <a className="underline" href="mailto:hoch-vol-ol@outlook.de">
+                {tt("contactEmailLabel", "hoch-vol-ol@outlook.de")}
               </a>
             </p>
           </Card>

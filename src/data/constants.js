@@ -586,7 +586,7 @@ export const TEXTS = {
     cardContactTitle: "Kontakt",
     contactLead:
       "Fragen zu Anreise, Unterkunft oder Allergien?",
-    contactEmailLabel: "love@example.com",
+    contactEmailLabel: "hoch-vol-ol@outlook.de",
 
     accommodationIntro:
       "Alpina Hotel Gudauri ist ein gemütliches Hotel im Skigebiet – mit Restaurant, Bar und weitem Bergblick.",
@@ -773,7 +773,7 @@ export const TEXTS = {
     cardContactTitle: "Contact",
     contactLead:
       "Questions about travel, accommodation or allergies?",
-    contactEmailLabel: "love@example.com",
+    contactEmailLabel: "hoch-vol-ol@outlook.de",
 
     accommodationIntro:
       "Alpina Hotel Gudauri is a cozy mountain hotel with a restaurant, bar and sweeping views.",
@@ -963,7 +963,7 @@ export const TEXTS = {
     cardContactTitle: "Контакты",
     contactLead:
       "Вопросы по дороге, проживанию или аллергиям?",
-    contactEmailLabel: "love@example.com",
+    contactEmailLabel: "hoch-vol-ol@outlook.de",
 
     accommodationIntro:
       "Alpina Hotel Gudauri — уютный горный отель с рестораном, баром и панорамными видами.",
