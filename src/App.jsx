@@ -11,31 +11,64 @@ import RSVPPage from "./pages/RSVPPage.jsx";
 import AdminPage from "./pages/AdminPage.jsx";
 import WinterPage from "./pages/WinterPage.jsx";
 
-import ScrollToTop from "./components/ScrollToTop.jsx"; // ⬅️ hinzugefügt
+import ScrollToTop from "./components/ScrollToTop.jsx";
 
 export default function App() {
   const [lang, setLang] = useState(() => localStorage.getItem("lang") || "de");
+
+  // ⬇️ Body-Klasse hierhin verschoben (nicht mehr in main.jsx!)
+  useEffect(() => {
+    document.body.classList.add("no-effects");
+  }, []);
+
+  // Sprache im localStorage speichern
   useEffect(() => {
     localStorage.setItem("lang", lang);
   }, [lang]);
 
   return (
     <>
-      <ScrollToTop /> {/* ⬅️ sorgt für automatisches Hochscrollen */}
+      <ScrollToTop />
 
       <Routes>
-        <Route path="/"                        element={<HomePage               lang={lang} setLang={setLang} />} />
-        <Route path="/fluege"                  element={<FlightsPage            lang={lang} setLang={setLang} />} />
-        <Route path="/ort"                     element={<CityPage               lang={lang} setLang={setLang} />} />
-        <Route path="/location"                element={<LocationPage           lang={lang} setLang={setLang} />} />
-        <Route path="/essen-trinken-feiern"    element={<EssenTrinkenFeiernPage lang={lang} setLang={setLang} />} />
-        <Route path="/rsvp"                    element={<RSVPPage               lang={lang} setLang={setLang} />} />
-        <Route path="/admin"                   element={<AdminPage />} />
-        <Route path="/winter"                  element={<WinterPage             lang={lang} setLang={setLang} />} />
+        <Route
+          path="/"
+          element={<HomePage lang={lang} setLang={setLang} />}
+        />
+        <Route
+          path="/fluege"
+          element={<FlightsPage lang={lang} setLang={setLang} />}
+        />
+        <Route
+          path="/ort"
+          element={<CityPage lang={lang} setLang={setLang} />}
+        />
+        <Route
+          path="/location"
+          element={<LocationPage lang={lang} setLang={setLang} />}
+        />
+        <Route
+          path="/essen-trinken-feiern"
+          element={<EssenTrinkenFeiernPage lang={lang} setLang={setLang} />}
+        />
+        <Route
+          path="/rsvp"
+          element={<RSVPPage lang={lang} setLang={setLang} />}
+        />
+        <Route path="/admin" element={<AdminPage />} />
+        <Route
+          path="/winter"
+          element={<WinterPage lang={lang} setLang={setLang} />}
+        />
 
-        <Route path="/galerie" element={<Navigate to="/essen-trinken-feiern" replace />} />
-
-        <Route path="*" element={<Navigate to="/" replace />} />
+        <Route
+          path="/galerie"
+          element={<Navigate to="/essen-trinken-feiern" replace />}
+        />
+        <Route
+          path="*"
+          element={<Navigate to="/" replace />}
+        />
       </Routes>
     </>
   );
