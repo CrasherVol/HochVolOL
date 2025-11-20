@@ -492,8 +492,8 @@ export const TEXTS = {
     locationTitle: "Die Location",
     locationSub: "Gudauri – Alpina Hotel Gudauri, Berge, Panorama & Feier",
 
-    rsvpTitle: "Zusagen & Absagen (RSVP)",
-    rsvpSub: "Bitte gebt uns bis 24. November 2025 Bescheid",
+    rsvpTitle: "Zusagen & Absagen)",
+    rsvpSub: "Bitte gebt uns bis 17. Dezember 2025 Bescheid",
     contact: "Kontakt",
     addToCal: "Zum Kalender",
     planTrip: "Anreise planen",
@@ -680,7 +680,7 @@ export const TEXTS = {
     locationTitle: "The Location",
     locationSub: "Gudauri – aAlpina Hotel Gudauri, mountains & celebration",
 
-    rsvpTitle: "RSVP – Confirm or Decline",
+    rsvpTitle: "Confirm or Decline",
     rsvpSub: "Please reply by November 24, 2025",
     contact: "Contact",
     addToCal: "Add to Calendar",
@@ -868,7 +868,7 @@ export const TEXTS = {
     locationSub:
       "Гудаури – Alpina Hotel Gudauri, горные виды и праздник",
 
-    rsvpTitle: "Подтверждение участия (RSVP)",
+    rsvpTitle: "Подтверждение участия.",
     rsvpSub:
       "Пожалуйста, дайте нам знать до 24 ноября 2025 года.",
     contact: "Контакт",

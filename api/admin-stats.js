@@ -1,10 +1,12 @@
-// api/admin-stats.js (Testversion, ohne Redis)
+// api/admin-stats.js
+import { getStats } from "./_rsvpStore.js";
 
 export default async function handler(req, res) {
-  if (req.headers["x-admin-key"] !== process.env.ADMIN_KEY) {
-    return res.status(401).json({ error: "unauthorized" });
+  try {
+    const stats = await getStats();
+    return res.status(200).json(stats);
+  } catch (e) {
+    console.error("admin-stats error:", e);
+    return res.status(500).json({ error: "server error" });
   }
-
-  // Test-Daten (damit der Login funktioniert)
-  return res.status(200).json({ yes: 0, no: 0, total: 0 });
 }

@@ -1,10 +1,12 @@
-// api/admin-list.js – Testversion ohne Redis
+// api/admin-list.js
+import { listEntries } from "./_rsvpStore.js";
 
 export default async function handler(req, res) {
-  if (req.headers["x-admin-key"] !== process.env.ADMIN_KEY) {
-    return res.status(401).json({ error: "unauthorized" });
+  try {
+    const entries = await listEntries();
+    return res.status(200).json({ entries });
+  } catch (e) {
+    console.error("admin-list error:", e);
+    return res.status(500).json({ error: "server error" });
   }
-
-  // Leere Liste zurückgeben, damit das Admin-Frontend glücklich ist
-  return res.status(200).json({ items: [] });
 }

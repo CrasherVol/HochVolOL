@@ -1,149 +1,265 @@
+// src/components/RSVPForm.jsx
 import React, { useState } from "react";
 import { TEXTS } from "../data/constants.js";
-import { CheckCircle2 } from "lucide-react";
+import { MessageCircle } from "lucide-react";
 
-export default function RSVPForm({ lang = "de" }) {
+export default function RSVPForm({ lang, onSubmitRSVP, sending }) {
   const t = TEXTS[lang] || TEXTS.de;
-  const [status, setStatus] = useState("idle"); // idle | sending | success
-  const [agree, setAgree] = useState(false);
-  const [error, setError] = useState("");       // Inline-Fehlermeldung
+
+  const [attend, setAttend] = useState("yes");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [people, setPeople] = useState(1);
+  const [extraGuestNames, setExtraGuestNames] = useState([]);
+  const [diet, setDiet] = useState("");
+  const [message, setMessage] = useState("");
+  const [consent, setConsent] = useState(false);
+
+  const handlePeopleChange = (e) => {
+    const value = Number(e.target.value) || 1;
+    const safe = Math.max(1, Math.min(10, value));
+    setPeople(safe);
+
+    setExtraGuestNames((prev) => {
+      const desired = safe - 1;
+      const copy = [...prev];
+      copy.length = desired;
+      for (let i = 0; i < desired; i++) {
+        if (copy[i] == null) copy[i] = "";
+      }
+      return copy;
+    });
+  };
+
+  const handleExtraGuestNameChange = (idx, val) => {
+    setExtraGuestNames((prev) => {
+      const copy = [...prev];
+      copy[idx] = val;
+      return copy;
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!consent) return;
+
+    const payload = {
+      attend,
+      name: name.trim(),
+      email: email.trim(),
+      people,
+      diet: diet.trim(),
+      message: message.trim(),
+      extraGuests: extraGuestNames.map((n) => n.trim()).filter(Boolean),
+    };
+
+    if (onSubmitRSVP) onSubmitRSVP(payload);
+  };
+
+  // 🔵 Einheitlicher rechter Abstand für alle Inputs
+  const rightShift = { marginLeft: "0.75rem" };
 
   return (
-    <form
-      onSubmit={async (e) => {
-        e.preventDefault();
+    <form className="rsvp-form" onSubmit={handleSubmit}>
+      {/* 1. Reihe */}
+      <div className="field-grid">
+        <div className="field">
+          <label>Name*</label>
+          <input
+            type="text"
+            required
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            placeholder="Vor- und Nachname"
+            style={rightShift}
+          />
+        </div>
 
-        if (!agree) {
-          setError(t.privacy);
-          return;
-        }
-        setError("");
-        setStatus("sending");
+        <div className="field">
+          <label>E-Mail*</label>
+          <input
+            type="email"
+            required
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="name@mail.de"
+            style={rightShift}
+          />
+        </div>
+      </div>
 
-        const fd = new FormData(e.target);
-        const raw = Object.fromEntries(fd.entries());
-
-        const yesWords = [t.yes?.toLowerCase(), "ja", "yes", "да"].filter(Boolean);
-        const attend = yesWords.includes(String(raw.teilnahme || "").trim().toLowerCase());
-
-        const payload = {
-          attend,
-          name: raw.name || "",
-          email: raw.email || "",
-          people: raw.anzahl || "",
-          diet: raw.essen || "",
-          message: raw.nachricht || "",
-        };
-
-        try {
-          const res = await fetch("/api/rsvp", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(payload),
-          });
-
-          if (!res.ok) {
-            // <-- DEBUG: zeige Status & Antworttext
-            const text = await res.text();
-            console.error("RSVP /api/rsvp failed:", res.status, text);
-            setError(
-              lang === "en"
-                ? `Submit failed (${res.status}).`
-                : lang === "ru"
-                ? `Отправка не удалась (${res.status}).`
-                : `Absenden fehlgeschlagen (${res.status}).`
-            );
-            setStatus("idle");
-            return;
-          }
-
-          setStatus("success");
-        } catch (err) {
-          console.error("RSVP fetch error:", err);
-          setError(
-            lang === "en"
-              ? "Something went wrong. Please try again."
-              : lang === "ru"
-              ? "Что-то пошло не так. Попробуйте ещё раз."
-              : "Etwas ist schiefgelaufen. Bitte versuch’s noch einmal."
-          );
-          setStatus("idle");
-        }
-      }}
-      className="rsvp-form"
-    >
-      <h3 className="form-headline">{t.rsvpTitle} – 28.02.2026</h3>
-
-      <div className="form-grid">
-        <label>
-          <span>{t.name}*</span>
-          <input name="name" required placeholder={t.namePlaceholder} />
-        </label>
-
-        <label>
-          <span>{t.email}*</span>
-          <input name="email" type="email" required placeholder={t.emailPlaceholder} />
-        </label>
-
-        <fieldset>
-          <span>{t.yesnoQ}*</span>
-          <div className="radio-group">
+      {/* 2. Reihe */}
+      <div className="field-grid">
+        <div className="field">
+          <label>Nehmt ihr teil?*</label>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              marginTop: "0.35rem",
+              marginLeft: "0.75rem",
+              gap: "0.35rem",
+            }}
+          >
             <label>
-              <input type="radio" name="teilnahme" value={t.yes} required /> {t.yes}
+              <input
+                type="radio"
+                name="attend"
+                value="yes"
+                checked={attend === "yes"}
+                onChange={() => setAttend("yes")}
+              />{" "}
+              Ja
             </label>
             <label>
-              <input type="radio" name="teilnahme" value={t.no} /> {t.no}
+              <input
+                type="radio"
+                name="attend"
+                value="no"
+                checked={attend === "no"}
+                onChange={() => setAttend("no")}
+              />{" "}
+              Nein
             </label>
           </div>
-        </fieldset>
+        </div>
 
-        <label>
-          <span>{t.people}*</span>
-          <input name="anzahl" type="number" min={1} required defaultValue={1} />
-        </label>
-
-        <label>
-          <span>{t.diet}</span>
-          <input name="essen" placeholder={t.dietPlaceholder} />
-        </label>
-      </div>
-
-      <div className="form-privacy">
-        <label>
+        <div className="field">
+          <label>Anzahl Personen*</label>
           <input
-            type="checkbox"
-            checked={agree}
-            onChange={(e) => {
-              setAgree(e.target.checked);
-              if (e.target.checked) setError("");
-            }}
+            type="number"
+            min={1}
+            max={10}
+            value={people}
+            onChange={handlePeopleChange}
+            style={rightShift}
           />
-          {t.privacy}
-        </label>
-
-        {error && (
-          <p style={{ color: "#b91c1c", marginTop: ".35rem" }} role="alert" aria-live="polite">
-            {error}
-          </p>
-        )}
-
-        <p>{t.privacyNote}</p>
+        </div>
       </div>
 
-      <div className="form-submit">
-        <button type="submit" disabled={status === "sending" || !agree}>
-          {status === "sending" ? t.sending : t.send}
-        </button>
-        <span>
-          {t.orEmail} <a href="mailto:hoch-vol-ol@outlook.de">hoch-vol-ol@outlook.de</a>
-        </span>
-      </div>
-
-      {status === "success" && (
-        <div className="form-success">
-          <CheckCircle2 className="icon" /> {t.rsvpSuccess}
+      {/* Extra Personen */}
+      {people > 1 && (
+        <div className="field">
+          <label>Weitere Personen (Namen)</label>
+          <div className="extra-guests-grid">
+            {extraGuestNames.map((_, idx) => (
+              <input
+                key={idx}
+                type="text"
+                value={extraGuestNames[idx] || ""}
+                onChange={(e) =>
+                  handleExtraGuestNameChange(idx, e.target.value)
+                }
+                placeholder={`Person ${idx + 2}`}
+                className="extra-guest-input"
+                style={rightShift}
+              />
+            ))}
+          </div>
         </div>
       )}
+
+      {/* Kinder */}
+      <div className="field">
+        <label>Kinder</label>
+        <input
+          type="text"
+          value={diet}
+          onChange={(e) => setDiet(e.target.value)}
+          placeholder="nein, nur Party am besten ;-)"
+          style={rightShift}
+        />
+      </div>
+
+      {/* Nachricht */}
+      <div className="field">
+        <label>Nachricht (optional)</label>
+
+        <div
+          style={{
+            borderRadius: "1.25rem",
+            padding: "0.75rem 0.9rem 0.9rem",
+            background:
+              "linear-gradient(135deg, #eff6ff 0%, #dbeafe 60%, #e0f2fe 100%)",
+            border: "1px solid rgba(148,163,184,0.5)",
+            marginLeft: "0.75rem",
+          }}
+        >
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "0.4rem",
+              marginBottom: "0.4rem",
+              fontSize: "0.85rem",
+              color: "#1f2937",
+            }}
+          >
+            <MessageCircle size={16} />
+            <span>
+              Hier ist Platz für Wünsche, Reiseinfos oder alles, was ihr uns
+              sagen möchtet.
+            </span>
+          </div>
+
+          <textarea
+            rows={3}
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+            style={{
+              width: "100%",
+              borderRadius: "0.9rem",
+              border: "1px solid rgba(148,163,184,0.6)",
+              padding: "0.55rem 0.7rem",
+              resize: "vertical",
+              backgroundColor: "rgba(255,255,255,0.95)",
+            }}
+          />
+        </div>
+      </div>
+
+      {/* Einwilligung */}
+      <div className="field checkbox-field">
+        <label className="checkbox-label" style={{ marginLeft: "0.75rem" }}>
+          <input
+            type="checkbox"
+            checked={consent}
+            onChange={(e) => setConsent(e.target.checked)}
+          />{" "}
+          Ich stimme der Verarbeitung meiner Angaben zur Organisation der
+          Hochzeit zu.
+        </label>
+        <div className="hint" style={{ marginLeft: "0.75rem" }}>
+          Nur für die Planung – danach löschen wir die Daten.
+        </div>
+      </div>
+
+      {/* Button */}
+      <button
+        type="submit"
+        disabled={sending || !consent}
+        style={{
+          marginTop: "1.2rem",
+          marginLeft: "0.75rem",
+          borderRadius: "999px",
+          padding: "0.75rem 1.9rem",
+          background:
+            "linear-gradient(135deg, #eff6ff 0%, #dbeafe 60%, #e0f2fe 100%)",
+          border: "1px solid rgba(148,163,184,0.6)",
+          color: "#0f172a",
+          fontWeight: 600,
+          fontSize: "0.95rem",
+          boxShadow: "0 8px 18px rgba(148,163,184,0.45)",
+          opacity: sending || !consent ? 0.6 : 1,
+          cursor: sending || !consent ? "not-allowed" : "pointer",
+        }}
+      >
+        {sending ? "Wird gesendet…" : "Antwort absenden"}
+      </button>
+
+      <span className="alt-mail" style={{ marginLeft: "0.75rem" }}>
+        oder an <a href="mailto:hoch-vol-ol@outlook.de">hoch-vol-ol@outlook.de</a>
+      </span>
     </form>
   );
 }
