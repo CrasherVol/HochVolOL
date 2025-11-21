@@ -110,8 +110,9 @@ export default function RSVPPage({ lang, setLang }) {
       className="heart"
       style={{
         left: `${left}%`,
-        animationDelay: `${delay}s`,
-        fontSize: `${size}rem`,
+       animationDelay: `${delay}s`,
+animationDuration: `${3 + Math.random() * 2}s`, // 3–5 Sekunden
+fontSize: `${size}rem`,
       }}
     >
       ❤
