@@ -31,6 +31,7 @@ export default function AdminPage({ lang = "de", setLang }) {
   const [stats, setStats] = useState({ yes: 0, no: 0, total: 0 });
   const [rows, setRows] = useState([]);
   const [q, setQ] = useState("");
+  const [statusFilter, setStatusFilter] = useState("all"); // "all" | "yes" | "no"
 
   async function fetchAll(k) {
     const h = { "x-admin-key": k };
@@ -68,15 +69,26 @@ export default function AdminPage({ lang = "de", setLang }) {
 
   const filtered = useMemo(() => {
     const term = q.trim().toLowerCase();
-    if (!term) return rows;
-    return rows.filter(
-      (r) =>
-        (r.name || "").toLowerCase().includes(term) ||
-        (r.email || "").toLowerCase().includes(term) ||
-        (r.message || "").toLowerCase().includes(term) ||
-        (r.extraGuests || "").toLowerCase().includes(term)
-    );
-  }, [rows, q]);
+    let list = rows;
+
+    if (term) {
+      list = list.filter(
+        (r) =>
+          (r.name || "").toLowerCase().includes(term) ||
+          (r.email || "").toLowerCase().includes(term) ||
+          (r.message || "").toLowerCase().includes(term) ||
+          (r.extraGuests || "").toLowerCase().includes(term)
+      );
+    }
+
+    if (statusFilter === "yes") {
+      list = list.filter((r) => r.attend === "yes");
+    } else if (statusFilter === "no") {
+      list = list.filter((r) => r.attend === "no");
+    }
+
+    return list;
+  }, [rows, q, statusFilter]);
 
   function toCSV() {
     const head = [
@@ -218,6 +230,16 @@ export default function AdminPage({ lang = "de", setLang }) {
                     onChange={(e) => setQ(e.target.value)}
                     style={{ minWidth: 240 }}
                   />
+                  <select
+                    className="input"
+                    value={statusFilter}
+                    onChange={(e) => setStatusFilter(e.target.value)}
+                    style={{ minWidth: 140 }}
+                  >
+                    <option value="all">Alle</option>
+                    <option value="yes">Nur Ja</option>
+                    <option value="no">Nur Nein</option>
+                  </select>
                   <button className="btn-chip" onClick={toCSV}>
                     CSV exportieren
                   </button>
@@ -276,7 +298,7 @@ export default function AdminPage({ lang = "de", setLang }) {
                           }}
                         >
                           {r.extraGuests ? (
-                            <ul
+                            <ol
                               style={{
                                 margin: 0,
                                 paddingLeft: "1.2rem",
@@ -289,7 +311,7 @@ export default function AdminPage({ lang = "de", setLang }) {
                                 .map((g, index) => (
                                   <li key={index}>{g}</li>
                                 ))}
-                            </ul>
+                            </ol>
                           ) : (
                             "—"
                           )}
