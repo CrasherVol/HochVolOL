@@ -83,7 +83,7 @@ export default function RSVPPage({ lang, setLang }) {
 
         // 💖 Herzregen starten
         setShowHearts(true);
-        setTimeout(() => setShowHearts(false), 1600);
+        setTimeout(() => setShowHearts(false), 2500);
       } else {
         setOk(false);
       }

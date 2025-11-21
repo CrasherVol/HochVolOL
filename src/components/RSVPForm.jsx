@@ -27,7 +27,7 @@ const FORM_TEXT = {
     submittingLabel: "Wird gesendet…",
     altMailPrefix: "oder an",
     altMailSuffix: "",
-    coldFeetText: "❄️ Achtung… kalte Füße? 😄",
+    coldFeetText: "❄️ Achtung - Du begehst einen Fehler 😄",
   },
   en: {
     nameLabel: "Name*",
@@ -52,7 +52,7 @@ const FORM_TEXT = {
     submittingLabel: "Sending…",
     altMailPrefix: "or write to",
     altMailSuffix: "directly via e-mail",
-    coldFeetText: "❄️ Careful… cold feet? 😄",
+    coldFeetText: "❄️ Attention - You are making a mistake 😄",
   },
   ru: {
     nameLabel: "Имя*",
@@ -77,7 +77,7 @@ const FORM_TEXT = {
     submittingLabel: "Отправка…",
     altMailPrefix: "или написать на",
     altMailSuffix: "напрямую по электронной почте",
-    coldFeetText: "❄️ Осторожно… холодные ноги? 😄",
+    coldFeetText: "❄️ Внимание — ты совершаешь ошибку 😄",
   },
 };
 
@@ -206,7 +206,7 @@ export default function RSVPForm({ lang, onSubmitRSVP, sending }) {
                   setAttend("no");
                   // ❄️ Popup kurz anzeigen
                   setShowColdFeet(true);
-                  setTimeout(() => setShowColdFeet(false), 1200);
+                  setTimeout(() => setShowColdFeet(false), 3500);
                 }}
               />{" "}
               {t.attendNo}
@@ -224,7 +224,7 @@ export default function RSVPForm({ lang, onSubmitRSVP, sending }) {
                 color: "white",
                 padding: "0.35rem 0.75rem",
                 borderRadius: "999px",
-                fontSize: "0.8rem",
+                fontSize: "1,2rem",
                 display: "inline-flex",
                 alignItems: "center",
                 gap: "0.35rem",
