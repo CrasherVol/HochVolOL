@@ -120,26 +120,37 @@ export default function AdminPage({ lang = "de", setLang }) {
   }
 
   // 🔹 Excel-Export (.xlsx)
-  function toExcel() {
-    // Daten als flache Objekte vorbereiten
-    const rowsData = filtered.map((r) => ({
-      Name: r.name || "",
-      Email: r.email || "",
-      Personen: r.people || "",
-      Weitere_Personen: r.extraGuests || "",
-      Kinder_Diaet: r.diet || "",
-      Nachricht: r.message || "",
-      Attend: r.attend || "",
-      CreatedAt: r.createdAt || "",
-      UpdatedAt: r.updatedAt || "",
-    }));
+ function toExcel() {
+  // Hilfsfunktion: Weitere Personen nummerieren (wie in der Tabelle)
+  const formatExtraGuests = (extra) => {
+    if (!extra) return "";
+    return extra
+      .split(/[\n\r,]+/)            // an Kommas ODER Zeilenumbrüchen trennen
+      .map((s) => s.trim())
+      .filter(Boolean)
+      .map((g, index) => `${index + 1}. ${g}`) // Nummerierung
+      .join("\n");                  // Zeilenumbrüche für Excel-Zelle
+  };
 
-    const ws = XLSX.utils.json_to_sheet(rowsData);
-    const wb = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(wb, ws, "RSVPs");
+  const rowsData = filtered.map((r) => ({
+    Name: r.name || "",
+    Email: r.email || "",
+    Personen: r.people || "",
+    Weitere_Personen: formatExtraGuests(r.extraGuests),
+    Kinder_Diaet: r.diet || "",
+    Nachricht: r.message || "",
+    Attend: r.attend || "",
+    CreatedAt: r.createdAt || "",
+    UpdatedAt: r.updatedAt || "",
+  }));
 
-    XLSX.writeFile(wb, "rsvp-admin-export.xlsx");
-  }
+  const ws = XLSX.utils.json_to_sheet(rowsData);
+  const wb = XLSX.utils.book_new();
+  XLSX.utils.book_append_sheet(wb, ws, "RSVPs");
+
+  XLSX.writeFile(wb, "rsvp-admin-export.xlsx");
+}
+
 
   async function handleDelete(email) {
     const ok = window.confirm(`Eintrag mit E-Mail ${email} wirklich löschen?`);
