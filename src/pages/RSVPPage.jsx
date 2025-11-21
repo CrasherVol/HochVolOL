@@ -102,7 +102,7 @@ export default function RSVPPage({ lang, setLang }) {
           {Array.from({ length: 100 }).map((_, i) => (
             <span
               key={i}
-              className={`heart heart-${(i % 5) + 1}`}
+              className={`heart heart-${(i % 12) + 1}`}
             >
               ❤
             </span>
