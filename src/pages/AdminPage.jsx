@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useState } from "react";
+import * as XLSX from "xlsx"; // ⭐ Für Excel-Export
 import Layout from "../components/Layout.jsx";
 import Section from "../components/Section.jsx";
 import Card from "../components/Card.jsx";
@@ -90,6 +91,7 @@ export default function AdminPage({ lang = "de", setLang }) {
     return list;
   }, [rows, q, statusFilter]);
 
+  // 🔹 CSV-Export
   function toCSV() {
     const head = [
       "name",
@@ -115,6 +117,28 @@ export default function AdminPage({ lang = "de", setLang }) {
     a.download = "rsvp-admin-export.csv";
     a.click();
     URL.revokeObjectURL(url);
+  }
+
+  // 🔹 Excel-Export (.xlsx)
+  function toExcel() {
+    // Daten als flache Objekte vorbereiten
+    const rowsData = filtered.map((r) => ({
+      Name: r.name || "",
+      Email: r.email || "",
+      Personen: r.people || "",
+      Weitere_Personen: r.extraGuests || "",
+      Kinder_Diaet: r.diet || "",
+      Nachricht: r.message || "",
+      Attend: r.attend || "",
+      CreatedAt: r.createdAt || "",
+      UpdatedAt: r.updatedAt || "",
+    }));
+
+    const ws = XLSX.utils.json_to_sheet(rowsData);
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, "RSVPs");
+
+    XLSX.writeFile(wb, "rsvp-admin-export.xlsx");
   }
 
   async function handleDelete(email) {
@@ -241,6 +265,9 @@ export default function AdminPage({ lang = "de", setLang }) {
                   <button className="btn-chip" onClick={toCSV}>
                     CSV exportieren
                   </button>
+                  <button className="btn-chip" onClick={toExcel}>
+                    Excel exportieren
+                  </button>
                   <button className="btn-chip" onClick={onLogout}>
                     Abmelden
                   </button>
@@ -248,7 +275,6 @@ export default function AdminPage({ lang = "de", setLang }) {
               </Card>
             </div>
 
-            {/* ⭐⭐ TABELLE MIT VOLLEM GRID ⭐⭐ */}
             <Card title={`Einträge (${filtered.length})`} className="hover-react">
               <div style={{ overflowX: "auto" }}>
                 <table
@@ -354,7 +380,10 @@ export default function AdminPage({ lang = "de", setLang }) {
                         </td>
 
                         <td style={{ padding: ".5rem", border: "1px solid #555" }}>
-                          <button className="btn-chip" onClick={() => handleDelete(r.email)}>
+                          <button
+                            className="btn-chip"
+                            onClick={() => handleDelete(r.email)}
+                          >
                             Löschen
                           </button>
                         </td>
