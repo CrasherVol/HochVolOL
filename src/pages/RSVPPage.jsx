@@ -99,14 +99,25 @@ export default function RSVPPage({ lang, setLang }) {
       {/* 💖 Herzregen-Overlay */}
       {showHearts && (
         <div className="rsvp-heart-overlay">
-          {Array.from({ length: 100 }).map((_, i) => (
-            <span
-              key={i}
-              className={`heart heart-${(i % 12) + 1}`}
-            >
-              ❤
-            </span>
-          ))}
+         {Array.from({ length: 100 }).map((_, i) => {
+  const left = Math.random() * 100; // 0–100%
+  const delay = Math.random() * 0.8; // 0–0.8s
+  const size = 1 + Math.random() * 1.2; // 1–2.2 rem Scale
+
+  return (
+    <span
+      key={i}
+      className="heart"
+      style={{
+        left: `${left}%`,
+        animationDelay: `${delay}s`,
+        fontSize: `${size}rem`,
+      }}
+    >
+      ❤
+    </span>
+  );
+})}
         </div>
       )}
 
