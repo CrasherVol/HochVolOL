@@ -3,8 +3,84 @@ import React, { useState } from "react";
 import { TEXTS } from "../data/constants.js";
 import { MessageCircle } from "lucide-react";
 
+const FORM_TEXT = {
+  de: {
+    nameLabel: "Name*",
+    namePlaceholder: "Vor- und Nachname",
+    emailLabel: "E-Mail*",
+    emailPlaceholder: "name@mail.de",
+    attendLabel: "Nehmt ihr teil?*",
+    attendYes: "Ja",
+    attendNo: "Nein",
+    peopleLabel: "Anzahl Personen*",
+    kidsLabel: "Kinder",
+    kidsPlaceholder: "nein, nur Party am besten ;-)",
+    extraGuestsLabel: "Weitere Personen (Namen)",
+    extraGuestPlaceholderPrefix: "Person", // "Person 2"
+    messageLabel: "Nachricht (optional)",
+    messageHint:
+      "Hier ist Platz für Wünsche, Reiseinfos oder alles, was ihr uns sagen möchtet.",
+    consentLabel:
+      "Ich stimme der Verarbeitung meiner Angaben zur Organisation der Hochzeit zu.",
+    consentHint: "Nur für die Planung – danach löschen wir die Daten.",
+    submitLabel: "Antwort absenden",
+    submittingLabel: "Wird gesendet…",
+    altMailPrefix: "oder an",
+    altMailSuffix: "",
+  },
+  en: {
+    nameLabel: "Name*",
+    namePlaceholder: "First and last name",
+    emailLabel: "E-mail*",
+    emailPlaceholder: "name@mail.com",
+    attendLabel: "Will you join us?*",
+    attendYes: "Yes",
+    attendNo: "No",
+    peopleLabel: "Number of people*",
+    kidsLabel: "Children",
+    kidsPlaceholder: "no, adults only is best ;-)",
+    extraGuestsLabel: "Additional guests (names)",
+    extraGuestPlaceholderPrefix: "Guest", // "Guest 2"
+    messageLabel: "Message (optional)",
+    messageHint:
+      "Here you can share wishes, travel info or anything you’d like us to know.",
+    consentLabel:
+      "I agree that my details may be used to organize the wedding.",
+    consentHint: "For planning only – we will delete the data afterwards.",
+    submitLabel: "Send RSVP",
+    submittingLabel: "Sending…",
+    altMailPrefix: "or write to",
+    altMailSuffix: "directly via e-mail",
+  },
+  ru: {
+    nameLabel: "Имя*",
+    namePlaceholder: "Имя и фамилия",
+    emailLabel: "E-mail*",
+    emailPlaceholder: "name@mail.ru",
+    attendLabel: "Вы приедете?*",
+    attendYes: "Да",
+    attendNo: "Нет",
+    peopleLabel: "Количество человек*",
+    kidsLabel: "Дети",
+    kidsPlaceholder: "нет, лучше только на вечеринку ;-)",
+    extraGuestsLabel: "Дополнительные гости (имена)",
+    extraGuestPlaceholderPrefix: "Гость", // "Гость 2"
+    messageLabel: "Сообщение (необязательно)",
+    messageHint:
+      "Здесь можно написать пожелания, информацию о поездке или что-то ещё, что вы хотите нам сообщить.",
+    consentLabel:
+      "Я согласен(на) на обработку моих данных для организации свадьбы.",
+    consentHint: "Только для планирования — затем мы удалим данные.",
+    submitLabel: "Отправить ответ",
+    submittingLabel: "Отправка…",
+    altMailPrefix: "или написать на",
+    altMailSuffix: "напрямую по электронной почте",
+  },
+};
+
 export default function RSVPForm({ lang, onSubmitRSVP, sending }) {
-  const t = TEXTS[lang] || TEXTS.de;
+  const tGlobal = TEXTS[lang] || TEXTS.de; // falls du das noch woanders brauchst
+  const t = FORM_TEXT[lang] || FORM_TEXT.de;
 
   const [attend, setAttend] = useState("yes");
   const [name, setName] = useState("");
@@ -64,25 +140,25 @@ export default function RSVPForm({ lang, onSubmitRSVP, sending }) {
       {/* 1. Reihe */}
       <div className="field-grid">
         <div className="field">
-          <label>Name*</label>
+          <label>{t.nameLabel}</label>
           <input
             type="text"
             required
             value={name}
             onChange={(e) => setName(e.target.value)}
-            placeholder="Vor- und Nachname"
+            placeholder={t.namePlaceholder}
             style={rightShift}
           />
         </div>
 
         <div className="field">
-          <label>E-Mail*</label>
+          <label>{t.emailLabel}</label>
           <input
             type="email"
             required
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            placeholder="name@mail.de"
+            placeholder={t.emailPlaceholder}
             style={rightShift}
           />
         </div>
@@ -91,7 +167,7 @@ export default function RSVPForm({ lang, onSubmitRSVP, sending }) {
       {/* 2. Reihe */}
       <div className="field-grid">
         <div className="field">
-          <label>Nehmt ihr teil?*</label>
+          <label>{t.attendLabel}</label>
           <div
             style={{
               display: "flex",
@@ -109,7 +185,7 @@ export default function RSVPForm({ lang, onSubmitRSVP, sending }) {
                 checked={attend === "yes"}
                 onChange={() => setAttend("yes")}
               />{" "}
-              Ja
+              {t.attendYes}
             </label>
             <label>
               <input
@@ -119,13 +195,13 @@ export default function RSVPForm({ lang, onSubmitRSVP, sending }) {
                 checked={attend === "no"}
                 onChange={() => setAttend("no")}
               />{" "}
-              Nein
+              {t.attendNo}
             </label>
           </div>
         </div>
 
         <div className="field">
-          <label>Anzahl Personen*</label>
+          <label>{t.peopleLabel}</label>
           <input
             type="number"
             min={1}
@@ -140,7 +216,7 @@ export default function RSVPForm({ lang, onSubmitRSVP, sending }) {
       {/* Extra Personen */}
       {people > 1 && (
         <div className="field">
-          <label>Weitere Personen (Namen)</label>
+          <label>{t.extraGuestsLabel}</label>
           <div className="extra-guests-grid">
             {extraGuestNames.map((_, idx) => (
               <input
@@ -150,7 +226,7 @@ export default function RSVPForm({ lang, onSubmitRSVP, sending }) {
                 onChange={(e) =>
                   handleExtraGuestNameChange(idx, e.target.value)
                 }
-                placeholder={`Person ${idx + 2}`}
+                placeholder={`${t.extraGuestPlaceholderPrefix} ${idx + 2}`}
                 className="extra-guest-input"
                 style={rightShift}
               />
@@ -161,19 +237,19 @@ export default function RSVPForm({ lang, onSubmitRSVP, sending }) {
 
       {/* Kinder */}
       <div className="field">
-        <label>Kinder</label>
+        <label>{t.kidsLabel}</label>
         <input
           type="text"
           value={diet}
           onChange={(e) => setDiet(e.target.value)}
-          placeholder="nein, nur Party am besten ;-)"
+          placeholder={t.kidsPlaceholder}
           style={rightShift}
         />
       </div>
 
       {/* Nachricht */}
       <div className="field">
-        <label>Nachricht (optional)</label>
+        <label>{t.messageLabel}</label>
 
         <div
           style={{
@@ -196,10 +272,7 @@ export default function RSVPForm({ lang, onSubmitRSVP, sending }) {
             }}
           >
             <MessageCircle size={16} />
-            <span>
-              Hier ist Platz für Wünsche, Reiseinfos oder alles, was ihr uns
-              sagen möchtet.
-            </span>
+            <span>{t.messageHint}</span>
           </div>
 
           <textarea
@@ -226,11 +299,10 @@ export default function RSVPForm({ lang, onSubmitRSVP, sending }) {
             checked={consent}
             onChange={(e) => setConsent(e.target.checked)}
           />{" "}
-          Ich stimme der Verarbeitung meiner Angaben zur Organisation der
-          Hochzeit zu.
+          {t.consentLabel}
         </label>
         <div className="hint" style={{ marginLeft: "0.75rem" }}>
-          Nur für die Planung – danach löschen wir die Daten.
+          {t.consentHint}
         </div>
       </div>
 
@@ -254,11 +326,13 @@ export default function RSVPForm({ lang, onSubmitRSVP, sending }) {
           cursor: sending || !consent ? "not-allowed" : "pointer",
         }}
       >
-        {sending ? "Wird gesendet…" : "Antwort absenden"}
+        {sending ? t.submittingLabel : t.submitLabel}
       </button>
 
       <span className="alt-mail" style={{ marginLeft: "0.75rem" }}>
-        oder an <a href="mailto:hoch-vol-ol@outlook.de">hoch-vol-ol@outlook.de</a>
+        {t.altMailPrefix}{" "}
+        <a href="mailto:hoch-vol-ol@outlook.de">hoch-vol-ol@outlook.de</a>{" "}
+        {t.altMailSuffix}
       </span>
     </form>
   );
