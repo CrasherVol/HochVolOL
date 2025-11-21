@@ -31,7 +31,7 @@ export default function AdminPage({ lang = "de", setLang }) {
   const [stats, setStats] = useState({ yes: 0, no: 0, total: 0 });
   const [rows, setRows] = useState([]);
   const [q, setQ] = useState("");
-  const [statusFilter, setStatusFilter] = useState("all"); // "all" | "yes" | "no"
+  const [statusFilter, setStatusFilter] = useState("all");
 
   async function fetchAll(k) {
     const h = { "x-admin-key": k };
@@ -118,9 +118,7 @@ export default function AdminPage({ lang = "de", setLang }) {
   }
 
   async function handleDelete(email) {
-    const ok = window.confirm(
-      `Eintrag mit E-Mail ${email} wirklich löschen?`
-    );
+    const ok = window.confirm(`Eintrag mit E-Mail ${email} wirklich löschen?`);
     if (!ok) return;
 
     const adminKey = sessionStorage.getItem("adminKey");
@@ -142,12 +140,9 @@ export default function AdminPage({ lang = "de", setLang }) {
     let data = {};
     try {
       data = await res.json();
-    } catch (e) {
-      // ignore
-    }
+    } catch (e) {}
 
     if (!res.ok || data.error) {
-      console.error("Löschen fehlgeschlagen:", data);
       alert("Löschen fehlgeschlagen.");
       return;
     }
@@ -219,6 +214,7 @@ export default function AdminPage({ lang = "de", setLang }) {
                   </Pill>
                 </div>
               </Card>
+
               <Card title="Werkzeuge" className="hover-react">
                 <div
                   style={{ display: "flex", gap: ".5rem", flexWrap: "wrap" }}
@@ -230,6 +226,7 @@ export default function AdminPage({ lang = "de", setLang }) {
                     onChange={(e) => setQ(e.target.value)}
                     style={{ minWidth: 240 }}
                   />
+
                   <select
                     className="input"
                     value={statusFilter}
@@ -240,6 +237,7 @@ export default function AdminPage({ lang = "de", setLang }) {
                     <option value="yes">Nur Ja</option>
                     <option value="no">Nur Nein</option>
                   </select>
+
                   <button className="btn-chip" onClick={toCSV}>
                     CSV exportieren
                   </button>
@@ -250,104 +248,113 @@ export default function AdminPage({ lang = "de", setLang }) {
               </Card>
             </div>
 
-            <Card
-              title={`Einträge (${filtered.length})`}
-              className="hover-react"
-            >
+            {/* ⭐⭐ TABELLE MIT VOLLEM GRID ⭐⭐ */}
+            <Card title={`Einträge (${filtered.length})`} className="hover-react">
               <div style={{ overflowX: "auto" }}>
                 <table
                   style={{
                     width: "100%",
                     borderCollapse: "collapse",
                     tableLayout: "auto",
+                    border: "2px solid #555",
                   }}
                 >
                   <thead>
-                    <tr style={{ textAlign: "left" }}>
-                      <th style={{ padding: ".5rem" }}>Status</th>
-                      <th style={{ padding: ".5rem" }}>Name</th>
-                      <th style={{ padding: ".5rem" }}>E-Mail</th>
-                      <th style={{ padding: ".5rem" }}>Personen</th>
-                      <th style={{ padding: ".5rem" }}>Weitere Personen</th>
-                      <th style={{ padding: ".5rem" }}>Kinder/Diät</th>
-                      <th style={{ padding: ".5rem" }}>Nachricht</th>
-                      <th style={{ padding: ".5rem" }}>Erstellt</th>
-                      <th style={{ padding: ".5rem" }}>Aktualisiert</th>
-                      <th style={{ padding: ".5rem" }}>Aktionen</th>
+                    <tr>
+                      {[
+                        "Status",
+                        "Name",
+                        "E-Mail",
+                        "Personen",
+                        "Weitere Personen",
+                        "Kinder/Diät",
+                        "Nachricht",
+                        "Erstellt",
+                        "Aktualisiert",
+                        "Aktionen",
+                      ].map((h) => (
+                        <th
+                          key={h}
+                          style={{
+                            padding: ".5rem",
+                            border: "1px solid #555",
+                            background: "rgba(0,0,0,0.07)",
+                          }}
+                        >
+                          {h}
+                        </th>
+                      ))}
                     </tr>
                   </thead>
+
                   <tbody>
                     {filtered.map((r, i) => (
-                      <tr
-                        key={r.email || i}
-                        style={{
-                          borderTop: "1px solid rgba(0,0,0,.06)",
-                          verticalAlign: "top",
-                        }}
-                      >
-                        <td style={{ padding: ".5rem" }}>
+                      <tr key={r.email || i}>
+                        <td style={{ padding: ".5rem", border: "1px solid #555" }}>
                           {r.attend === "yes" ? "✅ Ja" : "❌ Nein"}
                         </td>
-                        <td style={{ padding: ".5rem" }}>{r.name || "—"}</td>
-                        <td style={{ padding: ".5rem" }}>{r.email || "—"}</td>
-                        <td style={{ padding: ".5rem" }}>{r.people || "—"}</td>
+
+                        <td style={{ padding: ".5rem", border: "1px solid #555" }}>
+                          {r.name || "—"}
+                        </td>
+
+                        <td style={{ padding: ".5rem", border: "1px solid #555" }}>
+                          {r.email || "—"}
+                        </td>
+
+                        <td style={{ padding: ".5rem", border: "1px solid #555" }}>
+                          {r.people || "—"}
+                        </td>
+
                         <td
                           style={{
                             padding: ".5rem",
+                            border: "1px solid #555",
                             wordBreak: "break-word",
                           }}
                         >
-                          {r.extraGuests ? (
-                            <ol
-                              style={{
-                                margin: 0,
-                                paddingLeft: "1.2rem",
-                              }}
-                            >
-                              {r.extraGuests
-                                .split(",")
+                          {r.extraGuests
+                            ? r.extraGuests
+                                .split(/[\n\r,]+/)
                                 .map((s) => s.trim())
                                 .filter(Boolean)
                                 .map((g, index) => (
-                                  <li key={index}>{g}</li>
-                                ))}
-                            </ol>
-                          ) : (
-                            "—"
-                          )}
+                                  <div key={index}>
+                                    {index + 1}. {g}
+                                  </div>
+                                ))
+                            : "—"}
                         </td>
-                        <td
-                          style={{
-                            padding: ".5rem",
-                            wordBreak: "break-word",
-                          }}
-                        >
+
+                        <td style={{ padding: ".5rem", border: "1px solid #555" }}>
                           {r.diet || "—"}
                         </td>
+
                         <td
                           style={{
                             padding: ".5rem",
+                            border: "1px solid #555",
                             wordBreak: "break-word",
                             maxWidth: "260px",
                           }}
                         >
                           {r.message || "—"}
                         </td>
-                        <td style={{ padding: ".5rem" }}>
+
+                        <td style={{ padding: ".5rem", border: "1px solid #555" }}>
                           {r.createdAt
                             ? new Date(r.createdAt).toLocaleString()
                             : "—"}
                         </td>
-                        <td style={{ padding: ".5rem" }}>
+
+                        <td style={{ padding: ".5rem", border: "1px solid #555" }}>
                           {r.updatedAt
                             ? new Date(r.updatedAt).toLocaleString()
                             : "—"}
                         </td>
-                        <td style={{ padding: ".5rem" }}>
-                          <button
-                            className="btn-chip"
-                            onClick={() => handleDelete(r.email)}
-                          >
+
+                        <td style={{ padding: ".5rem", border: "1px solid #555" }}>
+                          <button className="btn-chip" onClick={() => handleDelete(r.email)}>
                             Löschen
                           </button>
                         </td>
