@@ -177,10 +177,15 @@ export default function AdminPage({ lang = "de", setLang }) {
       data = await res.json();
     } catch (e) {}
 
-    if (!res.ok || data.error) {
-      alert("Löschen fehlgeschlagen.");
-      return;
-    }
+   if (!res.ok || data.error) {
+  alert(
+    "Löschen fehlgeschlagen.\n\n" +
+    "Status: " + res.status + "\n" +
+    "Fehler: " + (data.error || "unbekannt")
+  );
+  return;
+}
+
 
     const row = rows.find((r) => r.email === email);
 
