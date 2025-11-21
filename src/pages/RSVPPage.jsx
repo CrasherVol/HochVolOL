@@ -99,7 +99,7 @@ export default function RSVPPage({ lang, setLang }) {
       {/* 💖 Herzregen-Overlay */}
       {showHearts && (
         <div className="rsvp-heart-overlay">
-          {Array.from({ length: 10 }).map((_, i) => (
+          {Array.from({ length: 100 }).map((_, i) => (
             <span
               key={i}
               className={`heart heart-${(i % 5) + 1}`}
