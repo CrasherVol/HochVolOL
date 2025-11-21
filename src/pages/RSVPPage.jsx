@@ -29,6 +29,8 @@ export default function RSVPPage({ lang, setLang }) {
   const [stats, setStats] = useState({ yes: 0, no: 0, total: 0 });
   const [sending, setSending] = useState(false);
   const [ok, setOk] = useState(null);
+  // 💖 Neu: Herzregen
+  const [showHearts, setShowHearts] = useState(false);
 
   const loadStats = async () => {
     try {
@@ -57,6 +59,8 @@ export default function RSVPPage({ lang, setLang }) {
   const handleSubmitRSVP = async (payload) => {
     setSending(true);
     setOk(null);
+    setShowHearts(false); // Herzregen vorher zurücksetzen
+
     try {
       const attendBool = toAttendBoolean(payload?.attend);
       const email = payload?.email || "";
@@ -76,6 +80,10 @@ export default function RSVPPage({ lang, setLang }) {
       if (r.ok) {
         setOk(true);
         await loadStats();
+
+        // 💖 Herzregen starten
+        setShowHearts(true);
+        setTimeout(() => setShowHearts(false), 1600);
       } else {
         setOk(false);
       }
@@ -88,6 +96,20 @@ export default function RSVPPage({ lang, setLang }) {
 
   return (
     <Layout lang={lang} setLang={setLang}>
+      {/* 💖 Herzregen-Overlay */}
+      {showHearts && (
+        <div className="rsvp-heart-overlay">
+          {Array.from({ length: 10 }).map((_, i) => (
+            <span
+              key={i}
+              className={`heart heart-${(i % 5) + 1}`}
+            >
+              ❤
+            </span>
+          ))}
+        </div>
+      )}
+
       <Section
         title={t.rsvpTitle}
         subtitle={t.rsvpSub}
