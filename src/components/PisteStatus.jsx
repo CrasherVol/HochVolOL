@@ -39,11 +39,11 @@ export default function PisteStatus({ lang = "de", links = {}, note }) {
     <div style={wrap}>
       <div style={titleRow}>{L("title")}</div>
 
-      <div style={btnRow}>
-        <Btn href={links.status}>{L("status")}</Btn>
-        <Btn href={links.webcams}>{L("webcams")}</Btn>
-        <Btn href={links.map}>{L("map")}</Btn>
-      </div>
+  <div style={btnRow}>
+  <Btn href={links.status}>{L("status")}</Btn>
+  <Btn href={links.map}>{L("map")}</Btn>
+</div>
+
 
       <p style={hint}>{note || L("hint")}</p>
     </div>

@@ -5,7 +5,7 @@ import Card from "../components/Card.jsx";
 import RSVPForm from "../components/RSVPForm.jsx";
 import { TEXTS, DATUM } from "../data/constants.js";
 import {
-   Users,
+  Users,
   CalendarCheck2,
   PartyPopper,
   Mail,
@@ -19,6 +19,12 @@ import {
 
 export default function RSVPPage({ lang, setLang }) {
   const t = TEXTS[lang] || TEXTS.de;
+
+  // Datum sprachabhängig holen, falls vorhanden
+  const datumText =
+    (DATUM && DATUM[lang] && DATUM[lang].text) ||
+    (DATUM && DATUM.text) ||
+    "";
 
   const [stats, setStats] = useState({ yes: 0, no: 0, total: 0 });
   const [sending, setSending] = useState(false);
@@ -87,120 +93,116 @@ export default function RSVPPage({ lang, setLang }) {
         subtitle={t.rsvpSub}
         icon={<Users className="w-5 h-5" />}
       >
-   {/* ===== HELLER, BLAUER HERO ===== */}
-<div
-  style={{
-    borderRadius: "1.75rem",
-    padding: "1.6rem 1.8rem",
-    marginBottom: "2.2rem",
-    background:
-      "linear-gradient(135deg, #eff6ff 0%, #dbeafe 45%, #bfdbfe 100%)",
-    boxShadow: "0 18px 40px rgba(15,23,42,0.18)",
-  }}
->
-  <div
-    style={{
-      display: "flex",
-      flexWrap: "wrap",
-      gap: "1.5rem",
-      justifyContent: "space-between",
-      alignItems: "flex-start",
-    }}
-  >
-    {/* Links: Deadline + Überschrift + Spruch */}
-    <div style={{ flex: "1 1 260px", minWidth: 0 }}>
-      {/* Pills */}
-      <div
-        style={{
-          display: "flex",
-          flexWrap: "wrap",
-          gap: "0.75rem",
-          marginBottom: "0.9rem",
-        }}
-      >
+        {/* ===== HELLER, BLAUER HERO ===== */}
         <div
           style={{
-            display: "inline-flex",
-            alignItems: "center",
-            gap: "0.4rem",
-            padding: "0.4rem 0.85rem",
-            borderRadius: "999px",
-            background: "rgba(255,255,255,0.9)",
-            fontSize: "0.85rem",
-            color: "#1e293b",
-            border: "1px solid rgba(148,163,184,0.4)",
+            borderRadius: "1.75rem",
+            padding: "1.6rem 1.8rem",
+            marginBottom: "2.2rem",
+            background:
+              "linear-gradient(135deg, #eff6ff 0%, #dbeafe 45%, #bfdbfe 100%)",
+            boxShadow: "0 18px 40px rgba(15,23,42,0.18)",
           }}
         >
-          <Clock size={16} />
-          <span>{t.rsvpSub}</span>
-        </div>
+          <div
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              gap: "1.5rem",
+              justifyContent: "space-between",
+              alignItems: "flex-start",
+            }}
+          >
+            {/* Links: Deadline + Überschrift + Spruch */}
+            <div style={{ flex: "1 1 260px", minWidth: 0 }}>
+              {/* Pills */}
+              <div
+                style={{
+                  display: "flex",
+                  flexWrap: "wrap",
+                  gap: "0.75rem",
+                  marginBottom: "0.9rem",
+                }}
+              >
+                <div
+                  style={{
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: "0.4rem",
+                    padding: "0.4rem 0.85rem",
+                    borderRadius: "999px",
+                    background: "rgba(255,255,255,0.9)",
+                    fontSize: "0.85rem",
+                    color: "#1e293b",
+                    border: "1px solid rgba(148,163,184,0.4)",
+                  }}
+                >
+                  <Clock size={16} />
+                  <span>{t.rsvpSub}</span>
+                </div>
 
-        <div
-          style={{
-            display: "inline-flex",
-            alignItems: "center",
-            gap: "0.4rem",
-            padding: "0.4rem 0.85rem",
-            borderRadius: "999px",
-            background: "rgba(239,246,255,0.9)",
-            fontSize: "0.85rem",
-            color: "#1e293b",
-            border: "1px solid rgba(148,163,184,0.35)",
-          }}
-        >
-          <CalendarCheck2 size={16} />
-          <span>{DATUM.text}</span>
-        </div>
-      </div>
+                <div
+                  style={{
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: "0.4rem",
+                    padding: "0.4rem 0.85rem",
+                    borderRadius: "999px",
+                    background: "rgba(239,246,255,0.9)",
+                    fontSize: "0.85rem",
+                    color: "#1e293b",
+                    border: "1px solid rgba(148,163,184,0.35)",
+                  }}
+                >
+                  <CalendarCheck2 size={16} />
+                  <span>{datumText}</span>
+                </div>
+              </div>
 
-      {/* Überschrift */}
-      <h2
-        style={{
-          fontSize: "1.7rem",
-          fontWeight: 700,
-          color: "#0f172a",
-          marginBottom: "0.35rem",
-        }}
-      >
-        {lang === "en"
-          ? "Your RSVP for our winter wedding"
-          : lang === "ru"
-          ? "Ваш ответ на нашу зимнюю свадьбу"
-          : "Eure Zusage zu unserer Winterhochzeit"}
-      </h2>
+              {/* Überschrift */}
+              <h2
+                style={{
+                  fontSize: "1.7rem",
+                  fontWeight: 700,
+                  color: "#0f172a",
+                  marginBottom: "0.35rem",
+                }}
+              >
+                {lang === "en"
+                  ? "Your RSVP for our winter wedding"
+                  : lang === "ru"
+                  ? "Ваш ответ на нашу зимнюю свадьбу"
+                  : "Eure Zusage zu unserer Winterhochzeit"}
+              </h2>
 
-      {/* Spruch */}
-      <p
-        style={{
-          fontSize: "1.15rem",
-          color: "#1f2937",
-          maxWidth: "36rem",
-          lineHeight: 1.65,
-          fontWeight: 500,
-          marginBottom: "1.2rem",
-        }}
-      >
-        {lang === "en"
-          ? "If someone gets cold feet, hopefully it's you ;-)"
-          : lang === "ru"
-          ? "Если кому-то становится холодно в ногах, надеюсь, это вы ;-)"
-          : "Wenn einer kalte Füße bekommt, dann hoffentlich ihr ;-)"}
-      </p>
-    </div> 
-    {/* ← Dieses div schließt den linken Block korrekt */}
+              {/* Spruch */}
+              <p
+                style={{
+                  fontSize: "1.15rem",
+                  color: "#1f2937",
+                  maxWidth: "36rem",
+                  lineHeight: 1.65,
+                  fontWeight: 500,
+                  marginBottom: "1.2rem",
+                }}
+              >
+                {lang === "en"
+                  ? "If someone gets cold feet, hopefully it's you ;-)"
+                  : lang === "ru"
+                  ? "Если кому-то становится холодно в ногах, надеюсь, это вы ;-)"
+                  : "Wenn einer kalte Füße bekommt, dann hoffentlich ihr ;-)"}
+              </p>
+            </div>
 
-    {/* Rechts bleibt bestehen (Zusammen feiern + Mail) */}
-
-
-<div
-  style={{
-    flex: "0 0 260px",
-    display: "flex",
-    flexDirection: "column",
-    gap: "0.75rem",
-  }}
->
-
+            {/* Rechts: „Zusammen feiern“ + Mail */}
+            <div
+              style={{
+                flex: "0 0 260px",
+                display: "flex",
+                flexDirection: "column",
+                gap: "0.75rem",
+              }}
+            >
               <div
                 style={{
                   display: "flex",
@@ -236,8 +238,8 @@ export default function RSVPPage({ lang, setLang }) {
                     {lang === "en"
                       ? "Just send us a quick note to let us know if you're coming—a few clicks and we'll know exactly how many guests to expect."
                       : lang === "ru"
-                      ? "Напишите нам, собираетесь ли вы прийти —  несколько кликов, и мы будем знать, сколько гостей мы сможем принять."
-                      : "Schreibt uns kurz, ob ihr kommt –  ein paar Klicks und wir haben Klarheit wie viele Gäste wir begrüßen dürfen."}
+                      ? "Напишите нам, собираетесь ли вы прийти — несколько кликов, и мы будем знать, сколько гостей мы сможем принять."
+                      : "Schreibt uns kurz, ob ihr kommt – ein paar Klicks und wir haben Klarheit, wie viele Gäste wir begrüßen dürfen."}
                   </div>
                 </div>
               </div>
@@ -289,7 +291,14 @@ export default function RSVPPage({ lang, setLang }) {
           className="rsvp-main-grid"
         >
           {/* 💌 Formular-Bereich */}
-          <Card title={t.rsvpTitle + " – " + DATUM.text} className="hover-react">
+          <Card
+            title={
+              datumText
+                ? `${t.rsvpTitle} – ${datumText}`
+                : t.rsvpTitle
+            }
+            className="hover-react"
+          >
             <div className="form-intro">
               <Info className="icon" />
               <p>
@@ -330,141 +339,140 @@ export default function RSVPPage({ lang, setLang }) {
             )}
           </Card>
 
-       {/* 📘 Seitenbereich (FAQ & Datenschutz) */}
-<div
-  className="rsvp-side"
-  style={{
-    display: "flex",
-    flexDirection: "column",
-    gap: "1.3rem",
-  }}
->
-  <Card
-    title={lang === "en" ? "FAQ" : lang === "ru" ? "FAQ" : "FAQ"}
-    className="hover-react"
-  >
-    {/* FAQ 1 – RSVP ändern */}
-    <details className="faq" open>
-      <summary>
-        <span
-          style={{
-            display: "inline-flex",
-            alignItems: "center",
-            gap: "0.45rem",
-          }}
-        >
-          <HelpCircle size={16} />
-          <span>
-            {lang === "en"
-              ? "Can I change my RSVP later? ❓"
-              : lang === "ru"
-              ? "Можно ли изменить ответ позже? ❓"
-              : "Kann ich meine Antwort später ändern? ❓"}
-          </span>
-        </span>
-      </summary>
-      <div className="faq-body">
-        {lang === "en"
-          ? "If it was no before, then yes. If it was yes before, then no! 😉"
-          : lang === "ru"
-          ? "Если раньше нет, то да. Если раньше да, то нет! 😉"
-          : "Wenn vorher nein, dann ja. Wenn vorher ja, dann nein! 😉"}
-      </div>
-    </details>
+          {/* 📘 Seitenbereich (FAQ & Datenschutz) */}
+          <div
+            className="rsvp-side"
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              gap: "1.3rem",
+            }}
+          >
+            <Card
+              title={lang === "en" ? "FAQ" : lang === "ru" ? "FAQ" : "FAQ"}
+              className="hover-react"
+            >
+              {/* FAQ 1 – RSVP ändern */}
+              <details className="faq" open>
+                <summary>
+                  <span
+                    style={{
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: "0.45rem",
+                    }}
+                  >
+                    <HelpCircle size={16} />
+                    <span>
+                      {lang === "en"
+                        ? "Can I change my RSVP later? ❓"
+                        : lang === "ru"
+                        ? "Можно ли изменить ответ позже? ❓"
+                        : "Kann ich meine Antwort später ändern? ❓"}
+                    </span>
+                  </span>
+                </summary>
+                <div className="faq-body">
+                  {lang === "en"
+                    ? "If it was no before, then yes. If it was yes before, then no! 😉"
+                    : lang === "ru"
+                    ? "Если раньше нет, то да. Если раньше да, то нет! 😉"
+                    : "Wenn vorher nein, dann ja. Wenn vorher ja, dann nein! 😉"}
+                </div>
+              </details>
 
-    {/* FAQ 2 – Kinder */}
-    <details className="faq">
-      <summary>
-        <span
-          style={{
-            display: "inline-flex",
-            alignItems: "center",
-            gap: "0.45rem",
-          }}
-        >
-          <Baby size={16} />
-          <span>
-            {lang === "en"
-              ? "Can we bring our children? 👶"
-              : lang === "ru"
-              ? "Можно ли прийти с детьми? 👶"
-              : "Können wir Kinder mitbringen? 👶"}
-          </span>
-        </span>
-      </summary>
-      <div className="faq-body">
-        {lang === "en"
-          ? "If yes, please let us know so we can get enough cages."
-          : lang === "ru"
-          ? "Если да, пожалуйста, сообщите нам об этом, чтобы мы могли подготовить достаточное количество клеток.!"
-          : "Wenn ja, bitte Bescheid geben, damit wir genügend Käfige besorgen können."}
-      </div>
-    </details>
+              {/* FAQ 2 – Kinder */}
+              <details className="faq">
+                <summary>
+                  <span
+                    style={{
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: "0.45rem",
+                    }}
+                  >
+                    <Baby size={16} />
+                    <span>
+                      {lang === "en"
+                        ? "Can we bring our children? 👶"
+                        : lang === "ru"
+                        ? "Можно ли прийти с детьми? 👶"
+                        : "Können wir Kinder mitbringen? 👶"}
+                    </span>
+                  </span>
+                </summary>
+                <div className="faq-body">
+                  {lang === "en"
+                    ? "If yes, please let us know so we can get enough cages."
+                    : lang === "ru"
+                    ? "Если да, пожалуйста, сообщите нам об этом, чтобы мы могли подготовить достаточное количество клеток.!"
+                    : "Wenn ja, bitte Bescheid geben, damit wir genügend Käfige besorgen können."}
+                </div>
+              </details>
 
-    {/* FAQ 3 – NEU: Mütze & Handschuhe */}
-    <details className="faq">
-      <summary>
-        <span
-          style={{
-            display: "inline-flex",
-            alignItems: "center",
-            gap: "0.45rem",
-          }}
-        >
-          <ThermometerSnowflake size={16} />
-          <span>
-            {lang === "en"
-              ? "Do I need a hat and gloves? 🧣🧤"
-              : lang === "ru"
-              ? "Нужны ли шапка и перчатки? 🧣🧤"
-              : "Brauche ich eine Mütze und Handschuhe? 🧣🧤"}
-          </span>
-        </span>
-      </summary>
-      <div className="faq-body">
-        {lang === "en"
-          ? "Are you going into the ice bath? Then maybe not 🧊 – otherwise a hat and gloves are definitely a good idea."
-          : lang === "ru"
-          ? "Планируешь запрыгнуть в ледяную купель? Тогда, может быть, нет 🧊 — во всех остальных случаях шапка и перчатки очень пригодятся."
-          : "Gehst du in die Eistonne? Dann vielleicht nein 🧊 – ansonsten wären Mütze und Handschuhe auf jeden Fall vorteilhaft."}
-      </div>
-    </details>
+              {/* FAQ 3 – Mütze & Handschuhe */}
+              <details className="faq">
+                <summary>
+                  <span
+                    style={{
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: "0.45rem",
+                    }}
+                  >
+                    <ThermometerSnowflake size={16} />
+                    <span>
+                      {lang === "en"
+                        ? "Do I need a hat and gloves? 🧣🧤"
+                        : lang === "ru"
+                        ? "Нужны ли шапка и перчатки? 🧣🧤"
+                        : "Brauche ich eine Mütze und Handschuhe? 🧣🧤"}
+                    </span>
+                  </span>
+                </summary>
+                <div className="faq-body">
+                  {lang === "en"
+                    ? "Are you going into the ice bath? Then maybe not 🧊 – otherwise a hat and gloves are definitely a good idea."
+                    : lang === "ru"
+                    ? "Планируешь запрыгнуть в ледяную купель? Тогда, может быть, нет 🧊 — во всех остальных случаях шапка и перчатки очень пригодятся."
+                    : "Gehst du in die Eistonne? Dann vielleicht nein 🧊 – ansonsten wären Mütze und Handschuhe auf jeden Fall vorteilhaft."}
+                </div>
+              </details>
 
-    {/* FAQ 4 – Bis wann antworten */}
-    <details className="faq">
-      <summary>
-        <span
-          style={{
-            display: "inline-flex",
-            alignItems: "center",
-            gap: "0.45rem",
-          }}
-        >
-          <Hourglass size={16} />
-          <span>
-            {lang === "en"
-              ? "By when should we reply? ⏰"
-              : lang === "ru"
-              ? "До какого срока нужно ответить? ⏰"
-              : "Bis wann sollen wir Bescheid geben? ⏰"}
-          </span>
-        </span>
-      </summary>
-      <div className="faq-body">
-        {lang === "en"
-          ? "Preferably by the above date, so that we can plan ahead and look forward to seeing you."
-          : lang === "ru"
-          ? "Желательно до указанной выше даты, чтобы мы могли точно спланировать мероприятие и с нетерпением ждать вашего приезда."
-          : "Am besten bis zu dem oben genannten Datum, damit wir Planungssicherheit haben und die Vorfreude auf euch."}
-      </div>
-    </details>
-  </Card>
+              {/* FAQ 4 – Bis wann antworten */}
+              <details className="faq">
+                <summary>
+                  <span
+                    style={{
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: "0.45rem",
+                    }}
+                  >
+                    <Hourglass size={16} />
+                    <span>
+                      {lang === "en"
+                        ? "By when should we reply? ⏰"
+                        : lang === "ru"
+                        ? "До какого срока нужно ответить? ⏰"
+                        : "Bis wann sollen wir Bescheid geben? ⏰"}
+                    </span>
+                  </span>
+                </summary>
+                <div className="faq-body">
+                  {lang === "en"
+                    ? "Preferably by the above date, so that we can plan ahead and look forward to seeing you."
+                    : lang === "ru"
+                    ? "Желательно до указанной выше даты, чтобы мы могли точно спланировать мероприятие и с нетерпением ждать вашего приезда."
+                    : "Am besten bis zu dem oben genannten Datum, damit wir Planungssicherheit haben und die Vorfreude auf euch."}
+                </div>
+              </details>
+            </Card>
 
-  <Card title={t.privacyTitle} className="hover-react">
-    <p className="privacy">{t.privacyBody}</p>
-  </Card>
-</div>
-
+            <Card title={t.privacyTitle} className="hover-react">
+              <p className="privacy">{t.privacyBody}</p>
+            </Card>
+          </div>
         </div>
       </Section>
     </Layout>

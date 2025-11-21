@@ -577,40 +577,6 @@ export default function WinterPage({ lang, setLang }) {
             <span>{w.snowHint}</span>
           </p>
 
-          {/* YouTube-Video (legaler Embed) */}
-          <div
-            style={{
-              marginTop: "1rem",
-              borderRadius: "0.9rem",
-              overflow: "hidden",
-              border: "1px solid #e2e8f0",
-              boxShadow: "0 10px 28px rgba(15,23,42,0.18)",
-              background: "#020617",
-            }}
-          >
-            <div
-              style={{
-                position: "relative",
-                paddingBottom: "56.25%",
-                height: 0,
-              }}
-            >
-              <iframe
-                src="https://www.youtube.com/embed/EYbGmNrS5-0"
-                title="Gudauri Winter – YouTube"
-                style={{
-                  position: "absolute",
-                  inset: 0,
-                  width: "100%",
-                  height: "100%",
-                  border: 0,
-                }}
-                loading="lazy"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowFullScreen
-              />
-            </div>
-          </div>
         </Card>
 
         {/* kleiner Abstand */}
@@ -732,7 +698,7 @@ const ACTIVITIES = {
       img: "/winter/spa.jpg",
       text: "Wellness & Entspannung nach dem Skitag – Spas & heiße Quellen.",
       type: "Entspannung",
-      link: "https://www.georgianholidays.com/en/blog/tbilisi-sulfur-baths",
+      link: "https://www.tripadvisor.de/Attractions-g1588192-Activities-c40-Gudauri_Mtskheta_Mtianeti_Region.htmludauri/m/en/blog/tbilisi-sulfur-baths",
     },
     {
       title: "Schneeschuhwandern",
@@ -776,7 +742,7 @@ const ACTIVITIES = {
       img: "/winter/spa.jpg",
       text: "Recover after a ski day – wellness spas and natural hot springs.",
       type: "Relax",
-      link: "https://www.georgianholidays.com/en/blog/tbilisi-sulfur-baths",
+      link: "https://www.tripadvisor.de/Attractions-g1588192-Activities-c40-Gudauri_Mtskheta_Mtianeti_Region.htmludauri/m/en/blog/tbilisi-sulfur-baths",
     },
     {
       title: "Snowshoeing",
@@ -820,7 +786,7 @@ const ACTIVITIES = {
       img: "/winter/spa.jpg",
       text: "Восстановление после катания — спа-комплексы и природные термы.",
       type: "Релакс",
-      link: "https://www.georgianholidays.com/en/blog/tbilisi-sulfur-baths",
+      link: "https://www.tripadvisor.de/Attractions-g1588192-Activities-c40-Gudauri_Mtskheta_Mtianeti_Region.htmludauri/m/en/blog/tbilisi-sulfur-baths",
     },
     {
       title: "Сноушуинг",

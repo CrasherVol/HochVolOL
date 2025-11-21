@@ -681,7 +681,7 @@ export const TEXTS = {
     locationSub: "Gudauri – aAlpina Hotel Gudauri, mountains & celebration",
 
     rsvpTitle: "Confirm or Decline",
-    rsvpSub: "Please reply by November 24, 2025",
+    rsvpSub: "Please reply by December 17, 2025",
     contact: "Contact",
     addToCal: "Add to Calendar",
     planTrip: "Plan Your Trip",
@@ -870,7 +870,7 @@ export const TEXTS = {
 
     rsvpTitle: "Подтверждение участия.",
     rsvpSub:
-      "Пожалуйста, дайте нам знать до 24 ноября 2025 года.",
+      "Пожалуйста, ответьте до 17 декабря 2025 года.",
     contact: "Контакт",
     addToCal: "Добавить в календарь",
     planTrip: "Спланировать поездку",
