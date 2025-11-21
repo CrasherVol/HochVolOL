@@ -27,6 +27,7 @@ const FORM_TEXT = {
     submittingLabel: "Wird gesendet…",
     altMailPrefix: "oder an",
     altMailSuffix: "",
+    coldFeetText: "❄️ Achtung… kalte Füße? 😄",
   },
   en: {
     nameLabel: "Name*",
@@ -51,6 +52,7 @@ const FORM_TEXT = {
     submittingLabel: "Sending…",
     altMailPrefix: "or write to",
     altMailSuffix: "directly via e-mail",
+    coldFeetText: "❄️ Careful… cold feet? 😄",
   },
   ru: {
     nameLabel: "Имя*",
@@ -75,6 +77,7 @@ const FORM_TEXT = {
     submittingLabel: "Отправка…",
     altMailPrefix: "или написать на",
     altMailSuffix: "напрямую по электронной почте",
+    coldFeetText: "❄️ Осторожно… холодные ноги? 😄",
   },
 };
 
@@ -90,6 +93,9 @@ export default function RSVPForm({ lang, onSubmitRSVP, sending }) {
   const [diet, setDiet] = useState("");
   const [message, setMessage] = useState("");
   const [consent, setConsent] = useState(false);
+
+  // ❄️ Neu: kleines Popup bei "Nein" (kalte Füße)
+  const [showColdFeet, setShowColdFeet] = useState(false);
 
   const handlePeopleChange = (e) => {
     const value = Number(e.target.value) || 1;
@@ -166,7 +172,7 @@ export default function RSVPForm({ lang, onSubmitRSVP, sending }) {
 
       {/* 2. Reihe */}
       <div className="field-grid">
-        <div className="field">
+        <div className="field" style={{ position: "relative" }}>
           <label>{t.attendLabel}</label>
           <div
             style={{
@@ -183,7 +189,10 @@ export default function RSVPForm({ lang, onSubmitRSVP, sending }) {
                 name="attend"
                 value="yes"
                 checked={attend === "yes"}
-                onChange={() => setAttend("yes")}
+                onChange={() => {
+                  setAttend("yes");
+                  setShowColdFeet(false); // Popup weg bei "Ja"
+                }}
               />{" "}
               {t.attendYes}
             </label>
@@ -193,11 +202,40 @@ export default function RSVPForm({ lang, onSubmitRSVP, sending }) {
                 name="attend"
                 value="no"
                 checked={attend === "no"}
-                onChange={() => setAttend("no")}
+                onChange={() => {
+                  setAttend("no");
+                  // ❄️ Popup kurz anzeigen
+                  setShowColdFeet(true);
+                  setTimeout(() => setShowColdFeet(false), 1200);
+                }}
               />{" "}
               {t.attendNo}
             </label>
           </div>
+
+          {/* ❄️ Kalte-Füße-Popup direkt am Feld */}
+          {showColdFeet && attend === "no" && (
+            <div
+              style={{
+                position: "absolute",
+                right: "0.5rem",
+                top: "0.2rem",
+                background: "rgba(15,23,42,0.92)",
+                color: "white",
+                padding: "0.35rem 0.75rem",
+                borderRadius: "999px",
+                fontSize: "0.8rem",
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "0.35rem",
+                boxShadow: "0 8px 18px rgba(15,23,42,0.5)",
+                zIndex: 5,
+                pointerEvents: "none",
+              }}
+            >
+              <span>{t.coldFeetText}</span>
+            </div>
+          )}
         </div>
 
         <div className="field">
