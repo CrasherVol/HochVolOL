@@ -1031,9 +1031,9 @@ export const PROGRAMM = [
   {
     time: "15:00",
     title: {
-      de: "Freie Traung - Einfach laut Ja sagen! So machen wir’s auch, wenn jemand fragt, ob wir Steak wollen.",
-      en: "Wedding ceremony - We just say yes! That's the same what we do when someone asks us if we want steak.",
-      ru: "Церемония - ",
+      de: "Freie Traung",
+      en: "Wedding ceremony",
+      ru: "Церемония",
    },
 place: {
   de: "Terrasse draußen!",

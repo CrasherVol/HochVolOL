@@ -219,6 +219,7 @@ export default function FlightsPage({ lang, setLang }) {
       >
         {/* Haupt-Grid: linke & rechte Spalte */}
         <div
+          className="flights-grid"
           style={{
             display: "grid",
             gridTemplateColumns: "repeat(auto-fit,minmax(400px,1fr))",

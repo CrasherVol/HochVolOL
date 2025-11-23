@@ -27,7 +27,7 @@ import {
 /* ===================== Lokales i18n für diese Seite ===================== */
 const W = {
   de: {
-    pageTitle: "Winter in Georgien - Unsere Location ist so winterlich, selbst die Pinguine haben gefragt, ob sie mitfeiern dürfen.",
+    pageTitle: "Winter in Georgien - Unsere Location ist so winterlich, selbst die Braunbären haben gefragt, ob sie mitfeiern dürfen.",
     pageSub: "Pulverschnee, Sonne & Gastfreundschaft im Kaukasus",
     heroTitle: "Winterzauber im Kaukasus",
     heroText:
@@ -75,7 +75,7 @@ const W = {
       "Für den tagesaktuellen Stand zu Schneehöhen, geöffneten Liften und Lawinensituation nutzt bitte die verlinkten externen Seiten.",
   },
   en: {
-    pageTitle: "Winter in Georgia - Our location is so wintery that even the penguins asked if they could join in the celebrations.",
+    pageTitle: "Winter in Georgia - Our location is so wintery that even the brown bears asked if they could join in the celebrations.",
     pageSub: "Powder, sunshine & hospitality in the Caucasus",
     heroTitle: "Winter magic in the Caucasus",
     heroText:

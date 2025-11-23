@@ -2538,3 +2538,39 @@ body {
     grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)) !important;
   }
 }
+@media (max-width: 768px) {
+
+  /* verhindert nach rechts rausdrücken */
+  .card {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+    box-sizing: border-box;
+  }
+
+  /* alle Grids sicher umbrechen */
+  .card > div,
+  .card [style*="display: grid"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* verhindert zu breite Inhalte */
+  .card * {
+    max-width: 100% !important;
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+  }
+}
+/* Fix für FlightsPage Grid auf Mobile */
+@media (max-width: 768px) {
+  .flights-grid {
+    grid-template-columns: 1fr !important;
+    min-width: 0 !important;
+  }
+}
+@media (max-width: 768px) {
+  .flights-grid {
+    grid-template-columns: 1fr !important;
+    min-width: 0 !important;
+  }
+}

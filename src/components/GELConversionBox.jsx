@@ -80,7 +80,7 @@ export default function GELConversionBox({ lang = "de" }) {
       customHint: "Gib einen Betrag ein, um die Umrechnung zu sehen.",
       fallbackNote:
         "Hinweis: Wechselkurse konnten nicht live geladen werden – Werte sind geschätzte Richtwerte.",
-      typicalTitle: "Typische Ausgaben (ca.)",
+      typicalTitle: "Typische Ausgaben (ca.) - bitte nach rechts scrollen falls keine Beträge angezeigt.",
       typicalNote:
         "Richtwerte – Preise können je nach Saison, Ort und Anbieter variieren.",
     },
@@ -95,7 +95,7 @@ export default function GELConversionBox({ lang = "de" }) {
       customHint: "Enter an amount to see the conversion.",
       fallbackNote:
         "Note: Live rates could not be loaded – using approximate fallback values.",
-      typicalTitle: "Typical expenses (approx.)",
+      typicalTitle: "Typical expenses (approx.) - Please scroll to the right if no amounts are displayed.",
       typicalNote:
         "Approximate values – prices vary by season, location and provider.",
     },
@@ -110,7 +110,7 @@ export default function GELConversionBox({ lang = "de" }) {
       customHint: "Введите сумму, чтобы увидеть конвертацию.",
       fallbackNote:
         "Примечание: Онлайн-курсы недоступны — используются ориентировочные значения.",
-      typicalTitle: "Типичные расходы (примерно)",
+      typicalTitle: "Типичные расходы (примерно) -Если суммы не отображаются, прокрутите вправо.",
       typicalNote:
         "Ориентировочные значения — цены зависят от сезона, места и поставщика.",
     },
