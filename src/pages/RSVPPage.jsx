@@ -223,7 +223,7 @@ fontSize: `${size}rem`,
                 {lang === "en"
                   ? "If someone gets cold feet, hopefully it's you ;-)"
                   : lang === "ru"
-                  ? "Если кому-то становится холодно в ногах, надеюсь, это вы ;-)"
+                  ? "До свадьбы все ясно, у нас все еще прекрасно. Несмотря на стресс и все вокруг, мы стойкие и не глупые. После «да», которое может быть, нам поможет только холодное вино. Шутки в сторону, вот и началось, брак будет замечательным.Время отныне только прогрессивное, любовь просто экспансивная."
                   : "Wenn einer kalte Füße bekommt, dann hoffentlich ihr ;-)"}
               </p>
             </div>
@@ -307,7 +307,7 @@ fontSize: `${size}rem`,
                       color: "#1d4ed8",
                     }}
                   >
-                    hoch-vol-ol@outlook.de
+                    hochvolol@gmail.com
                   </div>
                 </div>
               </div>
@@ -316,13 +316,8 @@ fontSize: `${size}rem`,
         </div>
 
         {/* ===== HAUPT-LAYOUT: Formular links, FAQ/Datenschutz rechts ===== */}
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "minmax(0, 2.1fr) minmax(0, 1.4fr)",
-            gap: "1.9rem",
-          }}
-          className="rsvp-main-grid"
+        <div className="rsvp-main-grid">
+
         >
           {/* 💌 Formular-Bereich */}
           <Card

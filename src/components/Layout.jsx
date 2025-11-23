@@ -166,29 +166,33 @@ function Footer() {
 /* --- Layout-Wrapper --- */
 export default function Layout({ children, lang, setLang }) {
   return (
-    <div
-      className="layout-root"
-      style={{
-        minHeight: "100vh",
-        background: "transparent",
-      }}
-    >
-      <Header lang={lang} setLang={setLang} />
-      <main
-        className="main"
+    <div className="app-shell">
+      <div
+        className="layout-root"
         style={{
-          maxWidth: 1100,
-          margin: "0 auto",
-          padding: "1.25rem",
-          background: "rgba(255,255,255,0.72)",
-          backdropFilter: "blur(6px)",
-          borderRadius: "14px",
-          boxShadow: "0 8px 30px rgba(0,0,0,0.08)",
+          minHeight: "100vh",
+          background: "transparent",
         }}
       >
-        {children}
-      </main>
-      <Footer />
+        <Header lang={lang} setLang={setLang} />
+
+        <main
+          className="main"
+          style={{
+            maxWidth: 1100,
+            margin: "0 auto",
+            padding: "1.25rem",
+            background: "rgba(255,255,255,0.72)",
+            backdropFilter: "blur(6px)",
+            borderRadius: "14px",
+            boxShadow: "0 8px 30px rgba(0,0,0,0.08)",
+          }}
+        >
+          {children}
+        </main>
+
+        <Footer />
+      </div>
     </div>
   );
 }
