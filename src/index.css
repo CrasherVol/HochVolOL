@@ -2423,3 +2423,92 @@ body {
     gap: 1.3rem;
   }
 }
+/* =========================
+   Globale Handy-Optimierung
+   ========================= */
+
+/* Verhindert horizontales Scrollen durch überbreite Elemente */
+body {
+  overflow-x: hidden;
+}
+
+/* Standard-Card (alle Boxen wie "Aktuelles Wetter" etc.) */
+.card {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Auf kleineren Screens: Ränder enger machen */
+@media (max-width: 768px) {
+  .card {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+/* Grundlayout für die Seite */
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+}
+
+/* Handy-Anpassung fürs Haupt-Layout */
+@media (max-width: 768px) {
+  .main {
+    max-width: 100%;
+    margin: 0;
+    padding: 0.8rem;
+    border-radius: 0;
+  }
+}
+/* Wrapper: auf Handy seitlich scrollbar statt alles zu quetschen */
+.table-scroll-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+/* Tabelle selbst: nicht größer als der Container */
+.cost-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+/* Optional: etwas Luft bei den Zellen */
+.cost-table th,
+.cost-table td {
+  padding: 0.4rem 0.5rem;
+  white-space: nowrap;       /* verhindert Zeilenbruch in GEL / EUR / RUB */
+}
+/* Formular + FAQ nebeneinander (Desktop) */
+.rsvp-main-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 2.1fr) minmax(0, 1.4fr);
+  gap: 1.9rem;
+}
+
+/* Auf Handy: alles untereinander */
+@media (max-width: 768px) {
+  .rsvp-main-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.3rem;
+  }
+}
+
+/* Scroll-Wrapper für "Typische Ausgaben" */
+.typical-expenses-scroll {
+  width: 100%;
+  overflow-x: auto;
+}
+
+/* Damit die Spalten auch auf Handy genug Platz haben */
+.typical-expenses-table {
+  min-width: 540px;
+}
+.typical-expenses-scroll {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.typical-expenses-table {
+  min-width: 540px; /* genug Platz für alle Spalten, auf Handy dann horizontal scrollen */
+}

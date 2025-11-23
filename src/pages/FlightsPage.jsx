@@ -311,9 +311,6 @@ export default function FlightsPage({ lang, setLang }) {
                   <option value="BER">Berlin (BER)</option>
                   <option value="FRA">Frankfurt (FRA)</option>
                   <option value="MUC">München (MUC)</option>
-                  <option value="SVO">
-                    {lang === "ru" ? "Москва (SVO)" : "Moskau (SVO)"}
-                  </option>
                 </select>
 
                 <div

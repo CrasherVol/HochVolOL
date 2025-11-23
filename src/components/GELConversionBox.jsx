@@ -16,9 +16,9 @@ export default function GELConversionBox({ lang = "de" }) {
   const [rateEUR, setRateEUR] = useState(null); // 1 GEL in EUR
   const [rateRUB, setRateRUB] = useState(null); // 1 GEL in RUB
   const [customGel, setCustomGel] = useState(100);
-  const [error, setError] = useState(null); // "fallback" oder null
+  const [error, setError] = useState(null); // optional für Fallback-Hinweis
 
-   // Live-Kurse laden (oder Fallback)
+  // Live-Kurse laden (oder Fallback)
   useEffect(() => {
     let cancelled = false;
 
@@ -38,23 +38,23 @@ export default function GELConversionBox({ lang = "de" }) {
         const eur = data?.gel?.eur;
         const rub = data?.gel?.rub;
 
-        // Wenn echte Zahlen zurückkommen → live setzen
         if (!cancelled && typeof eur === "number" && typeof rub === "number") {
+          // echte Live-Werte
           setRateEUR(eur);
           setRateRUB(rub);
-          // optional: setError(null); falls du error-State noch hast
+          setError(null);
         } else if (!cancelled) {
           // Fallback: feste Richtwerte
           setRateEUR(0.32);
           setRateRUB(30);
-          // optional: setError("fallback");
+          setError("fallback");
         }
       } catch (err) {
         console.error("Fehler beim Laden der Wechselkurse:", err);
         if (!cancelled) {
           setRateEUR(0.32);
           setRateRUB(30);
-          // optional: setError("fallback");
+          setError("fallback");
         }
       }
     }
@@ -65,7 +65,6 @@ export default function GELConversionBox({ lang = "de" }) {
       cancelled = true;
     };
   }, []);
-
 
   const amountsGEL = [10, 20, 30, 50, 100, 120, 150, 200];
 
@@ -298,162 +297,168 @@ export default function GELConversionBox({ lang = "de" }) {
           {t.typicalNote}
         </div>
 
-        <div
-          style={{
-            borderRadius: "0.75rem",
-            overflow: "hidden",
-            border: "1px solid rgba(209,213,219,0.9)",
-            background: "rgba(255,255,255,0.98)",
-          }}
-        >
-          {/* Header-Zeile */}
+        {/* 📱 Scroll-Wrapper, damit es auf Handy nicht gequetscht wird */}
+        <div className="typical-expenses-scroll">
           <div
+            className="typical-expenses-table"
             style={{
-              display: "grid",
-              gridTemplateColumns:
-                "auto minmax(0, 2.4fr) minmax(0, 0.9fr) minmax(0, 0.9fr) minmax(0, 0.9fr)",
-              gap: "0.4rem",
-              alignItems: "center",
-              padding: "0.4rem 0.7rem",
-              background: "rgba(219,234,254,0.95)",
-              borderBottom: "1px solid rgba(209,213,219,0.9)",
-              fontSize: "0.8rem",
-              fontWeight: 600,
-              color: "#0f172a",
+              borderRadius: "0.75rem",
+              overflow: "hidden",
+              border: "1px solid rgba(209,213,219,0.9)",
+              background: "rgba(255,255,255,0.98)",
             }}
           >
-            <span />
-            <span>
-              {lang === "de"
-                ? "Kategorie"
-                : lang === "ru"
-                ? "Категория"
-                : "Category"}
-            </span>
-            <span
+            {/* Header-Zeile */}
+            <div
               style={{
-                textAlign: "right",
-                borderLeft: "1px solid rgba(209,213,219,0.9)",
-                paddingLeft: "0.6rem",
+                display: "grid",
+                gridTemplateColumns:
+                  "auto minmax(0, 2.4fr) minmax(0, 0.9fr) minmax(0, 0.9fr) minmax(0, 0.9fr)",
+                gap: "0.4rem",
+                alignItems: "center",
+                padding: "0.4rem 0.7rem",
+                background: "rgba(219,234,254,0.95)",
+                borderBottom: "1px solid rgba(209,213,219,0.9)",
+                fontSize: "0.8rem",
+                fontWeight: 600,
+                color: "#0f172a",
               }}
             >
-              GEL
-            </span>
-            <span
-              style={{
-                textAlign: "right",
-                borderLeft: "1px solid rgba(209,213,219,0.9)",
-                paddingLeft: "0.6rem",
-              }}
-            >
-              EUR
-            </span>
-            <span
-              style={{
-                textAlign: "right",
-                borderLeft: "1px solid rgba(209,213,219,0.9)",
-                paddingLeft: "0.6rem",
-              }}
-            >
-              RUB
-            </span>
-          </div>
-
-          {/* Datenzeilen */}
-          {typicalItems.map((item, index) => {
-            const label =
-              item.label[lang] || item.label.de || Object.values(item.label)[0];
-            const eur = item.gel * rateEUR;
-            const rub = item.gel * rateRUB;
-
-            return (
-              <div
-                key={item.key}
+              <span />
+              <span>
+                {lang === "de"
+                  ? "Kategorie"
+                  : lang === "ru"
+                  ? "Категория"
+                  : "Category"}
+              </span>
+              <span
                 style={{
-                  display: "grid",
-                  gridTemplateColumns:
-                    "auto minmax(0, 2.4fr) minmax(0, 0.9fr) minmax(0, 0.9fr) minmax(0, 0.9fr)",
-                  gap: "0.4rem",
-                  alignItems: "center",
-                  padding: "0.45rem 0.7rem",
-                  fontSize: "0.85rem",
-                  background:
-                    index % 2 === 0
-                      ? "rgba(248,250,252,0.96)"
-                      : "rgba(255,255,255,0.98)",
-                  borderTop:
-                    index === 0
-                      ? "none"
-                      : "1px solid rgba(229,231,235,0.9)",
+                  textAlign: "right",
+                  borderLeft: "1px solid rgba(209,213,219,0.9)",
+                  paddingLeft: "0.6rem",
                 }}
               >
-                <span
+                GEL
+              </span>
+              <span
+                style={{
+                  textAlign: "right",
+                  borderLeft: "1px solid rgba(209,213,219,0.9)",
+                  paddingLeft: "0.6rem",
+                }}
+              >
+                EUR
+              </span>
+              <span
+                style={{
+                  textAlign: "right",
+                  borderLeft: "1px solid rgba(209,213,219,0.9)",
+                  paddingLeft: "0.6rem",
+                }}
+              >
+                RUB
+              </span>
+            </div>
+
+            {/* Datenzeilen */}
+            {typicalItems.map((item, index) => {
+              const label =
+                item.label[lang] ||
+                item.label.de ||
+                Object.values(item.label)[0];
+              const eur = item.gel * rateEUR;
+              const rub = item.gel * rateRUB;
+
+              return (
+                <div
+                  key={item.key}
                   style={{
-                    width: "1.8rem",
-                    height: "1.8rem",
-                    borderRadius: "999px",
-                    display: "flex",
+                    display: "grid",
+                    gridTemplateColumns:
+                      "auto minmax(0, 2.4fr) minmax(0, 0.9fr) minmax(0, 0.9fr) minmax(0, 0.9fr)",
+                    gap: "0.4rem",
                     alignItems: "center",
-                    justifyContent: "center",
-                    background: "rgba(219,234,254,0.9)",
-                    color: "#0f172a",
-                    flexShrink: 0,
+                    padding: "0.45rem 0.7rem",
+                    fontSize: "0.85rem",
+                    background:
+                      index % 2 === 0
+                        ? "rgba(248,250,252,0.96)"
+                        : "rgba(255,255,255,0.98)",
+                    borderTop:
+                      index === 0
+                        ? "none"
+                        : "1px solid rgba(229,231,235,0.9)",
                   }}
                 >
-                  {item.icon}
-                </span>
+                  <span
+                    style={{
+                      width: "1.8rem",
+                      height: "1.8rem",
+                      borderRadius: "999px",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      background: "rgba(219,234,254,0.9)",
+                      color: "#0f172a",
+                      flexShrink: 0,
+                    }}
+                  >
+                    {item.icon}
+                  </span>
 
-                <span
-                  style={{
-                    color: "#0f172a",
-                    minWidth: 0,
-                  }}
-                >
-                  {label}
-                </span>
+                  <span
+                    style={{
+                      color: "#0f172a",
+                      minWidth: 0,
+                    }}
+                  >
+                    {label}
+                  </span>
 
-                <span
-                  style={{
-                    whiteSpace: "nowrap",
-                    textAlign: "right",
-                    fontVariantNumeric: "tabular-nums",
-                    color: "#111827",
-                    fontWeight: 600,
-                    borderLeft: "1px solid rgba(209,213,219,0.9)",
-                    paddingLeft: "0.6rem",
-                  }}
-                >
-                  {formatNumber(item.gel, 0)} GEL
-                </span>
+                  <span
+                    style={{
+                      whiteSpace: "nowrap",
+                      textAlign: "right",
+                      fontVariantNumeric: "tabular-nums",
+                      color: "#111827",
+                      fontWeight: 600,
+                      borderLeft: "1px solid rgba(209,213,219,0.9)",
+                      paddingLeft: "0.6rem",
+                    }}
+                  >
+                    {formatNumber(item.gel, 0)} GEL
+                  </span>
 
-                <span
-                  style={{
-                    whiteSpace: "nowrap",
-                    textAlign: "right",
-                    fontVariantNumeric: "tabular-nums",
-                    color: "#1f2937",
-                    borderLeft: "1px solid rgba(209,213,219,0.9)",
-                    paddingLeft: "0.6rem",
-                  }}
-                >
-                  {formatNumber(eur)}
-                </span>
+                  <span
+                    style={{
+                      whiteSpace: "nowrap",
+                      textAlign: "right",
+                      fontVariantNumeric: "tabular-nums",
+                      color: "#1f2937",
+                      borderLeft: "1px solid rgba(209,213,219,0.9)",
+                      paddingLeft: "0.6rem",
+                    }}
+                  >
+                    {formatNumber(eur)}
+                  </span>
 
-                <span
-                  style={{
-                    whiteSpace: "nowrap",
-                    textAlign: "right",
-                    fontVariantNumeric: "tabular-nums",
-                    color: "#1f2937",
-                    borderLeft: "1px solid rgba(209,213,219,0.9)",
-                    paddingLeft: "0.6rem",
-                  }}
-                >
-                  {formatNumber(rub)}
-                </span>
-              </div>
-            );
-          })}
+                  <span
+                    style={{
+                      whiteSpace: "nowrap",
+                      textAlign: "right",
+                      fontVariantNumeric: "tabular-nums",
+                      color: "#1f2937",
+                      borderLeft: "1px solid rgba(209,213,219,0.9)",
+                      paddingLeft: "0.6rem",
+                    }}
+                  >
+                    {formatNumber(rub)}
+                  </span>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
     );
@@ -531,7 +536,7 @@ export default function GELConversionBox({ lang = "de" }) {
       )}
 
       {/* GEL-Tabelle + Eingabefeld nebeneinander */}
-          <div
+      <div
         style={{
           display: "flex",
           gap: "1.5rem",
@@ -541,7 +546,6 @@ export default function GELConversionBox({ lang = "de" }) {
           marginTop: "0.4rem",
         }}
       >
-
         {/* Linke Spalte: feste GEL-Beträge */}
         <div
           style={{
@@ -628,13 +632,13 @@ export default function GELConversionBox({ lang = "de" }) {
           </table>
         </div>
 
-        {/* Rechte Spalte: Eingabe + Ergebnis (modernisiert) */}
+        {/* Rechte Spalte: Eingabe + Ergebnis */}
         <div
           style={{
             flex: "1 1 230px",
             maxWidth: "270px",
             padding: "0.9rem 1rem",
-            marginTop: "0.4rem", // ein kleines Stück tiefer als die Tabelle
+            marginTop: "0.4rem",
             borderRadius: "0.9rem",
             background:
               "linear-gradient(135deg, rgba(255,255,255,0.98), rgba(219,234,254,0.95))",
@@ -750,8 +754,6 @@ export default function GELConversionBox({ lang = "de" }) {
             </div>
           )}
         </div>
-
-
       </div>
 
       {/* Typische Ausgaben (Liste unten) */}

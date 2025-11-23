@@ -153,201 +153,213 @@ export default function WeatherWidget({
         borderRadius: "0.9rem",
         background: bgGradient,
         color: textColor,
-        // kein hover-react -> kein Hover-Effekt
+        maxWidth: "100%",
+        overflowX: "auto", // 📱 wichtig für Handy
       }}
     >
-      {/* Kopfzeile: Ort + Temperatur + Zustand */}
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "2fr 1fr",
-          gap: ".5rem",
-          alignItems: "center",
-          marginBottom: ".5rem",
-        }}
-      >
-        <div>
-          <div
-            style={{
-              fontSize: ".8rem",
-              textTransform: "uppercase",
-              letterSpacing: ".05em",
-              color: subTextColor,
-            }}
-          >
-            {place} · {L.now}
-          </div>
-
-          <div
-            style={{
-              display: "flex",
-              alignItems: "baseline",
-              gap: ".5rem",
-              marginTop: ".15rem",
-            }}
-          >
-            <span style={{ fontSize: "2.2rem", fontWeight: 700, color: textColor }}>
-              {round(cur.temperature_2m, 0)} {L.unitC}
-            </span>
-            <span
-              style={{
-                fontSize: ".9rem",
-                color: subTextColor,
-                display: "flex",
-                alignItems: "center",
-                gap: ".3rem",
-              }}
-            >
-              <ThermometerSun size={14} />
-              {L.feelsLike}:{" "}
-              <strong>
-                {round(cur.apparent_temperature, 0)} {L.unitC}
-              </strong>
-            </span>
-          </div>
-        </div>
-
+      {/* Innerer Block mit Mindestbreite, damit Layout nicht bricht */}
+      <div style={{ minWidth: 320 }}>
+        {/* Kopfzeile: Ort + Temperatur + Zustand */}
         <div
           style={{
-            justifySelf: "end",
-            textAlign: "right",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "flex-end",
-            gap: ".15rem",
+            display: "grid",
+            gridTemplateColumns: "2fr 1fr",
+            gap: ".5rem",
+            alignItems: "center",
+            marginBottom: ".5rem",
           }}
         >
+          <div>
+            <div
+              style={{
+                fontSize: ".8rem",
+                textTransform: "uppercase",
+                letterSpacing: ".05em",
+                color: subTextColor,
+              }}
+            >
+              {place} · {L.now}
+            </div>
+
+            <div
+              style={{
+                display: "flex",
+                alignItems: "baseline",
+                gap: ".5rem",
+                marginTop: ".15rem",
+              }}
+            >
+              <span
+                style={{
+                  fontSize: "2.2rem",
+                  fontWeight: 700,
+                  color: textColor,
+                }}
+              >
+                {round(cur.temperature_2m, 0)} {L.unitC}
+              </span>
+              <span
+                style={{
+                  fontSize: ".9rem",
+                  color: subTextColor,
+                  display: "flex",
+                  alignItems: "center",
+                  gap: ".3rem",
+                }}
+              >
+                <ThermometerSun size={14} />
+                {L.feelsLike}:{" "}
+                <strong>
+                  {round(cur.apparent_temperature, 0)} {L.unitC}
+                </strong>
+              </span>
+            </div>
+          </div>
+
           <div
             style={{
-              width: 40,
-              height: 40,
-              borderRadius: "999px",
+              justifySelf: "end",
+              textAlign: "right",
               display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              background: "rgba(255,255,255,0.85)",
-              boxShadow: "0 6px 16px rgba(15,23,42,0.18)",
-              color: "#0f172a",
+              flexDirection: "column",
+              alignItems: "flex-end",
+              gap: ".15rem",
             }}
           >
-            {condition.icon}
-          </div>
-          <div style={{ fontSize: ".85rem", fontWeight: 600 }}>{condition.label}</div>
-          <div style={{ fontSize: ".75rem", color: subTextColor }}>
-            {L.clouds}: {round(cur.cloud_cover, 0)} %
+            <div
+              style={{
+                width: 40,
+                height: 40,
+                borderRadius: "999px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                background: "rgba(255,255,255,0.85)",
+                boxShadow: "0 6px 16px rgba(15,23,42,0.18)",
+                color: "#0f172a",
+              }}
+            >
+              {condition.icon}
+            </div>
+            <div style={{ fontSize: ".85rem", fontWeight: 600 }}>
+              {condition.label}
+            </div>
+            <div style={{ fontSize: ".75rem", color: subTextColor }}>
+              {L.clouds}: {round(cur.cloud_cover, 0)} %
+            </div>
           </div>
         </div>
-      </div>
 
-      {/* Werte-Grid (Wind, Schnee, Schneehöhe, Tagesverlauf) */}
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit,minmax(140px,1fr))",
-          gap: ".5rem",
-          marginTop: ".4rem",
-        }}
-      >
-        <Stat
-          label={L.wind}
-          value={`${round(cur.wind_speed_10m, 1)} ${L.unitMs}`}
-          icon={<WindIcon size={15} />}
-          sub={
-            cur.wind_gusts_10m != null
-              ? `${L.gusts}: ${round(cur.wind_gusts_10m, 1)} ${L.unitMs}`
-              : null
-          }
-          subTextColor={subTextColor}
-        />
-
-        <Stat
-          label={L.snowfallNow}
-          value={`${round(cur.snowfall, 1)} cm`}
-          icon={<CloudSnow size={15} />}
-          sub={
-            newSnowToday != null
-              ? `${L.newSnowToday}: ${round(newSnowToday, 0)} cm`
-              : null
-          }
-          subTextColor={subTextColor}
-        />
-
-        {snowDepth != null && (
+        {/* Werte-Grid (Wind, Schnee, Schneehöhe, Tagesverlauf) */}
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit,minmax(140px,1fr))",
+            gap: ".5rem",
+            marginTop: ".4rem",
+          }}
+        >
           <Stat
-            label={L.snowDepth}
-            value={`${round(snowDepth, 0)} cm`}
-            icon={<CloudSnow size={15} />}
-            sub={L.snowDepthHint}
+            label={L.wind}
+            value={`${round(cur.wind_speed_10m, 1)} ${L.unitMs}`}
+            icon={<WindIcon size={15} />}
+            sub={
+              cur.wind_gusts_10m != null
+                ? `${L.gusts}: ${round(cur.wind_gusts_10m, 1)} ${L.unitMs}`
+                : null
+            }
             subTextColor={subTextColor}
           />
+
+          <Stat
+            label={L.snowfallNow}
+            value={`${round(cur.snowfall, 1)} cm`}
+            icon={<CloudSnow size={15} />}
+            sub={
+              newSnowToday != null
+                ? `${L.newSnowToday}: ${round(newSnowToday, 0)} cm`
+                : null
+            }
+            subTextColor={subTextColor}
+          />
+
+          {snowDepth != null && (
+            <Stat
+              label={L.snowDepth}
+              value={`${round(snowDepth, 0)} cm`}
+              icon={<CloudSnow size={15} />}
+              sub={L.snowDepthHint}
+              subTextColor={subTextColor}
+            />
+          )}
+
+          <Stat
+            label={L.today}
+            value={`${round(todayMax, 0)} / ${round(todayMin, 0)} ${L.unitC}`}
+            icon={<Sunrise size={15} />}
+            sub={
+              sunriseIso && sunsetIso
+                ? `${L.sunrise} ${formatTime(
+                    sunriseIso
+                  )} · ${L.sunset} ${formatTime(sunsetIso)}`
+                : null
+            }
+            subTextColor={subTextColor}
+          />
+        </div>
+
+        {/* 3-Tage-Vorhersage */}
+        {forecastDays.length > 0 && (
+          <div style={{ marginTop: ".75rem" }}>
+            <div
+              style={{
+                fontSize: ".8rem",
+                textTransform: "uppercase",
+                letterSpacing: ".08em",
+                marginBottom: ".35rem",
+                color: subTextColor,
+              }}
+            >
+              {L.nextDaysTitle}
+            </div>
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(auto-fit,minmax(110px,1fr))",
+                gap: ".4rem",
+              }}
+            >
+              {forecastDays.map((d) => (
+                <ForecastDay
+                  key={d.date}
+                  day={d}
+                  lang={lang}
+                  subTextColor={subTextColor}
+                />
+              ))}
+            </div>
+          </div>
         )}
 
-        <Stat
-          label={L.today}
-          value={`${round(todayMax, 0)} / ${round(todayMin, 0)} ${L.unitC}`}
-          icon={<Sunrise size={15} />}
-          sub={
-            sunriseIso && sunsetIso
-              ? `${L.sunrise} ${formatTime(sunriseIso)} · ${L.sunset} ${formatTime(
-                  sunsetIso
-                )}`
-              : null
-          }
-          subTextColor={subTextColor}
-        />
-      </div>
-
-      {/* 3-Tage-Vorhersage */}
-      {forecastDays.length > 0 && (
-        <div style={{ marginTop: ".75rem" }}>
-          <div
-            style={{
-              fontSize: ".8rem",
-              textTransform: "uppercase",
-              letterSpacing: ".08em",
-              marginBottom: ".35rem",
-              color: subTextColor,
-            }}
-          >
-            {L.nextDaysTitle}
-          </div>
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fit,minmax(110px,1fr))",
-              gap: ".4rem",
-            }}
-          >
-            {forecastDays.map((d) => (
-              <ForecastDay
-                key={d.date}
-                day={d}
-                lang={lang}
-                subTextColor={subTextColor}
-              />
-            ))}
-          </div>
-        </div>
-      )}
-
-      {/* Quelle */}
-      <p
-        style={{
-          marginTop: ".6rem",
-          fontSize: ".8rem",
-          color: subTextColor,
-        }}
-      >
-        {L.source}:{" "}
-        <a
-          href="https://open-meteo.com/"
-          target="_blank"
-          rel="noreferrer"
-          style={{ color: "inherit", textDecoration: "underline" }}
+        {/* Quelle */}
+        <p
+          style={{
+            marginTop: ".6rem",
+            fontSize: ".8rem",
+            color: subTextColor,
+          }}
         >
-          Open-Meteo
-        </a>
-      </p>
+          {L.source}:{" "}
+          <a
+            href="https://open-meteo.com/"
+            target="_blank"
+            rel="noreferrer"
+            style={{ color: "inherit", textDecoration: "underline" }}
+          >
+            Open-Meteo
+          </a>
+        </p>
+      </div>
     </div>
   );
 }
@@ -588,10 +600,7 @@ function mapWeatherCode(code, lang) {
   if (c === 45 || c === 48) {
     return { label: L.cond.fog, icon: <CloudFog size={18} /> };
   }
-  if (
-    (c >= 51 && c <= 67) ||
-    (c >= 80 && c <= 82)
-  ) {
+  if ((c >= 51 && c <= 67) || (c >= 80 && c <= 82)) {
     return { label: L.cond.rain, icon: <CloudRain size={18} /> };
   }
   if (c >= 71 && c <= 77) {

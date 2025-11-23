@@ -369,7 +369,7 @@ export default function RSVPForm({ lang, onSubmitRSVP, sending }) {
 
       <span className="alt-mail" style={{ marginLeft: "0.75rem" }}>
         {t.altMailPrefix}{" "}
-        <a href="mailto:hoch-vol-ol@outlook.de">hoch-vol-ol@outlook.de</a>{" "}
+        <a href="mailto:hochvolol@gmail.com">hochvolol@gmail.com</a>{" "}
         {t.altMailSuffix}
       </span>
     </form>

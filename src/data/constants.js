@@ -586,7 +586,7 @@ export const TEXTS = {
     cardContactTitle: "Kontakt",
     contactLead:
       "Fragen zu Anreise, Unterkunft oder sonstige Fragen. Gerne persönlich oder einfach hier per Email.",
-    contactEmailLabel: "hoch-vol-ol@outlook.de",
+    contactEmailLabel: "hochvolol@gmail.com",
 
     accommodationIntro:
       "Alpina Hotel Gudauri ist ein gemütliches Hotel im Skigebiet – mit Restaurant, Bar und weitem Bergblick.",
@@ -773,7 +773,7 @@ export const TEXTS = {
     cardContactTitle: "Contact",
     contactLead:
       "Questions about travel, accommodation or allergies?",
-    contactEmailLabel: "hoch-vol-ol@outlook.de",
+    contactEmailLabel: "hochvolol@gmail.com",
 
     accommodationIntro:
       "Alpina Hotel Gudauri is a cozy mountain hotel with a restaurant, bar and sweeping views.",
@@ -963,7 +963,7 @@ export const TEXTS = {
     cardContactTitle: "Контакты",
     contactLead:
       "Вопросы по дороге, проживанию или аллергиям?",
-    contactEmailLabel: "hoch-vol-ol@outlook.de",
+    contactEmailLabel: "hochvolol@gmail.com",
 
     accommodationIntro:
       "Alpina Hotel Gudauri — уютный горный отель с рестораном, баром и панорамными видами.",
@@ -1032,8 +1032,8 @@ export const PROGRAMM = [
     time: "15:00",
     title: {
       de: "Freie Traung - Einfach laut Ja sagen! So machen wir’s auch, wenn jemand fragt, ob wir Steak wollen.",
-      en: "Wedding ceremony - Just say yes! That's the same what we do when someone asks us if we want steak.",
-      ru: "Церемония - Просто громко скажи «да»! Мы так и делаем, когда кто-то спрашивает, хотим ли мы стейк.",
+      en: "Wedding ceremony - We just say yes! That's the same what we do when someone asks us if we want steak.",
+      ru: "Церемония - ",
    },
 place: {
   de: "Terrasse draußen!",
