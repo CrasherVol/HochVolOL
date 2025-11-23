@@ -318,7 +318,6 @@ fontSize: `${size}rem`,
         {/* ===== HAUPT-LAYOUT: Formular links, FAQ/Datenschutz rechts ===== */}
         <div className="rsvp-main-grid">
 
-        >
           {/* 💌 Formular-Bereich */}
           <Card
             title={
