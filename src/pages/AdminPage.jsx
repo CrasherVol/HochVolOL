@@ -45,15 +45,21 @@ export default function AdminPage({ lang = "de", setLang }) {
     setRows(ls.items || []);
   }
 
-  function onLogin(e) {
-    e.preventDefault();
-    if (!keyInput.trim()) return;
-    fetchAll(keyInput.trim())
-      .then(() => {
-        sessionStorage.setItem("adminKey", keyInput.trim());
-        setAuthed(true);
-      })
-      .catch(() => alert("Admin-Key falsch"));
+ function onLogin(e) {
+  e.preventDefault();
+  const trimmed = keyInput.trim();
+  if (!trimmed) return;
+
+  fetchAll(trimmed)
+    .then(() => {
+      sessionStorage.setItem("adminKey", trimmed);
+      setAuthed(true);
+    })
+    .catch(() => {
+      sessionStorage.removeItem("adminKey");
+      setAuthed(false);
+      alert("Admin-Key falsch");
+    });
   }
 
   function onLogout() {

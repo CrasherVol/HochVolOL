@@ -13,8 +13,8 @@ export default async function handler(req, res) {
 
   // Optional: gleicher Admin-Schutz wie bei admin-stats
   const adminKey = req.headers["x-admin-key"];
-  if (!adminKey || adminKey !== process.env.ADMIN_KEY) {
-    return res.status(401).json({ error: "auth" });
+if (!adminKey || adminKey !== process.env.ADMIN_KEY) {
+  return res.status(401).json({ error: "Unauthorized" });
   }
 
   try {

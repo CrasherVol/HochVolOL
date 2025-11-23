@@ -258,27 +258,7 @@ export const ORT = {
     ru: "Гудаури находится высоко в Большом Кавказе — горнолыжный курорт с широкими горными панорамами, чистым воздухом и уютными отелями.",
   },
 
-  mustSees: [
-    {
-      title: "Gudauri Panorama",
-      url: LINKS.maps.gudauri,
-      desc: {
-        de: "Weitblick über die Bergkämme – besonders schön zum Sonnenuntergang.",
-        en: "Wide views across the mountain ridges – stunning at sunset.",
-        ru: "Панорама горных хребтов — особенно красиво на закате.",
-      },
-    },
-
-    {
-      title: "Kazbegi / Stepantsminda",
-      url: LINKS.maps.gudauri,
-      desc: {
-        de: "Tagesausflug zur Gergeti-Kirche mit Blick auf den Kasbek (≈45–60 Min.).",
-        en: "Day trip to Gergeti Trinity Church with views of Mount Kazbek (≈45–60 min).",
-        ru: "Поездка к церкви Гергети с видом на Казбек (≈45–60 мин).",
-      },
-    },
-  ],
+  mustSees: [],
 };
 
 

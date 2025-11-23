@@ -1372,14 +1372,14 @@ export default function EssenTrinkenFeiernPage({ lang, setLang }) {
       lat: 42.46996,
       lng: 44.49085,
       menu: "https://drunkcherrygudauri.com/menu/",
-      instagram: "https://www.instagram.com/drunkcherrygudauri/",
+      instagram: "",
     },
     {
       number: 2,
       kind: "restaurant",
       name: "AfterSkis",
       website:
-        "https://www.tripadvisor.com/Restaurant_Review-g1588192-d13564025-Reviews-AfterSkis-Gudauri_Mtskheta_Mtianeti_Region.html",
+        "",
       tags: {
         de: ["Georgisch", "Rustikal", "Dinner"],
         en: ["Georgian cuisine", "Rustic", "Dinner"],
@@ -1400,7 +1400,7 @@ export default function EssenTrinkenFeiernPage({ lang, setLang }) {
       number: 3,
       kind: "restaurant",
       name: "Cafe Vitamin (am Soliko-Lift)",
-      website: "https://www.skigeorgia.ge/cafe-vitamin-gudauri/",
+      website: "",
       tags: {
         de: ["Tagescafé", "Pistenblick"],
         en: ["Day café", "Slope view"],
@@ -1415,7 +1415,7 @@ export default function EssenTrinkenFeiernPage({ lang, setLang }) {
       image: "/places/cafe-vitamin.webp",
       lat: 42.49013,
       lng: 44.49931,
-      instagram: "https://www.instagram.com/cafevitamin_gudauri/",
+      instagram: "",
     },
     {
       number: 4,
@@ -1457,7 +1457,7 @@ export default function EssenTrinkenFeiernPage({ lang, setLang }) {
       image: "/places/dariali.webp",
       lat: 42.47467423135394,
       lng: 44.48065192061241,
-      instagram: "https://www.instagram.com/dariali_restaurant/",
+      instagram: "",
     },
     {
       number: 6,
@@ -1478,13 +1478,13 @@ export default function EssenTrinkenFeiernPage({ lang, setLang }) {
       image: "/places/quadrum.webp",
       lat: 42.47643934653898,
       lng: 44.477572469025,
-      instagram: "https://www.instagram.com/quadrumgudauri/",
+      instagram: "",
     },
     {
       number: 7,
       kind: "restaurant",
       name: "Restaurant Gudauri",
-      website: "https://restaurantguru.com/Restaurant-Gudauri-Gudauri",
+      website: "",
       tags: {
         de: ["Georgisch", "Grill"],
         en: ["Georgian cuisine", "Grill"],
@@ -1499,7 +1499,7 @@ export default function EssenTrinkenFeiernPage({ lang, setLang }) {
       image: "/places/restaurant-gudauri.webp",
       lat: 42.47563215280207,
       lng: 44.48044167739858,
-      instagram: "https://www.instagram.com/restaurantgudauri/",
+      instagram: "",
     },
     {
       number: 8,
@@ -1518,7 +1518,7 @@ export default function EssenTrinkenFeiernPage({ lang, setLang }) {
       },
       hours: "Saisonal",
       image: "/places/montis.webp",
-      instagram: "https://www.instagram.com/montis_gudauri/",
+      instagram: "",
     },
     {
       number: 9,
@@ -1539,7 +1539,7 @@ export default function EssenTrinkenFeiernPage({ lang, setLang }) {
       image: "/places/platforma-bombora.webp",
       lat: 42.47284868817391,
       lng: 44.487056320612254,
-      instagram: "https://www.instagram.com/platforma_bombora/",
+      instagram: "",
     },
   ];
 
@@ -1593,7 +1593,7 @@ export default function EssenTrinkenFeiernPage({ lang, setLang }) {
       number: 103,
       kind: "bar",
       name: "Grizzly Bar (Loft 1)",
-      website: "https://wanderlog.com/place/13293980-grizzly-bar",
+      website: "",
       tags: {
         de: ["DJ", "Shots", "Party"],
         en: ["DJ", "Shots", "Party"],
@@ -1614,7 +1614,7 @@ export default function EssenTrinkenFeiernPage({ lang, setLang }) {
       number: 104,
       kind: "bar",
       name: "Posta Bar (Posta Hotel)",
-      website: "https://postahotel.ge/",
+      website: "",
       tags: {
         de: ["Cocktails", "Lounge", "Modern"],
         en: ["Cocktails", "Lounge", "Modern"],
@@ -1629,7 +1629,7 @@ export default function EssenTrinkenFeiernPage({ lang, setLang }) {
       image: "/places/posta-bar.webp",
       lat: 42.47039,
       lng: 44.49312,
-      instagram: "https://www.instagram.com/postabar_gudauri/",
+      instagram: "",
     },
     {
       number: 105,
@@ -1650,13 +1650,13 @@ export default function EssenTrinkenFeiernPage({ lang, setLang }) {
       image: "/places/papa-basil.webp",
       lat: 42.4763221,
       lng: 44.4781296,
-      instagram: "https://www.instagram.com/papabasil_gudauri/",
+      instagram: "",
     },
     {
       number: 106,
       kind: "bar",
       name: "Ice Bar",
-      website: "https://www.skigeorgia.ge/new-ice-bar-gudauri/",
+      website: "",
       tags: {
         de: ["Eisbar", "Piste", "Tagsüber"],
         en: ["Ice bar", "On the slope", "Daytime"],
@@ -1671,14 +1671,14 @@ export default function EssenTrinkenFeiernPage({ lang, setLang }) {
       image: "/places/ice-bar.webp",
       lat: 42.47058845993117,
       lng: 44.491912823747924,
-      instagram: "https://www.instagram.com/icebargudauri/",
+      instagram: "",
     },
     {
       number: 107,
       kind: "bar",
       name: "Montis Green Door Bar",
       website:
-        "https://www.tripadvisor.com/Attraction_Review-g1588192-d14908948-Reviews-Montis_Green_Door_Bar-Gudauri_Mtskheta_Mtianeti_Region.html",
+        "",
       tags: {
         de: ["Cocktails", "Casual"],
         en: ["Cocktails", "Casual"],
@@ -1693,14 +1693,14 @@ export default function EssenTrinkenFeiernPage({ lang, setLang }) {
       image: "/places/green-door-bar.webp",
       lat: 42.4703283071694,
       lng: 44.49222570712015,
-      instagram: "https://www.instagram.com/montis_greendoorbar/",
+      instagram: "",
     },
     {
       number: 108,
       kind: "bar",
       name: "MONT NOIR BAR GUDAURI",
       website:
-        "https://www.tripadvisor.com/Attraction_Review-g1588192-d25147341-Reviews-Mont_Noir_Bar-Gudauri_Mtskheta_Mtianeti_Region.html",
+        "",
       tags: {
         de: ["Cocktails", "DJ/Live"],
         en: ["Cocktails", "DJ/live"],
@@ -1715,14 +1715,14 @@ export default function EssenTrinkenFeiernPage({ lang, setLang }) {
       image: "/places/mont-noir.webp",
       lat: 42.46438897853548,
       lng: 44.481090710823786,
-      instagram: "https://www.instagram.com/montnoirbar/",
+      instagram: "",
     },
     {
       number: 109,
       kind: "bar",
       name: "Skideal (Après-Ski Spot)",
       website:
-        "https://newgudauri.com/en/skideal-ski-and-snowboard-rental-in-gudauri/",
+        "",
       tags: {
         de: ["Après-Ski", "Terrasse", "Snacks"],
         en: ["Après-ski", "Terrace", "Snacks"],
@@ -1737,7 +1737,7 @@ export default function EssenTrinkenFeiernPage({ lang, setLang }) {
       image: "/places/skideal.webp",
       lat: 42.47458992472735,
       lng: 44.48025476479208,
-      instagram: "https://www.instagram.com/skideal_gudauri/",
+      instagram: "",
     },
     {
       number: 110,

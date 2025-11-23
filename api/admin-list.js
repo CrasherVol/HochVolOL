@@ -11,8 +11,13 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: "Method not allowed" });
   }
 
+  // 🔐 Admin-Schutz
+  const adminKey = req.headers["x-admin-key"];
+  if (!adminKey || adminKey !== process.env.ADMIN_KEY) {
+    return res.status(401).json({ error: "Unauthorized" });
+  }
+
   try {
-    // Alle E-Mail-Adressen, die wir beim RSVP speichern
     const emails = await redis.smembers("rsvp:emails");
 
     if (!emails || emails.length === 0) {
@@ -28,8 +33,7 @@ export default async function handler(req, res) {
       if (!record) continue;
 
       const item = {
-        // wir geben beides zurück, falls das Frontend "status" oder "attend" erwartet
-        attend: record.attend,     // "yes" | "no"
+        attend: record.attend,
         status: record.attend,
         name: record.name || "",
         email: record.email || email,
@@ -38,13 +42,12 @@ export default async function handler(req, res) {
         message: record.message || "",
         createdAt: record.createdAt || null,
         updatedAt: record.updatedAt || null,
-        extraGuests: record.extraGuests || "", // weitere angemeldete Personen
+        extraGuests: record.extraGuests || "",
       };
 
       items.push(item);
     }
 
-    // z.B. neueste zuerst
     items.sort((a, b) => {
       if (!a.updatedAt || !b.updatedAt) return 0;
       return b.updatedAt.localeCompare(a.updatedAt);
