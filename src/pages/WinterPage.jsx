@@ -263,9 +263,9 @@ export default function WinterPage({ lang, setLang }) {
       >
  {/* === HERO-BEREICH (NEU) === */}
 <div
+  className="winter-hero-grid"
   style={{
     display: "grid",
-    gridTemplateColumns: "1.1fr .9fr",
     gap: "1rem",
     alignItems: "stretch",
     marginBottom: "1.5rem",
@@ -275,6 +275,7 @@ export default function WinterPage({ lang, setLang }) {
     padding: "1.2rem",
   }}
 >
+
   {/* Linker Infobereich */}
   <div>
     <h3 style={{ marginTop: 0 }}>{w.heroTitle}</h3>
@@ -913,3 +914,19 @@ function MiniArea({ title, text, href }) {
     </ExternalLink>
   );
 }
+<style>{`
+  @media (max-width: 768px) {
+    .winter-hero-grid {
+      grid-template-columns: 1fr !important;
+    }
+    .winter-hero-grid > div {
+      width: 100% !important;
+    }
+  }
+
+  @media (min-width: 769px) {
+    .winter-hero-grid {
+      grid-template-columns: 1.1fr .9fr;
+    }
+  }
+`}</style>
