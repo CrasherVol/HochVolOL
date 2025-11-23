@@ -221,7 +221,7 @@ fontSize: `${size}rem`,
                 }}
               >
                 {lang === "en"
-                  ? "If someone gets cold feet, hopefully it's you ;-)"
+                  ? "Come and join us—because this only happens once: Germany and Russia are uniting. ;-)"
                   : lang === "ru"
                   ? "Приходите и присоединяйтесь — ведь это происходит только один раз: Германия и Россия объединяются. "
                   : "Wenn einer kalte Füße bekommt, dann hoffentlich ihr ;-)"}
@@ -404,7 +404,7 @@ fontSize: `${size}rem`,
                   {lang === "en"
                     ? "If it was no before, then yes. If it was yes before, then no! 😉"
                     : lang === "ru"
-                    ? "Если раньше нет, то да. Если раньше да, то нет! 😉"
+                    ? "Если ответ был «нет», то да. Если был «да», то нет! 😉"
                     : "Wenn vorher nein, dann ja. Wenn vorher ja, dann nein! 😉"}
                 </div>
               </details>
@@ -422,19 +422,19 @@ fontSize: `${size}rem`,
                     <Baby size={16} />
                     <span>
                       {lang === "en"
-                        ? "Can we bring our children? 👶"
+                        ? "Please let us know when you will be arriving."
                         : lang === "ru"
                         ? "Можно ли прийти с детьми? 👶"
-                        : "Können wir Kinder mitbringen? 👶"}
+                        : "Teile uns gerne mit ab wann ihr vor Ort seid."}
                     </span>
                   </span>
                 </summary>
                 <div className="faq-body">
                   {lang === "en"
-                    ? "If yes, please let us know so we can get enough cages."
+                    ? "Who knows, maybe you'll meet beforehand and get to know each other..."
                     : lang === "ru"
-                    ? "Если да, пожалуйста, сообщите нам об этом, чтобы мы могли подготовить достаточное количество клеток.!"
-                    : "Wenn ja, bitte Bescheid geben, damit wir genügend Käfige besorgen können."}
+                    ? "Кто знает, может быть, вы встретитесь раньше и познакомитесь..."
+                    : "Wer weiß, vielleicht trifft man sich vorher schon und lernt sich kennen..."}
                 </div>
               </details>
 

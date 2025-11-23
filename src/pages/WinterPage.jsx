@@ -57,16 +57,15 @@ const W = {
       "🧑‍🏫 Skischulen & Guides für Anfänger bis Experten",
       "☀️ Südhanglage mit viel Sonne und wenig Wind",
       "💸 Skipässe ab ca. 20–25 € / Tag",
-    ],
-    slopePdfBtn: "Pistenplan als PDF ansehen",
-    actsTitle: "Winteraktivitäten & Erlebnisse",
-    actsIntro:
-      "In Gudauri und Umgebung erwarten dich viele Möglichkeiten – von entspannt bis abenteuerlich:",
-    moreAreasTitle: "Hier könnte dein Name stehen - bezahlte Werbung, melde dich gerne",
-    miniAreas: [
-     
-    ],
-    galleryTitle: "Winter-Impressionen",
+   ],
+slopePdfBtn: "Pistenplan als PDF ansehen",
+actsTitle: "Winteraktivitäten & Erlebnisse",
+actsIntro:
+  "In Gudauri und Umgebung erwarten dich viele Möglichkeiten – von entspannt bis abenteuerlich:",
+miniAreas: [
+  // bleibt leer oder du fügst eigene Einträge ein
+],
+galleryTitle: "Winter-Impressionen",
 
     snowTitle: "Schnee & Pistenstatus",
     snowIntro:
@@ -137,8 +136,8 @@ const W = {
       "For day-to-day details on snow depth, open lifts and avalanche situation, please use the linked external sites.",
   },
   ru: {
-    pageTitle: "Зима в Грузии - Наше место расположения настолько зимнее, что даже пингвины спросили, могут ли они присоединиться к празднованию.",
-    pageSub: "Пудра, солнце и гостеприимство Кавказа",
+    pageTitle: "Зима в Грузии - Наше место расположения настолько зимнее, что даже бурые медведи спросили, могут ли они присоединиться к празднованию.",
+    pageSub: "Пушистый снег, солнце и гостеприимство Кавказа",
     heroTitle: "Зимняя магия на Кавказе",
     heroText:
       "Грузия — скрытая жемчужина для любителей зимы: величественные горы, доступные цены, много солнца и искреннее гостеприимство. Особенно Гудаури — рай для лыжников, сноубордистов и искателей приключений.",
@@ -159,7 +158,7 @@ const W = {
     ],
     gudauriTitle: "Гудаури — сердце грузинской зимы",
     gudauriText:
-      "Гудаури — самый крупный и современный горнолыжный курорт Грузии, примерно в 120 км к северу от Тбилиси. Трассы на высоте 2 000–3 200 м дарят солнце, пухляк и виды на Кавказ.",
+      "Гудаури — самый крупный и современный горнолыжный курорт Грузии, примерно в 120 км к северу от Тбилиси. Трассы на высоте 2 000–3 200 м дарят солнце, Пушистый снег и виды на Кавказ.",
     gudauriBullets: [
       "🎿 70 км трасс — 55% красные, 30% синие, 15% чёрные",
       "🚠 15 подъёмников (в т.ч. гондолы и 6-местные кресла)",
@@ -265,7 +264,6 @@ export default function WinterPage({ lang, setLang }) {
 <div
   className="winter-hero-grid"
   style={{
-    display: "grid",
     gap: "1rem",
     alignItems: "stretch",
     marginBottom: "1.5rem",
@@ -285,8 +283,8 @@ export default function WinterPage({ lang, setLang }) {
       {lang === "en"
         ? "Georgia is a true hidden gem for winter lovers: impressive Caucasus peaks, powder well into spring, plenty of sunshine and genuine hospitality. Gudauri offers modern lifts, wide open slopes, cozy bars and lots of adventure – from paragliding to heli-skiing. Thanks to its south-facing exposure, the weather is often clear, bright and pleasantly mild."
         : lang === "ru"
-        ? "Грузия — настоящий зимний секрет: величественные вершины Кавказа, пухляк до весны, много солнца и искреннее гостеприимство. Гудаури предлагает современные подъёмники, широкие трассы, уютные бары и массу активностей — от параплана до хели-ски. Южная экспозиция обеспечивает частую ясную и мягкую погоду."
-        : "Georgien ist ein echter Geheimtipp für Winterfans: mächtige Kaukasusgipfel, Powder bis in den Frühling, viele Sonnentage und herzliche Gastfreundschaft. Gudauri bietet moderne Lifte, breite Pisten, gemütliche Bars und jede Menge Abenteuer – von Paragliding bis Heli-Ski. Durch die Südlage ist das Wetter oft klar und angenehm."}
+        ? "Грузия — настоящий зимний секрет: величественные вершины Кавказа, Пушистый снег до весны, много солнца и искреннее гостеприимство. Гудаури предлагает современные подъёмники, широкие трассы, уютные бары и массу активностей — от параплана до хели-ски. Южная экспозиция обеспечивает частую ясную и мягкую погоду."
+        : "Georgien ist ein echter Geheimtipp für Winterfans: mächtige Kaukasusgipfel, Pulverschnee bis in den Frühling, viele Sonnentage und herzliche Gastfreundschaft. Gudauri bietet moderne Lifte, breite Pisten, gemütliche Bars und jede Menge Abenteuer – von Paragliding bis Heli-Ski. Durch die Südlage ist das Wetter oft klar und angenehm."}
     </p>
 
     {/* BADGES */}

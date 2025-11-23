@@ -425,7 +425,7 @@ export const PACKLISTE_I18N = {
     "Шарф, шапка, перчатки",
     "Наряд для свадьбы (вечерняя одежда)",
     "Элегантная удобная обувь (для помещения)",
-    "Переходник Type C/F (как в Германии)",
+    "Переходник Type C/F",
     "Личные лекарства",
     "Паурбанк и зарядные устройства",
     "Паспорт + немного наличных (GEL)",
@@ -454,7 +454,7 @@ export const TEXTS = {
     },
 
     // Hero-Bereich / Startseite
-    heroEyebrow: "Große Party in Gudauri in Georgien !!!",
+    heroEyebrow: "Party in Gudauri in Georgien !!!",
     heroTitle: "Wir heiraten!",
     heroLogoAlt: "Olga & Volker – Hochzeitslogo",
     heroSub:
@@ -548,7 +548,7 @@ export const TEXTS = {
     factsTitle: "Georgien in Zahlen & Fakten",
     packlistTitle: "🎒 Packliste (Februar in Georgien)",
     packlistIntro:
-      "Im Februar ist es winterlich (Tbilisi ~5 °C). In höheren Lagen teils Schnee – diese Liste hilft beim Packen:",
+      "Im Februar ist es winterlich (Tbilisi ~5 °C oder kälter). In höheren Lagen teils Schnee – diese Liste hilft beim Packen:",
     bookEarlyNote:
       "🔔 Bitte frühzeitig buchen – rund um den Hochzeitstermin sind Unterkünfte gefragt.",
 
@@ -642,7 +642,7 @@ export const TEXTS = {
     },
 
     // Hero section / home
-    heroEyebrow: "Big party in Gudauri, Georgia!!!",
+    heroEyebrow: "Party in Gudauri, Georgia!!!",
     heroTitle: "We're getting married!",
     heroLogoAlt: "Olga & Volker – wedding logo",
     heroSub:
@@ -661,7 +661,7 @@ export const TEXTS = {
 
     quickRegion: "Gudauri - გუდაური (Mzcheta-Mtianeti)",
     quickFood: "Georgian cuisine & wine",
-    quickCeremony: "Free ceremony & dinner",
+    quickCeremony: "Ceremony & dinner",
 
     heroIntro: "We’re getting married in Gudauri, Georgia",
     heroThanks:
@@ -736,7 +736,7 @@ export const TEXTS = {
     factsTitle: "Georgia in Numbers",
     packlistTitle: "🎒 Packing List (February in Georgia)",
     packlistIntro:
-      "February is wintry (Tbilisi ~5 °C). Mountain areas may have snow — here’s a handy list:",
+      "February is wintry (Tbilisi ~5 °C or colder). Mountain areas may have snow — here’s a handy list:",
     bookEarlyNote:
       "🔔 Please book early — accommodation tends to fill up around the wedding date.",
 
@@ -925,7 +925,7 @@ export const TEXTS = {
     factsTitle: "Грузия в цифрах",
     packlistTitle: "🎒 Список вещей (февраль в Грузии)",
     packlistIntro:
-      "В феврале зима (Тбилиси ~5 °C). В горах возможен снег — этот список поможет собрать вещи:",
+      "В феврале зима (Тбилиси ~5 °C или холоднее). В горах возможен снег — этот список поможет собрать вещи:",
     bookEarlyNote:
       "🔔 Пожалуйста, бронируйте заранее — в даты свадьбы жильё быстро разбирают.",
 

@@ -2574,3 +2574,15 @@ body {
     min-width: 0 !important;
   }
 }
+/* Hero-Grid Winter-Seite: Desktop = 2 Spalten, Handy = 1 Spalte */
+.winter-hero-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+}
+
+/* Handy: untereinander, volle Breite */
+@media (max-width: 768px) {
+  .winter-hero-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

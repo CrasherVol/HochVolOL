@@ -116,9 +116,9 @@ export default function FlightsPage({ lang, setLang }) {
   // Label für Abflughafen
   const departureLabel =
     lang === "en"
-      ? "Select departure airport:"
+      ? "Select departure airport (Only for Germans):"
       : lang === "ru"
-      ? "Выберите аэропорт вылета:"
+      ? "Выберите аэропорт вылета (только для гостей из Германии):"
       : "Abflughafen wählen:";
 
   // Strings für Transfer-Optionen (Fallbacks, falls nicht in TEXTS hinterlegt)
@@ -420,7 +420,7 @@ export default function FlightsPage({ lang, setLang }) {
                         </a>
 
                         <a
-                          href="https://www.cityrent.ge/"
+                          href="https://citty.rent/en/home.html"
                           target="_blank"
                           rel="noopener noreferrer"
                           className="px-3 py-1 bg-blue-600 text-white rounded-lg text-sm hover:bg-blue-700 transition"
@@ -582,7 +582,7 @@ const TRAVEL_TIPS = {
         key: "entry",
         icon: "badge",
         label: "Entry:",
-        text: "German citizens can stay visa-free (up to 1 year). Passport required (ID card is not sufficient).",
+        text: "US citizens can stay visa-free (up to 1 year). Passport required (ID card is not sufficient).",
       },
       {
         key: "route",
@@ -648,7 +648,7 @@ const TRAVEL_TIPS = {
         key: "entry",
         icon: "badge",
         label: "Въезд:",
-        text: "Граждане Германии могут находиться в Грузии без визы (до 1 года). Обязателен загранпаспорт (ID-карта недействительна).",
+        text: "Граждане России могут находиться в Грузии без визы (до 1 года). Обязателен загранпаспорт.",
       },
       {
         key: "route",
@@ -660,7 +660,7 @@ const TRAVEL_TIPS = {
         key: "roads",
         icon: "alert",
         label: "Дорожные условия:",
-        text: "Зимой перевал могут временно закрывать, возможны требования к цепям. В день поездки проверяйте погоду и дорожные сообщения, выезжайте пораньше.",
+        text: "Зимой перевал могут временно закрывать, oбязательное использование цепей на автомобиле. В день поездки проверяйте погоду и дорожные сообщения, выезжайте пораньше.",
       },
       {
         key: "transfer",
@@ -678,7 +678,7 @@ const TRAVEL_TIPS = {
         key: "climate",
         icon: "thermo",
         label: "Высота и климат:",
-        text: "Гудаури ~2 200 м; сухой воздух, в феврале настоящая зима. Возьмите тёплые слои, шапку/перчатки и солнцезащиту (сильное УФ-излучение).",
+        text: "Гудаури ~2 200 м; сухой воздух, в феврале настоящая зима. Возьмите теплая одежда, шапку/перчатки и солнцезащиту (сильное УФ-излучение).",
       },
       {
         key: "payment",
