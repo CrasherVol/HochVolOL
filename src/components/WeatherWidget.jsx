@@ -160,10 +160,12 @@ export default function WeatherWidget({
       {/* Innerer Block mit Mindestbreite, damit Layout nicht bricht */}
       <div style={{ minWidth: 320 }}>
         {/* Kopfzeile: Ort + Temperatur + Zustand */}
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "2fr 1fr",
+     <div
+  className="weather-head-grid"
+  style={{
+    display: "grid",
+    gridTemplateColumns: "2fr 1fr",
+
             gap: ".5rem",
             alignItems: "center",
             marginBottom: ".5rem",
@@ -251,10 +253,12 @@ export default function WeatherWidget({
         </div>
 
         {/* Werte-Grid (Wind, Schnee, Schneehöhe, Tagesverlauf) */}
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit,minmax(140px,1fr))",
+     <div
+  className="weather-stats-grid"
+  style={{
+    display: "grid",
+    gridTemplateColumns: "repeat(auto-fit,minmax(140px,1fr))",
+
             gap: ".5rem",
             marginTop: ".4rem",
           }}
@@ -322,10 +326,12 @@ export default function WeatherWidget({
             >
               {L.nextDaysTitle}
             </div>
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(auto-fit,minmax(110px,1fr))",
+        <div
+  className="weather-forecast-grid"
+  style={{
+    display: "grid",
+    gridTemplateColumns: "repeat(auto-fit,minmax(110px,1fr))",
+
                 gap: ".4rem",
               }}
             >

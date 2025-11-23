@@ -2512,3 +2512,29 @@ body {
 .typical-expenses-table {
   min-width: 540px; /* genug Platz für alle Spalten, auf Handy dann horizontal scrollen */
 }
+/* --- Mobile Fix für WeatherWidget --- */
+@media (max-width: 640px) {
+
+  .weather-card,
+  .card {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box;
+    overflow: hidden !important;
+  }
+
+  /* Grid im Kopf auf 1 Spalte */
+  .weather-head-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Werte-Grid untereinander statt nebeneinander */
+  .weather-stats-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* 3-Tage-Vorhersage */
+  .weather-forecast-grid {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)) !important;
+  }
+}
