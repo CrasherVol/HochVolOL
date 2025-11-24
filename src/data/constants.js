@@ -1011,7 +1011,7 @@ export const PROGRAMM = [
   {
     time: "15:00",
     title: {
-      de: "Freie Traung",
+      de: "Freie Trauung",
       en: "Wedding ceremony",
       ru: "Церемония",
    },
