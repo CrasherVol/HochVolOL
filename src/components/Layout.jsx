@@ -90,18 +90,24 @@ function Header({ lang, setLang }) {
     (lang === "ru" && "Еда · Напитки · Вечеринка") ||
     "Essen · Trinken · Feiern";
 
-  const nav = [
-    { to: "/", label: t.nav.start, icon: <HomeIcon size={16} /> },
-    { to: "/fluege", label: t.nav.flights, icon: <Plane size={16} /> },
-    { to: "/location", label: t.nav.location, icon: <Building2 size={16} /> },
-    { to: "/ort", label: t.nav.region, icon: <Globe2 size={16} /> },
-    { to: "/winter", label: t.nav.winter, icon: <Snowflake size={16} /> },
+const nav = [
+  { to: "/", label: t.nav.start, icon: <HomeIcon size={16} /> },
+  { to: "/fluege", label: t.nav.flights, icon: <Plane size={16} /> },
+  { to: "/location", label: t.nav.location, icon: <Building2 size={16} /> },
+  { to: "/ort", label: t.nav.region, icon: <Globe2 size={16} /> },
+  { to: "/winter", label: t.nav.winter, icon: <Snowflake size={16} /> },
 
-    // ⬇️ Neuer Menüpunkt statt "Galerie"
-    { to: "/essen-trinken-feiern", label: eatDrinkPartyLabel, icon: <Martini size={16} /> },
+  // Neuer Menüpunkt Essen · Trinken · Feiern
+  { to: "/essen-trinken-feiern", label: eatDrinkPartyLabel, icon: <Martini size={16} /> },
 
-    { to: "/rsvp", label: t.nav.rsvp, icon: <Users size={16} /> },
-  ];
+  // 👉 RSVP wird für Deutsch zu "Anmeldung"
+  { 
+    to: "/rsvp",
+    label: lang === "de" ? "Anmeldung" : t.nav.rsvp,
+    icon: <Users size={16} />,
+  },
+];
+
 
   return (
     <header className="topbar">

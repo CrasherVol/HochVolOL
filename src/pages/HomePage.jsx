@@ -139,17 +139,18 @@ export default function HomePage({ lang, setLang }) {
         </p>
 
         {/* ✅ 3-Schritte-Buttons – gleicher Stil wie alte CTAs */}
-        <div className="home-hero-cta">
-          <a href="/rsvp" className="cta-primary">
-            <span>{tt("cta1", "1.\u00A0 RSVP ausfüllen")}</span>
-          </a>
-          <a href="/fluege" className="cta-ghost">
-            <span>{tt("cta2", "2.\u00A0 Flug buchen")}</span>
-          </a>
-          <a href="/location" className="cta-ghost">
-            <span>{tt("cta3", "3.\u00A0 Ort merken")}</span>
-          </a>
-        </div>
+<div className="home-hero-cta">
+  <a href="/rsvp" className="cta-primary">
+    <span>{tt("cta1", "1.\u00A0 Anmeldung ausfüllen")}</span>
+  </a>
+  <a href="/fluege" className="cta-ghost">
+    <span>{tt("cta2", "2.\u00A0 Flug buchen")}</span>
+  </a>
+  <a href="/location" className="cta-ghost">
+    <span>{tt("cta3", "3.\u00A0 Ort merken")}</span>
+  </a>
+</div>
+
 
         {/* Quick facts */}
         <div className="home-quick">

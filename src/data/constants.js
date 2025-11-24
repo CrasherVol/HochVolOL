@@ -447,7 +447,7 @@ export const TEXTS = {
     countdownSeconds: "Sekunden",
     countdownFinished: "Heute ist es so weit! 🎉",
 
-    cta1: "1. RSVP ausfüllen",
+    cta1: "1. Anmeldung ausfüllen",
     cta2: "2. Flug buchen",
     cta3: "3. Ort merken",
 
