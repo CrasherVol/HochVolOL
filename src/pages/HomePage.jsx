@@ -20,6 +20,14 @@ export default function HomePage({ lang, setLang }) {
   const t = TEXTS[lang] || TEXTS.de;
   const tt = (key, fallback) => (t && t[key] !== undefined ? t[key] : fallback);
 
+    const entryInfoLabel =
+    lang === "en"
+      ? "Entry to Georgia 2026 – important info"
+      : lang === "ru"
+      ? "Въезд в Грузию 2026 – важная информация"
+      : "Einreise 2026 – wichtige Info";
+
+
   const targetDate = new Date(DATUM.iso);
 
   const getTimeLeft = () => {
@@ -169,8 +177,8 @@ export default function HomePage({ lang, setLang }) {
     }}
     onMouseEnter={(e) => (e.target.style.backgroundColor = "#b71c1c")}
     onMouseLeave={(e) => (e.target.style.backgroundColor = "#c62828")}
-  >
-    Einreise 2026 – wichtige Info
+>
+    {entryInfoLabel}
   </a>
 </div>
 
