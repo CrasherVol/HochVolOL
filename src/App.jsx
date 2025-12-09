@@ -12,6 +12,8 @@ import AdminPage from "./pages/AdminPage.jsx";
 import WinterPage from "./pages/WinterPage.jsx";
 
 import ScrollToTop from "./components/ScrollToTop.jsx";
+import EinreiseInfoPage from "./pages/EinreiseInfoPage.jsx";
+
 
 export default function App() {
   const [lang, setLang] = useState(() => localStorage.getItem("lang") || "de");
@@ -69,7 +71,9 @@ export default function App() {
           path="*"
           element={<Navigate to="/" replace />}
         />
-      </Routes>
+     
+      <Route path="/einreise-info" element={<EinreiseInfoPage lang={lang} setLang={setLang} />} />
+       </Routes>
     </>
   );
 }

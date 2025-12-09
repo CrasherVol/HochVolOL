@@ -151,6 +151,30 @@ export default function HomePage({ lang, setLang }) {
   </a>
 </div>
 
+{/* 🔴 Einreise-Info Button (dezent, aber sichtbar) */}
+<div style={{ marginTop: "16px", textAlign: "center" }}>
+  <a
+    href="/einreise-info"
+    style={{
+      display: "inline-block",
+      padding: "10px 20px",
+      borderRadius: "8px",
+      backgroundColor: "#c62828",
+      color: "white",
+      fontWeight: "600",
+      fontSize: "14px",
+      textDecoration: "none",
+      boxShadow: "0 2px 6px rgba(0,0,0,0.18)",
+      transition: "background 0.2s, transform 0.15s",
+    }}
+    onMouseEnter={(e) => (e.target.style.backgroundColor = "#b71c1c")}
+    onMouseLeave={(e) => (e.target.style.backgroundColor = "#c62828")}
+  >
+    Einreise 2026 – wichtige Info
+  </a>
+</div>
+
+
 
         {/* Quick facts */}
         <div className="home-quick">
