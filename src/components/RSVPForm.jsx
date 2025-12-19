@@ -88,30 +88,46 @@ export default function RSVPForm({ lang, onSubmitRSVP, sending }) {
   const [attend, setAttend] = useState("yes");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [people, setPeople] = useState(1);
+const [people, setPeople] = useState("1");
   const [extraGuestNames, setExtraGuestNames] = useState([]);
   const [diet, setDiet] = useState("");
   const [message, setMessage] = useState("");
   const [consent, setConsent] = useState(false);
+  const peopleNum = Math.max(1, Number(people || 1));
+
 
   // ❄️ Neu: kleines Popup bei "Nein" (kalte Füße)
   const [showColdFeet, setShowColdFeet] = useState(false);
 
-  const handlePeopleChange = (e) => {
-    const value = Number(e.target.value) || 1;
-    const safe = Math.max(1, Math.min(10, value));
-    setPeople(safe);
+const handlePeopleChange = (e) => {
+  const raw = e.target.value;
 
-    setExtraGuestNames((prev) => {
-      const desired = safe - 1;
-      const copy = [...prev];
-      copy.length = desired;
-      for (let i = 0; i < desired; i++) {
-        if (copy[i] == null) copy[i] = "";
-      }
-      return copy;
-    });
-  };
+  // leer erlauben (damit man löschen & neu tippen kann)
+  if (raw === "") {
+    setPeople("");
+    setExtraGuestNames([]);
+    return;
+  }
+
+  // nur Ziffern erlauben
+  if (!/^\d+$/.test(raw)) return;
+
+  const n = Number(raw);
+  const safe = Math.max(1, Math.min(10, n));
+
+  setPeople(String(safe));
+
+  setExtraGuestNames((prev) => {
+    const desired = safe - 1;
+    const copy = [...prev];
+    copy.length = desired;
+    for (let i = 0; i < desired; i++) {
+      if (copy[i] == null) copy[i] = "";
+    }
+    return copy;
+  });
+};
+                                         
 
   const handleExtraGuestNameChange = (idx, val) => {
     setExtraGuestNames((prev) => {
@@ -129,7 +145,7 @@ export default function RSVPForm({ lang, onSubmitRSVP, sending }) {
       attend,
       name: name.trim(),
       email: email.trim(),
-      people,
+      people: peopleNum,
       diet: diet.trim(),
       message: message.trim(),
       extraGuests: extraGuestNames.map((n) => n.trim()).filter(Boolean),
@@ -240,19 +256,25 @@ export default function RSVPForm({ lang, onSubmitRSVP, sending }) {
 
         <div className="field">
           <label>{t.peopleLabel}</label>
-          <input
-            type="number"
-            min={1}
-            max={10}
-            value={people}
-            onChange={handlePeopleChange}
-            style={rightShift}
-          />
+<input
+  type="text"
+  inputMode="numeric"
+  pattern="[0-9]*"
+  maxLength={2}
+  value={people}
+  onChange={handlePeopleChange}
+  onBlur={() => {
+    if (people === "") setPeople("1");
+  }}
+  style={rightShift}
+/>
+
         </div>
       </div>
 
       {/* Extra Personen */}
-      {people > 1 && (
+{peopleNum > 1 && (
+
         <div className="field">
           <label>{t.extraGuestsLabel}</label>
           <div className="extra-guests-grid">
