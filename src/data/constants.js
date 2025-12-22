@@ -1009,7 +1009,7 @@ export const googleCalUrl = `https://calendar.google.com/calendar/render?action=
 // ======================================================
 export const PROGRAMM = [
   {
-    time: "15:00",
+    time: "16:00",
     title: {
       de: "Freie Trauung",
       en: "Wedding ceremony",
@@ -1022,7 +1022,7 @@ place: {
 },
   },
   {
-    time: "15:45",
+    time: "16:45",
     title: {
       de: "Sektempfang + Fotos",
       en: "Reception & Photos",
